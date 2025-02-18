@@ -35,9 +35,14 @@
     "**/*.ts",
     "**/*.tsx",
     "../../apps/single/.next/types/**/*.ts",
+    "../../dist/acme/.next/types/**/*.ts",
+    "../../dist/apps/my-app/.next/types/**/*.ts",
     "../../dist/apps/single/.next/types/**/*.ts",
+    "../../dist/apps/web/.next/types/**/*.ts",
+    ".next/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
+    "postcss.config.mjs",
+    "../../dist/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

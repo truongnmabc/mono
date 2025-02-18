@@ -42,13 +42,26 @@
     },
     {
       "plugin": "@nx/jest/plugin",
+      "exclude": ["e2e/**/*"],
       "options": {
         "targetName": "test"
+      }
+    },
+    {
+      "plugin": "@nx/jest/plugin",
+      "include": ["e2e/**/*"],
+      "options": {
+        "targetName": "e2e-local",
+        "ciTargetName": "e2e-ci",
+        "disableJestRuntime": false
       }
     }
   ],
   "targetDefaults": {
     "e2e-ci--**/*": {
+      "dependsOn": ["^build"]
+    },
+    "build": {
       "dependsOn": ["^build"]
     }
   },
