@@ -1,0 +1,138 @@
+.about-activity-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin: 32px 0;
+
+    @media screen and (min-width: 600px) {
+        flex-direction: row;
+        gap: 48px;
+        margin-top: 52px;
+    }
+    .ecosystem {
+        position: relative; // Cần thiết cho layout="fill"
+        width: 100%;
+        aspect-ratio: 1.23; // Hoặc tỉ lệ thực tế của ảnh, ví dụ 16:9
+        overflow: hidden;
+
+        @media screen and (min-width: 600px) {
+            min-width: 536px;
+            min-height: 436px;
+            border-radius: 12px;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+    }
+    .about-activity-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @media screen and (min-width: 600px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .activity-box {
+            background: #ffffff;
+            border-radius: 12px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+
+            padding: 16px;
+            box-sizing: border-box;
+
+            @media screen and (min-width: 600px) {
+                height: 206px;
+                transition: transform 0.3s ease-in-out;
+
+                &:hover {
+                    &.eye {
+                        transform: translate(-3%, -3%);
+                    }
+                    &.mount {
+                        transform: translate(3%, -3%);
+                    }
+                    &.hand {
+                        transform: translate(-3%, 3%);
+                    }
+                    &.heart {
+                        transform: translate(3%, 3%);
+                    }
+                }
+            }
+            .circle-icon {
+                min-width: 48px;
+                min-height: 48px;
+                max-width: 48px;
+                max-height: 48px;
+
+                border-radius: 999px;
+                box-sizing: border-box;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &.blue {
+                    border: 4px solid #289af6;
+                }
+                &.red {
+                    border: 4px solid #ff0047;
+                }
+                &.green {
+                    border: 4px solid #00ea9d;
+                }
+                &.orange {
+                    border: 4px solid #f37a00;
+                }
+                .eye {
+                    width: 26px;
+                    height: 22px;
+                }
+                .mount {
+                    width: 23px;
+                    height: 23px;
+                }
+                .hand {
+                    width: 22px;
+                    height: 22px;
+                }
+                .heart {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            .content {
+                font-family: Poppins, sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 30px;
+                text-align: center;
+                color: #212121cc;
+                margin-top: 8px;
+            }
+            .sub-content {
+                font-family: Poppins, sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 19.65px;
+                text-align: center;
+                color: #212121cc;
+
+                @media screen and (min-width: 600px) {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+}

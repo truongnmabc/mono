@@ -1,0 +1,20 @@
+{
+  "appId": 4878338973761536,
+  "appName": "ASVAB",
+  "appNameId": "asvab-practice-test",
+  "appShortName": "asvab",
+  "bucket": "asvab",
+  "categoryId": "5",
+  "descriptionSEO": "Our free ASVAB practice tests feature all ASVAB test subjects. We recommend taking all practice questions to guarantee your success at your local testing location.",
+  "hasState": false,
+  "keywordSEO": "",
+  "linkAndroid": "https://play.google.com/store/apps/details?id=com.sima.asvab&pli=1",
+  "linkIos": "https://apps.apple.com/us/app/id1469379973",
+  "title": "ASVAB Practice Test - Ace The ASVAB On First Try",
+  "totalQuestion": "720",
+  "usingMathJax": true,
+  "icon": "https://storage.googleapis.com/accuplacer/asvab/config/logo.png",
+  "oneWeekPro": "{\"planId\":\"P-1AK14795YE2773901MQTLV6I\", \"price\": 4.99}",
+  "oneMonthPro": "{\"planId\": \"P-6HU64423PE290012WMQN3NNI\", \"price\": 12.99}",
+  "oneYearPro": "{\"planId\":\"P-7VH50750CF1160905MQN3LWY\", \"price\": 19.99}"
+}

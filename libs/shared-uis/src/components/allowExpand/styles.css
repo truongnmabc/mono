@@ -1,0 +1,12 @@
+.heartbeat {
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    box-shadow: 0 0 0 0px rgba(227, 166, 81, 0.12);
+  }
+  100% {
+    box-shadow: 0 0 0 7px rgba(227, 166, 81, 0.12);
+  }
+}

@@ -1,0 +1,84 @@
+.mtui-btn {
+    position: relative;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    outline: none;
+}
+
+.mtui-btn-share-circle {
+    min-width: 32px;
+    padding: 0;
+    text-align: center;
+    border-radius: 50%;
+}
+.mtui-btn-share-circle.mtui-btn-middle {
+    width: 48px;
+    height: 48px;
+}
+
+.mtui-btn-share-circle.mtui-btn-small {
+    width: 32px;
+    height: 32px;
+}
+
+.mtui-btn-share-circle.mtui-btn-large {
+    width: 60px;
+    height: 60px;
+}
+.mtui-btn[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+    background-color: #21212129;
+    border-color: #21212129;
+}
+.mtui-btn[disabled] > * {
+    pointer-events: none;
+}
+
+.mtui-btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mtui-btn-icon.mtui-btn-small {
+    gap: 4px;
+}
+.mtui-btn-icon.mtui-btn-middle {
+    gap: 6px;
+}
+.mtui-btn-icon.mtui-btn-large {
+    gap: 8px;
+}
+@keyframes rotateIn {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.mtui-btn-item-icon {
+    width: fit-content;
+    height: fit-content;
+}
+
+.mtui-btn-loading .mtui-btn-item-icon {
+    animation: rotateIn 1s ease-in-out infinite;
+}
+
+.mtui-btn-type-primary {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: white;
+}

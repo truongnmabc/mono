@@ -1,0 +1,29 @@
+.custom-header-progress progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  border: none;
+  height: 8px;
+  border-radius: 16px;
+  background-color: #21212114;
+  overflow: hidden;
+  position: relative;
+}
+
+.custom-header-progress progress::-webkit-progress-bar {
+  background-color: #21212114;
+  border-radius: 16px;
+}
+
+.custom-header-progress progress::-webkit-progress-value {
+  background-color: var(
+    --color-primary,
+    #6200ea
+  ); /* Màu primary, fallback là #6200ea */
+  height: 100%;
+}
+
+.custom-header-progress progress::-moz-progress-bar {
+  background-color: var(--color-primary, #6200ea);
+  border-radius: 16px;
+}

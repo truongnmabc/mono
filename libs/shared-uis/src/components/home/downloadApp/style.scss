@@ -1,0 +1,174 @@
+.v4-banner-download-app-0 {
+    background: #feefab;
+    display: flex;
+    overflow: unset;
+    height: 197px;
+    color: var(--font-color);
+    .v4-banner-download-app-1 {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .v4-banner-download-app-11 {
+            position: relative;
+            z-index: 1;
+            .v4-banner-download-app-background {
+                background-image: var(--background-mobile-url);
+                height: 197px; // real size
+                width: 242px;
+                margin: 0;
+            }
+            .v4-banner-download-app-content-0 {
+                position: absolute;
+                top: 0;
+                padding: 12px 0 0 12px;
+                > div:first-child {
+                    text-align: left;
+                    margin: 0 auto;
+                    font-size: 20px;
+                    line-height: 30px;
+                    // width: 200px;
+                    strong {
+                        font-weight: 700;
+                    }
+                    p {
+                        margin: 0;
+                        line-height: 21px;
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
+                }
+                .grid-feature-item {
+                    width: 186px;
+                    text-align: left;
+                    font-size: 11px;
+                    padding-top: 2px;
+                    line-height: 16px;
+                }
+
+                .v4-banner-download-app-grid-feature-0 {
+                    display: none;
+                }
+                .v4-banner-download-app-method-0 {
+                    display: flex;
+                    padding-top: 8px;
+                    .v4-banner-download-app-method-qr {
+                        background-color: #f3f3f3;
+                        display: flex;
+                        padding: 5px;
+                        border-radius: 6px;
+                        margin-left: 18px;
+                        svg {
+                            width: 50px;
+                            height: 50px;
+                            //phần cònig này chỉ dùng cho mã qr thôi nha
+                            path:first-child {
+                                fill: #f3f3f3;
+                            }
+                            path:not(:first-child) {
+                                fill: #575757;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .v4-banner-download-app-12 {
+            position: relative;
+            figure {
+                position: absolute;
+                right: 0;
+                z-index: 2;
+                width: 121px;
+                height: 210px;
+                background-size: 121px 210px;
+                background-repeat: no-repeat;
+                background-image: var(--img-mobile-url);
+            }
+        }
+    }
+
+    @media screen and (min-width: 769px) {
+        border-radius: 16px;
+        height: 554px;
+        .v4-banner-download-app-1 {
+            flex-direction: row;
+            .v4-banner-download-app-11 {
+                height: fit-content;
+                display: flex;
+                .v4-banner-download-app-background {
+                    background-image: var(--background-desktop-url);
+                    margin-top: -17px;
+                    margin-left: -21px;
+                    height: 598px; // real size
+                    width: 792px;
+                }
+
+                .v4-banner-download-app-content-0 {
+                    padding: 40px;
+                    > div:first-child {
+                        text-align: center;
+                        font-size: 55px;
+                        line-height: 82px;
+                        p {
+                            font-size: 35px;
+                            line-height: 42px;
+                        }
+                    }
+                    .grid-feature-item {
+                        display: none;
+                    }
+                    .v4-banner-download-app-grid-feature-0 {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        margin-top: 32px;
+                        grid-gap: 24px;
+                        gap: 24px;
+                        .grid-feature-item {
+                            display: flex;
+                            align-items: center;
+                            padding-top: 0;
+                            width: unset;
+                            > span {
+                                padding-left: 10px;
+                                font-size: 16px;
+                                line-height: 24px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    .v4-banner-download-app-method-0 {
+                        display: flex;
+                        justify-content: center;
+                        padding-top: 60px;
+
+                        .v4-banner-download-app-method-qr {
+                            margin-left: 56px;
+                            padding: 10px;
+                            border-radius: 12px;
+                            svg {
+                                width: 98px;
+                                height: 98px;
+                            }
+                        }
+                    }
+                }
+            }
+            .v4-banner-download-app-12 {
+                position: relative;
+                figure {
+                    position: absolute;
+                    margin: 0;
+                    top: -16px;
+                    right: 0;
+
+                    width: 366px;
+                    height: 630px;
+                    background-repeat: no-repeat;
+                    background-size: 366px 630px;
+                    background-image: var(--img-desktop-url);
+                }
+            }
+        }
+    }
+}

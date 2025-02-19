@@ -15,7 +15,8 @@
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/web"
+          "outputPath": "apps/web",
+          "packageJson": "apps/single/package.json"
         },
         "production": {}
       }

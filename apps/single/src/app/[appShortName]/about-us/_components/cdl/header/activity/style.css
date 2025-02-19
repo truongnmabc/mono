@@ -1,0 +1,101 @@
+.cluster-intro-about-us {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  margin: 78px 0;
+}
+.cluster-intro-about-us .item-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+  max-width: 335px;
+  gap: 16px;
+  background-color: #e5e8fe;
+  border-radius: 66px;
+  position: relative;
+}
+.cluster-intro-about-us .item-intro img {
+  position: absolute;
+  width: 413px;
+  max-width: unset;
+}
+.cluster-intro-about-us .item-intro svg {
+  width: 120px;
+  height: 120px;
+}
+.cluster-intro-about-us .item-intro .title {
+  color: white;
+  width: 100%;
+  padding: 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 8px;
+  border-top-right-radius: 24px;
+  border-bottom-left-radius: 24px;
+  text-align: center;
+}
+.cluster-intro-about-us .item-intro .content {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  text-underline-position: from-font;
+  color: rgba(33, 33, 33, 0.8);
+}
+.cluster-intro-about-us .intro-1 {
+  transform: translateX(5px);
+}
+.cluster-intro-about-us .intro-1 img {
+  top: -31px;
+}
+.cluster-intro-about-us .intro-2 {
+  max-width: 335px;
+  transform: translateY(45px);
+}
+.cluster-intro-about-us .intro-2 img {
+  bottom: -31px;
+}
+.cluster-intro-about-us .intro-3 {
+  transform: translateX(-5px);
+}
+.cluster-intro-about-us .intro-3 img {
+  top: -31px;
+}
+
+@media screen and (max-width: 768px) {
+  .cluster-intro-about-us {
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .cluster-intro-about-us .item-intro {
+    max-width: unset;
+  }
+  .cluster-intro-about-us .item-intro svg {
+    width: 80px;
+    height: 80px;
+  }
+  .cluster-intro-about-us .item-intro .title {
+    padding: 12px;
+    font-size: 18px;
+    line-height: 27px;
+  }
+  .cluster-intro-about-us .item-intro .content {
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+  }
+  .cluster-intro-about-us .intro-1 {
+    transform: unset;
+  }
+  .cluster-intro-about-us .intro-2 {
+    transform: unset;
+  }
+  .cluster-intro-about-us .intro-3 {
+    transform: unset;
+  }
+}/*# sourceMappingURL=style.css.map */

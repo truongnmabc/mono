@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Diane White",
+        "position": "CEO"
+    },
+    {
+        "name": "Peter North",
+        "position": "Technical Director"
+    },
+    {
+        "name": "Stewart Bell",
+        "position": "Marketing Director"
+    },
+    {
+        "name": "Frank Miller",
+        "position": "Developer & Designer"
+    },
+    {
+        "name": "Christian Vaughan",
+        "position": "Developer"
+    },
+    {
+        "name": "Sophie Lyman",
+        "position": "Digital Marketer"
+    },
+    {
+        "name": "Julia Oliver",
+        "position": "Digital Marketer"
+    },
+    {
+        "name": "Leonard Hamilton",
+        "position": "Writer and Researcher"
+    },
+    {
+        "name": "Stewart Payne",
+        "position": "Developer"
+    },
+    {
+        "name": "Warren Paige",
+        "position": "Developer"
+    },
+    {
+        "name": "Virginia Quinn",
+        "position": "EMT/Medical Writer and Editor"
+    },
+    {
+        "name": "Other Business Partners",
+        "position": "For Expertise "
+    }
+]

@@ -1,0 +1,370 @@
+.app-pro-package {
+    .pro-package {
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        // column-gap: 10px;
+        justify-items: center;
+        align-items: center;
+        min-height: 360px;
+    }
+    .upgrade-btn {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        padding: 16px 0;
+        color: #fff;
+        width: 343px;
+        text-align: center;
+        border-radius: 12px;
+        background: linear-gradient(93.11deg, #0bb177 0.93%, #3b6b5a 100%);
+        margin: 0 auto;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0px 2px 4px rgba(139, 139, 139, 0.72);
+    }
+}
+
+.price-item {
+    cursor: pointer;
+    position: relative;
+    max-width: 324px;
+    width: -webkit-fill-available;
+    margin: 0 12px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(33, 33, 33, 0.52);
+    border-radius: 16px;
+    text-align: center;
+    height: fit-content;
+    .icon-check {
+        position: absolute;
+        top: -24px;
+        right: -24px;
+        transform: scale(1);
+        animation: scale 0.2s ease;
+    }
+
+    .price-item-container {
+        padding: 20px;
+        transition: padding 0.25s;
+        .price-section {
+            .sale-price {
+                font-weight: 600;
+                font-size: 36px;
+                line-height: 54px;
+                text-align: center;
+                text-transform: capitalize;
+                color: #000000;
+            }
+            .current-price {
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 36px;
+                text-align: center;
+                text-decoration-line: line-through;
+                text-transform: capitalize;
+                color: rgba(33, 33, 33, 0.52);
+            }
+        }
+        .type {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            text-transform: uppercase;
+            color: rgba(33, 33, 33, 0.52);
+        }
+
+        .divide {
+            background: rgba(33, 33, 33, 0.24);
+            height: 1px;
+            margin: 16px 0px;
+        }
+
+        .average-price {
+            margin-bottom: 8px;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 30px;
+            text-transform: capitalize;
+            color: #212121;
+            .day {
+                font-size: 12px;
+                line-height: 14px;
+                color: rgba(33, 33, 33, 0.52);
+            }
+        }
+
+        .trial-day {
+            min-height: 24px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            color: #128e63;
+        }
+    }
+
+    .save-price {
+        min-height: 46px;
+        .save-price-container {
+            background: #3b6b5a;
+            border-radius: 0px 0px 12px 12px;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            .text {
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 30px;
+                color: #ffffff;
+            }
+
+            .save-percent {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                color: #ffffff;
+                .percent {
+                    color: #ffffff;
+                    font-weight: 600;
+                    font-size: 20px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        border: 4px solid #6bd574;
+    }
+    &:nth-child(2) {
+        .save-price-container {
+            background: #0bb177;
+            .text {
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+.price-item.active {
+    border: 4px solid #6bd574;
+    .price-item-container {
+        padding: 33px 20px 32px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .price-item {
+        .icon-check {
+            transform: scale(0.8);
+            animation: scale 0.2s ease;
+        }
+
+        .price-item-container {
+            .price-section {
+                .sale-price {
+                    font-size: 28px;
+                    line-height: 42px;
+                }
+                .current-price {
+                    font-size: 22px;
+                    line-height: 36px;
+                }
+            }
+            .type {
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .average-price {
+                font-size: 18px;
+                line-height: 24px;
+                .day {
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+            }
+
+            .trial-day {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+
+        .save-price {
+            min-height: 40px;
+            .save-price-container {
+                .text {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+
+                .save-percent {
+                    font-size: 14px;
+                    line-height: 24px;
+
+                    .percent {
+                        font-size: 20px;
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .app-pro-package {
+        .pro-package {
+            min-height: 240px;
+        }
+    }
+    .price-item {
+        margin: 0 6px;
+        border-radius: 12px;
+        // max-width: 106px;
+        height: fit-content;
+        padding: 1px;
+        .icon-check {
+            top: -10px;
+            right: -10px;
+            z-index: 2;
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .text-save-price {
+            .text {
+                background-color: #212121;
+                border-radius: 9px 9px 0px 0px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                font-size: 8px;
+                line-height: 12px;
+                color: #fff;
+            }
+        }
+
+        .price-item-container {
+            padding: 8px 8px 15px 8px;
+            transition: padding 0.25s;
+            .price-section {
+                white-space: nowrap;
+                .sale-price {
+                    font-size: 18px;
+                    line-height: 27px;
+                    color: #212121;
+                }
+                .current-price {
+                    font-size: 10px;
+                    line-height: 15px;
+                }
+            }
+            .type {
+                font-size: 8px;
+                line-height: 12px;
+                text-transform: none;
+            }
+
+            .divide {
+                margin: 5px 0px 15px;
+            }
+
+            .average-price {
+                margin-bottom: 8px;
+                font-size: 14px;
+                line-height: 21px;
+                .per-day {
+                    margin-top: 5px;
+                    font-weight: 400;
+                    font-size: 8px;
+                    line-height: 12px;
+                    text-align: center;
+                    text-transform: capitalize;
+                    color: rgba(33, 33, 33, 0.52);
+                }
+            }
+
+            .trial-day {
+                white-space: nowrap;
+                min-height: 14px;
+                font-size: 9px;
+                line-height: 14px;
+            }
+        }
+
+        .save-price {
+            min-height: 0;
+            margin-bottom: -16px;
+            .save-price-container {
+                border-radius: 6px;
+                padding: 4px 12px;
+                width: fit-content;
+                margin: 0 auto;
+                .save-percent {
+                    font-size: 10px !important;
+                    line-height: 16px;
+                    margin: 0 auto;
+                    .percent {
+                        font-size: 10px;
+                        line-height: 16px;
+                    }
+                }
+            }
+        }
+        .upgrade-section {
+            min-height: 28px;
+            .button-upgrade {
+                border-radius: 8px;
+                font-size: 8px;
+                line-height: 12px;
+                .percent {
+                    font-size: 12px;
+                }
+            }
+        }
+        .percent-save-price {
+            font-size: 10px;
+            background: #212121;
+            padding: 4px 12px;
+            color: #fff;
+            width: fit-content;
+            border-radius: 6px;
+            margin: 0 auto;
+            margin-bottom: -14px;
+        }
+    }
+    .price-item.active {
+        border: 2px solid #6bd574;
+        .text-save-price.active {
+            .text {
+                background: #0bb177;
+            }
+        }
+        .price-item-container {
+            padding: 8px 8px 15px 8px;
+        }
+
+        .upgrade-section {
+            .button-upgrade {
+                color: #0bb177;
+                background: #ffffff;
+                border: 1px solid rgba(11, 177, 119, 0.52);
+                box-shadow: none;
+                border-radius: 12px;
+            }
+        }
+        .percent-save-price {
+            background: #6bd574;
+            color: #212121;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.highlight-text {
+  color: inherit;
+}
+
+.highlight-text::before {
+  content: "Download our app";
+  color: var(--text-color-primary);
+  font-weight: bold;
+}
+
+.highlight-text::after {
+  content: " now for a better experience.";
+  color: #fff;
+}

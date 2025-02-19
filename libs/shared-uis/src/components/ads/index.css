@@ -1,0 +1,103 @@
+.main-ads-horizontal-container {
+    text-align: center;
+}
+
+.main-ads-top-banner-container {
+    text-align: center;
+    max-height: 135px;
+    margin: auto;
+}
+@media (max-width: 780px) {
+    .main-ads-top-banner-container > div {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.main-ads-container {
+    text-align: center;
+}
+.main-ads-container .tester {
+    display: block;
+    width: 100%;
+    height: 90px;
+    margin: 0px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid rgb(218, 218, 218);
+}
+@media (max-width: 780px) {
+    .main-ads-container > div {
+        width: 320px;
+        margin: auto;
+    }
+}
+
+.main-ads-test-sidebar-test {
+    width: 98%;
+    height: 200px;
+    border: 1px solid #cdcdcd;
+    margin: 4px auto 16px;
+    border-radius: 8px;
+}
+
+.main-ads-sidebar-container {
+    text-align: center;
+    cursor: pointer;
+    background: var(--background);
+    padding-bottom: 12px;
+    border-radius: 10px;
+}
+.main-ads-sidebar-container .ads {
+    font-size: 10px;
+    padding: 4px 0;
+    color: #909090;
+} /*# sourceMappingURL=ads-google.css.map */
+
+:root {
+    --bottom-height-nav-test: 80px;
+}
+
+.ads-bottom {
+    position: fixed;
+    z-index: 100;
+    width: 730px;
+    margin: 0 auto;
+    bottom: calc(var(--bottom-height-nav-test) + 8px);
+    right: 0px;
+    left: 0px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+}
+@media screen and (max-width: 768px) {
+    .ads-bottom {
+        background: rgb(255, 255, 255);
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.btn-remove {
+    background: rgba(33, 33, 33, 0.24);
+    border-radius: 4px;
+}
+.btn-remove a {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #ffffff;
+}
+.btn-remove a span {
+    padding: 4px 40px 4px 16px;
+    background: rgba(0, 0, 0, 0.52);
+}
+.btn-remove a .icon-remove {
+    height: 26px;
+}
+.btn-remove a .icon-remove img {
+    height: 100%;
+} /*# sourceMappingURL=index.css.map */

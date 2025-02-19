@@ -6,12 +6,13 @@
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/eslint.config.mjs",
+      "!{projectRoot}/eslint.config.ts",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s",
       "!{projectRoot}/src/test-setup.[jt]s",
-      "!{projectRoot}/test-setup.[jt]s"
+      "!{projectRoot}/test-setup.[jt]s",
+      "!{projectRoot}/eslint.config.mjs"
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
@@ -55,6 +56,14 @@
         "ciTargetName": "e2e-ci",
         "disableJestRuntime": false
       }
+    },
+    {
+      "plugin": "@nx/rollup/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
     }
   ],
   "targetDefaults": {
@@ -63,6 +72,11 @@
     },
     "build": {
       "dependsOn": ["^build"]
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "generators": {

@@ -1,0 +1,53 @@
+#collapse-list-state {
+  height: 0;
+  overflow: hidden;
+  transition: 0.4s all;
+  border-radius: 4px;
+  background-color: rgba(33, 33, 33, 0.6980392157);
+}
+
+.select-state {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background-color: rgba(33, 33, 33, 0.6980392157);
+  padding: 12px;
+  gap: 4px;
+  grid-gap: 4px;
+}
+.select-state .state {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: 0.2s all;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  border-radius: 4px;
+}
+.select-state .state:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1215686275);
+}
+
+.list-state-dialog {
+  height: inherit;
+  overflow: auto;
+  width: 256px;
+  border: 16px solid #fff;
+  border-right: 6px solid #fff;
+}
+.list-state-dialog .state {
+  color: #212121;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: 0.2s all;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  display: block;
+}
+
+.state {
+  text-decoration: none;
+}/*# sourceMappingURL=ListState.css.map */

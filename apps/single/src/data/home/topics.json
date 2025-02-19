@@ -1,0 +1,4518 @@
+{
+  "topic": [
+    {
+      "id": 4643957105491968,
+      "parentId": 5676496995745792,
+      "name": "Mechanical Comprehension",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
+      "tag": "mechanical-comprehension",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 7,
+      "topics": [
+        {
+          "id": 5666897542512640,
+          "parentId": 4643957105491968,
+          "name": "Machines",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/machines.svg",
+          "tag": "machines",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4596897775878144,
+              "parentId": 5666897542512640,
+              "name": "Machines Extended 3",
+              "icon": "",
+              "tag": "machines-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 5,
+              "topics": []
+            },
+            {
+              "id": 5080679536656384,
+              "parentId": 5666897542512640,
+              "name": "Machines 2",
+              "icon": "",
+              "tag": "machines-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5643629490077696,
+              "parentId": 5666897542512640,
+              "name": "Machines 1",
+              "icon": "",
+              "tag": "machines-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6070407060783104,
+              "parentId": 5666897542512640,
+              "name": "Machines Extended 2",
+              "icon": "",
+              "tag": "machines-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 6206579443499008,
+              "parentId": 5666897542512640,
+              "name": "Machines 3",
+              "icon": "",
+              "tag": "machines-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6686581456896000,
+              "parentId": 5666897542512640,
+              "name": "Machines Extended 1",
+              "icon": "",
+              "tag": "machines-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5746080767541248,
+          "parentId": 4643957105491968,
+          "name": "Fundamentals of Mechanics",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/fundamentals-of-mechanics.svg",
+          "tag": "fundamentals-of-mechanics",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4799204559945728,
+              "parentId": 5746080767541248,
+              "name": "Fundamentals of Mechanics 1",
+              "icon": "",
+              "tag": "fundamentals-of-mechanics-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5362154513367040,
+              "parentId": 5746080767541248,
+              "name": "Fundamentals of Mechanics 3",
+              "icon": "",
+              "tag": "fundamentals-of-mechanics-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5668232136491008,
+              "parentId": 5746080767541248,
+              "name": "Fundamentals of Mechanics Extended 1",
+              "icon": "",
+              "tag": "fundamentals-of-mechanics-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5925104466788352,
+              "parentId": 5746080767541248,
+              "name": "Fundamentals of Mechanics 2",
+              "icon": "",
+              "tag": "fundamentals-of-mechanics-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6488054420209664,
+              "parentId": 5746080767541248,
+              "name": "Fundamentals of Mechanics 4",
+              "icon": "",
+              "tag": "fundamentals-of-mechanics-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    },
+    {
+      "id": 4830925621821440,
+      "parentId": 5676496995745792,
+      "name": "Assembling Objects",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
+      "tag": "assembling-objects",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 2,
+      "topics": [
+        {
+          "id": 5141998918959104,
+          "parentId": 4830925621821440,
+          "name": "Connection Items",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/connection-items.svg",
+          "tag": "connection-items",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5155304660533248,
+              "parentId": 5141998918959104,
+              "name": "Connection Items 2",
+              "icon": "",
+              "tag": "connection-items-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5718254613954560,
+              "parentId": 5141998918959104,
+              "name": "Connection Items 1",
+              "icon": "",
+              "tag": "connection-items-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6281204567375872,
+              "parentId": 5141998918959104,
+              "name": "Connection Items 3",
+              "icon": "",
+              "tag": "connection-items-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5144478012669952,
+          "parentId": 4830925621821440,
+          "name": "Puzzle Items",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/puzzle-items.svg",
+          "tag": "puzzle-items",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4873829683822592,
+              "parentId": 5144478012669952,
+              "name": "Puzzle Items 1",
+              "icon": "",
+              "tag": "puzzle-items-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5999729590665216,
+              "parentId": 5144478012669952,
+              "name": "Puzzle Items 2",
+              "icon": "",
+              "tag": "puzzle-items-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    },
+    {
+      "id": 5533861310103552,
+      "parentId": 5676496995745792,
+      "name": "General Science",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+      "tag": "general-science",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 5,
+      "topics": [
+        {
+          "id": 5749048187289600,
+          "parentId": 5533861310103552,
+          "name": "Earth Science",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/earth-science.svg",
+          "tag": "earth-science",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4583197996220416,
+              "parentId": 5749048187289600,
+              "name": "Earth Science Extended 2",
+              "icon": "",
+              "tag": "earth-science-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 4678659726114816,
+              "parentId": 5749048187289600,
+              "name": "Earth Science 1",
+              "icon": "",
+              "tag": "earth-science-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5804559632957440,
+              "parentId": 5749048187289600,
+              "name": "Earth Science 2",
+              "icon": "",
+              "tag": "earth-science-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5946170165690368,
+              "parentId": 5749048187289600,
+              "name": "Earth Science Extended 1",
+              "icon": "",
+              "tag": "earth-science-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6483823432826880,
+              "parentId": 5749048187289600,
+              "name": "Earth Science Extended 3",
+              "icon": "",
+              "tag": "earth-science-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5913375045320704,
+          "parentId": 5533861310103552,
+          "name": "Ecology",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/ecology.svg",
+          "tag": "ecology",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5964665075007488,
+              "parentId": 5913375045320704,
+              "name": "Ecology Extended 3",
+              "icon": "",
+              "tag": "ecology-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6117465406832640,
+              "parentId": 5913375045320704,
+              "name": "Ecology Extended 1",
+              "icon": "",
+              "tag": "ecology-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6367509586378752,
+              "parentId": 5913375045320704,
+              "name": "Ecology 1",
+              "icon": "",
+              "tag": "ecology-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6558426519830528,
+              "parentId": 5913375045320704,
+              "name": "Ecology Extended 2",
+              "icon": "",
+              "tag": "ecology-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5978274081538048,
+          "parentId": 5533861310103552,
+          "name": "Nutrition & Health",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/nutrition--health.svg",
+          "tag": "nutrition--health",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4972937287303168,
+              "parentId": 5978274081538048,
+              "name": "Nutrition & Health Extended 3",
+              "icon": "",
+              "tag": "nutrition--health-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5023671991140352,
+              "parentId": 5978274081538048,
+              "name": "Nutrition & Health 1",
+              "icon": "",
+              "tag": "nutrition--health-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5461107028262912,
+              "parentId": 5978274081538048,
+              "name": "Nutrition & Health Extended 1",
+              "icon": "",
+              "tag": "nutrition--health-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6413265819140096,
+              "parentId": 5978274081538048,
+              "name": "Nutrition & Health Extended 2",
+              "icon": "",
+              "tag": "nutrition--health-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5998439892516864,
+          "parentId": 5533861310103552,
+          "name": "Cellular Biology",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/cellular-biology.svg",
+          "tag": "cellular-biology",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5618955666325504,
+              "parentId": 5998439892516864,
+              "name": "Cellular Biology Extended 1",
+              "icon": "",
+              "tag": "cellular-biology-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6316508795895808,
+              "parentId": 5998439892516864,
+              "name": "Cellular Biology Extended 2",
+              "icon": "",
+              "tag": "cellular-biology-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6350790444711936,
+              "parentId": 5998439892516864,
+              "name": "Cellular Biology Extended 3",
+              "icon": "",
+              "tag": "cellular-biology-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6508247074734080,
+              "parentId": 5998439892516864,
+              "name": "Cellular Biology 1",
+              "icon": "",
+              "tag": "cellular-biology-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6195848736145408,
+          "parentId": 5533861310103552,
+          "name": "Human Body Systems",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/human-body-systems.svg",
+          "tag": "human-body-systems",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5160459317542912,
+              "parentId": 6195848736145408,
+              "name": "Human Body Systems Extended 3",
+              "icon": "",
+              "tag": "human-body-systems-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5241609679536128,
+              "parentId": 6195848736145408,
+              "name": "Human Body Systems 1",
+              "icon": "",
+              "tag": "human-body-systems-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5603096768020480,
+              "parentId": 6195848736145408,
+              "name": "Human Body Systems Extended 1",
+              "icon": "",
+              "tag": "human-body-systems-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6588707205283840,
+              "parentId": 6195848736145408,
+              "name": "Human Body Systems Extended 2",
+              "icon": "",
+              "tag": "human-body-systems-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6321939983368192,
+          "parentId": 5533861310103552,
+          "name": "Physical Science",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/physical-science.svg",
+          "tag": "physical-science",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4819397214470144,
+              "parentId": 6321939983368192,
+              "name": "Physical Science 1",
+              "icon": "",
+              "tag": "physical-science-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5382347167891456,
+              "parentId": 6321939983368192,
+              "name": "Physical Science 3",
+              "icon": "",
+              "tag": "physical-science-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5639004573663232,
+              "parentId": 6321939983368192,
+              "name": "Physical Science Extended 2",
+              "icon": "",
+              "tag": "physical-science-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5945297121312768,
+              "parentId": 6321939983368192,
+              "name": "Physical Science 2",
+              "icon": "",
+              "tag": "physical-science-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6572076420825088,
+              "parentId": 6321939983368192,
+              "name": "Physical Science Extended 1",
+              "icon": "",
+              "tag": "physical-science-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    },
+    {
+      "id": 5549399260266496,
+      "parentId": 5676496995745792,
+      "name": "Electronics Information",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
+      "tag": "electronics-information",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 4,
+      "topics": [
+        {
+          "id": 5710226380554240,
+          "parentId": 5549399260266496,
+          "name": "Electricity",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electricity.svg",
+          "tag": "electricity",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4784910975893504,
+              "parentId": 5710226380554240,
+              "name": "Electricity 4",
+              "icon": "",
+              "tag": "electricity-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5488598417670144,
+              "parentId": 5710226380554240,
+              "name": "Electricity 2",
+              "icon": "",
+              "tag": "electricity-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5910810882736128,
+              "parentId": 5710226380554240,
+              "name": "Electricity 5",
+              "icon": "",
+              "tag": "electricity-5",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 6051548371091456,
+              "parentId": 5710226380554240,
+              "name": "Electricity 1",
+              "icon": "",
+              "tag": "electricity-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6614498324512768,
+              "parentId": 5710226380554240,
+              "name": "Electricity 3",
+              "icon": "",
+              "tag": "electricity-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6638202945273856,
+              "parentId": 5710226380554240,
+              "name": "Electricity Extended 1",
+              "icon": "",
+              "tag": "electricity-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 5,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5737078717415424,
+          "parentId": 5549399260266496,
+          "name": "Electrical Systems",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electrical-systems.svg",
+          "tag": "electrical-systems",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4925648464248832,
+              "parentId": 5737078717415424,
+              "name": "Electrical Systems 4",
+              "icon": "",
+              "tag": "electrical-systems-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5207123440959488,
+              "parentId": 5737078717415424,
+              "name": "Electrical Systems 2",
+              "icon": "",
+              "tag": "electrical-systems-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5518281632907264,
+              "parentId": 5737078717415424,
+              "name": "Electrical Systems Extended 1",
+              "icon": "",
+              "tag": "electrical-systems-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5770073394380800,
+              "parentId": 5737078717415424,
+              "name": "Electrical Systems 1",
+              "icon": "",
+              "tag": "electrical-systems-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6333023347802112,
+              "parentId": 5737078717415424,
+              "name": "Electrical Systems 3",
+              "icon": "",
+              "tag": "electrical-systems-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    },
+    {
+      "id": 5861375517655040,
+      "parentId": 5676496995745792,
+      "name": "Auto and Shop Information",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
+      "tag": "auto-and-shop-information",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 3,
+      "topics": [
+        {
+          "id": 5100952218501120,
+          "parentId": 5861375517655040,
+          "name": "Mechanical Systems",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-systems.svg",
+          "tag": "mechanical-systems",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4690630965985280,
+              "parentId": 5100952218501120,
+              "name": "Mechanical Systems Extended 3",
+              "icon": "",
+              "tag": "mechanical-systems-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 4698664433876992,
+              "parentId": 5100952218501120,
+              "name": "Mechanical Systems Extended 1",
+              "icon": "",
+              "tag": "mechanical-systems-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5582728330215424,
+              "parentId": 5100952218501120,
+              "name": "Mechanical Systems Extended 2",
+              "icon": "",
+              "tag": "mechanical-systems-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6226772098023424,
+              "parentId": 5100952218501120,
+              "name": "Mechanical Systems 1",
+              "icon": "",
+              "tag": "mechanical-systems-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5734393758875648,
+          "parentId": 5861375517655040,
+          "name": "Metal Shop",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/metal-shop.svg",
+          "tag": "metal-shop",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4888261377916928,
+              "parentId": 5734393758875648,
+              "name": "Metal Shop Extended 2",
+              "icon": "",
+              "tag": "metal-shop-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5100872191180800,
+              "parentId": 5734393758875648,
+              "name": "Metal Shop 1",
+              "icon": "",
+              "tag": "metal-shop-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5463924526809088,
+              "parentId": 5734393758875648,
+              "name": "Metal Shop Extended 1",
+              "icon": "",
+              "tag": "metal-shop-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6380715671289856,
+              "parentId": 5734393758875648,
+              "name": "Metal Shop Extended 3",
+              "icon": "",
+              "tag": "metal-shop-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5749266223988736,
+          "parentId": 5861375517655040,
+          "name": "Woodworking",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/woodworking.svg",
+          "tag": "woodworking",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4537922237759488,
+              "parentId": 5749266223988736,
+              "name": "Woodworking 1",
+              "icon": "",
+              "tag": "woodworking-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 4766215679508480,
+              "parentId": 5749266223988736,
+              "name": "Woodworking Extended 2",
+              "icon": "",
+              "tag": "woodworking-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5026661288378368,
+              "parentId": 5749266223988736,
+              "name": "Woodworking Extended 1",
+              "icon": "",
+              "tag": "woodworking-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5663822144602112,
+              "parentId": 5749266223988736,
+              "name": "Woodworking 2",
+              "icon": "",
+              "tag": "woodworking-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5691986191319040,
+              "parentId": 5749266223988736,
+              "name": "Woodworking Extended 3",
+              "icon": "",
+              "tag": "woodworking-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6018553694126080,
+          "parentId": 5861375517655040,
+          "name": "Automotive Knowledge",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/automotive-knowledge.svg",
+          "tag": "automotive-knowledge",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5048095633047552,
+              "parentId": 6018553694126080,
+              "name": "Automotive Knowledge 3",
+              "icon": "",
+              "tag": "automotive-knowledge-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5216035095445504,
+              "parentId": 6018553694126080,
+              "name": "Automotive Knowledge Extended 1",
+              "icon": "",
+              "tag": "automotive-knowledge-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 6,
+              "topics": []
+            },
+            {
+              "id": 5329570609758208,
+              "parentId": 6018553694126080,
+              "name": "Automotive Knowledge 1",
+              "icon": "",
+              "tag": "automotive-knowledge-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5611045586468864,
+              "parentId": 6018553694126080,
+              "name": "Automotive Knowledge 5",
+              "icon": "",
+              "tag": "automotive-knowledge-5",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 6173995539890176,
+              "parentId": 6018553694126080,
+              "name": "Automotive Knowledge 4",
+              "icon": "",
+              "tag": "automotive-knowledge-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6455470516600832,
+              "parentId": 6018553694126080,
+              "name": "Automotive Knowledge 2",
+              "icon": "",
+              "tag": "automotive-knowledge-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6736945493311488,
+              "parentId": 6018553694126080,
+              "name": "Automotive Knowledge 6",
+              "icon": "",
+              "tag": "automotive-knowledge-6",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 5,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    },
+    {
+      "id": 5878262490202112,
+      "parentId": 5676496995745792,
+      "name": "Arithmetic Reasoning",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+      "tag": "arithmetic-reasoning",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 1,
+      "topics": [
+        {
+          "id": 5078480647618560,
+          "parentId": 5878262490202112,
+          "name": "Fraction",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/fraction.svg",
+          "tag": "fraction",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4726139650048000,
+              "parentId": 5078480647618560,
+              "name": "Fraction Extended 3",
+              "icon": "",
+              "tag": "fraction-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5119311651799040,
+              "parentId": 5078480647618560,
+              "name": "Fraction Extended 2",
+              "icon": "",
+              "tag": "fraction-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5486345732489216,
+              "parentId": 5078480647618560,
+              "name": "Fraction Extended 1",
+              "icon": "",
+              "tag": "fraction-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5542332753510400,
+              "parentId": 5078480647618560,
+              "name": "Fraction 1",
+              "icon": "",
+              "tag": "fraction-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6668232660353024,
+              "parentId": 5078480647618560,
+              "name": "Fraction 2",
+              "icon": "",
+              "tag": "fraction-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5093201379590144,
+          "parentId": 5878262490202112,
+          "name": "Statistics",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/statistics.svg",
+          "tag": "statistics",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4872818244190208,
+              "parentId": 5093201379590144,
+              "name": "Statistics Extended 2",
+              "icon": "",
+              "tag": "statistics-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 4966711639932928,
+              "parentId": 5093201379590144,
+              "name": "Statistics Extended 3",
+              "icon": "",
+              "tag": "statistics-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 4979382800089088,
+              "parentId": 5093201379590144,
+              "name": "Statistics 1",
+              "icon": "",
+              "tag": "statistics-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6083847531790336,
+              "parentId": 5093201379590144,
+              "name": "Statistics Extended 1",
+              "icon": "",
+              "tag": "statistics-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6105282706931712,
+              "parentId": 5093201379590144,
+              "name": "Statistics 2",
+              "icon": "",
+              "tag": "statistics-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5366063965405184,
+          "parentId": 5878262490202112,
+          "name": "Distance, Rate, & Time",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/distance-rate--time.svg",
+          "tag": "distance-rate--time",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4627539079200768,
+              "parentId": 5366063965405184,
+              "name": "Distance, Rate, & Time 1",
+              "icon": "",
+              "tag": "distance,-rate,-&-time-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5165552922263552,
+              "parentId": 5366063965405184,
+              "name": "Distance, Rate, & Time Extended 1",
+              "icon": "",
+              "tag": "distance-rate--time-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5595905113718784,
+              "parentId": 5366063965405184,
+              "name": "Distance, Rate, & Time Extended 3",
+              "icon": "",
+              "tag": "distance-rate--time-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5753438986043392,
+              "parentId": 5366063965405184,
+              "name": "Distance, Rate, & Time 2",
+              "icon": "",
+              "tag": "distance,-rate,-&-time-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6515234273492992,
+              "parentId": 5366063965405184,
+              "name": "Distance, Rate, & Time Extended 2",
+              "icon": "",
+              "tag": "distance-rate--time-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5646081379532800,
+          "parentId": 5878262490202112,
+          "name": "Math Operations",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/math-operations.svg",
+          "tag": "math-operations",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4768276567556096,
+              "parentId": 5646081379532800,
+              "name": "Math Operations 7",
+              "icon": "",
+              "tag": "math-operations-7",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 6,
+              "topics": []
+            },
+            {
+              "id": 4909014055911424,
+              "parentId": 5646081379532800,
+              "name": "Math Operations 3",
+              "icon": "",
+              "tag": "math-operations-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5190489032622080,
+              "parentId": 5646081379532800,
+              "name": "Math Operations 1",
+              "icon": "",
+              "tag": "math-operations-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5471964009332736,
+              "parentId": 5646081379532800,
+              "name": "Math Operations 5",
+              "icon": "",
+              "tag": "math-operations-5",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 6034913962754048,
+              "parentId": 5646081379532800,
+              "name": "Math Operations 4",
+              "icon": "",
+              "tag": "math-operations-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6316388939464704,
+              "parentId": 5646081379532800,
+              "name": "Math Operations 2",
+              "icon": "",
+              "tag": "math-operations-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6451628357976064,
+              "parentId": 5646081379532800,
+              "name": "Math Operations Extended 1",
+              "icon": "",
+              "tag": "math-operations-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 7,
+              "topics": []
+            },
+            {
+              "id": 6597863916175360,
+              "parentId": 5646081379532800,
+              "name": "Math Operations 6",
+              "icon": "",
+              "tag": "math-operations-6",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 5,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5656151333011456,
+          "parentId": 5878262490202112,
+          "name": "Percentage",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/percentage.svg",
+          "tag": "percentage",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4697907823378432,
+              "parentId": 5656151333011456,
+              "name": "Percentage 3",
+              "icon": "",
+              "tag": "percentage-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5260857776799744,
+              "parentId": 5656151333011456,
+              "name": "Percentage 5",
+              "icon": "",
+              "tag": "percentage-5",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5401595265155072,
+              "parentId": 5656151333011456,
+              "name": "Percentage 1",
+              "icon": "",
+              "tag": "percentage-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5460007424360448,
+              "parentId": 5656151333011456,
+              "name": "Percentage Extended 1",
+              "icon": "",
+              "tag": "percentage-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 6,
+              "topics": []
+            },
+            {
+              "id": 5823807730221056,
+              "parentId": 5656151333011456,
+              "name": "Percentage 4",
+              "icon": "",
+              "tag": "percentage-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6386757683642368,
+              "parentId": 5656151333011456,
+              "name": "Percentage 6",
+              "icon": "",
+              "tag": "percentage-6",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 5,
+              "topics": []
+            },
+            {
+              "id": 6527495171997696,
+              "parentId": 5656151333011456,
+              "name": "Percentage 2",
+              "icon": "",
+              "tag": "percentage-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5656998582419456,
+          "parentId": 5878262490202112,
+          "name": "Ratio & Proportion",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/ratio--proportion.svg",
+          "tag": "ratio--proportion",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4838645311733760,
+              "parentId": 5656998582419456,
+              "name": "Ratio & Proportion 2",
+              "icon": "",
+              "tag": "ratio-&-proportion-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5184035106062336,
+              "parentId": 5656998582419456,
+              "name": "Ratio & Proportion Extended 2",
+              "icon": "",
+              "tag": "ratio--proportion-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5964545218576384,
+              "parentId": 5656998582419456,
+              "name": "Ratio & Proportion 3",
+              "icon": "",
+              "tag": "ratio-&-proportion-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6007742816845824,
+              "parentId": 5656998582419456,
+              "name": "Ratio & Proportion Extended 1",
+              "icon": "",
+              "tag": "ratio--proportion-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6246020195287040,
+              "parentId": 5656998582419456,
+              "name": "Ratio & Proportion 1",
+              "icon": "",
+              "tag": "ratio-&-proportion-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5701466861862912,
+          "parentId": 5878262490202112,
+          "name": "Geometry",
+          "icon": "https://storage.googleapis.com/app-data-center/asvab/icons/geometry.svg",
+          "tag": "geometry",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4761575906869248,
+              "parentId": 5701466861862912,
+              "name": "Geometry Extended 1",
+              "icon": "",
+              "tag": "geometry-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5125704442183680,
+              "parentId": 5701466861862912,
+              "name": "Geometry Extended 3",
+              "icon": "",
+              "tag": "geometry-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5577517125599232,
+              "parentId": 5701466861862912,
+              "name": "Geometry 2",
+              "icon": "",
+              "tag": "geometry-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6140467079020544,
+              "parentId": 5701466861862912,
+              "name": "Geometry 1",
+              "icon": "",
+              "tag": "geometry-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6394770909822976,
+              "parentId": 5701466861862912,
+              "name": "Geometry Extended 2",
+              "icon": "",
+              "tag": "geometry-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5767001150586880,
+          "parentId": 5878262490202112,
+          "name": "Unit Conversion ",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/unit-conversion.svg",
+          "tag": "unit-conversion",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4557170335023104,
+              "parentId": 5767001150586880,
+              "name": "Unit Conversion  2",
+              "icon": "",
+              "tag": "unit-conversion-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 4849791984992256,
+              "parentId": 5767001150586880,
+              "name": "Unit Conversion  Extended 1",
+              "icon": "",
+              "tag": "unit-conversion--extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5120120288444416,
+              "parentId": 5767001150586880,
+              "name": "Unit Conversion  4",
+              "icon": "",
+              "tag": "unit-conversion-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5683070241865728,
+              "parentId": 5767001150586880,
+              "name": "Unit Conversion  3",
+              "icon": "",
+              "tag": "unit-conversion-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6703417032441856,
+              "parentId": 5767001150586880,
+              "name": "Unit Conversion  1",
+              "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/unit-conversion-1.svg",
+              "tag": "unit-conversion-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5823429974425600,
+          "parentId": 5878262490202112,
+          "name": "Number Properties",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/number-properties.svg",
+          "tag": "number-properties",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5161978528006144,
+              "parentId": 5823429974425600,
+              "name": "Number Properties Extended 1",
+              "icon": "",
+              "tag": "number-properties-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5325854750015488,
+              "parentId": 5823429974425600,
+              "name": "Number Properties Extended 3",
+              "icon": "",
+              "tag": "number-properties-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6457126427820032,
+              "parentId": 5823429974425600,
+              "name": "Number Properties 1",
+              "icon": "",
+              "tag": "number-properties-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6666387997065216,
+              "parentId": 5823429974425600,
+              "name": "Number Properties Extended 2",
+              "icon": "",
+              "tag": "number-properties-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6604121750634496,
+          "parentId": 5878262490202112,
+          "name": "Equations",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/equations.svg",
+          "tag": "equations",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5331226520977408,
+              "parentId": 6604121750634496,
+              "name": "Equations 2",
+              "icon": "",
+              "tag": "equations-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5894176474398720,
+              "parentId": 6604121750634496,
+              "name": "Equations 1",
+              "icon": "",
+              "tag": "equations-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6155878117933056,
+              "parentId": 6604121750634496,
+              "name": "Equations Extended 2",
+              "icon": "",
+              "tag": "equations-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6401807945302016,
+              "parentId": 6604121750634496,
+              "name": "Equations Extended 1",
+              "icon": "",
+              "tag": "equations-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6486168484970496,
+              "parentId": 6604121750634496,
+              "name": "Equations Extended 3",
+              "icon": "",
+              "tag": "equations-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    },
+    {
+      "id": 5945201837211648,
+      "parentId": 5676496995745792,
+      "name": "Mathematics Knowledge",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
+      "tag": "mathematics-knowledge",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 6,
+      "topics": [
+        {
+          "id": 5200229548687360,
+          "parentId": 5945201837211648,
+          "name": "Algebra",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/algebra.svg",
+          "tag": "algebra",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4676710951813120,
+              "parentId": 5200229548687360,
+              "name": "Algebra 4",
+              "icon": "",
+              "tag": "algebra-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5380398393589760,
+              "parentId": 5200229548687360,
+              "name": "Algebra 2",
+              "icon": "",
+              "tag": "algebra-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5705996265586688,
+              "parentId": 5200229548687360,
+              "name": "Algebra Extended 1",
+              "icon": "",
+              "tag": "algebra-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 5,
+              "topics": []
+            },
+            {
+              "id": 5802610858655744,
+              "parentId": 5200229548687360,
+              "name": "Algebra 5",
+              "icon": "",
+              "tag": "algebra-5",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5943348347011072,
+              "parentId": 5200229548687360,
+              "name": "Algebra 1",
+              "icon": "",
+              "tag": "algebra-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6506298300432384,
+              "parentId": 5200229548687360,
+              "name": "Algebra 3",
+              "icon": "",
+              "tag": "algebra-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6588795092729856,
+          "parentId": 5945201837211648,
+          "name": "Geometry",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/geometry.svg",
+          "tag": "geometry",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4817448440168448,
+              "parentId": 6588795092729856,
+              "name": "Geometry 4",
+              "icon": "",
+              "tag": "geometry-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5098923416879104,
+              "parentId": 6588795092729856,
+              "name": "Geometry 2",
+              "icon": "",
+              "tag": "geometry-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5661873370300416,
+              "parentId": 6588795092729856,
+              "name": "Geometry 1",
+              "icon": "",
+              "tag": "geometry-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5712882842992640,
+              "parentId": 6588795092729856,
+              "name": "Geometry Extended 1",
+              "icon": "",
+              "tag": "geometry-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 6224823323721728,
+              "parentId": 6588795092729856,
+              "name": "Geometry 3",
+              "icon": "",
+              "tag": "geometry-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    },
+    {
+      "id": 5984778887102464,
+      "parentId": 5676496995745792,
+      "name": "Paragraph Comprehension",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
+      "tag": "paragraph-comprehension",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 8,
+      "topics": [
+        {
+          "id": 4862919997128704,
+          "parentId": 5984778887102464,
+          "name": "Main Idea",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/main-idea.svg",
+          "tag": "main-idea",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5544674919972864,
+              "parentId": 4862919997128704,
+              "name": "Main Idea Extended 1",
+              "icon": "",
+              "tag": "main-idea-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5679428805853184,
+              "parentId": 4862919997128704,
+              "name": "Main Idea Extended 3",
+              "icon": "",
+              "tag": "main-idea-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6503143135248384,
+              "parentId": 4862919997128704,
+              "name": "Main Idea Extended 2",
+              "icon": "",
+              "tag": "main-idea-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6639201768439808,
+              "parentId": 4862919997128704,
+              "name": "Main Idea 1",
+              "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/main-idea-1.svg",
+              "tag": "main-idea-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5383754038116352,
+          "parentId": 5984778887102464,
+          "name": "Wider Implications",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/wider-implications.svg",
+          "tag": "wider-implications",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4598508187287552,
+              "parentId": 5383754038116352,
+              "name": "Wider Implications 1",
+              "icon": "",
+              "tag": "wider-implications-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 4815248745824256,
+              "parentId": 5383754038116352,
+              "name": "Wider Implications Extended 1",
+              "icon": "",
+              "tag": "wider-implications-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 5161458140708864,
+              "parentId": 5383754038116352,
+              "name": "Wider Implications 3",
+              "icon": "",
+              "tag": "wider-implications-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5724408094130176,
+              "parentId": 5383754038116352,
+              "name": "Wider Implications 2",
+              "icon": "",
+              "tag": "wider-implications-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6287358047551488,
+              "parentId": 5383754038116352,
+              "name": "Wider Implications 4",
+              "icon": "",
+              "tag": "wider-implications-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5946703991537664,
+          "parentId": 5984778887102464,
+          "name": "Word Meaning in Context",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-meaning-in-context.svg",
+          "tag": "word-meaning-in-context",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 5040172584402944,
+              "parentId": 5946703991537664,
+              "name": "Word Meaning in Context Extended 3",
+              "icon": "",
+              "tag": "word-meaning-in-context-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 6427577656803328,
+              "parentId": 5946703991537664,
+              "name": "Word Meaning in Context Extended 1",
+              "icon": "",
+              "tag": "word-meaning-in-context-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6447547467956224,
+              "parentId": 5946703991537664,
+              "name": "Word Meaning in Context Extended 2",
+              "icon": "",
+              "tag": "word-meaning-in-context-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6550008383930368,
+              "parentId": 5946703991537664,
+              "name": "Word Meaning in Context 1",
+              "icon": "",
+              "tag": "word-meaning-in-context-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6462653715185664,
+          "parentId": 5984778887102464,
+          "name": "Finding Information",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/finding-information.svg",
+          "tag": "finding-information",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4912312079089664,
+              "parentId": 6462653715185664,
+              "name": "Finding Information Extended 2",
+              "icon": "",
+              "tag": "finding-information-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5513301861597184,
+              "parentId": 6462653715185664,
+              "name": "Finding Information 2",
+              "icon": "",
+              "tag": "finding-information-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 5654559737249792,
+              "parentId": 6462653715185664,
+              "name": "Finding Information Extended 3",
+              "icon": "",
+              "tag": "finding-information-extended-3",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 6037264542990336,
+              "parentId": 6462653715185664,
+              "name": "Finding Information Extended 1",
+              "icon": "",
+              "tag": "finding-information-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6076251815018496,
+              "parentId": 6462653715185664,
+              "name": "Finding Information 1",
+              "icon": "",
+              "tag": "finding-information-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    },
+    {
+      "id": 6473544454111232,
+      "parentId": 5676496995745792,
+      "name": "Word Knowledge",
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
+      "tag": "word-knowledge",
+      "type": 1,
+      "contentType": 0,
+      "orderIndex": 9,
+      "topics": [
+        {
+          "id": 5068150714400768,
+          "parentId": 6473544454111232,
+          "name": "Contextualised Questions",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/contextualised-questions.svg",
+          "tag": "contextualised-questions",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4673555786629120,
+              "parentId": 5068150714400768,
+              "name": "Contextualised Questions Extended 1",
+              "icon": "",
+              "tag": "contextualised-questions-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 7,
+              "topics": []
+            },
+            {
+              "id": 4739245675642880,
+              "parentId": 5068150714400768,
+              "name": "Contextualised Questions 5",
+              "icon": "",
+              "tag": "contextualised-questions-5",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 4,
+              "topics": []
+            },
+            {
+              "id": 4879983163998208,
+              "parentId": 5068150714400768,
+              "name": "Contextualised Questions 1",
+              "icon": "",
+              "tag": "contextualised-questions-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 5302195629064192,
+              "parentId": 5068150714400768,
+              "name": "Contextualised Questions 7",
+              "icon": "",
+              "tag": "contextualised-questions-7",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 6,
+              "topics": []
+            },
+            {
+              "id": 5442933117419520,
+              "parentId": 5068150714400768,
+              "name": "Contextualised Questions 3",
+              "icon": "",
+              "tag": "contextualised-questions-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 5865145582485504,
+              "parentId": 5068150714400768,
+              "name": "Contextualised Questions 6",
+              "icon": "",
+              "tag": "contextualised-questions-6",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 5,
+              "topics": []
+            },
+            {
+              "id": 6005883070840832,
+              "parentId": 5068150714400768,
+              "name": "Contextualised Questions 2",
+              "icon": "",
+              "tag": "contextualised-questions-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6568833024262144,
+              "parentId": 5068150714400768,
+              "name": "Contextualised Questions 4",
+              "icon": "",
+              "tag": "contextualised-questions-4",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 3,
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5720040716369920,
+          "parentId": 6473544454111232,
+          "name": "Synonym-based Questions",
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/synonymbased-questions.svg",
+          "tag": "synonymbased-questions",
+          "type": 2,
+          "contentType": 0,
+          "orderIndex": -1,
+          "topics": [
+            {
+              "id": 4524639741018112,
+              "parentId": 5720040716369920,
+              "name": "Synonym-based Questions Extended 1",
+              "icon": "",
+              "tag": "synonymbased-questions-extended-1",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 3,
+              "topics": []
+            },
+            {
+              "id": 5020720652353536,
+              "parentId": 5720040716369920,
+              "name": "Synonym-based Questions 2",
+              "icon": "",
+              "tag": "synonym-based-questions-2",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 1,
+              "topics": []
+            },
+            {
+              "id": 6146620559196160,
+              "parentId": 5720040716369920,
+              "name": "Synonym-based Questions 3",
+              "icon": "",
+              "tag": "synonym-based-questions-3",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 2,
+              "topics": []
+            },
+            {
+              "id": 6428095535906816,
+              "parentId": 5720040716369920,
+              "name": "Synonym-based Questions 1",
+              "icon": "",
+              "tag": "synonym-based-questions-1",
+              "type": 3,
+              "contentType": 0,
+              "orderIndex": 0,
+              "topics": []
+            },
+            {
+              "id": 6731324547137536,
+              "parentId": 5720040716369920,
+              "name": "Synonym-based Questions Extended 2",
+              "icon": "",
+              "tag": "synonymbased-questions-extended-2",
+              "type": 3,
+              "contentType": 1,
+              "orderIndex": 4,
+              "topics": []
+            }
+          ]
+        }
+      ],
+      "totalQuestion": null
+    }
+  ],
+  "tests": {
+    "finalTests": [
+      {
+        "id": 4886547081986048,
+        "lastUpdate": 1736913077209,
+        "createDate": 1723783711279,
+        "title": "Exam 2",
+        "databaseId": 5676496995745792,
+        "appId": 5074526257807360,
+        "stateId": -1,
+        "examFormatId": 5198922536452096,
+        "passingPercent": 70,
+        "duration": 149,
+        "totalQuestion": 225,
+        "thumbnail": "",
+        "type": 2,
+        "dataType": 3,
+        "status": 1,
+        "topicIds": [
+          4643957105491968,
+          4830925621821440,
+          5533861310103552,
+          5549399260266496,
+          5861375517655040,
+          5878262490202112,
+          5945201837211648,
+          5984778887102464,
+          6473544454111232
+        ],
+        "groupExamData": [
+          {
+            "groupId": 1723783277573,
+            "title": "Mechanical Comprehension",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 19,
+            "examData": [
+              {
+                "topicName": "mechanical-comprehension",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 4643957105491968,
+                "questionIds": [
+                  6663538070257664,
+                  4767840471089152,
+                  4695012589699072,
+                  5578098768609280,
+                  6464524351700992,
+                  4835750078054400,
+                  5780058767622144,
+                  5330790424510464,
+                  6624483697754112,
+                  5146740070023168,
+                  4974688209993728,
+                  6456690331353088,
+                  5398700031475712,
+                  6407437760331776,
+                  5188717738196992,
+                  4775674491437056,
+                  5563012830199808,
+                  5296623791898624,
+                  6103511412506624,
+                  5256163186704384,
+                  4622844489105408,
+                  5751667691618304,
+                  5893740377931776,
+                  6046590345150464,
+                  4907242761486336
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277574,
+            "title": "Assembling Objects",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 15,
+            "examData": [
+              {
+                "topicName": "assembling-objects",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 4830925621821440,
+                "questionIds": [
+                  4701734347735040,
+                  6185964449824768,
+                  4740914113150976,
+                  5405421789511680,
+                  5779633700077568,
+                  5303864066572288,
+                  4621678002831360,
+                  6600503922262016,
+                  5264684301156352,
+                  5022389089861632,
+                  5546159277867008,
+                  4510308729094144,
+                  5536471677140992,
+                  6037553968840704,
+                  5827634254577664,
+                  5439344514957312,
+                  5861556980023296,
+                  5333866527064064,
+                  6429763973414912,
+                  6319028945551360,
+                  6201846165143552,
+                  5896816480485376,
+                  5254996700430336,
+                  4983209324445696,
+                  5357421235011584
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277575,
+            "title": "General Science",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 11,
+            "examData": [
+              {
+                "topicName": "general-science",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 5533861310103552,
+                "questionIds": [
+                  5638089126969344,
+                  5653035344723968,
+                  5359804807643136,
+                  5730178594504704,
+                  4527135437881344,
+                  6387467135483904,
+                  4582152280735744,
+                  6638213735120896,
+                  6195885119635456,
+                  6241325605191680,
+                  6644972268814336,
+                  5572820052475904,
+                  4738257642323968,
+                  5682336416923648,
+                  6266700271976448,
+                  4788510236082176,
+                  6439154080546816,
+                  6157679103836160,
+                  4885753664372736,
+                  6720629057257472,
+                  5422275341844480,
+                  6702683207499776,
+                  5985225295265792,
+                  5031779196993536,
+                  5441945084100608
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277576,
+            "title": "Electronics Information",
+            "passingPercent": 0,
+            "totalQuestion": 20,
+            "duration": 9,
+            "examData": [
+              {
+                "topicName": "electronics-information",
+                "totalQuestion": 20,
+                "required": false,
+                "topicId": 5549399260266496,
+                "questionIds": [
+                  5774119062732800,
+                  5433598620467200,
+                  4929694132600832,
+                  5855811085533184,
+                  5938956048793600,
+                  5713557540831232,
+                  5085517559365632,
+                  6276507494252544,
+                  6600053923774464,
+                  4729911178690560,
+                  5492644086022144,
+                  4870648667045888,
+                  4873095858880512,
+                  5235268607016960,
+                  5906369964146688,
+                  6065401261719552,
+                  5929942489497600,
+                  6055594039443456,
+                  4842950859161600,
+                  6492892442918912
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277577,
+            "title": "Auto and Shop Information",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 11,
+            "examData": [
+              {
+                "topicName": "auto-and-shop-information",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 5861375517655040,
+                "questionIds": [
+                  6621371054424064,
+                  6451265351450624,
+                  4932521194160128,
+                  5383217764892672,
+                  6509117671735296,
+                  4896571344814080,
+                  4679530323116032,
+                  6303946228367360,
+                  5709264955899904,
+                  6724914125996032,
+                  5863147426545664,
+                  5888315398029312,
+                  5318783809880064,
+                  6519775482085376,
+                  5816088040308736,
+                  4583365049057280,
+                  5599014219153408,
+                  4516961197228032,
+                  6592002839805952,
+                  5825932340232192,
+                  4864840025767936,
+                  6310527863095296,
+                  6003884914900992,
+                  6566834868322304,
+                  5233866434412544
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277578,
+            "title": "Arithmetic Reasoning",
+            "passingPercent": 0,
+            "totalQuestion": 30,
+            "duration": 36,
+            "examData": [
+              {
+                "topicName": "arithmetic-reasoning",
+                "totalQuestion": 30,
+                "required": false,
+                "topicId": 5878262490202112,
+                "questionIds": [
+                  5656078899478528,
+                  6363795523895296,
+                  4560197693472768,
+                  5922332512092160,
+                  5814200435736576,
+                  6298287105638400,
+                  4842471836090368,
+                  4551309258653696,
+                  6349360809902080,
+                  6560556565659648,
+                  5826447736307712,
+                  4973502731911168,
+                  6414222365818880,
+                  5158331079458816,
+                  4651638956490752,
+                  4871706705395712,
+                  5980845535920128,
+                  6351767367319552,
+                  5238329039650816,
+                  6423361385136128,
+                  4597906566807552,
+                  5496063886622720,
+                  6101854595317760,
+                  5430671466037248,
+                  6424969414180864,
+                  5467554833235968,
+                  6132747389108224,
+                  6013291832803328,
+                  5686896766222336,
+                  5867767636951040
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277579,
+            "title": "Mathematics Knowledge",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 24,
+            "examData": [
+              {
+                "topicName": "mathematics-knowledge",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 5945201837211648,
+                "questionIds": [
+                  4545105849483264,
+                  4661615695757312,
+                  5093519519645696,
+                  4530048623181824,
+                  6068990579310592,
+                  6350465556021248,
+                  6625372890202112,
+                  5761298350473216,
+                  6233955709747200,
+                  5780947960070144,
+                  6374716753313792,
+                  5894885926240256,
+                  6484635401846784,
+                  6093241776603136,
+                  5613410949529600,
+                  5530291823181824,
+                  5811766799892480,
+                  6112049102848000,
+                  6491203044376576,
+                  5050460996108288,
+                  6725558253649920,
+                  5791727220686848,
+                  6534261567913984,
+                  6457835879661568,
+                  5356614150258688
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277580,
+            "title": "Paragraph Comprehension",
+            "passingPercent": 0,
+            "totalQuestion": 15,
+            "duration": 13,
+            "examData": [
+              {
+                "topicName": "paragraph-comprehension",
+                "totalQuestion": 15,
+                "required": false,
+                "topicId": 5984778887102464,
+                "questionIds": [
+                  6528076815007744,
+                  4653491261800448,
+                  5726838217244672,
+                  4882413287112704,
+                  6274598481952768,
+                  6249124057841664,
+                  6320694486892544,
+                  6246601838297088,
+                  5580620988153856,
+                  5123224150999040,
+                  4839226954743808,
+                  6229660474015744,
+                  4515540450148352,
+                  4557751978033152,
+                  6483078610419712
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277581,
+            "title": "Word Knowledge",
+            "passingPercent": 0,
+            "totalQuestion": 35,
+            "duration": 11,
+            "examData": [
+              {
+                "topicName": "word-knowledge",
+                "totalQuestion": 35,
+                "required": false,
+                "topicId": 6473544454111232,
+                "questionIds": [
+                  6313493705785344,
+                  4573233672093696,
+                  5404699127709696,
+                  4756212082016256,
+                  6668814303363072,
+                  4713971160449024,
+                  5057391999582208,
+                  5342438644252672,
+                  5643395324182528,
+                  6585799430635520,
+                  6464766883135488,
+                  6030216889630720,
+                  5882111988858880,
+                  6593166843052032,
+                  5080445370761216,
+                  5459899523792896,
+                  5007961086754816,
+                  5593358116323328,
+                  6209899094605824,
+                  6032018729074688,
+                  6062011693662208,
+                  6712000635731968,
+                  6445061942280192,
+                  5457025601372160,
+                  5545436616065024,
+                  6468338551095296,
+                  5467266936209408,
+                  4910262492594176,
+                  6317637376147456,
+                  6311691866341376,
+                  4701011685933056,
+                  4550564249600000,
+                  4963023078817792,
+                  5316288113016832,
+                  6088922985660416
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6293921965539328,
+        "lastUpdate": 1736913747866,
+        "createDate": 1723783711279,
+        "title": "Exam 1",
+        "databaseId": 5676496995745792,
+        "appId": 5074526257807360,
+        "stateId": -1,
+        "examFormatId": 5198922536452096,
+        "passingPercent": 70,
+        "duration": 149,
+        "totalQuestion": 225,
+        "thumbnail": "",
+        "type": 2,
+        "dataType": 3,
+        "status": 1,
+        "topicIds": [
+          4643957105491968,
+          4830925621821440,
+          5533861310103552,
+          5549399260266496,
+          5861375517655040,
+          5878262490202112,
+          5945201837211648,
+          5984778887102464,
+          6473544454111232
+        ],
+        "groupExamData": [
+          {
+            "groupId": 1723783277573,
+            "title": "Mechanical Comprehension",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 19,
+            "examData": [
+              {
+                "topicName": "mechanical-comprehension",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 4643957105491968,
+                "questionIds": [
+                  5471527912865792,
+                  6323786863345664,
+                  6666461365927936,
+                  5680175008186368,
+                  5540561459085312,
+                  4554275101343744,
+                  5197886956503040,
+                  4625767784775680,
+                  5470192714907648,
+                  5105615993044992,
+                  5479361933213696,
+                  4591246951579648,
+                  5537638163415040,
+                  4872721928290304,
+                  6605261840056320,
+                  5717146858422272,
+                  6688912737042432,
+                  6061533744332800,
+                  6597427819708416,
+                  5117225054765056,
+                  6034477866287104,
+                  4916411979792384,
+                  6524599938318336,
+                  6231515899887616,
+                  5748744395948032
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277574,
+            "title": "Assembling Objects",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 15,
+            "examData": [
+              {
+                "topicName": "assembling-objects",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 4830925621821440,
+                "questionIds": [
+                  6148288996704256,
+                  5585339043282944,
+                  5444601554927616,
+                  6424506933444608,
+                  6748914403246080,
+                  5060064542982144,
+                  5580082003312640,
+                  6565244421799936,
+                  6380896607272960,
+                  5866814019993600,
+                  6342583653498880,
+                  5747577909673984,
+                  6390584207998976,
+                  4653733793234944,
+                  6570501461770240,
+                  5298607026601984,
+                  6002294468378624,
+                  4735657073180672,
+                  6109109231288320,
+                  6007551508348928,
+                  6531321696354304,
+                  5623014496403456,
+                  5756078992130048,
+                  6143031956733952,
+                  6672059184709632
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277575,
+            "title": "General Science",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 11,
+            "examData": [
+              {
+                "topicName": "general-science",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 5533861310103552,
+                "questionIds": [
+                  5594729150414848,
+                  4556436510081024,
+                  5037308833169408,
+                  4597520153968640,
+                  5360254806130688,
+                  5115425698349056,
+                  5075139173548032,
+                  6726158693433344,
+                  5069985212792832,
+                  4803080778416128,
+                  5396900675059712,
+                  5703750318555136,
+                  5959850628481024,
+                  4512189220126720,
+                  5647505708548096,
+                  4511783536558080,
+                  5692389314265088,
+                  4604278687662080,
+                  5922754761064448,
+                  5600258786590720,
+                  4878995130679296,
+                  5529289602629632,
+                  5009870099054592,
+                  5844487806910464,
+                  6417244982607872
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277576,
+            "title": "Electronics Information",
+            "passingPercent": 0,
+            "totalQuestion": 20,
+            "duration": 9,
+            "examData": [
+              {
+                "topicName": "electronics-information",
+                "totalQuestion": 20,
+                "required": false,
+                "topicId": 5549399260266496,
+                "questionIds": [
+                  5292861132111872,
+                  5333416528576512,
+                  6211417466208256,
+                  6222759803748352,
+                  5648467512786944,
+                  5211169109311488,
+                  6042602300243968,
+                  4752527536947200,
+                  5484157499080704,
+                  4916702393401344,
+                  5351906597666816,
+                  6346876238430208,
+                  5789205001142272,
+                  4684864672497664,
+                  5951502067695616,
+                  6037103970353152,
+                  5715073597177856,
+                  6144772626448384,
+                  5474154016931840,
+                  5150607587409920
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277577,
+            "title": "Auto and Shop Information",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 11,
+            "examData": [
+              {
+                "topicName": "auto-and-shop-information",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 5861375517655040,
+                "questionIds": [
+                  6443439149285376,
+                  5459521298235392,
+                  4822267471069184,
+                  5937553876189184,
+                  6585421205078016,
+                  5776946124292096,
+                  4762415491186688,
+                  6272214909321216,
+                  5242480276537344,
+                  5122244898455552,
+                  5990739932610560,
+                  5664692741603328,
+                  6687039191777280,
+                  5685194851876864,
+                  6179422778425344,
+                  4820267811471360,
+                  5194315556978688,
+                  4903152979542016,
+                  4737247519703040,
+                  6379037993730048,
+                  6742372731846656,
+                  5103742447779840,
+                  6500503829610496,
+                  5757265510400000,
+                  6285359891611648
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277578,
+            "title": "Arithmetic Reasoning",
+            "passingPercent": 0,
+            "totalQuestion": 30,
+            "duration": 36,
+            "examData": [
+              {
+                "topicName": "arithmetic-reasoning",
+                "totalQuestion": 30,
+                "required": false,
+                "topicId": 5878262490202112,
+                "questionIds": [
+                  5160856520228864,
+                  6016812128927744,
+                  6377150389157888,
+                  5040352387923968,
+                  6288767411290112,
+                  5510174800347136,
+                  5023342706819072,
+                  6530135178084352,
+                  6388710964723712,
+                  5263497782886400,
+                  6504966434848768,
+                  5919408411115520,
+                  5262811057881088,
+                  5018393696534528,
+                  5569797435686912,
+                  4967453016719360,
+                  4949750287695872,
+                  5293900715524096,
+                  5717403482718208,
+                  6625672732606464,
+                  4763867391459328,
+                  5395715196977152,
+                  4835217200119808,
+                  4654758042271744,
+                  5445555171885056,
+                  6482358364536832,
+                  5856869123883008,
+                  4688300528893952,
+                  5326817344880640,
+                  6143494437470208
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277579,
+            "title": "Mathematics Knowledge",
+            "passingPercent": 0,
+            "totalQuestion": 25,
+            "duration": 24,
+            "examData": [
+              {
+                "topicName": "mathematics-knowledge",
+                "totalQuestion": 25,
+                "required": false,
+                "topicId": 5945201837211648,
+                "questionIds": [
+                  5217998006648832,
+                  6035623414595584,
+                  6448117845065728,
+                  5224565649178624,
+                  6372191312543744,
+                  4683341452279808,
+                  6419046822051840,
+                  6515454241669120,
+                  6137571845341184,
+                  4768986019397632,
+                  5996834356985856,
+                  5248816846471168,
+                  5318183370096640,
+                  5365303137533952,
+                  6444083276939264,
+                  6166642868355072,
+                  5105553917345792,
+                  5919564103680000,
+                  5549099149426688,
+                  5652434904940544,
+                  6176360902950912,
+                  4526534998097920,
+                  4943090672467968,
+                  5040742961512448,
+                  6231453824188416
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277580,
+            "title": "Paragraph Comprehension",
+            "passingPercent": 0,
+            "totalQuestion": 15,
+            "duration": 13,
+            "examData": [
+              {
+                "topicName": "paragraph-comprehension",
+                "totalQuestion": 15,
+                "required": false,
+                "topicId": 5984778887102464,
+                "questionIds": [
+                  5757744533471232,
+                  6641631891554304,
+                  5120701931454464,
+                  6039219510181888,
+                  6090716335833088,
+                  5476269556760576,
+                  5430173551820800,
+                  4913319603339264,
+                  5148698575110144,
+                  5965126861586432,
+                  4591974545883136,
+                  4948747463163904,
+                  4801559051370496,
+                  6208933934923776,
+                  5717874452725760
+                ]
+              }
+            ]
+          },
+          {
+            "groupId": 1723783277581,
+            "title": "Word Knowledge",
+            "passingPercent": 0,
+            "totalQuestion": 35,
+            "duration": 11,
+            "examData": [
+              {
+                "topicName": "word-knowledge",
+                "totalQuestion": 35,
+                "required": false,
+                "topicId": 6473544454111232,
+                "questionIds": [
+                  6669481097035776,
+                  6594968682496000,
+                  6530599034552320,
+                  5807448008949760,
+                  4802524211052544,
+                  6370397962371072,
+                  6046126086029312,
+                  4565753938313216,
+                  5889479401275392,
+                  6163586965569536,
+                  5676464156442624,
+                  4521049234341888,
+                  5780536716951552,
+                  4573011325747200,
+                  4628787515883520,
+                  6543558509068288,
+                  6183291906424832,
+                  4517495417339904,
+                  6327601062739968,
+                  5620341953003520,
+                  5037687058726912,
+                  5263961639354368,
+                  6108386569486336,
+                  4906118822232064,
+                  5385235543883776,
+                  4681548102107136,
+                  6437783046455296,
+                  5698911232589824,
+                  5586100728889344,
+                  4660993865023488,
+                  4999616468615168,
+                  4763579494432768,
+                  5326529447854080,
+                  4628120722210816,
+                  6511135450726400
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "practiceTests": [
+      {
+        "id": 4668183050977280,
+        "lastUpdate": 1736133499638,
+        "createDate": 1728904435711,
+        "title": "ASVAB",
+        "databaseId": 5676496995745792,
+        "appId": 5074526257807360,
+        "stateId": -1,
+        "examFormatId": 5669122872442880,
+        "passingPercent": 70,
+        "duration": 60,
+        "totalQuestion": 80,
+        "thumbnail": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/app/images_tests/asvab0.jpg",
+        "type": 1,
+        "dataType": 1,
+        "status": 1,
+        "topicIds": [
+          4643957105491968,
+          4830925621821440,
+          5533861310103552,
+          5549399260266496,
+          5861375517655040,
+          5878262490202112,
+          5945201837211648,
+          5984778887102464,
+          6473544454111232
+        ],
+        "groupExamData": [
+          {
+            "groupId": 1721114034275,
+            "title": "ASVAB",
+            "passingPercent": 70,
+            "totalQuestion": 80,
+            "duration": 60,
+            "examData": [
+              {
+                "topicName": "mechanical-comprehension",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4643957105491968,
+                "questionIds": [
+                  5049315447799808,
+                  5197886956503040,
+                  4731984439934976,
+                  5330790424510464,
+                  4695012589699072,
+                  5471527912865792,
+                  6624483697754112,
+                  6231515899887616,
+                  5296623791898624
+                ]
+              },
+              {
+                "topicName": "assembling-objects",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4830925621821440,
+                "questionIds": [
+                  5060064542982144,
+                  4770916573642752,
+                  6565244421799936,
+                  5444601554927616,
+                  6143031956733952,
+                  5022389089861632,
+                  5357421235011584,
+                  5254996700430336,
+                  5580082003312640
+                ]
+              },
+              {
+                "topicName": "general-science",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5533861310103552,
+                "questionIds": [
+                  5844487806910464,
+                  5632935166214144,
+                  5638089126969344,
+                  5140800365133824,
+                  6417244982607872,
+                  4833950721638400,
+                  6241325605191680,
+                  6439154080546816,
+                  4604278687662080
+                ]
+              },
+              {
+                "topicName": "electronics-information",
+                "totalQuestion": 7,
+                "required": false,
+                "topicId": 5549399260266496,
+                "questionIds": [
+                  6324077276954624,
+                  4663305094299648,
+                  6019164932145152,
+                  4775964905046016,
+                  5502451308298240,
+                  5713557540831232,
+                  5338914858467328
+                ]
+              },
+              {
+                "topicName": "auto-and-shop-information",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5861375517655040,
+                "questionIds": [
+                  5146315002478592,
+                  4932521194160128,
+                  6601690440531968,
+                  5383217764892672,
+                  5946167718313984,
+                  5599014219153408,
+                  5840519257128960,
+                  5440934961479680,
+                  5863147426545664
+                ]
+              },
+              {
+                "topicName": "arithmetic-reasoning",
+                "totalQuestion": 10,
+                "required": false,
+                "topicId": 5878262490202112,
+                "questionIds": [
+                  5954937924091904,
+                  5288322458976256,
+                  5391987970670592,
+                  5686896766222336,
+                  6132747389108224,
+                  6101140590559232,
+                  4936233018982400,
+                  4904604879814656,
+                  5160856520228864,
+                  5889767298301952
+                ]
+              },
+              {
+                "topicName": "mathematics-knowledge",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5945201837211648,
+                "questionIds": [
+                  5780947960070144,
+                  5996834356985856,
+                  5761298350473216,
+                  6233955709747200,
+                  5671005756325888,
+                  6534261567913984,
+                  4824078940635136,
+                  5389554334826496,
+                  5318183370096640
+                ]
+              },
+              {
+                "topicName": "paragraph-comprehension",
+                "totalQuestion": 6,
+                "required": false,
+                "topicId": 5984778887102464,
+                "questionIds": [
+                  6201603633709056,
+                  5289436063465472,
+                  6556073458663424,
+                  4698489466388480,
+                  5123224150999040,
+                  4705692476768256
+                ]
+              },
+              {
+                "topicName": "word-knowledge",
+                "totalQuestion": 12,
+                "required": false,
+                "topicId": 6473544454111232,
+                "questionIds": [
+                  6183291906424832,
+                  6668814303363072,
+                  5404699127709696,
+                  5754020629053440,
+                  5135961279168512,
+                  6032018729074688,
+                  6712000635731968,
+                  4802524211052544,
+                  5882111988858880,
+                  4517495417339904,
+                  6445061942280192,
+                  5385235543883776
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5231133004398592,
+        "lastUpdate": 1736133499638,
+        "createDate": 1728904435711,
+        "title": "ASVAB",
+        "databaseId": 5676496995745792,
+        "appId": 5074526257807360,
+        "stateId": -1,
+        "examFormatId": 5669122872442880,
+        "passingPercent": 70,
+        "duration": 60,
+        "totalQuestion": 80,
+        "thumbnail": "",
+        "type": 1,
+        "dataType": 1,
+        "status": 1,
+        "topicIds": [
+          4643957105491968,
+          4830925621821440,
+          5533861310103552,
+          5549399260266496,
+          5861375517655040,
+          5878262490202112,
+          5945201837211648,
+          5984778887102464,
+          6473544454111232
+        ],
+        "groupExamData": [
+          {
+            "groupId": 1721114034275,
+            "title": "ASVAB",
+            "passingPercent": 70,
+            "totalQuestion": 80,
+            "duration": 60,
+            "examData": [
+              {
+                "topicName": "mechanical-comprehension",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4643957105491968,
+                "questionIds": [
+                  6382063093547008,
+                  6280096811843584,
+                  6061533744332800,
+                  5483640391729152,
+                  6000311233675264,
+                  5780058767622144,
+                  4693213233283072,
+                  4974688209993728,
+                  6456690331353088
+                ]
+              },
+              {
+                "topicName": "assembling-objects",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4830925621821440,
+                "questionIds": [
+                  5896816480485376,
+                  5298607026601984,
+                  5779633700077568,
+                  5756078992130048,
+                  6429763973414912,
+                  5405421789511680,
+                  6380896607272960,
+                  4653733793234944,
+                  5193129038708736
+                ]
+              },
+              {
+                "topicName": "general-science",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5533861310103552,
+                "questionIds": [
+                  5740395835162624,
+                  5529289602629632,
+                  6204229737775104,
+                  5543042205351936,
+                  4512189220126720,
+                  6266700271976448,
+                  6004895037521920,
+                  5653035344723968,
+                  6135770005897216
+                ]
+              },
+              {
+                "topicName": "electronics-information",
+                "totalQuestion": 7,
+                "required": false,
+                "topicId": 5549399260266496,
+                "questionIds": [
+                  5855811085533184,
+                  5376006095372288,
+                  5094531118661632,
+                  5648467512786944,
+                  5878427443789824,
+                  5996548573888512,
+                  5938956048793600
+                ]
+              },
+              {
+                "topicName": "auto-and-shop-information",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5861375517655040,
+                "questionIds": [
+                  6285359891611648,
+                  5662809247449088,
+                  5816088040308736,
+                  5459521298235392,
+                  6038740487110656,
+                  5178046321524736,
+                  4772103091912704,
+                  6566834868322304,
+                  4690188133466112
+                ]
+              },
+              {
+                "topicName": "arithmetic-reasoning",
+                "totalQuestion": 10,
+                "required": false,
+                "topicId": 5878262490202112,
+                "questionIds": [
+                  4843237011357696,
+                  5687661941489664,
+                  4505397937307648,
+                  6095675412447232,
+                  6484345390891008,
+                  4655695116894208,
+                  4995683117432832,
+                  5434638203879424,
+                  6311979763367936,
+                  5786410856480768
+                ]
+              },
+              {
+                "topicName": "mathematics-knowledge",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5945201837211648,
+                "questionIds": [
+                  5248816846471168,
+                  5894885926240256,
+                  6137571845341184,
+                  6343897913491456,
+                  4755233416675328,
+                  6393524079558656,
+                  5365303137533952,
+                  5093519519645696,
+                  5217998006648832
+                ]
+              },
+              {
+                "topicName": "paragraph-comprehension",
+                "totalQuestion": 6,
+                "required": false,
+                "topicId": 5984778887102464,
+                "questionIds": [
+                  6562299382857728,
+                  5527766382411776,
+                  5083034028081152,
+                  5717874452725760,
+                  4948747463163904,
+                  5476269556760576
+                ]
+              },
+              {
+                "topicName": "word-knowledge",
+                "totalQuestion": 12,
+                "required": false,
+                "topicId": 6473544454111232,
+                "questionIds": [
+                  6030216889630720,
+                  5007961086754816,
+                  4628120722210816,
+                  5467266936209408,
+                  6696810947018752,
+                  5365474164473856,
+                  6452429354696704,
+                  5646949141184512,
+                  5037687058726912,
+                  5030408162902016,
+                  6343486670372864,
+                  5244498055528448
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5371870492753920,
+        "lastUpdate": 1736133499638,
+        "createDate": 1728904435711,
+        "title": "ASVAB",
+        "databaseId": 5676496995745792,
+        "appId": 5074526257807360,
+        "stateId": -1,
+        "examFormatId": 5669122872442880,
+        "passingPercent": 70,
+        "duration": 60,
+        "totalQuestion": 80,
+        "thumbnail": "",
+        "type": 1,
+        "dataType": 1,
+        "status": 1,
+        "topicIds": [
+          4643957105491968,
+          4830925621821440,
+          5533861310103552,
+          5549399260266496,
+          5861375517655040,
+          5878262490202112,
+          5945201837211648,
+          5984778887102464,
+          6473544454111232
+        ],
+        "groupExamData": [
+          {
+            "groupId": 1721114034275,
+            "title": "ASVAB",
+            "passingPercent": 70,
+            "totalQuestion": 80,
+            "duration": 60,
+            "examData": [
+              {
+                "topicName": "mechanical-comprehension",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4643957105491968,
+                "questionIds": [
+                  5751667691618304,
+                  6597427819708416,
+                  5901574398279680,
+                  4775674491437056,
+                  5105615993044992,
+                  6323786863345664,
+                  4622844489105408,
+                  6700521798762496,
+                  5612265401221120
+                ]
+              },
+              {
+                "topicName": "assembling-objects",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4830925621821440,
+                "questionIds": [
+                  5017132049891328,
+                  4740914113150976,
+                  6748914403246080,
+                  6002294468378624,
+                  5866814019993600,
+                  6319028945551360,
+                  5827634254577664,
+                  6600503922262016,
+                  6007551508348928
+                ]
+              },
+              {
+                "topicName": "general-science",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5533861310103552,
+                "questionIds": [
+                  4728395122343936,
+                  6163208740012032,
+                  5075139173548032,
+                  4938042341064704,
+                  4597520153968640,
+                  6655189509472256,
+                  6063942247907328,
+                  4527135437881344,
+                  5013833347235840
+                ]
+              },
+              {
+                "topicName": "electronics-information",
+                "totalQuestion": 7,
+                "required": false,
+                "topicId": 5549399260266496,
+                "questionIds": [
+                  4966339649208320,
+                  5226255047720960,
+                  6222759803748352,
+                  5237597385261056,
+                  6582114885566464,
+                  6065401261719552,
+                  6501906002214912
+                ]
+              },
+              {
+                "topicName": "auto-and-shop-information",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5861375517655040,
+                "questionIds": [
+                  6509117671735296,
+                  4822267471069184,
+                  5757265510400000,
+                  4998189331513344,
+                  6621371054424064,
+                  4864840025767936,
+                  5776946124292096,
+                  4912840580268032,
+                  5318783809880064
+                ]
+              },
+              {
+                "topicName": "arithmetic-reasoning",
+                "totalQuestion": 10,
+                "required": false,
+                "topicId": 5878262490202112,
+                "questionIds": [
+                  6621963793465344,
+                  5304817683529728,
+                  5980845535920128,
+                  5172387198795776,
+                  5223460903059456,
+                  5277158094143488,
+                  5299069507338240,
+                  5603302341345280,
+                  6482358364536832,
+                  5313124687151104
+                ]
+              },
+              {
+                "topicName": "mathematics-knowledge",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5945201837211648,
+                "questionIds": [
+                  6166642868355072,
+                  5787515602599936,
+                  4947302290554880,
+                  4685866893049856,
+                  6419046822051840,
+                  6068990579310592,
+                  5656469473067008,
+                  4936523029938176,
+                  4683341452279808
+                ]
+              },
+              {
+                "topicName": "paragraph-comprehension",
+                "totalQuestion": 6,
+                "required": false,
+                "topicId": 5984778887102464,
+                "questionIds": [
+                  5445363240534016,
+                  5120701931454464,
+                  6229660474015744,
+                  4520084074659840,
+                  5965126861586432,
+                  6632668127035392
+                ]
+              },
+              {
+                "topicName": "word-knowledge",
+                "totalQuestion": 12,
+                "required": false,
+                "topicId": 6473544454111232,
+                "questionIds": [
+                  5191070675632128,
+                  6593166843052032,
+                  6746460768960512,
+                  4906118822232064,
+                  5483176132608000,
+                  6149050682310656,
+                  4681548102107136,
+                  6511135450726400,
+                  6370397962371072,
+                  5342438644252672,
+                  5459899523792896,
+                  6209899094605824
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5794082957819904,
+        "lastUpdate": 1736133499638,
+        "createDate": 1728904435711,
+        "title": "ASVAB",
+        "databaseId": 5676496995745792,
+        "appId": 5074526257807360,
+        "stateId": -1,
+        "examFormatId": 5669122872442880,
+        "passingPercent": 70,
+        "duration": 60,
+        "totalQuestion": 80,
+        "thumbnail": "",
+        "type": 1,
+        "dataType": 1,
+        "status": 1,
+        "topicIds": [
+          4643957105491968,
+          4830925621821440,
+          5533861310103552,
+          5549399260266496,
+          5861375517655040,
+          5878262490202112,
+          5945201837211648,
+          5984778887102464,
+          6473544454111232
+        ],
+        "groupExamData": [
+          {
+            "groupId": 1721114034275,
+            "title": "ASVAB",
+            "passingPercent": 70,
+            "totalQuestion": 80,
+            "duration": 60,
+            "examData": [
+              {
+                "topicName": "mechanical-comprehension",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4643957105491968,
+                "questionIds": [
+                  6688912737042432,
+                  6609540298571776,
+                  4935633837490176,
+                  5905852856795136,
+                  6524599938318336,
+                  6605261840056320,
+                  5338624444858368,
+                  4542666039623680,
+                  6563261187096576
+                ]
+              },
+              {
+                "topicName": "assembling-objects",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4830925621821440,
+                "questionIds": [
+                  5303864066572288,
+                  5546159277867008,
+                  5623014496403456,
+                  6672059184709632,
+                  5747577909673984,
+                  6109109231288320,
+                  6148288996704256,
+                  4621678002831360,
+                  6185964449824768
+                ]
+              },
+              {
+                "topicName": "general-science",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5533861310103552,
+                "questionIds": [
+                  5922754761064448,
+                  5723420060811264,
+                  6286370014232576,
+                  5167228641083392,
+                  5115425698349056,
+                  6720629057257472,
+                  4656567364354048,
+                  6486154712973312,
+                  5359804807643136
+                ]
+              },
+              {
+                "topicName": "electronics-information",
+                "totalQuestion": 7,
+                "required": false,
+                "topicId": 5549399260266496,
+                "questionIds": [
+                  5211169109311488,
+                  4684864672497664,
+                  6278023550599168,
+                  6409901125402624,
+                  5247814625918976,
+                  5150607587409920,
+                  4873095858880512
+                ]
+              },
+              {
+                "topicName": "auto-and-shop-information",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5861375517655040,
+                "questionIds": [
+                  4737247519703040,
+                  4516961197228032,
+                  6724914125996032,
+                  5253138086887424,
+                  4820267811471360,
+                  4651046217449472,
+                  5805430229958656,
+                  5393875575242752,
+                  6443439149285376
+                ]
+              },
+              {
+                "topicName": "arithmetic-reasoning",
+                "totalQuestion": 10,
+                "required": false,
+                "topicId": 5878262490202112,
+                "questionIds": [
+                  6560556565659648,
+                  5919408411115520,
+                  5017594530627584,
+                  5942016481427456,
+                  6530135178084352,
+                  4550711400464384,
+                  4887391925960704,
+                  5015986501582848,
+                  5686097600315392,
+                  6013291832803328
+                ]
+              },
+              {
+                "topicName": "mathematics-knowledge",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5945201837211648,
+                "questionIds": [
+                  5549099149426688,
+                  6625372890202112,
+                  6512928800899072,
+                  5928253090955264,
+                  6484635401846784,
+                  6691352546902016,
+                  5919564103680000,
+                  5530291823181824,
+                  5040742961512448
+                ]
+              },
+              {
+                "topicName": "paragraph-comprehension",
+                "totalQuestion": 6,
+                "required": false,
+                "topicId": 5984778887102464,
+                "questionIds": [
+                  6039219510181888,
+                  6249124057841664,
+                  5279682427617280,
+                  6687057311170560,
+                  6464020632567808,
+                  4512753773445120
+                ]
+              },
+              {
+                "topicName": "word-knowledge",
+                "totalQuestion": 12,
+                "required": false,
+                "topicId": 6473544454111232,
+                "questionIds": [
+                  5045054471143424,
+                  4779488690831360,
+                  4521049234341888,
+                  6108386569486336,
+                  5698911232589824,
+                  5319162035437568,
+                  5545436616065024,
+                  6437783046455296,
+                  4628787515883520,
+                  6311691866341376,
+                  4701011685933056,
+                  6183510815539200
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6357032911241216,
+        "lastUpdate": 1736133499638,
+        "createDate": 1728904435711,
+        "title": "ASVAB",
+        "databaseId": 5676496995745792,
+        "appId": 5074526257807360,
+        "stateId": -1,
+        "examFormatId": 5669122872442880,
+        "passingPercent": 70,
+        "duration": 60,
+        "totalQuestion": 80,
+        "thumbnail": "",
+        "type": 1,
+        "dataType": 1,
+        "status": 1,
+        "topicIds": [
+          4643957105491968,
+          4830925621821440,
+          5533861310103552,
+          5549399260266496,
+          5861375517655040,
+          5878262490202112,
+          5945201837211648,
+          5984778887102464,
+          6473544454111232
+        ],
+        "groupExamData": [
+          {
+            "groupId": 1721114034275,
+            "title": "ASVAB",
+            "passingPercent": 70,
+            "totalQuestion": 80,
+            "duration": 60,
+            "examData": [
+              {
+                "topicName": "mechanical-comprehension",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4643957105491968,
+                "questionIds": [
+                  4591246951579648,
+                  5680175008186368,
+                  5000062876778496,
+                  6561571788554240,
+                  6033142668328960,
+                  5893740377931776,
+                  5398700031475712,
+                  4767840471089152,
+                  6663538070257664
+                ]
+              },
+              {
+                "topicName": "assembling-objects",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4830925621821440,
+                "questionIds": [
+                  5585339043282944,
+                  5333866527064064,
+                  5439344514957312,
+                  6037553968840704,
+                  5264684301156352,
+                  5861556980023296,
+                  4911654061998080,
+                  4735657073180672,
+                  6531321696354304
+                ]
+              },
+              {
+                "topicName": "general-science",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5533861310103552,
+                "questionIds": [
+                  4556436510081024,
+                  4793664196837376,
+                  6157679103836160,
+                  6638213735120896,
+                  5069985212792832,
+                  5572820052475904,
+                  5985225295265792,
+                  5782467271196672,
+                  5160470107389952
+                ]
+              },
+              {
+                "topicName": "electronics-information",
+                "totalQuestion": 7,
+                "required": false,
+                "topicId": 5549399260266496,
+                "questionIds": [
+                  6337069016154112,
+                  5901864811888640,
+                  6346876238430208,
+                  6276507494252544,
+                  4648219155890176,
+                  6220431025504256,
+                  6092239556050944
+                ]
+              },
+              {
+                "topicName": "auto-and-shop-information",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5861375517655040,
+                "questionIds": [
+                  5825932340232192,
+                  6460897755136000,
+                  5325365444608000,
+                  5740996274946048,
+                  4755833856458752,
+                  6624058630209536,
+                  6742372731846656,
+                  5881733763301376,
+                  6061108676788224
+                ]
+              },
+              {
+                "topicName": "arithmetic-reasoning",
+                "totalQuestion": 10,
+                "required": false,
+                "topicId": 5878262490202112,
+                "questionIds": [
+                  5321827364634624,
+                  6238300505374720,
+                  6354599730479104,
+                  4730950762102784,
+                  6654545381818368,
+                  6223058035539968,
+                  5147929104875520,
+                  5293900715524096,
+                  4736119553916928,
+                  6729202248187904
+                ]
+              },
+              {
+                "topicName": "mathematics-knowledge",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5945201837211648,
+                "questionIds": [
+                  5830574126137344,
+                  5652434904940544,
+                  6162608300228608,
+                  5881133323517952,
+                  6062422936780800,
+                  6112049102848000,
+                  5613410949529600,
+                  4986149196005376,
+                  4545105849483264
+                ]
+              },
+              {
+                "topicName": "paragraph-comprehension",
+                "totalQuestion": 6,
+                "required": false,
+                "topicId": 5984778887102464,
+                "questionIds": [
+                  6246601838297088,
+                  5194794580049920,
+                  4699156260061184,
+                  6738165308063744,
+                  6004278625828864,
+                  5638653680287744
+                ]
+              },
+              {
+                "topicName": "word-knowledge",
+                "totalQuestion": 12,
+                "required": false,
+                "topicId": 6473544454111232,
+                "questionIds": [
+                  4822285590462464,
+                  5643395324182528,
+                  5201701155897344,
+                  5889479401275392,
+                  5469068775653376,
+                  4573011325747200,
+                  5620341953003520,
+                  4660993865023488,
+                  4910262492594176,
+                  6261861186011136,
+                  5780536716951552,
+                  5326529447854080
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6497770399596544,
+        "lastUpdate": 1736133499638,
+        "createDate": 1728904435711,
+        "title": "ASVAB",
+        "databaseId": 5676496995745792,
+        "appId": 5074526257807360,
+        "stateId": -1,
+        "examFormatId": 5669122872442880,
+        "passingPercent": 70,
+        "duration": 60,
+        "totalQuestion": 80,
+        "thumbnail": "",
+        "type": 1,
+        "dataType": 1,
+        "status": 1,
+        "topicIds": [
+          4643957105491968,
+          4830925621821440,
+          5533861310103552,
+          5549399260266496,
+          5861375517655040,
+          5878262490202112,
+          5945201837211648,
+          5984778887102464,
+          6473544454111232
+        ],
+        "groupExamData": [
+          {
+            "groupId": 1721114034275,
+            "title": "ASVAB",
+            "passingPercent": 70,
+            "totalQuestion": 80,
+            "duration": 60,
+            "examData": [
+              {
+                "topicName": "mechanical-comprehension",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4643957105491968,
+                "questionIds": [
+                  5819113140125696,
+                  5540561459085312,
+                  5748744395948032,
+                  6103511412506624,
+                  5281537853489152,
+                  6046590345150464,
+                  6314617645039616,
+                  6175215354642432,
+                  5998621835132928
+                ]
+              },
+              {
+                "topicName": "assembling-objects",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 4830925621821440,
+                "questionIds": [
+                  6201846165143552,
+                  4510308729094144,
+                  5536471677140992,
+                  6390584207998976,
+                  5474604015419392,
+                  4983209324445696,
+                  6342583653498880,
+                  6570501461770240,
+                  4701734347735040
+                ]
+              },
+              {
+                "topicName": "general-science",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5533861310103552,
+                "questionIds": [
+                  5682336416923648,
+                  4788510236082176,
+                  5959850628481024,
+                  5422275341844480,
+                  4738257642323968,
+                  6702683207499776,
+                  6522800581902336,
+                  6139733254078464,
+                  5037308833169408
+                ]
+              },
+              {
+                "topicName": "electronics-information",
+                "totalQuestion": 7,
+                "required": false,
+                "topicId": 5549399260266496,
+                "questionIds": [
+                  4911204063510528,
+                  6328582429212672,
+                  6628351215140864,
+                  6514452021116928,
+                  5479652346822656,
+                  6605552253665280,
+                  4674647431839744
+                ]
+              },
+              {
+                "topicName": "auto-and-shop-information",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5861375517655040,
+                "questionIds": [
+                  6003884914900992,
+                  6735932596158464,
+                  5990739932610560,
+                  5498158723366912,
+                  4952391457701888,
+                  5300197473124352,
+                  5043890467897344,
+                  4670916480991232,
+                  5088840823865344
+                ]
+              },
+              {
+                "topicName": "arithmetic-reasoning",
+                "totalQuestion": 10,
+                "required": false,
+                "topicId": 5878262490202112,
+                "questionIds": [
+                  5020018267914240,
+                  5872554344448000,
+                  5575375692234752,
+                  4630179085287424,
+                  5788817413898240,
+                  5364198391414784,
+                  6364228946493440,
+                  6625672732606464,
+                  6007292434579456,
+                  6625082879246336
+                ]
+              },
+              {
+                "topicName": "mathematics-knowledge",
+                "totalQuestion": 9,
+                "required": false,
+                "topicId": 5945201837211648,
+                "questionIds": [
+                  5246291405701120,
+                  6448117845065728,
+                  6495414662463488,
+                  5387028894056448,
+                  6725558253649920,
+                  6350465556021248,
+                  5002502686638080,
+                  5971311614492672,
+                  5506040625889280
+                ]
+              },
+              {
+                "topicName": "paragraph-comprehension",
+                "totalQuestion": 6,
+                "required": false,
+                "topicId": 5984778887102464,
+                "questionIds": [
+                  4882413287112704,
+                  5075703726866432,
+                  5619595702435840,
+                  5722803649118208,
+                  5920128656998400,
+                  6320694486892544
+                ]
+              },
+              {
+                "topicName": "word-knowledge",
+                "totalQuestion": 12,
+                "required": false,
+                "topicId": 6473544454111232,
+                "questionIds": [
+                  6313493705785344,
+                  6464766883135488,
+                  5191737469304832,
+                  5905388597673984,
+                  5057391999582208,
+                  6742906951958528,
+                  6163586965569536,
+                  5967649081131008,
+                  5676464156442624,
+                  4999616468615168,
+                  6046126086029312,
+                  5263961639354368
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "diagnosticTestFormat": {
+      "id": 5198922536452096,
+      "lastUpdate": 1723783692257,
+      "createDate": 1723783529337,
+      "title": "Final Test",
+      "description": "",
+      "appId": 5074526257807360,
+      "databaseId": 5676496995745792,
+      "stateId": -1,
+      "passingPercent": 70,
+      "duration": 149,
+      "totalQuestion": 225,
+      "type": 2,
+      "dataType": 3,
+      "status": 1,
+      "groupExamData": [
+        {
+          "groupId": 1723783277573,
+          "title": "Mechanical Comprehension",
+          "passingPercent": 0,
+          "totalQuestion": 25,
+          "duration": 19,
+          "examData": [
+            {
+              "topicName": "mechanical-comprehension",
+              "totalQuestion": 25,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        },
+        {
+          "groupId": 1723783277574,
+          "title": "Assembling Objects",
+          "passingPercent": 0,
+          "totalQuestion": 25,
+          "duration": 15,
+          "examData": [
+            {
+              "topicName": "assembling-objects",
+              "totalQuestion": 25,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        },
+        {
+          "groupId": 1723783277575,
+          "title": "General Science",
+          "passingPercent": 0,
+          "totalQuestion": 25,
+          "duration": 11,
+          "examData": [
+            {
+              "topicName": "general-science",
+              "totalQuestion": 25,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        },
+        {
+          "groupId": 1723783277576,
+          "title": "Electronics Information",
+          "passingPercent": 0,
+          "totalQuestion": 20,
+          "duration": 9,
+          "examData": [
+            {
+              "topicName": "electronics-information",
+              "totalQuestion": 20,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        },
+        {
+          "groupId": 1723783277577,
+          "title": "Auto and Shop Information",
+          "passingPercent": 0,
+          "totalQuestion": 25,
+          "duration": 11,
+          "examData": [
+            {
+              "topicName": "auto-and-shop-information",
+              "totalQuestion": 25,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        },
+        {
+          "groupId": 1723783277578,
+          "title": "Arithmetic Reasoning",
+          "passingPercent": 0,
+          "totalQuestion": 30,
+          "duration": 36,
+          "examData": [
+            {
+              "topicName": "arithmetic-reasoning",
+              "totalQuestion": 30,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        },
+        {
+          "groupId": 1723783277579,
+          "title": "Mathematics Knowledge",
+          "passingPercent": 0,
+          "totalQuestion": 25,
+          "duration": 24,
+          "examData": [
+            {
+              "topicName": "mathematics-knowledge",
+              "totalQuestion": 25,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        },
+        {
+          "groupId": 1723783277580,
+          "title": "Paragraph Comprehension",
+          "passingPercent": 0,
+          "totalQuestion": 15,
+          "duration": 13,
+          "examData": [
+            {
+              "topicName": "paragraph-comprehension",
+              "totalQuestion": 15,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        },
+        {
+          "groupId": 1723783277581,
+          "title": "Word Knowledge",
+          "passingPercent": 0,
+          "totalQuestion": 35,
+          "duration": 11,
+          "examData": [
+            {
+              "topicName": "word-knowledge",
+              "totalQuestion": 35,
+              "required": false,
+              "topicId": -1,
+              "questionIds": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

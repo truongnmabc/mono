@@ -1,0 +1,38 @@
+.main-popup-subscription {
+    padding: 20px 40px;
+    text-align: center;
+    .title {
+        font-size: 22px;
+    }
+    .btn {
+        padding-top: 16px;
+        border-top: 1px solid #c4c4c4;
+        @media screen and (max-width: 768px) {
+            padding-top: 24px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+        }
+        .btn_paypal {
+            background-color: #ffb839;
+            color: #fff;
+            text-transform: unset;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 24px;
+            padding: 12px 24px;
+            margin-left: 12px;
+            border-radius: 10px;
+        }
+        .pay_late {
+            margin-right: 16px;
+            text-decoration: underline;
+            background-color: transparent;
+            color: #212121;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}

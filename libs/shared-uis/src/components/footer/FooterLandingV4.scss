@@ -1,0 +1,363 @@
+.v4-footer-landing-0 {
+    padding-top: 64px;
+    // height: 600px;
+    // overflow: hidden;
+    width: 100%;
+    background: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    .v4-svg-desktop {
+        display: none;
+    }
+
+    .v4-footer-landing-container-0 {
+        width: 100%;
+        height: 100%;
+        padding-bottom: 40px;
+        // margin-top: -8px;
+        // padding-top: 24px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        box-sizing: border-box;
+        .title {
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: left;
+            text-underline-position: from-font;
+        }
+
+        .cluster-logo-description {
+            max-width: 284px;
+            .logo-footer-v4 {
+                display: flex;
+            }
+            display: flex;
+            gap: 24px;
+            flex-direction: column;
+
+            span {
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 21px;
+                text-align: start;
+                color: #fff;
+                text-underline-position: from-font;
+            }
+        }
+        .cluster-company-legal {
+            display: flex;
+            justify-content: space-between;
+        }
+        .cluster-legal {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            text-align: left;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+        // a:not(:first-child) {
+        //     margin-left: 32px;
+        // }
+        .cluster-company {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            text-align: left;
+        }
+        .support {
+            display: flex;
+            flex-direction: column;
+            max-width: 284px;
+            gap: 16px;
+
+            .cluster-info-send-mail {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                img {
+                    width: 24px;
+                    height: 24px;
+                }
+                .text-info {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    text-align: left;
+                    text-underline-position: from-font;
+                    color: #fff;
+                }
+                .cluster-email {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    gap: 12px;
+                }
+                .cluster-location {
+                    display: flex;
+                    align-items: center;
+
+                    gap: 12px;
+                }
+                .intro-suport {
+                    color: #fff;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    text-align: left;
+                    text-underline-position: from-font;
+                }
+            }
+            .v4-input-field {
+                input {
+                    color: #fff;
+                    width: 100%;
+                    padding: 12px;
+                    border: 1px solid #fff;
+                    border-radius: 6px;
+                    box-sizing: border-box;
+                    outline: none;
+                    background-color: transparent;
+                    &::placeholder {
+                        color: #fff;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 20px;
+                        text-align: left;
+                    }
+                    &:-ms-input-placeholder {
+                        /* Internet Explorer 10-11 */
+                        color: #fff;
+                    }
+                    &::-ms-input-placeholder {
+                        /* Microsoft Edge */
+                        color: #fff;
+                    }
+                    &:focus {
+                        border: 1px solid #fff;
+                    }
+                }
+                p {
+                    color: #880000; //alert text
+                    margin: 0;
+                    font-size: 14px;
+                    text-align: left;
+                    padding-left: 4px;
+                    line-height: 24px;
+                }
+            }
+            .footer-support {
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
+                .v4-footer-btn-contact-us {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    text-align: left;
+                    text-underline-position: from-font;
+                    padding: 12px 24px;
+                    background-color: #fff;
+                    width: fit-content;
+                    align-self: flex-end;
+                    cursor: pointer;
+                    margin-top: 4px;
+                    border: none;
+                    border-radius: 8px;
+                    display: flex;
+                    line-height: 24px; // = svg height
+                }
+            }
+        }
+    }
+
+    .v4-footer-landing-container-1 {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding: 32px 0;
+        background-color: var(--main-color-bold);
+        .footer-social {
+            display: flex;
+            width: 100%;
+
+            justify-content: space-between;
+            .v4-platform-logo-contact-0 {
+                display: flex;
+                gap: 16px;
+            }
+            span {
+                color: #fff;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 16px;
+                text-align: left;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 24px 0 0 0;
+        width: 100%;
+        .v4-footer-landing-container-0 {
+            padding: 0 16px 24px 16px;
+            flex-direction: column;
+            gap: 16px;
+            align-items: unset;
+
+            .title {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            .cluster-logo-description {
+                margin-bottom: 16px;
+                width: 100%;
+                max-width: unset;
+                span {
+                    text-align: center;
+                    max-width: 100%;
+                }
+                .cluster-logo-protected {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            }
+            .cluster-company {
+                gap: 8px;
+            }
+            .cluster-legal {
+                width: 163px;
+                gap: 8px;
+            }
+            a {
+                font-size: 14px;
+            }
+            .support {
+                max-width: 100%;
+                gap: 8px;
+                .cluster-info-send-mail {
+                    .text-info {
+                        font-size: 14px;
+                    }
+                    .intro-suport {
+                        color: #fff;
+                        font-size: 14px;
+                    }
+                    .footer-support {
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 20px;
+                        text-align: left;
+                        text-underline-position: from-font;
+                    }
+                }
+            }
+            // align-items: center;
+        }
+        .v4-footer-landing-container-1 {
+            padding: 24px 0;
+            .footer-social {
+                padding: 0 40px;
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+                .v4-platform-logo-contact-0 {
+                    order: -1;
+                }
+                span {
+                    text-align: center;
+                }
+            }
+        }
+        // height: 490px;
+
+        // .v4-svg-desktop {
+        //     display: block;
+        // }
+        // .v4-svg-mobile {
+        //     display: none;
+        // }
+        // .v4-footer-landing-container-0 {
+        // padding-top: 50px;
+
+        // .v4-footer-landing-container-11 {
+        //     display: flex;
+        //     justify-content: space-between;
+        //     .v4-footer-landing-container-111 {
+        //         flex-direction: column;
+        //         justify-content: flex-start;
+        //         align-items: flex-start;
+        //         > *:not(:first-child) {
+        //             margin-top: 32px;
+        //         }
+        //         .v4-contact-social-desktop {
+        //             display: block;
+        //         }
+        //     }
+        //     .v4-footer-landing-container-112 {
+        //         padding-top: 0;
+        //         > div {
+        //             font-size: 16px;
+        //             text-align: left;
+        //             line-height: 24px;
+        //         }
+        //         .v4-input-field {
+        //             margin: 8px 0;
+        //         }
+        //         .v4-footer-btn-contact-us {
+        //             margin-top: 16px;
+        //         }
+        //     }
+        // }
+
+        // .v4-footer-landing-container-12 {
+        //     flex-direction: row;
+        //     margin-top: 24px;
+        //     .v4-contact-social-mobile {
+        //         display: none;
+        //     }
+        //     .v4-footer-landing-container-121 {
+        //         padding-top: 0;
+        //     }
+
+        //     .v4-footer-landing-container-122 {
+        //         padding-top: 0;
+        //     }
+        // }
+        // }
+    }
+}
+
+.v4-platform-logo-contact-0 {
+    display: flex;
+    div {
+        position: relative;
+        a {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    // div:not(:first-child) {
+    //     margin-left: 16px;
+    // }
+}

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Information Technology",
+        "icon": "information_teachnology.svg",
+        "activeIcon": "information_teachnology_active.svg"
+    },
+    {
+        "id": 2,
+        "name": "HSE & College Admission",
+        "icon": "hse_college_admission.svg",
+        "activeIcon": "hse_college_admission_active.svg"
+    },
+    {
+        "id": 3,
+        "name": "Medical & Nursing",
+        "icon": "medical_nursing.svg",
+        "activeIcon": "medical_nursing_active.svg"
+    },
+    {
+        "id": 4,
+        "name": "Drivers Ed",
+        "icon": "drivers_ed.svg",
+        "activeIcon": "drivers_ed_active.svg"
+    },
+    {
+        "id": 5,
+        "name": "Careers",
+        "icon": "careers.svg",
+        "activeIcon": "careers_active.svg"
+    }
+]
