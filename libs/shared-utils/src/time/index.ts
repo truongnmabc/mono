@@ -1,1 +1,3 @@
-export * from './replaceYear';
+import { replaceYear } from './replaceYear';
+
+export { replaceYear };

@@ -1,31 +1,32 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../store";
-import { AppInfo, IAppInfo } from "@/models/app/appInfo";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { AppInfo, IAppInfo } from '@shared-models/app';
+import { RootState } from '../store';
 
-export interface IAppInfoReducer {
-    appInfo: IAppInfo;
-    isDataFetched: boolean;
+interface IAppInfoReducer {
+  appInfo: IAppInfo;
+  isDataFetched: boolean;
 }
 
 const initApp = new AppInfo();
 const initialState: IAppInfoReducer = {
-    appInfo: initApp,
-    isDataFetched: false,
+  appInfo: initApp,
+  isDataFetched: false,
 };
-export const appInfoSlice = createSlice({
-    name: "appInfo",
-    initialState,
-    reducers: {
-        setAppInfo: (state, action: PayloadAction<IAppInfo>) => {
-            state.appInfo = { ...action.payload };
-        },
-        setIsDataFetched: (state, action: PayloadAction<boolean>) => {
-            state.isDataFetched = action.payload;
-        },
+const appInfoSlice = createSlice({
+  name: 'appInfo',
+  initialState,
+  reducers: {
+    setAppInfo: (state, action: PayloadAction<IAppInfo>) => {
+      state.appInfo = { ...action.payload };
     },
+    setIsDataFetched: (state, action: PayloadAction<boolean>) => {
+      state.isDataFetched = action.payload;
+    },
+  },
 });
+const { reducer: appInfoReducer, actions } = appInfoSlice;
 
-export const appInfoReducer = appInfoSlice.reducer;
-export const { setAppInfo, setIsDataFetched } = appInfoSlice.actions;
+export default appInfoReducer;
+export const { setAppInfo, setIsDataFetched } = actions;
 
-export const appInfoState = (state: RootState) => state.appInfoReducer;
+export const appInfoState = (state: RootState) => state.appInfo;

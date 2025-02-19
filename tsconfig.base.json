@@ -27,27 +27,18 @@
       }
     ],
     "paths": {
-      "@shared-constants": ["libs/shared-constants/src/index.ts"],
       "@shared-db": ["libs/shared-db/src/index.ts"],
-      "@shared-hooks": ["libs/shared-hooks/src/index.ts"],
-      "@shared-hooks/*": ["libs/shared-hooks/src/*"],
       "@shared-models": ["libs/shared-models/src/index.ts"],
       "@shared-models/*": ["libs/shared-models/src/*"],
       "@shared-redux": ["libs/shared-redux/src/index.ts"],
       "@shared-redux/*": ["libs/shared-redux/src/*"],
-      "@shared-server": ["libs/shared-server/src/index.ts"],
-      "@shared-server/*": ["libs/shared-server/src/*"],
-      "@shared-server/server": ["libs/shared-server/src/server.ts"],
-      "@shared-server/server/*": ["libs/shared-server/src/*"],
       "@shared-services": ["libs/shared-services/src/index.ts"],
       "@shared-services/*": ["libs/shared-services/src/*"],
-      "@shared-styles": ["libs/shared-styles/src/index.ts"],
       "@shared-uis": ["libs/shared-uis/src/index.ts"],
-      "@shared-uis/*": ["libs/shared-uis/src/components/*"],
+      "@shared-uis/*": ["libs/shared-uis/src/*"],
       "@shared-utils": ["libs/shared-utils/src/index.ts"],
       "@shared-utils/*": ["libs/shared-utils/src/*"],
-      "shared-auth": ["libs/shared-auth/src/index.ts"],
-      "shared-config": ["libs/shared-config/src/index.ts"]
+      "@shared-auth": ["libs/shared-auth/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

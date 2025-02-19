@@ -4,7 +4,7 @@ type IProps = {
   onSuccess?: () => void;
 };
 
-export const handleInit = async ({
+export const handleRegisterServiceWorker = async ({
   appShortName,
   API_PATH,
   onSuccess,
@@ -27,7 +27,7 @@ export const handleInit = async ({
         activeWorker.addEventListener('statechange', () => {
           if (activeWorker.state === 'activated') {
             console.log('Service Worker activated!');
-            initializeDB({
+            initializeDBServiceWorker({
               API_PATH,
               appShortName,
               worker: activeWorker,
@@ -38,7 +38,7 @@ export const handleInit = async ({
         // Nếu active ngay lập tức
         if (activeWorker.state === 'activated') {
           console.log('Service Worker is already activated!');
-          initializeDB({
+          initializeDBServiceWorker({
             API_PATH,
             appShortName,
             worker: activeWorker,
@@ -54,7 +54,7 @@ export const handleInit = async ({
 interface IInitPropss extends IProps {
   worker: ServiceWorker;
 }
-export const initializeDB = ({
+export const initializeDBServiceWorker = ({
   API_PATH,
   appShortName,
   worker,

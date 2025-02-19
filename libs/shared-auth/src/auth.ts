@@ -1,4 +1,4 @@
-import { verifiedCodeApi } from '@shared-services/lib/home';
+import { verifiedCodeApi } from '@shared-services/client/home';
 import { decode } from 'jsonwebtoken';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';

@@ -17,16 +17,36 @@ export interface IAppInfo {
   link: string;
   rank_math_title: string;
   title: string;
-  totalQuestion: number;
-  usingFeaturePro: boolean;
-  usingMathJax: boolean;
-  hasState: boolean;
-  icon: string;
+  totalQuestion: number | string;
+  usingFeaturePro: boolean | string;
+  usingMathJax: boolean | string;
+  hasState?: boolean;
+  icon?: string;
   oneMonthPro?: { planId: string; price: number };
   oneWeekPro?: { planId: string; price: number };
   oneYearPro?: { planId: string; price: number };
   oneTimePro?: { planId: string; price: number };
 }
+
+export type IAppConfigData = {
+  gaId: string; // Google Analytics ID
+  tagManagerId: string; // Google Tag Manager ID
+  appId: number; // App ID, có thể là chuỗi hoặc null
+  googleVerifyId: string; // Google Site Verification ID
+  mainColor: string; // Màu chính
+  mainColorBold: string; // Màu chính đậm
+  mainBackgroundColor: string; // Màu nền chính
+  mainBackgroundColorContact: string; // Màu back của contact
+  linearGradientBanner: string; // banner download
+  GA4ID: string; // Google Analytics 4 ID
+  pageId: string; // Page ID (Facebook hoặc hệ thống khác)
+  wpDomain: string; // Domain chính (WordPress hoặc khác)
+  cookie: string; // Màu cho cookie banner
+  bgColorStartTest: string; // Màu nền cho nút bắt đầu test
+  bgColorCloseCookie: string; // Màu nền cho nút đóng cookie
+  mainColorUpgradePro: string; // Màu chính cho nâng cấp lên Pro
+  appleClientId: string; // Apple Client ID
+};
 
 export class AppInfo implements IAppInfo {
   appId: number;
@@ -41,7 +61,7 @@ export class AppInfo implements IAppInfo {
   keywordSEO: string;
   title: string;
   hasState: boolean;
-  totalQuestion: number;
+  totalQuestion: number | string;
   usingFeaturePro: boolean;
   usingMathJax: boolean;
   icon: string;

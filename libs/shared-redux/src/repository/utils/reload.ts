@@ -1,28 +1,28 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { RootState } from '../../store';
 
 const beforeUnLoadThunk = createAsyncThunk(
-    "beforeUnLoadThunk",
-    async (_, thunkAPI) => {
-        const state = thunkAPI.getState() as RootState;
-        const { selectedSubTopics, selectedTopics } = state.studyReducer;
-        const { gameMode, attemptNumber } = state.gameReducer;
+  'beforeUnLoadThunk',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState() as RootState;
+    const { selectedSubTopics, selectedTopics } = state.study;
+    const { gameMode, attemptNumber } = state.game;
 
-        localStorage.setItem(
-            "optQuery",
-            JSON.stringify({
-                selectedSubTopics,
-                selectedTopics,
-                gameMode,
-                attemptNumber,
-            })
-        );
-    }
+    localStorage.setItem(
+      'optQuery',
+      JSON.stringify({
+        selectedSubTopics,
+        selectedTopics,
+        gameMode,
+        attemptNumber,
+      })
+    );
+  }
 );
 
 export default beforeUnLoadThunk;
 
-export const reloadStateThunk = createAsyncThunk("reloadState", async () => {
-    const data = localStorage.getItem("optQuery");
-    if (data) return JSON.parse(data);
+export const reloadStateThunk = createAsyncThunk('reloadState', async () => {
+  const data = localStorage.getItem('optQuery');
+  if (data) return JSON.parse(data);
 });

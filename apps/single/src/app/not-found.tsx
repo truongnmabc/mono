@@ -1,6 +1,12 @@
-import Page404Container from "@/components/404";
-import React from "react";
+import React from 'react';
+import Page404Container from '@shared-uis/components/404';
 
-const NotFound = () => <Page404Container />;
+import { headers } from 'next/headers';
+import { detectAgent } from '@shared-utils/device';
 
-export default NotFound;
+export default async function Page() {
+  const headersList = await headers();
+  const userAgent = headersList.get('user-agent');
+  const { isMobile } = detectAgent(userAgent || '');
+  return <Page404Container isMobile={isMobile} />;
+}

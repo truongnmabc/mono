@@ -1,16 +1,16 @@
-import { db } from "@/db/db.model";
-import { IPaymentInfos } from "@/models/payment/payment";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { db } from '@shared-db';
+import { IPaymentInfos } from '@shared-models/payment';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 type IPaymentSuccess = {
-    data: IPaymentInfos;
+  data: IPaymentInfos;
 };
 
 const paymentSuccessThunk = createAsyncThunk(
-    "paymentSuccessThunk",
-    async ({ data }: IPaymentSuccess) => {
-        await db?.paymentInfos.add(data);
-    }
+  'paymentSuccessThunk',
+  async ({ data }: IPaymentSuccess) => {
+    await db?.paymentInfos.add(data);
+  }
 );
 
 export default paymentSuccessThunk;

@@ -50,6 +50,8 @@ export let db: DB | null = null;
 
 export const initializeDB = (appShortName: string): DB => {
   if (!db) {
+    console.log('🚀 ~ initializeDB ~ appShortName:', appShortName);
+
     db = new DB(appShortName);
   }
   return db;
