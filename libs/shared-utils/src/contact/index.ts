@@ -1,6 +1,4 @@
-'use client';
-
-import { IContactInfo, listContactApp } from 'libs/constants';
+import { IContactInfo, listContactApp } from '../constant';
 
 export const getContactApp = (appName: string): IContactInfo => {
   const lowerAppName = appName.toLowerCase();

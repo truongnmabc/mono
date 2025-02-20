@@ -4,8 +4,8 @@ import {
   ONE_WEEK_PRO,
   ONE_YEAR_PRO,
   SUBSCRIPTION,
-} from '@constants/index';
-import { parseJSONdata } from './json';
+} from '../constant';
+import { parseJSONdata } from '../json';
 
 // Types
 export interface IOneWeek {
@@ -103,7 +103,7 @@ export const getConfigProV2 = (appInfo: IAppInfo): IResult => {
       );
 
       // Development mode mock data
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env['NODE_ENV'] === 'development') {
         mockPlanIds(result.prices as IPriceConfig[]);
       }
     } else if (oneTime) {

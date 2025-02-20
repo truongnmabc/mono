@@ -11,7 +11,7 @@ export const eventSendGtag = ({
 }) => {
   const appShortName = process.env['NEXT_PUBLIC_APP_SHORT_NAME'];
 
-  if (process.env.NODE_ENV !== 'development')
+  if (process.env['NODE_ENV'] !== 'development')
     sendGTMEvent({ event: `${appShortName}-${eventName}`, value: value });
 };
 
@@ -24,6 +24,6 @@ export const trackingEventGa4 = ({
 }) => {
   const appShortName = process.env['NEXT_PUBLIC_APP_SHORT_NAME'];
 
-  if (process.env.NODE_ENV !== 'development')
+  if (process.env['NODE_ENV'] !== 'development')
     sendGAEvent('event', `${appShortName}-${eventName}`, { value: value });
 };

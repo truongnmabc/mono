@@ -2,7 +2,7 @@ import {
   HTTP_REQUEST_SUCCESS,
   HTTP_REQUEST_TIMEOUT,
   BASE_WP,
-} from 'libs/constants';
+} from '@constants/index';
 import Axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export const request = async <T>(config: AxiosRequestConfig): Promise<T> => {

@@ -11,7 +11,10 @@
       "options": {
         "outputPath": "dist/libs/shared-utils",
         "main": "libs/shared-utils/src/index.ts",
-        "tsConfig": "libs/shared-utils/tsconfig.lib.json"
+        "tsConfig": "libs/shared-utils/tsconfig.lib.json",
+        "project": "libs/shared-utils/package.json",
+        "compiler": "swc",
+        "rollupConfig": "libs/shared-utils/rollup.config.cjs"
       }
     }
   }
