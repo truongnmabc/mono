@@ -1,6 +1,6 @@
 import { requestGetData } from "@shared-services";
 
-export const getCountryAPI = async () => {
+ const getCountryAPI = async () => {
     let getCountry;
     try {
         getCountry = await requestGetData({
@@ -11,3 +11,5 @@ export const getCountryAPI = async () => {
     }
     return getCountry;
 };
+
+export default getCountryAPI;

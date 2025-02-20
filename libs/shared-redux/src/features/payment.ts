@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getUserDeviceLogin } from '../repository/sync/syncData';
 
 import { InAppSubscription, IPaymentInfos } from '@shared-models/payment';
-import { IUserActions } from '../repository/user/actions';
+import { IUserActions } from '@shared-redux/repository/user/getActions';
 import { RootState } from '../store';
 
 export interface IUserReducer {
@@ -43,5 +43,5 @@ const paymentSlice = createSlice({
 const { actions, reducer: paymentReducer } = paymentSlice;
 
 export const { paymentSuccessAction } = actions;
-export const paymentState = (state: RootState) => state.paymentReducer;
+export const paymentState = (state: RootState) => state.payment;
 export default paymentReducer;

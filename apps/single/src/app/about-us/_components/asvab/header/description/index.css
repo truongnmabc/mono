@@ -1,0 +1,56 @@
+.about-description-component {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.about-description-component .content {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8980392157);
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  transition: height 0.5s ease;
+}
+@media screen and (min-width: 600px) {
+  .about-description-component .content {
+    font-size: 18px;
+    line-height: 27px;
+    text-align: left;
+  }
+}
+.about-description-component .content.show-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.about-description-component .content.hidden-ellipsis {
+  -webkit-line-clamp: unset;
+}
+.about-description-component .content .space {
+  min-height: 8px;
+}
+@media screen and (min-width: 600px) {
+  .about-description-component .content .space {
+    min-height: 16px;
+  }
+}
+.about-description-component .toggle-button {
+  display: flex;
+  justify-content: center;
+}
+.about-description-component .toggle-button .button {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: center;
+  color: #ffc300;
+  text-decoration: underline;
+  text-decoration-color: #ffc300;
+}/*# sourceMappingURL=index.css.map */

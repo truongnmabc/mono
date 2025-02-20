@@ -1,0 +1,208 @@
+.pro-background {
+    background-color: #14674a;
+    height: 410px;
+    background-image: url(/public/images/passemall/background-pro.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    .alert-in-app-purchased {
+        position: absolute;
+        height: 40px;
+        background-color: #fae0a2;
+        color: #a16207;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+            margin-right: 8px;
+        }
+    }
+    h1 {
+        text-shadow: 0px 1px 8px #59f5a9cc;
+        color: #fff;
+        font-size: 36px;
+        line-height: 48px;
+        text-align: center;
+        padding: 24px 16px 16px;
+        margin: 0;
+        text-transform: capitalize;
+        span {
+            color: #59f5a9;
+            position: relative;
+            img {
+                position: absolute;
+                top: 0;
+                right: 22px;
+            }
+        }
+    }
+
+    .account-email {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: center;
+        color: #fff;
+        margin: 0;
+    }
+}
+
+.billing-history {
+    padding-top: 24px;
+    min-height: calc(100vh - 53px - 410px);
+    background-color: #f8f8fa;
+    > span {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        display: flex;
+    }
+    .next-billing-date {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        line-height: 24px;
+        color: #212121;
+        text-align: center;
+        padding-bottom: 24px;
+        .line {
+            height: 1px;
+            background-color: rgba(33, 33, 33, 0.52);
+            flex: 1;
+            margin: 0 24px;
+        }
+    }
+    .table-billing {
+        overflow: hidden;
+        margin-top: 4px;
+        margin-bottom: 40px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+                th {
+                    text-align: center;
+                    color: #468770;
+                    padding: 8px 0;
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+            }
+            tbody {
+                td {
+                    text-align: center;
+                    color: #21212185;
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 18px;
+                    padding: 8px 0;
+                    border-bottom: 2px solid #fff;
+                    div {
+                        font-weight: 600;
+                    }
+                    &:nth-child(4) {
+                        color: #212121;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .pro-background {
+        .account-email {
+            font-size: 24px;
+            line-height: 36px;
+        }
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .pro-background {
+        height: 668px;
+        position: relative;
+        h1 {
+            font-size: 48px;
+            line-height: 72px;
+        }
+    }
+
+    .billing-history {
+        padding: 50px;
+        background: transparent;
+        border-radius: 0px 0px 40px 40px;
+        margin-bottom: 32px;
+        > span {
+            font-size: 24px;
+            line-height: 36px;
+        }
+        .next-billing-date {
+            font-size: 18px;
+            line-height: 27px;
+            // margin-top: 40px;
+        }
+        .table-billing {
+            border-radius: 8px;
+            border: 1px solid #2121213d;
+            overflow: hidden;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            table {
+                width: 100%;
+                border-collapse: collapse;
+
+                thead {
+                    background: #4787704d;
+                    th {
+                        text-align: center;
+                        color: #468770;
+                        padding: 8px 0;
+                    }
+                }
+                tbody {
+                    td {
+                        text-align: center;
+                        color: #21212185;
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 21px;
+                        padding: 8px 0;
+                        border-top: 1px solid #2121213d;
+                        border-bottom: none;
+                    }
+                    tr:hover {
+                        background-color: #f3f3f3;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .pro-background {
+        h1 {
+            font-size: 58px;
+            line-height: 87px;
+        }
+        .app-feature {
+            width: 600px;
+            p {
+                font-size: 18px;
+
+                line-height: 27px;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            margin: 0 auto;
+        }
+    }
+}

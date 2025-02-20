@@ -1,15 +1,15 @@
 'use client';
 
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@shared-db';
 import { IQuestionOpt } from '@shared-models/question';
+import { IGameMode } from '@shared-models/tests/tests';
 import { RootState } from '@shared-redux/store';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { requestGetData } from '@shared-services/client/request';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
 } from './initPracticeTest';
-import { IGameMode } from '@shared-models/tests/tests';
-import { requestGetData } from '@shared-services/client/request';
 
 const updateDB = async (id: number) => {
   db?.testQuestions.update(id, {

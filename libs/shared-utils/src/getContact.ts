@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { IContactInfo, listContactApp } from "@shared-constants";
+import { IContactInfo, listContactApp } from 'libs/constants';
 
 export const getContactApp = (appName: string): IContactInfo => {
-    const lowerAppName = appName.toLowerCase();
-    return (
-        listContactApp[lowerAppName] || {
-            facebook: "",
-            youtube: "",
-            twitter: "",
-            linkedin: "",
-            instagram: "",
-        }
-    );
+  const lowerAppName = appName.toLowerCase();
+  return (
+    listContactApp[lowerAppName] || {
+      facebook: '',
+      youtube: '',
+      twitter: '',
+      linkedin: '',
+      instagram: '',
+    }
+  );
 };

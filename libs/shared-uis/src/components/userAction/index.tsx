@@ -1,24 +1,24 @@
-"use client";
-import { selectCurrentTopicId } from "@/redux/features/game.reselect";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import getListActionThunk from "@/redux/repository/user/getActions";
-import { useEffect } from "react";
+'use client';
+import { selectCurrentTopicId } from '@shared-redux/features/game.reselect';
+import getListActionThunk from '@shared-redux/repository/user/getActions';
+import { useAppDispatch, useAppSelector } from '@shared-redux/store';
+import { useEffect } from 'react';
 
 const UserActionListen = () => {
-    const idTopic = useAppSelector(selectCurrentTopicId);
-    const dispatch = useAppDispatch();
+  const idTopic = useAppSelector(selectCurrentTopicId);
+  const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        if (idTopic) {
-            dispatch(
-                getListActionThunk({
-                    partId: idTopic,
-                })
-            );
-        }
-    }, [idTopic, dispatch]);
+  useEffect(() => {
+    if (idTopic) {
+      dispatch(
+        getListActionThunk({
+          partId: idTopic,
+        })
+      );
+    }
+  }, [idTopic, dispatch]);
 
-    return null;
+  return null;
 };
 
 export default UserActionListen;

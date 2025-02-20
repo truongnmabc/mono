@@ -1,34 +1,34 @@
-import { ITopicBase } from "@/models/topics/topicsProgress";
-import React, { ReactNode } from "react";
+import { ITopicBase } from '@shared-models/topics';
+import React, { ReactNode } from 'react';
 
 export interface IContextAllowExpand {
-    color?: string;
-    mainTopic?: ITopicBase | null;
-    mainTopicTag: string | null;
+  color?: string;
+  mainTopic?: ITopicBase | null;
+  mainTopicTag: string | null;
 }
 
 export const AllowExpandContext = React.createContext<IContextAllowExpand>({
-    color: "red",
-    mainTopic: undefined,
-    mainTopicTag: "",
+  color: 'red',
+  mainTopic: undefined,
+  mainTopicTag: '',
 });
 
 const AllowExpandProvider = ({
-    children,
-    topic,
+  children,
+  topic,
 }: {
-    children: ReactNode;
-    topic: ITopicBase | null;
+  children: ReactNode;
+  topic: ITopicBase | null;
 }) => {
-    const value = {
-        mainTopic: topic,
-        mainTopicTag: topic ? topic.tag : "",
-    };
+  const value = {
+    mainTopic: topic,
+    mainTopicTag: topic ? topic.tag : '',
+  };
 
-    return (
-        <AllowExpandContext.Provider value={value}>
-            {children}
-        </AllowExpandContext.Provider>
-    );
+  return (
+    <AllowExpandContext.Provider value={value}>
+      {children}
+    </AllowExpandContext.Provider>
+  );
 };
 export default AllowExpandProvider;

@@ -1,4 +1,4 @@
-import { IGameMode } from '@shared-models/tests/tests';
+import { IGameMode } from '../tests/tests';
 
 export type IStatusAnswer =
   | 'incorrect'

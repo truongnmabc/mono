@@ -1,0 +1,134 @@
+.about-activity-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin: 32px 0;
+}
+@media screen and (min-width: 600px) {
+  .about-activity-component {
+    flex-direction: row;
+    gap: 48px;
+    margin-top: 52px;
+  }
+}
+.about-activity-component .ecosystem {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.23;
+  overflow: hidden;
+}
+@media screen and (min-width: 600px) {
+  .about-activity-component .ecosystem {
+    min-width: 536px;
+    min-height: 436px;
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .about-activity-component .ecosystem:hover {
+    transform: scale(1.02);
+  }
+}
+.about-activity-component .about-activity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media screen and (min-width: 600px) {
+  .about-activity-component .about-activity-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+.about-activity-component .about-activity-container .activity-box {
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 600px) {
+  .about-activity-component .about-activity-container .activity-box {
+    height: 206px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .about-activity-component .about-activity-container .activity-box:hover.eye {
+    transform: translate(-3%, -3%);
+  }
+  .about-activity-component .about-activity-container .activity-box:hover.mount {
+    transform: translate(3%, -3%);
+  }
+  .about-activity-component .about-activity-container .activity-box:hover.hand {
+    transform: translate(-3%, 3%);
+  }
+  .about-activity-component .about-activity-container .activity-box:hover.heart {
+    transform: translate(3%, 3%);
+  }
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon {
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon.blue {
+  border: 4px solid #289af6;
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon.red {
+  border: 4px solid #ff0047;
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon.green {
+  border: 4px solid #00ea9d;
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon.orange {
+  border: 4px solid #f37a00;
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon .eye {
+  width: 26px;
+  height: 22px;
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon .mount {
+  width: 23px;
+  height: 23px;
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon .hand {
+  width: 22px;
+  height: 22px;
+}
+.about-activity-component .about-activity-container .activity-box .circle-icon .heart {
+  width: 30px;
+  height: 30px;
+}
+.about-activity-component .about-activity-container .activity-box .content {
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  color: rgba(33, 33, 33, 0.8);
+  margin-top: 8px;
+}
+.about-activity-component .about-activity-container .activity-box .sub-content {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.65px;
+  text-align: center;
+  color: rgba(33, 33, 33, 0.8);
+}
+@media screen and (min-width: 600px) {
+  .about-activity-component .about-activity-container .activity-box .sub-content {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+}/*# sourceMappingURL=index.css.map */

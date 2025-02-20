@@ -1,7 +1,7 @@
 "use client";
 
-import { initializeDB } from "@/db/db.model";
-import { IAppInfo } from "@/models/app/appInfo";
+import { initializeDB } from "@shared-db";
+import { IAppInfo } from "@shared-models/app";
 import { useLayoutEffect } from "react";
 
 const InitializeDB = ({ appInfo }: { appInfo: IAppInfo }) => {

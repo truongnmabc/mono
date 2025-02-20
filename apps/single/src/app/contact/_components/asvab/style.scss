@@ -1,0 +1,341 @@
+.in-form-asvab {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    .left-form {
+        display: flex;
+        height: 512px;
+        width: 50%;
+        position: relative;
+        .img-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            right: 0;
+        }
+        .cluster-img-info {
+            max-width: 662px;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 48px;
+            position: absolute;
+            bottom: 0;
+            left: 80px;
+            z-index: 2;
+            .title {
+                color: #ffffff;
+                font-size: 32px;
+                line-height: 48px;
+                font-weight: 600;
+                text-align: left;
+            }
+            .intro {
+                color: #ffffffcc;
+                font-size: 18px;
+                line-height: 27px;
+                font-weight: 400;
+                text-align: left;
+                margin-top: 4px;
+            }
+            img {
+                width: 30px;
+                height: 30px;
+            }
+            .text-info {
+                color: #ffffff;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 27px;
+            }
+            .cluster-email {
+                display: flex;
+                gap: 16px;
+                cursor: pointer;
+                margin-top: 24px;
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-color: #fff;
+                }
+            }
+
+            .cluster-location {
+                display: flex;
+                gap: 16px;
+                margin-top: 24px;
+            }
+            .socials-icon {
+                gap: 16px;
+                margin-top: 24px;
+            }
+        }
+    }
+}
+
+.cluster-send-mail-asvab {
+    width: 50%;
+
+    .form-send-mail {
+        display: flex;
+        flex-direction: column;
+        margin-left: 48px;
+        height: 100%;
+        justify-content: center;
+
+        p {
+            margin: 0;
+            color: #212121;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .title {
+            color: #212121;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 72px;
+            text-align: left;
+        }
+
+        .description {
+            color: #21212185;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+            text-align: left;
+        }
+
+        .noti {
+            color: #fd5f57;
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 400;
+            text-align: left;
+            margin-top: 8px;
+            opacity: 0;
+            transition: all 0.3s ease;
+
+            &.check {
+                opacity: 1;
+            }
+        }
+
+        .input-mail {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 100%;
+
+            p {
+                margin-top: 32px;
+            }
+
+            .group-input-noti {
+                input {
+                    border: 1px solid #21212129;
+                    width: 100%;
+                    border-radius: 8px;
+                    padding: 12px;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    text-align: left;
+
+                    &::placeholder {
+                        color: #21212185;
+                        opacity: 0.8;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        .input-message {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            .group-textarea-noti {
+                .noti {
+                    transform: translateY(-3px);
+                    margin: 0;
+                }
+
+                textarea {
+                    resize: none;
+                    padding: 16px 0 0 16px;
+                    border: 1px solid #21212129;
+                    border-radius: 8px;
+                    width: 100%;
+                    height: 88px;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    text-align: left;
+
+                    &:focus {
+                        outline: none;
+                    }
+
+                    &::placeholder {
+                        color: #21212185;
+                        opacity: 0.8;
+                    }
+                }
+
+                .message-send-mail::-webkit-scrollbar {
+                    width: 4px;
+                    /* Độ rộng của thanh cuộn */
+                }
+
+                /* Track của thanh cuộn */
+                .message-send-mail::-webkit-scrollbar-track {
+                    background: #f3f3f3;
+                    /* Màu nền của track */
+                    border-radius: 8px;
+                    /* Bo góc */
+                }
+
+                /* Phần kéo của thanh cuộn */
+                .message-send-mail::-webkit-scrollbar-thumb {
+                    background: #c0c0c0;
+                    /* Màu của thanh kéo */
+                    border-radius: 4px;
+                    /* Bo góc */
+                }
+
+                /* Hover trên thanh kéo */
+                .message-send-mail::-webkit-scrollbar-thumb:hover {
+                    background: #a0a0a0;
+                    /* Màu khi hover */
+                }
+            }
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--main-color);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            text-align: center;
+            padding: 12px 0;
+
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .cluster-infor-title {
+        .cluster-send-mail-asvab {
+            width: 100%;
+            padding: 24px 16px;
+            background-image: url(/images/contacts/asvab/background-soldier-mobile.png);
+            background-size: cover;
+            background-position: center;
+
+            .form-send-mail {
+                margin-left: 0;
+                padding: 0;
+                background-color: transparent;
+                box-shadow: none;
+                width: 100%;
+
+                p {
+                    color: #fff;
+                }
+                .noti {
+                    font-size: 12px;
+                    line-height: 12px;
+                    margin-top: 4px;
+                }
+                .title {
+                    color: #fff;
+                    font-size: 36px;
+                    font-weight: 700;
+                    line-height: 54px;
+                    text-align: center;
+                }
+
+                .description {
+                    color: #fff;
+                    font-size: 14px;
+                    line-height: 21px;
+                    text-align: center;
+                }
+
+                .input-mail {
+                    p {
+                        margin-top: 24px;
+                    }
+                }
+
+                .input-message {
+                    margin-top: 0;
+                }
+
+                button {
+                    padding: 12px 0;
+                    margin: 0;
+                    line-height: 20px;
+                }
+            }
+
+            .contact-information {
+                color: #fff;
+                font-size: 24px;
+                font-weight: 600;
+                line-height: 36px;
+                text-align: center;
+                margin-top: 24px;
+            }
+
+            .intro {
+                margin-top: 4px;
+                text-align: center;
+                color: #ffffffcc;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 21px;
+                text-align: center;
+            }
+
+            .cluster-email {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                margin-top: 16px;
+                width: 100%;
+
+                img {
+                    width: 28px;
+                    height: 28px;
+                    padding: 0;
+                }
+
+                .text-info {
+                    color: #fff;
+                }
+            }
+
+            .socials-icon {
+                width: 100%;
+                justify-content: center;
+                gap: 16px;
+                margin-top: 16px;
+            }
+        }
+    }
+}

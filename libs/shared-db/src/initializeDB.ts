@@ -3,7 +3,6 @@ type IProps = {
   API_PATH: {};
   onSuccess?: () => void;
 };
-
 export const handleRegisterServiceWorker = async ({
   appShortName,
   API_PATH,
@@ -31,6 +30,7 @@ export const handleRegisterServiceWorker = async ({
               API_PATH,
               appShortName,
               worker: activeWorker,
+              onSuccess,
             });
           }
         });
@@ -42,6 +42,7 @@ export const handleRegisterServiceWorker = async ({
             API_PATH,
             appShortName,
             worker: activeWorker,
+            onSuccess,
           });
         }
       }

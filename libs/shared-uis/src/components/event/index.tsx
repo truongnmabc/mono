@@ -1,15 +1,15 @@
 "use client";
-import { resetState } from "@/redux/features/game";
-import { useAppDispatch } from "@/redux/hooks";
-import pauseTestThunk from "@/redux/repository/game/pauseAndResumed/pauseTest";
-// import pauseTestThunk from "@/redux/repository/game/pauseAndResumed/pauseTest";
-import beforeUnLoadThunk, {
-    reloadStateThunk,
-} from "@/redux/repository/utils/reload";
-import { useCallback, useEffect } from "react";
 
-const EventListener = () => {
-    const dispatch = useAppDispatch();
+import { resetState } from "@shared-redux/features/game";
+import pauseTestThunk from "@shared-redux/repository/game/pauseAndResumed/pauseTest";
+import beforeUnLoadThunk, { reloadStateThunk } from "@shared-redux/repository/utils/reload";
+import { AppDispatch } from "@shared-redux/store";
+import { useCallback, useEffect } from "react";
+const EventListener = ({
+  dispatch,
+}: {
+  dispatch: AppDispatch;
+}) => {
 
     const handlePageReload = useCallback(() => {
         const data = localStorage.getItem("optQuery");
@@ -23,7 +23,7 @@ const EventListener = () => {
         }
     }, [dispatch]);
 
-    useEffect(() => {
+  useEffect(() => {
         handlePageReload();
     }, [handlePageReload]);
 

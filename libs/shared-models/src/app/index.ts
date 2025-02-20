@@ -17,8 +17,8 @@ export interface IAppInfo {
   link: string;
   rank_math_title: string;
   title: string;
-  totalQuestion: number | string;
-  usingFeaturePro: boolean | string;
+  totalQuestion: number;
+  usingFeaturePro: boolean;
   usingMathJax: boolean | string;
   hasState?: boolean;
   icon?: string;
@@ -61,7 +61,7 @@ export class AppInfo implements IAppInfo {
   keywordSEO: string;
   title: string;
   hasState: boolean;
-  totalQuestion: number | string;
+  totalQuestion: number;
   usingFeaturePro: boolean;
   usingMathJax: boolean;
   icon: string;

@@ -2,7 +2,9 @@
   "name": "@mono/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "rename": "node scripts/rename.mjs"
+  },
   "private": true,
   "type": "module",
   "dependencies": {
@@ -13,6 +15,7 @@
     "@mui/material": "^6.4.3",
     "@mui/material-nextjs": "^6.4.3",
     "@next/third-parties": "^15.1.6",
+    "@paypal/paypal-js": "^8.2.0",
     "@paypal/react-paypal-js": "^8.7.0",
     "@react-spring/web": "^9.7.5",
     "@reduxjs/toolkit": "^2.3.0",
@@ -76,6 +79,8 @@
     "@types/node": "18.16.9",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
+    "@types/react-window": "^1.8.8",
+    "@types/throttle-debounce": "^5.0.2",
     "autoprefixer": "10.4.13",
     "babel-jest": "^29.7.0",
     "clsx": "^2.1.1",

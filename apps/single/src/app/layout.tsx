@@ -1,14 +1,14 @@
 import { Poppins, Vampiro_One } from 'next/font/google';
 
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import '@shared-uis/styles/index.css';
+import { replaceYear } from '@shared-utils/time';
+import type { Metadata } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script';
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import appInfo from '../data/appInfos.json';
-import type { Metadata } from 'next';
-import { replaceYear } from '@shared-utils/time';
 import RootLayout from '../layout';
-
 const vampiro = Vampiro_One({
   weight: ['400'],
   style: 'normal',
@@ -26,9 +26,10 @@ const poppins = Poppins({
   variable: '--font-poppins',
   subsets: ['latin'],
 });
+const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000/'),
+  metadataBase: new URL(baseUrl),
   title: replaceYear(appInfo.title),
   description: appInfo.descriptionSEO,
   keywords: appInfo.keywordSEO,

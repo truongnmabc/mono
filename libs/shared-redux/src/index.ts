@@ -70,12 +70,12 @@ import userReducer, {
   shouldOpenModalLogin,
 } from './features/user';
 
+import { syncDataToWebAfterLoginAPI } from '@shared-services/client/user';
 import {
   selectListActions,
   selectOpenModalLogin,
   selectUserInfo,
 } from './features/user.reselect';
-import { baseStore, baseReducers } from './store';
 import choiceAnswer, {
   processChoiceAnswer,
 } from './repository/game/choiceAnswer/choiceAnswer';
@@ -96,47 +96,51 @@ import nextQuestionFinalThunk from './repository/game/nextQuestion/nextQuestionF
 import pauseTestThunk from './repository/game/pauseAndResumed/pauseTest';
 import resumedTestThunk from './repository/game/pauseAndResumed/resumedTest';
 import { handleInitTestQuestion } from './repository/game/utils';
-import beforeUnLoadThunk from './repository/utils/reload';
+import paymentSuccessThunk from './repository/payment/paymentSuccess';
 import userActionsThunk from './repository/user/actions';
 import getListActionThunk from './repository/user/getActions';
-import { syncDataToWebAfterLoginAPI } from '@shared-services/client/user';
-import paymentSuccessThunk from './repository/payment/paymentSuccess';
+import beforeUnLoadThunk from './repository/utils/reload';
+import {
+  baseReducers,
+  baseStore,
+  useAppDispatch,
+  useAppSelector,
+} from './store';
 export {
-  choiceAnswer,
-  paymentSuccessThunk,
-  syncDataToWebAfterLoginAPI,
-  processChoiceAnswer,
-  getListActionThunk,
-  userActionsThunk,
+  appConfigReducer,
+  appInfoReducer,
+  baseReducers,
+  baseStore,
   beforeUnLoadThunk,
-  initDiagnosticTestQuestionThunk,
-  initFinalTestThunk,
+  choiceAnswer,
   choiceStartCustomTestThunk,
+  continueGame,
+  endTest,
   finishCustomTestThunk,
   finishDiagnosticThunk,
   finishFinalThunk,
   finishPracticeThunk,
   finishQuestionThunk,
+  gameReducer,
+  getListActionThunk,
+  handleInitTestQuestion,
   initCustomTestThunk,
+  initDiagnosticTestQuestionThunk,
+  initFinalTestThunk,
   initLearnQuestionThunk,
   initPracticeThunk,
-  nextQuestionThunk,
-  nextQuestionDiagnosticThunk,
-  nextQuestionFinalThunk,
-  pauseTestThunk,
-  resumedTestThunk,
-  handleInitTestQuestion,
-  baseStore,
-  appConfigReducer,
-  appInfoReducer,
-  continueGame,
-  endTest,
-  gameReducer,
   loginHybrid,
   logoutHybrid,
+  nextQuestionDiagnosticThunk,
+  nextQuestionFinalThunk,
+  nextQuestionThunk,
+  pauseTestThunk,
   paymentReducer,
   paymentSuccessAction,
+  paymentSuccessThunk,
+  processChoiceAnswer,
   resetState,
+  resumedTestThunk,
   selectAppConfig,
   selectAppInfo,
   selectAttemptNumber,
@@ -190,8 +194,11 @@ export {
   startRandomReview,
   startTryAgainDiagnostic,
   studyReducer,
+  syncDataToWebAfterLoginAPI,
   testReducer,
   updateFeedbackCustomTest,
+  useAppDispatch,
+  useAppSelector,
+  userActionsThunk,
   userReducer,
-  baseReducers,
 };

@@ -1,0 +1,387 @@
+.about-us-container,
+.about-us-container * {
+  box-sizing: border-box;
+  letter-spacing: normal;
+}
+
+.about-us-container {
+  width: 100%;
+  height: 100%;
+  /*-------------------------------------------------------------------*/
+}
+.about-us-container .bg-us-container {
+  background-image: url(/public/images/about/about-us-img.png);
+  background-size: cover;
+  background-position: center;
+}
+.about-us-container .about-us-top {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+  background-size: cover;
+  background-position: center;
+}
+.about-us-container .about-us-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.about-us-container .about-us-bottom .meet-the-team {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  margin-top: 44px;
+  margin-bottom: 120px;
+  align-items: center;
+  flex-direction: column;
+}
+.about-us-container .about-us-bottom .meet-the-team .title-meet-the-team {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+}
+.about-us-container .about-us-bottom .meet-the-team .members {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  row-gap: 40px;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+.about-us-container .about-us-bottom .meet-the-team .members .info-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about-us-container .about-us-bottom .meet-the-team .members .info-member .avatar img {
+  width: 132px;
+  height: 132px;
+  border: 4px solid transparent;
+  transition: outline 0.25s ease;
+  border-radius: 100px;
+}
+.about-us-container .about-us-bottom .meet-the-team .members .info-member .avatar img:hover {
+  border: 4px solid #ffffff;
+  outline: 4px solid var(--main-color);
+}
+.about-us-container .about-us-bottom .meet-the-team .members .info-member .name {
+  color: #212121;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+.about-us-container .about-us-bottom .meet-the-team .members .info-member .name:hover {
+  text-decoration: underline;
+}
+.about-us-container .about-us-bottom .meet-the-team .members .info-member .position {
+  color: rgba(33, 33, 33, 0.5215686275);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+@media screen and (max-width: 768px) {
+  .about-us-container .about-us-top {
+    padding: 30px 0 24px 0;
+  }
+  .about-us-container .about-us-top .cluster-info-title {
+    flex-direction: column;
+    padding: 0 16px;
+    gap: 16px;
+  }
+  .about-us-container .about-us-top .cluster-info-title .content-about-us {
+    align-items: center;
+    gap: 12px;
+  }
+  .about-us-container .about-us-top .cluster-info-title .content-about-us .title {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 54px;
+  }
+  .about-us-container .about-us-top .cluster-info-title .content-about-us .list-contents {
+    gap: 8px;
+  }
+  .about-us-container .about-us-top .cluster-info-title .content-about-us .list-contents .content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    transition: height 0.3s ease;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .about-us-container .about-us-top .cluster-info-title .content-about-us .list-contents .content span {
+    display: block;
+    margin: 4.5px 0;
+  }
+  .about-us-container .about-us-top .cluster-info-title .content-about-us .list-contents .content.show {
+    -webkit-line-clamp: unset;
+  }
+  .about-us-container .about-us-top .cluster-info-title .content-about-us .list-contents .show-more {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #fff;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+  }
+  .about-us-container .about-us-top .cluster-info-title .list-records .record {
+    padding: 8px;
+  }
+  .about-us-container .about-us-top .cluster-info-title .list-records .record .summary {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: center;
+  }
+  .about-us-container .about-us-top .cluster-info-title .list-records .record .content {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+  }
+  .about-us-container .about-us-bottom .meet-the-team {
+    gap: 16px;
+    margin-top: 0;
+    margin-bottom: 48px;
+  }
+  .about-us-container .about-us-bottom .meet-the-team .title-meet-the-team {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 45px;
+    text-align: center;
+  }
+  .about-us-container .about-us-bottom .meet-the-team .members {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    row-gap: 24px;
+  }
+  .about-us-container .about-us-bottom .meet-the-team .members .info-member .avatar img {
+    width: 52px;
+    height: 52px;
+  }
+  .about-us-container .about-us-bottom .meet-the-team .members .info-member .name {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+  }
+  .about-us-container .about-us-bottom .meet-the-team .members .info-member .position {
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+.about-us-container .our-team-in-about-us-v0 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about-us-container .our-team-in-about-us-v0 .title-our-team {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 72px;
+  color: #212121;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .item-people-our-team-mobile {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .item-people-our-team-mobile:hover .image-people-our-team-mobile {
+  opacity: 1;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .item-people-our-team-mobile:hover .hover-container-item-our-team-mobile {
+  opacity: 1;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .item-people-our-team-mobile .image-people-our-team-mobile {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0.2s ease;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .item-people-our-team-mobile .hover-container-item-our-team-mobile {
+  background-image: linear-gradient(0deg, rgba(33, 33, 33, 0.8), rgba(33, 33, 33, 0.8));
+  width: 100%;
+  height: 100%;
+  transition: 0.2s ease;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  left: 30%;
+  transform: translate(-30%, -40%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .item-people-our-team-mobile .hover-container-item-our-team-mobile .name-people-our-team-mobile {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  text-align: left;
+  margin-left: 40px;
+  margin-top: 30%;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .item-people-our-team-mobile .hover-container-item-our-team-mobile .position-people-our-team-mobile {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #ffffff;
+  margin-left: 40px;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .slick-action-our-team {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .slick-action-our-team .button-prev-our-team {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  background: #212121;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .slick-action-our-team span {
+  padding: 0 16px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #212121;
+}
+.about-us-container .our-team-in-about-us-v0 .slider-people-our-team-mobile .slick-action-our-team .button-next-our-team {
+  transform: rotate(180deg);
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  background: #212121;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.about-us-container .who-we-are-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 120px;
+}
+.about-us-container .who-we-are-section img {
+  width: 100%;
+  height: auto;
+}
+.about-us-container .who-we-are-section .description-section {
+  padding-left: 60px;
+}
+.about-us-container .who-we-are-section .description-section h2 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 72px;
+  text-transform: capitalize;
+  color: #212121;
+}
+.about-us-container .who-we-are-section .description-section p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: rgba(33, 33, 33, 0.52);
+}
+.about-us-container .who-we-are-section .description-section p span {
+  font-weight: 700;
+}
+.about-us-container .what-we-have-section {
+  padding-top: 60px;
+  margin-top: 120px;
+  background: #f6f6f6 90%;
+}
+.about-us-container .what-we-have-section .title-section {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 72px;
+  text-transform: capitalize;
+  color: #212121;
+}
+.about-us-container .what-we-have-section .image-container {
+  position: relative;
+}
+.about-us-container .what-we-have-section .image-container .main-image {
+  width: 100%;
+  height: auto;
+  margin-top: -60px;
+}
+.about-us-container .what-we-have-section .image-container .icon-anim {
+  position: absolute;
+  transition: all 0.5s ease;
+}
+.about-us-container .what-we-have-section .image-container .icon-anim:hover {
+  transform: translate3d(-20px, -20px, -20px);
+}
+.about-us-container .what-we-have-section .image-container .icon-anim .image-background {
+  width: 100%;
+}
+.about-us-container .what-we-have-section .image-container .e-learning {
+  top: 35%;
+  left: 15%;
+}
+.about-us-container .what-we-have-section .image-container .test-maker {
+  top: 70%;
+  left: 35%;
+}
+.about-us-container .what-we-have-section .image-container .app {
+  top: 25%;
+  left: 50%;
+}
+.about-us-container .what-we-have-section .image-container .web {
+  top: 0%;
+  right: 3%;
+}
+.about-us-container .learning-network-section {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+.about-us-container .learning-network-section h2 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 72px;
+  text-transform: capitalize;
+  color: #212121;
+}
+.about-us-container .learning-network-section .list-web {
+  margin-top: 80px;
+}
+.about-us-container .learning-network-section .list-web .image-container {
+  overflow: hidden;
+  transition: transform 1s ease;
+}
+.about-us-container .learning-network-section .list-web .image-container img {
+  transition: transform 1s ease;
+  width: 100%;
+  height: auto;
+}
+.about-us-container .learning-network-section .list-web .image-container:hover {
+  transform: translate3d(0, -10px, 0);
+  box-shadow: 0px 8px 16px rgba(139, 139, 139, 0.12);
+}
+.about-us-container .learning-network-section .list-web .image-container:hover img {
+  transform: scale(1.3);
+}/*# sourceMappingURL=index.css.map */
