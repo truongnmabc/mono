@@ -1,5 +1,5 @@
+import { IQuestionBase } from '../type';
 import { calculatorAverageLevel, generateRandomNegativeId } from './index';
-import { IQuestionBase } from '@shared-models/question';
 
 describe('Math Utils', () => {
   describe('calculatorAverageLevel', () => {

@@ -16,6 +16,14 @@
         "compiler": "swc",
         "rollupConfig": "libs/shared-utils/rollup.config.cjs"
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "jestConfig": "libs/shared-utils/jest.config.ts",
+        "codeCoverage": true
+      }
     }
   }
 }

@@ -1,3 +1,4 @@
+import config_new_pro from 'data/config_new_pro.json';
 import {
   ONE_MONTH_PRO,
   ONE_TIME_PRO,
@@ -6,14 +7,14 @@ import {
   SUBSCRIPTION,
 } from '../constant';
 import { parseJSONdata } from '../json';
-
+import { IAppInfo } from '../type';
 // Types
-export interface IOneWeek {
+interface IOneWeek {
   planId: string;
   price: number;
 }
 
-export interface IPriceConfig extends IOneWeek {
+interface IPriceConfig extends IOneWeek {
   type: string;
   trialDay: number | null;
   averagePrice: number;
@@ -24,7 +25,7 @@ export interface IPriceConfig extends IOneWeek {
   initPrice: number | null;
 }
 
-export interface IResult {
+interface IResult {
   type: string;
   // prices: (IPriceConfig | { price: IOneWeek })[];
   prices: IPriceConfig[];
@@ -200,8 +201,6 @@ type ConfigApp = {
   [key: string]: ConfigAppItem;
 };
 
-import { IAppInfo } from '@shared-models/app';
-import config_new_pro from 'data/config_new_pro.json';
 const configNewPro: ConfigApp = config_new_pro.configApp;
 
 export const getConfigAppPro = (appShortName: string) => {

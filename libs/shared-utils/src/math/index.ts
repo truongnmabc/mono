@@ -1,6 +1,5 @@
-import { IQuestionBase } from '@shared-models/question';
-import { ITopicBase } from '@shared-models/topics';
 import { v4 as uuidv4 } from 'uuid';
+import { IQuestionBase, ITopicBase } from '../type';
 
 /**
  * Groups an array of topics into smaller arrays of specified size
@@ -15,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
  * //   { id: 2, value: [topic3, topic4] }
  * // ]
  */
+
 export const groupTopics = (
   listTopic: ITopicBase[],
   sequence: number

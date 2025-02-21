@@ -1,0 +1,9 @@
+{
+  "name": "a1",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/a1/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project a1 --web",
+  "targets": {}
+}

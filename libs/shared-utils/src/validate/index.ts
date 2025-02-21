@@ -1,19 +1,31 @@
 /**
- * Validates an email address
- * @param email - The email address to validate
- * @returns boolean - True if email is valid, false otherwise
+ * Interface cho hàm validate
  */
-export const validateEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+export interface ValidationFunction {
+  (value: string): boolean;
+}
+
+/**
+ * Kiểm tra email hợp lệ
+ * @param {string} email - Địa chỉ email cần kiểm tra
+ * @returns {boolean} - True nếu hợp lệ, False nếu không hợp lệ
+ */
+const validateEmail: ValidationFunction = (email: string): boolean => {
+  // 🔥 Thêm kiểu `string`
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email.toLowerCase());
 };
 
 /**
- * Validates a phone number
- * @param phone - The phone number to validate
- * @returns boolean - True if phone number is valid, false otherwise
+ * Kiểm tra số điện thoại hợp lệ
+ * @param {string} phone - Số điện thoại cần kiểm tra
+ * @returns {boolean} - True nếu hợp lệ, False nếu không hợp lệ
  */
-export const validatePhone = (phone: string): boolean => {
-  const phoneRegex = /^\+?[\d\s-]{10,}$/;
-  return phoneRegex.test(phone);
+const validatePhone: ValidationFunction = (phone: string): boolean => {
+  // 🔥 Thêm kiểu `string`
+  const re = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
+  return re.test(phone);
 };
+
+export { validateEmail, validatePhone };

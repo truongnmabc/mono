@@ -1,24 +1,24 @@
-import { validateEmail, validatePhone } from './validate';
+// import { validateEmail, validatePhone } from './validate';
 import { getContactApp } from './contact';
+import { decrypt, encrypt } from './crypto';
+import { detectAgent } from './device';
+import { eventSendGtag, trackingEventGa4 } from './event';
 import { convertToJSONObject, parseJSONdata } from './json';
 import { calculatorAverageLevel, generateRandomNegativeId } from './math';
-import { detectAgent } from './device';
-import { encrypt, decrypt } from './crypto';
 import { getConfigAppPro } from './paypal';
-import { eventSendGtag, trackingEventGa4 } from './event';
 
 export {
-  validateEmail,
-  validatePhone,
-  getContactApp,
-  convertToJSONObject,
-  parseJSONdata,
   calculatorAverageLevel,
-  generateRandomNegativeId,
+  convertToJSONObject,
+  decrypt,
   detectAgent,
   encrypt,
-  decrypt,
-  getConfigAppPro,
   eventSendGtag,
+  generateRandomNegativeId,
+  getConfigAppPro,
+  // validateEmail,
+  // validatePhone,
+  getContactApp,
+  parseJSONdata,
   trackingEventGa4,
 };

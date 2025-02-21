@@ -28,6 +28,7 @@
     ],
     "paths": {
       "@constants/*": ["libs/constants/*"],
+      "@mono/a1": ["libs/a1/src/index.ts"],
       "@mono/b": ["libs/b/src/index.ts"],
       "@shared-auth": ["libs/shared-auth/src/index.ts"],
       "@shared-db": ["libs/shared-db/src/index.ts"],
