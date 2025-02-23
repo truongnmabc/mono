@@ -1,5 +1,3 @@
-'use client';
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@shared-db';
 import { IQuestionOpt } from '@shared-models/question';

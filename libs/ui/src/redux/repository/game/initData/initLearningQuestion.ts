@@ -1,8 +1,7 @@
-'use client';
 import { db } from '@shared-db';
 import { IQuestionOpt } from '@shared-models/question';
 import { RootState } from '@shared-redux/store';
-import { requestGetData } from '@shared-services/client/request';
+import { axiosRequest } from '@ui/services/config/axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getLocalUserProgress,
@@ -162,12 +161,10 @@ const fetchQuestions = async ({
     .toArray();
 
   if (!listQuestions || listQuestions?.length === 0) {
-    const data = (await requestGetData({
+    const data = (await axiosRequest({
       url: `api/question/get-questions-by-part-id?partId=${partId}`,
-      config: {
-        baseURL: 'https://api-cms-v2-dot-micro-enigma-235001.appspot.com',
-      },
-    })) as IQuestionOpt[];
+      baseUrl: 'https://api-cms-v2-dot-micro-enigma-235001.appspot.com',
+    })) as unknown as IQuestionOpt[];
 
     return {
       questions: data.map((item) => ({

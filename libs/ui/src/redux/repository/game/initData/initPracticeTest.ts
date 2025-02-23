@@ -1,11 +1,9 @@
-'use client';
-
-import { API_PATH } from '../../../../../constants/api.constants';
+import { API_PATH } from '@ui/constants/api.constants';
 import { db } from '@shared-db';
 import { IQuestionOpt } from '@shared-models/question';
 import { RootState } from '@shared-redux/store';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { axiosInstance } from '@shared-services/config/axios';
+import { axiosRequest } from '@ui/services/config/axios';
 import { IUserQuestionProgress } from '@shared-models/progress';
 import { IGameMode } from '@shared-models/tests/tests';
 
@@ -58,9 +56,10 @@ const updateStartTime = async (id: number) => {
 export const fetchQuestions = async (
   testId: string | number
 ): Promise<IQuestionOpt[]> => {
-  const response = await axiosInstance.get(
-    `${API_PATH.GET_QUESTION_BY_ID}/${testId}`
-  );
+  const response = await axiosRequest({
+    url: `${API_PATH.GET_QUESTION_BY_ID}/${testId}`,
+    base: 'test',
+  });
   return response?.data?.data;
 };
 

@@ -15,8 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@constants/*": ["libs/constants/*"],
-      "@mono/ui": ["libs/ui/src/index.ts"],
+      "@ui/*": ["libs/ui/src/*"],
       "@shared-db": ["libs/ui/src/db/index.ts"],
       "@shared-models": ["libs/ui/src/models/index.ts"],
       "@shared-models/*": ["libs/ui/src/models/*"],

@@ -1,4 +1,3 @@
-'use client';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICurrentGame } from '@shared-models/game';
 import { IGameMode } from '@shared-models/tests/tests';
