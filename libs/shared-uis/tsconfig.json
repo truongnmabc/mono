@@ -17,5 +17,5 @@
       "path": "./tsconfig.spec.json"
     }
   ],
-  "extends": "../../tsconfig.dev.json"
+  "extends": "../../tsconfig.base.json"
 }

@@ -1,12 +1,19 @@
 {
-  "extends": "./tsconfig.prop.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/libs/shared-redux",
     "declaration": true,
     "rootDir": "./src",
     "composite": true,
-    "types": ["node", "jest"]
+    "types": ["node"],
+    "module": "ESNext",
+    "moduleResolution": "node"
   },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "references": [
+    {
+      "path": "../shared-models"
+    }
+  ]
 }

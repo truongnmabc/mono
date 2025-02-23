@@ -14,7 +14,13 @@
         "main": "libs/shared-redux/src/index.ts",
         "tsConfig": "libs/shared-redux/tsconfig.lib.json",
         "project": "libs/shared-redux/package.json",
-        "sourceMap": true
+        "sourceMap": true,
+        "external": [
+          "@shared-models",
+          "@shared-models/*",
+          "@shared-db",
+          "@shared-services"
+        ]
       }
     },
 

@@ -1,11 +1,14 @@
 {
-  "extends": "../../tsconfig.dev.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
+    "rootDir": "./src",
+    "declaration": true,
+    "composite": true,
     "noPropertyAccessFromIndexSignature": true
   },
   "files": [],

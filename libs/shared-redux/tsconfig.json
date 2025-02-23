@@ -1,21 +1,34 @@
 {
-  "extends": "../../tsconfig.prop.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "module": "ESNext",
     "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "composite": true,
+    "importHelpers": true,
+    "declaration": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
-    "noPropertyAccessFromIndexSignature": true
+    "noPropertyAccessFromIndexSignature": true,
+    "jsx": "react-jsx",
+    "noEmit": false
   },
   "files": [],
-  "include": [],
   "references": [
     {
-      "path": "./tsconfig.lib.dev.json"
+      "path": "../shared-models"
     },
     {
-      "path": "./tsconfig.spec.json"
+      "path": "../shared-utils"
+    },
+    {
+      "path": "../shared-db"
+    },
+    {
+      "path": "../shared-services"
     }
-  ]
+  ],
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

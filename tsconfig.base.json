@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@constants/*": ["libs/constants/*"],
+      "@mono/ui": ["libs/ui/src/index.ts"],
+      "@shared-db": ["libs/ui/src/db/index.ts"],
+      "@shared-models": ["libs/ui/src/models/index.ts"],
+      "@shared-models/*": ["libs/ui/src/models/*"],
+      "@shared-redux": ["libs/ui/src/redux/index.ts"],
+      "@shared-redux/*": ["libs/ui/src/redux/*"],
+      "@shared-services": ["libs/ui/src/services/index.ts"],
+      "@shared-services/*": ["libs/ui/src/services/*"],
+      "@shared-uis": ["libs/ui/src/uis/index.ts"],
+      "@shared-uis/*": ["libs/ui/src/uis/*"],
+      "@shared-utils": ["libs/ui/src/utils/index.ts"],
+      "@shared-utils/*": ["libs/ui/src/utils/*"],
+      "@single/*": ["./apps/single/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

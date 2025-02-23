@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.prop.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/libs/shared-utils",
     "declaration": true,

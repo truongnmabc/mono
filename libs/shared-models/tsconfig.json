@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.dev.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "ESNext",
     "forceConsistentCasingInFileNames": true,
@@ -10,7 +10,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": true,
-    "noEmit": false
+    "noEmit": false,
+    "declaration": true
   },
   "files": [],
   "include": [],
