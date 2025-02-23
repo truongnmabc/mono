@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import { IAppInfo } from '@shared-models/app';
-import { syncDataToWebAfterLoginAPI } from '@shared-services/client/user';
+import { syncDataToWebAfterLoginAPI } from '@shared-services/sync';
 
 /** lấy dữ liệu payment (web), inAppSubscription (mobile) và update vào redux, gọi mỗi khi vào trang */
 
@@ -66,58 +66,55 @@ const getUserDeviceLogin = createAsyncThunk(
     console.log('🚀 ~ paymentInfo:', paymentInfo);
 
     try {
-      const syncData = (await syncDataToWebAfterLoginAPI({
-        email: email,
-        appId: appInfo.appId,
-        lastUpdate: -1,
-      })) as IRes;
-
-      const userDeviceLogin = syncData.UserDeviceLogins;
-      const inAppSubscriptions = syncData.InAppSubscriptions; // mua trên mobile
-
-      if (inAppSubscriptions?.length) {
-        // let inAppSubs = inAppSubscriptions.map((app) => {
-        //     let result = JSON.parse(app?.result ?? "");
-        //     let in_app = [];
-        //     result.receipt.in_app.forEach((item) => {
-        //         in_app.push({
-        //             purchase_date: nd(item.purchase_date_ms),
-        //             expires_date: nd(item.expires_date_ms),
-        //             in_app_ownership_type: item.in_app_ownership_type,
-        //             is_trial_period: item.is_trial_period,
-        //         });
-        //     });
-        //     result.latest_receipt_info?.forEach((item) => {
-        //         in_app.push({
-        //             purchase_date: nd(item.purchase_date_ms),
-        //             expires_date: nd(item.expires_date_ms),
-        //             in_app_ownership_type: item.in_app_ownership_type,
-        //             is_trial_period: item.is_trial_period,
-        //         });
-        //     });
-        //     return {
-        //         id: app.id,
-        //         appId: app.appId,
-        //         userId: app.userId,
-        //         os: app.os,
-        //         transactionId: app.transactionId,
-        //         createDate: app.createDate,
-        //         purchaseDate: app.purchaseDate,
-        //         expriredDate: app.expriredDate,
-        //         purchased: app.purchased,
-        //         trialPeriod: app.trialPeriod,
-        //         in_app,
-        //     };
-        // });
-      }
-      if (userDeviceLogin.length) {
-        // let data = handleUserDevicesLogin(
-        //     userDeviceLogin,
-        //     appInfo,
-        //     paymentInfos
-        // );
-      }
-
+      // const syncData = (await syncDataToWebAfterLoginAPI({
+      //   email: email,
+      //   appId: appInfo.appId,
+      //   lastUpdate: -1,
+      // })) as IRes;
+      // const userDeviceLogin = syncData.UserDeviceLogins;
+      // const inAppSubscriptions = syncData.InAppSubscriptions; // mua trên mobile
+      // if (inAppSubscriptions?.length) {
+      // let inAppSubs = inAppSubscriptions.map((app) => {
+      //     let result = JSON.parse(app?.result ?? "");
+      //     let in_app = [];
+      //     result.receipt.in_app.forEach((item) => {
+      //         in_app.push({
+      //             purchase_date: nd(item.purchase_date_ms),
+      //             expires_date: nd(item.expires_date_ms),
+      //             in_app_ownership_type: item.in_app_ownership_type,
+      //             is_trial_period: item.is_trial_period,
+      //         });
+      //     });
+      //     result.latest_receipt_info?.forEach((item) => {
+      //         in_app.push({
+      //             purchase_date: nd(item.purchase_date_ms),
+      //             expires_date: nd(item.expires_date_ms),
+      //             in_app_ownership_type: item.in_app_ownership_type,
+      //             is_trial_period: item.is_trial_period,
+      //         });
+      //     });
+      //     return {
+      //         id: app.id,
+      //         appId: app.appId,
+      //         userId: app.userId,
+      //         os: app.os,
+      //         transactionId: app.transactionId,
+      //         createDate: app.createDate,
+      //         purchaseDate: app.purchaseDate,
+      //         expriredDate: app.expriredDate,
+      //         purchased: app.purchased,
+      //         trialPeriod: app.trialPeriod,
+      //         in_app,
+      //     };
+      // });
+      // }
+      // if (userDeviceLogin.length) {
+      // let data = handleUserDevicesLogin(
+      //     userDeviceLogin,
+      //     appInfo,
+      //     paymentInfos
+      // );
+      // }
       // return { paymentInfo, paymentInfos, inAppSubs };
     } catch (error) {
       console.log('getUserData ', error);

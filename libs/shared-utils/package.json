@@ -1,9 +1,11 @@
 {
   "name": "shared-utils",
   "version": "0.0.1",
-  "dependencies": {},
-  "type": "module",
-  "main": "./index.js",
-  "typings": "./index.d.ts",
-  "private": true
+  "private": true,
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "sideEffects": false,
+  "dependencies": {
+    "@next/third-parties": "^15.1.6"
+  }
 }

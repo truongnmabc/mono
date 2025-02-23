@@ -1,5 +1,3 @@
-'use client';
-
 import { sendGAEvent, sendGTMEvent } from '@next/third-parties/google';
 
 export const eventSendGtag = ({

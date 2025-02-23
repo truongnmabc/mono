@@ -1,14 +1,22 @@
-import nx from '@nx/eslint-plugin';
-import baseConfig from '../../eslint.config';
+import baseConfig from '../../eslint.config.ts';
 
-const config = [
+export default [
   ...baseConfig,
-  ...nx.configs['flat/react'],
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    // Override or add rules here
-    rules: {},
+    files: ['**/*.json'],
+    rules: {
+      '@nx/dependency-checks': [
+        'error',
+        {
+          ignoredFiles: [
+            '{projectRoot}/eslint.config.{js,cjs,mjs}',
+            '{projectRoot}/rollup.config.{js,ts,mjs,mts,cjs,cts}',
+          ],
+        },
+      ],
+    },
+    languageOptions: {
+      parser: await import('jsonc-eslint-parser'),
+    },
   },
 ];
-
-export default config;

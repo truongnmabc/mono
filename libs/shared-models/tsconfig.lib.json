@@ -1,13 +1,11 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.prop.json",
   "compilerOptions": {
     "outDir": "../../dist/libs/shared-models",
     "rootDir": "./src",
     "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "emitDeclarationOnly": false,
-    "noEmit": false
+    "composite": true,
+    "types": ["node", "jest"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]

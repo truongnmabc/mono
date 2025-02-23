@@ -1,9 +1,10 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.dev.json",
   "compilerOptions": {
     "module": "ESNext",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "composite": true,
     "importHelpers": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,

@@ -50,21 +50,21 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@mui/icons-material', '@mui/material'],
     optimizeCss: true,
   },
-  webpack: (config, { isServer }) => {
-    config.optimization = {
-      ...config.optimization,
-      usedExports: true,
-      sideEffects: true,
-    };
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      moment$: 'moment/moment.js',
-    };
+  // webpack: (config, { isServer }) => {
+  //   config.optimization = {
+  //     ...config.optimization,
+  //     usedExports: true,
+  //     sideEffects: true,
+  //   };
+  //   config.resolve.alias = {
+  //     ...config.resolve.alias,
+  //     moment$: 'moment/moment.js',
+  //   };
 
-    return config;
-  },
-  output: 'standalone',
-  outputFileTracingRoot: __dirname,
+  //   return config;
+  // },
+  // output: 'standalone',
+  // outputFileTracingRoot: __dirname,
 };
 
 const plugins = [withNx];

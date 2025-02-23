@@ -65,13 +65,15 @@ export default function ParentAppLayout({
         {process.env.NEXT_PUBLIC_GTM_ID && (
           <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         )}
+        <Script src="/init-db.js" strategy="beforeInteractive" />
+        <Script src="/sw-register.js" strategy="beforeInteractive" />
+        <Script src="https://accounts.google.com/gsi/client" async defer />
+        <Script
+          src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"
+          async
+          defer
+        />
       </body>
-      <Script src="https://accounts.google.com/gsi/client" async defer />
-      <Script
-        src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"
-        async
-        defer
-      />
     </html>
   );
 }

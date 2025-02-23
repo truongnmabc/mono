@@ -16,7 +16,7 @@ export default function StoreProvider({
   appInfo: IAppInfo;
   appConfig?: IAppConfigData;
 }) {
-  const storeRef = useRef<AppStore>();
+  const storeRef = useRef<AppStore | null>(null);
   if (!storeRef.current) {
     storeRef.current = baseStore();
     if (appInfo) {

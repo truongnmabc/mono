@@ -1,16 +1,11 @@
 {
-    "name": "shared-services",
-    "version": "0.0.1",
-    "dependencies": {
-        "axios": "^1.7.9",
-        "shared-models": "^0.0.1",
-        "@nx/vite": "20.3.1",
-        "vite": "^6.0.7",
-        "vite-plugin-dts": "^4.4.0",
-        "shared-constants": "^0.0.1"
-    },
-    "type": "module",
-    "main": "./src/index.js",
-    "typings": "./src/index.d.ts",
-    "private": true
+  "name": "shared-services",
+  "version": "0.0.1",
+  "dependencies": {
+    "axios": "^1.7.9"
+  },
+  "type": "module",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "private": true
 }

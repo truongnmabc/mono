@@ -5,7 +5,7 @@ import { db } from '@shared-db';
 import { IQuestionOpt } from '@shared-models/question';
 import { IGameMode } from '@shared-models/tests/tests';
 import { RootState } from '@shared-redux/store';
-import { requestGetData } from '@shared-services/client/request';
+import { axiosRequest } from '@shared-services/config/axios';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
@@ -70,16 +70,15 @@ const initFinalTestThunk = createAsyncThunk(
       }
       return undefined;
     } else {
-      const data = await requestGetData({
+      const data = await axiosRequest({
         url: `asvab/web-data/exam-4886547081986048.json`,
-        config: {
-          baseURL:
-            'https://storage.googleapis.com/micro-enigma-235001.appspot.com/',
-        },
+        method: 'get',
+        baseUrl:
+          'https://storage.googleapis.com/micro-enigma-235001.appspot.com/',
       });
 
       return {
-        questions: data as IQuestionOpt[],
+        questions: data.data as IQuestionOpt[],
         progressData: [],
         currentTopicId: 4886547081986048,
         gameMode: 'finalTests' as IGameMode,

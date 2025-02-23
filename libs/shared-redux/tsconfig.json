@@ -1,21 +1,21 @@
 {
-    "compilerOptions": {
-        "jsx": "react-jsx",
-        "allowJs": false,
-        "esModuleInterop": false,
-        "allowSyntheticDefaultImports": true,
-        "strict": true,
-        "types": ["vite/client"]
+  "extends": "../../tsconfig.prop.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.dev.json"
     },
-    "files": [],
-    "include": [],
-    "references": [
-        {
-            "path": "./tsconfig.lib.json"
-        },
-        {
-            "path": "./tsconfig.spec.json"
-        }
-    ],
-    "extends": "../../tsconfig.base.json"
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

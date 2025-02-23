@@ -1,10 +1,17 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
-        "declaration": true,
-        "types": ["node"]
-    },
-    "include": ["src/**/*.ts"],
-    "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+  "extends": "./tsconfig.prod.json",
+  "compilerOptions": {
+    "outDir": "../../dist/libs/shared-db",
+    "declaration": true,
+    "rootDir": "./src",
+    "composite": true,
+    "types": ["node", "jest"]
+  },
+  "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../shared-models"
+    }
+  ],
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

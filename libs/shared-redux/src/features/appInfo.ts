@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppInfo, IAppInfo } from '@shared-models/app';
 import { RootState } from '../store';
 
-interface IAppInfoReducer {
+export interface IAppInfoReducer {
   appInfo: IAppInfo;
   isDataFetched: boolean;
 }
@@ -27,6 +27,7 @@ const appInfoSlice = createSlice({
 const { reducer: appInfoReducer, actions } = appInfoSlice;
 
 export default appInfoReducer;
+
 export const { setAppInfo, setIsDataFetched } = actions;
 
 export const appInfoState = (state: RootState) => state.appInfo;

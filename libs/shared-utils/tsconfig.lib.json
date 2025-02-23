@@ -1,10 +1,11 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.prop.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "declaration": false,
-    "noEmit": false,
-    "types": ["node"]
+    "outDir": "../../dist/libs/shared-utils",
+    "declaration": true,
+    "rootDir": "./src",
+    "composite": true,
+    "types": ["node", "jest"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]

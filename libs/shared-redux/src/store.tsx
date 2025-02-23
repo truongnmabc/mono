@@ -25,9 +25,7 @@ export const baseStore = () => {
 };
 
 export type AppStore = ReturnType<typeof baseStore>;
-
 export type RootState = ReturnType<AppStore['getState']>;
-
 export type AppDispatch = AppStore['dispatch'];
 
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();

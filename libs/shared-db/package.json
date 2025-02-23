@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "dexie": "^4.0.10",
+    "idb": "8.0.2",
     "@share-models": "^0.0.1",
     "tslib": "^2.3.0"
   },

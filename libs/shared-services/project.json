@@ -1,8 +1,28 @@
 {
-    "name": "shared-services",
-    "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "libs/shared-services/src",
-    "projectType": "library",
-    "tags": [],
-    "targets": {}
+  "name": "shared-services",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared-services/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared-services",
+        "main": "libs/shared-services/src/index.ts",
+        "tsConfig": "libs/shared-services/tsconfig.lib.json",
+        "project": "libs/shared-services/package.json",
+        "sourceMap": true 
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "jestConfig": "libs/shared-services/jest.config.ts",
+        "codeCoverage": true
+      }
+    }
+  }
 }

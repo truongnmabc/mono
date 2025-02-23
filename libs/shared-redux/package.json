@@ -1,16 +1,10 @@
 {
-    "name": "shared-redux",
-    "version": "0.0.1",
-    "main": "./index.js",
-    "types": "./index.d.ts",
-    "exports": {
-        ".": {
-            "import": "./index.mjs",
-            "require": "./index.js"
-        }
-    },
-    "dependencies": {
-        "@reduxjs/toolkit": "^2.5.0",
-        "react-redux": "^9.2.0"
-    }
+  "name": "shared-redux",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
+    "react-redux": "^9.2.0"
+  }
 }

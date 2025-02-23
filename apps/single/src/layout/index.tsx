@@ -18,34 +18,37 @@ export default function RootLayout({
 }) {
   return (
     <StoreProvider appInfo={appInfos} appConfig={appConfig}>
-      <Wraper>{children}</Wraper>
+      <AppThemeProvider appConfig={appConfig}>
+        <AppLayoutClient appInfo={appInfos}>{children}</AppLayoutClient>
+        <EventListener />
+      </AppThemeProvider>
     </StoreProvider>
   );
 }
 
-const Wraper = ({ children }: { children: React.ReactNode }) => {
-  const dispatch = useAppDispatch();
-  useLayoutEffect(() => {
-    if (appInfos) {
-      initializeDB(appInfos.appShortName);
-      handleRegisterServiceWorker({
-        appShortName: appInfos.appShortName,
-        API_PATH: API_PATH,
-        onSuccess: () => {
-          console.log('🚀 ~ onSuccess ~ onSuccess:');
-          dispatch(setIsDataFetched(true));
-        },
-      });
-    }
-  }, [appInfos]);
+// const Wrapper = ({ children }: { children: React.ReactNode }) => {
+//   const dispatch = useAppDispatch();
+//   useLayoutEffect(() => {
+//     if (appInfos) {
+//       initializeDB(appInfos.appShortName);
+//       handleRegisterServiceWorker({
+//         appShortName: appInfos.appShortName,
+//         API_PATH: API_PATH,
+//         onSuccess: () => {
+//           console.log('🚀 ~ onSuccess ~ onSuccess:');
+//           dispatch(setIsDataFetched(true));
+//         },
+//       });
+//     }
+//   }, [appInfos]);
 
-  return (
-    <Fragment>
-      <AppThemeProvider appConfig={appConfig}>
-        <AppLayoutClient appInfo={appInfos}>{children}</AppLayoutClient>
-        <InitPassing />
-        <EventListener dispatch={dispatch} />
-      </AppThemeProvider>
-    </Fragment>
-  );
-};
+//   return (
+//     <Fragment>
+//       <AppThemeProvider appConfig={appConfig}>
+//         <AppLayoutClient appInfo={appInfos}>{children}</AppLayoutClient>
+//         <InitPassing />
+//         <EventListener  />
+//       </AppThemeProvider>
+//     </Fragment>
+//   );
+// };

@@ -1,5 +1,3 @@
-'use client';
-
 import appConfigReducer, { setAppConfig } from './features/appConfig';
 import { selectAppConfig } from './features/appConfig.reselect';
 import appInfoReducer, {
@@ -70,7 +68,6 @@ import userReducer, {
   shouldOpenModalLogin,
 } from './features/user';
 
-import { syncDataToWebAfterLoginAPI } from '@shared-services/client/user';
 import {
   selectListActions,
   selectOpenModalLogin,
@@ -194,7 +191,6 @@ export {
   startRandomReview,
   startTryAgainDiagnostic,
   studyReducer,
-  syncDataToWebAfterLoginAPI,
   testReducer,
   updateFeedbackCustomTest,
   useAppDispatch,

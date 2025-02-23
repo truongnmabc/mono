@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "rename": "node scripts/rename.mjs"
+    "rename": "node scripts/rename.mjs",
+    "init": "node scripts/init/index.js"
   },
   "private": true,
   "type": "module",
@@ -50,6 +51,7 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "@clack/prompts": "^0.10.0",
     "@eslint/compat": "^1.1.1",
     "@eslint/eslintrc": "^2.1.1",
     "@eslint/js": "^9.8.0",
@@ -80,8 +82,8 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/memory-cache": "^0.2.6",
     "@types/node": "18.16.9",
-    "@types/react": "18.3.1",
-    "@types/react-dom": "18.3.0",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
     "@types/react-window": "^1.8.8",
     "@types/throttle-debounce": "^5.0.2",
     "autoprefixer": "10.4.13",
@@ -99,6 +101,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-node": "^29.7.0",
     "jsonc-eslint-parser": "^2.4.0",
+    "minimist": "^1.2.8",
     "nx": "20.4.4",
     "postcss": "8.4.38",
     "prettier": "^2.6.2",
@@ -115,7 +118,6 @@
     "ts-node": "10.9.2",
     "tslib": "^2.3.0",
     "typescript": "~5.6.2",
-    "typescript-eslint": "^8.19.0",
-    "with-nx": "link:@nx\\rollup\\with-nx"
+    "typescript-eslint": "^8.19.0"
   }
 }

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
-interface ITestReducer {
+export interface ITestReducer {
   openSubmit: boolean;
 }
 

@@ -22,21 +22,21 @@ const AppLayoutClient = ({
 }) => {
   return (
     <WrapperScroll>
-      <ProgressBar className="fixed z-50 top-0 h-1 bg-sky-500">
+      {/* <ProgressBar className="fixed z-50 top-0 h-1 bg-sky-500">
         <NavigationEvents />
       </ProgressBar>
-      <HeaderApp appInfo={appInfo} />
+      <HeaderApp appInfo={appInfo} /> */}
       <div className="flex-1 flex flex-col bg-theme-white dark:bg-theme-dark  justify-between">
         {children}
-        <FooterApp />
+        {/* <FooterApp /> */}
       </div>
-      <ToastContainer autoClose={2000} />
+      {/* <ToastContainer autoClose={2000} />
       <SheetApp />
       <AuthProvider />
       <SyncData />
       <PopupSubscription />
       <AdsSense />
-      <AdsBlockerDetect />
+      <AdsBlockerDetect /> */}
     </WrapperScroll>
   );
 };

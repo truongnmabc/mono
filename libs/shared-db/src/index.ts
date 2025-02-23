@@ -1,12 +1,12 @@
 import { initializeDB, db } from './model';
-import {
-  initializeDBServiceWorker,
-  handleRegisterServiceWorker,
-} from './initializeDB';
+// import {
+//   initializeDBServiceWorker,
+//   handleRegisterServiceWorker,
+// } from './initializeDB';
 
 export {
   initializeDB,
   db,
-  initializeDBServiceWorker,
-  handleRegisterServiceWorker,
+  // initializeDBServiceWorker,
+  // handleRegisterServiceWorker,
 };

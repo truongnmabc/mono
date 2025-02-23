@@ -4,7 +4,7 @@ import getListActionThunk from '../repository/user/getActions';
 import { RootState } from '../store';
 import { IUserActions, IUserInfo, UserInfo } from '@shared-models/user';
 
-interface IUserReducer {
+export interface IUserReducer {
   userInfo: IUserInfo;
   listActions: IUserActions[];
   shouldOpenLogin: boolean;

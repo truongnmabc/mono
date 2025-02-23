@@ -1,11 +1,11 @@
-# util
+# shared-utils
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Building
 
-Run `nx build util` to build the library.
+Run `nx build shared-utils` to build the library.
 
 ## Running unit tests
 
-Run `nx test util` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test shared-utils` to execute the unit tests via [Jest](https://jestjs.io).

@@ -4,6 +4,7 @@
   "sourceRoot": "libs/shared-utils/src",
   "projectType": "library",
   "tags": [],
+  "// targets": "to see all targets run: nx show project shared-utils --web",
   "targets": {
     "build": {
       "executor": "@nx/rollup:rollup",
@@ -12,9 +13,7 @@
         "outputPath": "dist/libs/shared-utils",
         "main": "libs/shared-utils/src/index.ts",
         "tsConfig": "libs/shared-utils/tsconfig.lib.json",
-        "project": "libs/shared-utils/package.json",
-        "compiler": "swc",
-        "rollupConfig": "libs/shared-utils/rollup.config.cjs"
+        "project": "libs/shared-utils/package.json"
       }
     },
     "test": {

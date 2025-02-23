@@ -7,7 +7,7 @@ type IQueryOpt = {
   partTag?: string;
   type?: string;
 };
-interface IStudyReducer {
+export interface IStudyReducer {
   selectedTopics: number; // id topic dang chon
   selectedSubTopics: number; // id sub topic dang chon
 }

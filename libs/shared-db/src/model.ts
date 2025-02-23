@@ -51,11 +51,9 @@ export let db: DB | null = null;
 export const initializeDB = async (appShortName: string): Promise<DB> => {
   if (!db) {
     db = new DB(appShortName);
-    console.log('🚀 ~ initializeDB ~ db:', db);
 
     try {
       await db.open(); // 🔥 Đảm bảo DB mở thành công
-      console.log('🚀 IndexedDB đã mở thành công!');
     } catch (error) {
       console.error('🚨 Lỗi mở IndexedDB:', error);
     }

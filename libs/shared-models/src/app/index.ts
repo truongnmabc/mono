@@ -14,12 +14,12 @@ export interface IAppInfo {
   keywordSEO: string;
   linkAndroid: string;
   linkIos: string;
-  link: string;
-  rank_math_title: string;
-  title: string;
-  totalQuestion: number;
-  usingFeaturePro: boolean;
-  usingMathJax: boolean | string;
+  link?: string;
+  rank_math_title?: string;
+  title?: string;
+  totalQuestion?: number;
+  usingFeaturePro?: boolean;
+  usingMathJax?: boolean | string;
   hasState?: boolean;
   icon?: string;
   oneMonthPro?: { planId: string; price: number };
@@ -28,7 +28,7 @@ export interface IAppInfo {
   oneTimePro?: { planId: string; price: number };
 }
 
-export type IAppConfigData = {
+export interface IAppConfigData {
   gaId: string; // Google Analytics ID
   tagManagerId: string; // Google Tag Manager ID
   appId: number; // App ID, có thể là chuỗi hoặc null
@@ -46,7 +46,7 @@ export type IAppConfigData = {
   bgColorCloseCookie: string; // Màu nền cho nút đóng cookie
   mainColorUpgradePro: string; // Màu chính cho nâng cấp lên Pro
   appleClientId: string; // Apple Client ID
-};
+}
 
 export class AppInfo implements IAppInfo {
   appId: number;

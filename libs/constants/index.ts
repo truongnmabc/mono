@@ -50,7 +50,6 @@ export const baseImageUrl =
 
 // Constants
 
-
 export const PAYPAL_SUBSCRIPTION_CLIENT_ID = isProduction
   ? 'AdB2eO_M5-okrwgabqjSMgbxuJGSXuw7tOTXNIPonty8TiHtCTZGjIErVHaBRYhsGQWNYZQjQlq4tJat'
   : 'AVyimUfmrrnWOGW7GFSXlYm77H4O-JvvRBSBMqBDNj1_ATxF-hRsccOmXxx8lenoD1SND5UjC-MlY9Jm';
@@ -86,21 +85,3 @@ export const MAX_CLICK_ADS_PER_USER = 3;
 
 export const BASE_STORE_URL =
   'https://storage.googleapis.com/micro-enigma-235001.appspot.com';
-
-export const I_GAME_TYPE = {
-  study: 'study',
-  practiceTest: 'practiceTest',
-  audio: 'audio',
-  examModeSimulator: 'examModeSimulator',
-  examModeFinal: 'examModeFinal',
-  practiceModeRandom: 'practiceModeRandom',
-  practiceModeWeak: 'practiceModeWeak',
-  practiceModeHardest: 'practiceModeHardest',
-  practiceModeFavorite: 'practiceModeFavorite',
-  finalTest: 'finalTest',
-  diagnosticTest: 'diagnosticTest',
-  allQuestions: 'allQuestions',
-  improvePassingProb: 'improvePassingProb',
-} as const;
-
-export type IGameType = keyof typeof I_GAME_TYPE; // Type cho gameType

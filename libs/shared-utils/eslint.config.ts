@@ -1,5 +1,6 @@
-import baseConfig from '../../eslint.config';
-const config = [
+import baseConfig from '../../eslint.config.ts';
+
+export default [
   ...baseConfig,
   {
     files: ['**/*.json'],
@@ -7,14 +8,15 @@ const config = [
       '@nx/dependency-checks': [
         'error',
         {
-          ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs}'],
+          ignoredFiles: [
+            '{projectRoot}/eslint.config.{js,cjs,mjs}',
+            '{projectRoot}/rollup.config.{js,ts,mjs,mts,cjs,cts}',
+          ],
         },
       ],
     },
     languageOptions: {
-      parser: require('jsonc-eslint-parser'),
+      parser: await import('jsonc-eslint-parser'),
     },
   },
 ];
-
-export default config;

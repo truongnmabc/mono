@@ -1,4 +1,4 @@
-import config_new_pro from 'data/config_new_pro.json';
+import config_new_pro from './config_new_pro.json';
 import {
   ONE_MONTH_PRO,
   ONE_TIME_PRO,
