@@ -1,9 +1,9 @@
 'use client';
 
-import { IAppConfigData, IAppInfo } from '@shared-models/app';
-import { setAppConfig } from '@shared-redux/features/appConfig';
-import { setAppInfo } from '@shared-redux/features/appInfo';
-import { AppStore, baseStore } from '@shared-redux/store';
+import { IAppConfigData, IAppInfo } from '@ui/models/app';
+import { setAppConfig } from '@ui/redux/features/appConfig';
+import { setAppInfo } from '@ui/redux/features/appInfo';
+import { AppStore, baseStore } from '@ui/redux/store';
 import { useRef } from 'react';
 import { Provider } from 'react-redux';
 

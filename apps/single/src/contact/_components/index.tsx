@@ -1,15 +1,15 @@
 'use client';
 
-import { IAppInfo } from '@shared-models/app';
-import { appConfigState } from '@shared-redux/features/appConfig';
-import { useAppSelector } from '@shared-redux/store';
-import { sendEmailSubscribeApiV4 } from '@shared-services/client/home';
-import FacebookIcon from '@shared-uis/components/icon/FacebookIcon';
-import LinkedinIcon from '@shared-uis/components/icon/LinkedinIcon';
-import TwitterIcon from '@shared-uis/components/icon/TwitterIcon';
-import YoutubeIcon from '@shared-uis/components/icon/YoutubeIcon';
-import { getContactApp } from '@shared-utils/getContact';
-import { validateEmail } from '@shared-utils/validate';
+import { IAppInfo } from '@ui/models/app';
+import { appConfigState } from '@ui/redux/features/appConfig';
+import { useAppSelector } from '@ui/redux/store';
+import { sendEmailSubscribeApiV4 } from '@ui/services/client/home';
+import FacebookIcon from '@ui/components/icon/FacebookIcon';
+import LinkedinIcon from '@ui/components/icon/LinkedinIcon';
+import TwitterIcon from '@ui/components/icon/TwitterIcon';
+import YoutubeIcon from '@ui/components/icon/YoutubeIcon';
+import { getContactApp } from '@ui/utils/getContact';
+import { validateEmail } from '@ui/utils/validate';
 import { useRef, useState } from 'react';
 import TopContactAsvab from './asvab/topContactAsvab';
 import BodyComponent from './body';

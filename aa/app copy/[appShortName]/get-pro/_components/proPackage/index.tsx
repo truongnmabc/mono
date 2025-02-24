@@ -7,7 +7,7 @@ import { shouldOpenModalLogin } from '@/redux/features/user';
 import { selectUserInfo } from '@/redux/features/user.reselect';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { getConfigProV2, IPriceConfig } from '@/utils/paypal';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import PopupGetProPayment from '../popup/popupGetPro';

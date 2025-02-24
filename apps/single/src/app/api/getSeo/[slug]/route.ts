@@ -1,5 +1,5 @@
 import { timeCaching } from '@constants/index';
-import { requestGetData } from '@shared-services/client/request';
+import { requestGetData } from '@ui/services/client/request';
 import cache from 'memory-cache';
 import { NextRequest } from 'next/server';
 export async function GET(

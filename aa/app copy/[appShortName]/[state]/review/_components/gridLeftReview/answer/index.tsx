@@ -1,6 +1,6 @@
 import { selectListQuestion } from '@/redux/features/game.reselect';
 import { useAppSelector } from '@/redux/hooks';
-import ctx from '@shared-utils/mergeClass';
+import ctx from '@ui/utils/mergeClass';
 import { useContext } from 'react';
 import { ReviewContext } from '../../context';
 

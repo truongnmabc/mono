@@ -1,7 +1,7 @@
 'use client';
 import { useMediaQuery } from '@mui/material';
-import { IAppInfo } from '@shared-models/app';
-import LazyLoadImage from '@shared-uis/components/images';
+import { IAppInfo } from '@ui/models/app';
+import LazyLoadImage from '@ui/components/images';
 import { useRouter } from 'next/navigation';
 import React, { Fragment, RefObject } from 'react';
 import { SocialsIcon } from '..';

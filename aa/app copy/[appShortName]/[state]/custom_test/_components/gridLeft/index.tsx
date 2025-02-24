@@ -20,7 +20,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import choiceStartCustomTestThunk from '@/redux/repository/game/choiceAnswer/choiceStartTest';
 import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import ModalDelete from '../modalDelete';

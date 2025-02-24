@@ -1,5 +1,5 @@
-import { ICurrentGame, IGameReducer } from '@shared-models/game';
-import { IStatusAnswer } from '@shared-models/question';
+import { ICurrentGame, IGameReducer } from '@ui/models/game';
+import { IStatusAnswer } from '@ui/models/question';
 
 export const plateHolderCurrentGame: ICurrentGame = {
   localStatus: 'new' as IStatusAnswer,

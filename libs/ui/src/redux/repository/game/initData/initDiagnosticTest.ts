@@ -1,14 +1,14 @@
-import { db } from '@shared-db';
-import { IQuestionOpt } from '@shared-models/question';
-import { IGroupExam, ITestBase } from '@shared-models/tests';
-import { RootState } from '@shared-redux/store';
-import { generateRandomNegativeId } from '@shared-utils/math';
+import { db } from '@ui/db';
+import { IQuestionOpt } from '@ui/models/question';
+import { IGroupExam, ITestBase } from '@ui/models/tests';
+import { RootState } from '@ui/redux/store';
+import { generateRandomNegativeId } from '@ui/utils/math';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
 } from './initPracticeTest';
-import { ITopicBase } from '@shared-models/topics';
+import { ITopicBase } from '@ui/models/topics';
 
 /**
  * Lưu trữ dữ liệu bài kiểm tra chuẩn đoán vào local database (IndexedDB).

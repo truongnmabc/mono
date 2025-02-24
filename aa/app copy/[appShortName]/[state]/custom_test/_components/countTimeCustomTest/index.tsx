@@ -8,7 +8,7 @@ import {
 } from '@/redux/features/game.reselect';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import finishCustomTestThunk from '@/redux/repository/game/finish/finishCustomTest';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 const CountTimeCustomTest = () => {

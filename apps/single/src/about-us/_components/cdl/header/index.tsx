@@ -1,5 +1,5 @@
 import { useMediaQuery } from '@mui/material';
-import DropDown from '@shared-uis/components/icon/about/DropDown';
+import DropDown from '@ui/components/icon/about/DropDown';
 import { useState } from 'react';
 
 import './style.scss';

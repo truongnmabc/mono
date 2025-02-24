@@ -1,10 +1,10 @@
 'use client';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
-import CoreValueIcon from '@shared-uis/components/icon/about/CoreValueIcon';
-import MissionIcon from '@shared-uis/components/icon/about/MissionIcon';
-import VisionIcon from '@shared-uis/components/icon/about/VisionIcon';
-import LazyLoadImage from '@shared-uis/components/images';
+import CoreValueIcon from '@ui/components/icon/about/CoreValueIcon';
+import MissionIcon from '@ui/components/icon/about/MissionIcon';
+import VisionIcon from '@ui/components/icon/about/VisionIcon';
+import LazyLoadImage from '@ui/components/images';
 import './style.scss';
 const introAboutUs = [
   {

@@ -2,6 +2,8 @@ export const parseBoolean = (b: unknown): boolean => {
   if (b === null || b === undefined) return false;
   return b === true || b === 'true';
 };
+export type ITheme = 'light' | 'dark';
+export type IDevice = 'mobile' | 'mobile-ios' | 'mobile-android' | 'desktop';
 
 export interface IAppInfo {
   appId: number;

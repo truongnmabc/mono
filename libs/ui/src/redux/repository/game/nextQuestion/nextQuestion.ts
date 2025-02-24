@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ICurrentGame } from '@shared-models/game';
-import { RootState } from '@shared-redux/store';
+import { ICurrentGame } from '@ui/models/game';
+import { RootState } from '@ui/redux/store';
 
 type IRes = {
   nextLever: number;

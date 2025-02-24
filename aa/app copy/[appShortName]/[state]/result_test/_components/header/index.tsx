@@ -15,7 +15,7 @@ import initPracticeThunk from '@/redux/repository/game/initData/initPracticeTest
 import { handleNavigateStudy } from '@/utils/handleNavigateStudy';
 import { updateDbTestQuestions } from '@/utils/updateDb';
 import CloseIcon from 'libs/asset/icon/CloseIcon';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
 import { IconFailResultTest } from '../icon/iconFailResultTest';

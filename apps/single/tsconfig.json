@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.dev.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
     "strict": true,
@@ -27,11 +27,6 @@
     "**/*.jsx",
     "**/*.ts",
     "**/*.tsx",
-    "../../apps/single/.next/types/**/*.ts",
-    "../../dist/acme/.next/types/**/*.ts",
-    "../../dist/apps/my-app/.next/types/**/*.ts",
-    "../../dist/apps/single/.next/types/**/*.ts",
-    "../../dist/apps/web/.next/types/**/*.ts",
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "postcss.config.mjs",

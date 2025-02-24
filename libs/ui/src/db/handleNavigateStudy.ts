@@ -1,10 +1,10 @@
-// import { db } from '@shared-db';
-// import { ITopicBase } from '@shared-models/topics';
-// import { setIndexSubTopic } from '@shared-redux/features/game';
-// import { selectSubTopics, selectTopics } from '@shared-redux/features/study';
-// import initLearnQuestionThunk from '@shared-redux/repository/game/initData/initLearningQuestion';
-// import { AppDispatch } from '@shared-redux/store';
-// import RouterApp from 'libs/constants/router.constant';
+// import { db } from '@ui/db';
+// import { ITopicBase } from '@ui/models/topics';
+// import { setIndexSubTopic } from '@ui/redux/features/game';
+// import { selectSubTopics, selectTopics } from '@ui/redux/features/study';
+// import initLearnQuestionThunk from '@ui/redux/repository/game/initData/initLearningQuestion';
+// import { AppDispatch } from '@ui/redux/store';
+// import RouterApp from '@ui/constants/router.constant';
 // import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 // import { toast } from 'react-toastify';
 

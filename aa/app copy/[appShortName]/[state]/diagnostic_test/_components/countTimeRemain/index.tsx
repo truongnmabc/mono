@@ -11,7 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import choiceAnswer from '@/redux/repository/game/choiceAnswer/choiceAnswer';
 import finishDiagnosticThunk from '@/redux/repository/game/finish/finishDiagnostic';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import React, { useCallback } from 'react';
 

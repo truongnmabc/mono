@@ -1,7 +1,7 @@
-import { db } from '@shared-db';
-import { RootState } from '@shared-redux/store';
+import { db } from '@ui/db';
+import { RootState } from '@ui/redux/store';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IGameMode } from '@shared-models/tests/tests';
+import { IGameMode } from '@ui/models/tests/tests';
 
 const resumedTestThunk = createAsyncThunk(
   'resumedTestThunk',

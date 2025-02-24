@@ -1,14 +1,14 @@
-import { db } from '@shared-db';
-import { IQuestionOpt } from '@shared-models/question';
-import { RootState } from '@shared-redux/store';
+import { db } from '@ui/db';
+import { IQuestionOpt } from '@ui/models/question';
+import { RootState } from '@ui/redux/store';
 import { axiosRequest } from '@ui/services/config/axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
 } from './initPracticeTest';
-import { IUserQuestionProgress } from '@shared-models/progress';
-import { IGameMode } from '@shared-models/tests/tests';
+import { IUserQuestionProgress } from '@ui/models/progress';
+import { IGameMode } from '@ui/models/tests/tests';
 
 type IInitQuestion = {
   subTopicTag?: string;

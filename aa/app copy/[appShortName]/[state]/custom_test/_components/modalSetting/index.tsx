@@ -27,7 +27,7 @@ import {
 } from '@/utils/math';
 import { yupResolver } from '@hookform/resolvers/yup';
 import CloseIcon from 'libs/asset/icon/CloseIcon';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';

@@ -2,7 +2,7 @@ import ProPlanSvg from '@/components/icon/ProPlanSvg';
 import { IAppInfo } from '@/models/app/appInfo';
 import { getConfigAppPro, IPriceConfig } from '@/utils/paypal';
 import Dialog from '@mui/material/Dialog';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import PayPalBtn from '../paypalButton/payPalBtn';
 import SubScriptionButton from '../paypalButton/subScriptionBtnPayment';

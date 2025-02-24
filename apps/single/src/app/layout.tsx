@@ -1,12 +1,14 @@
-import { Poppins, Vampiro_One } from 'next/font/google';
-
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-import '@shared-uis/styles/index.css';
-import { replaceYear } from '@shared-utils/time';
+import { IDevice, ITheme } from '@ui/models/app';
+import '@ui/styles/index.css';
+import { replaceYear } from '@ui/utils/time';
 import type { Metadata } from 'next';
+import { Poppins, Vampiro_One } from 'next/font/google';
 import Head from 'next/head';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
 import Script from 'next/script';
+import '../css/global.css';
 import appInfo from '../data/appInfos.json';
 import RootLayout from '../layout';
 const vampiro = Vampiro_One({
@@ -40,12 +42,14 @@ export const metadata: Metadata = {
     images: `/infos/${appInfo?.appShortName}/logo60.png`,
   },
 };
-
-export default function ParentAppLayout({
+export default async function ParentAppLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get('theme');
+  const device = cookieStore.get('device');
   return (
     <html
       lang="en"
@@ -58,7 +62,12 @@ export default function ParentAppLayout({
         />
       </Head>
       <body>
-        <RootLayout>{children}</RootLayout>
+        <RootLayout
+          device={device?.value as IDevice}
+          theme={theme?.value as ITheme}
+        >
+          {children}
+        </RootLayout>
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}

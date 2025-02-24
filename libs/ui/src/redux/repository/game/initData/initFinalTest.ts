@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { db } from '@shared-db';
-import { IQuestionOpt } from '@shared-models/question';
-import { IGameMode } from '@shared-models/tests/tests';
-import { RootState } from '@shared-redux/store';
-import { axiosRequest } from '@shared-services/config/axios';
+import { db } from '@ui/db';
+import { IQuestionOpt } from '@ui/models/question';
+import { IGameMode } from '@ui/models/tests/tests';
+import { RootState } from '@ui/redux/store';
+import { axiosRequest } from '@ui/services/config/axios';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,

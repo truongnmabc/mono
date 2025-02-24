@@ -1,6 +1,6 @@
-import LazyLoadImage from '@shared-uis/components/images';
-import { useIsMobile } from '@shared-uis/hooks/useIsMobile';
-import { IPriceConfig } from '@shared-utils/paypal';
+import LazyLoadImage from '@ui/components/images';
+import { useIsMobile } from '@ui/hooks/useIsMobile';
+import { IPriceConfig } from '@ui/utils/paypal';
 
 const ItemPrice = ({
   price,

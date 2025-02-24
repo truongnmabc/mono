@@ -1,7 +1,7 @@
-import { IUserQuestionProgress } from '@shared-models/progress';
-import { IQuestionOpt } from '@shared-models/question';
-import { IGameMode } from '@shared-models/tests/tests';
-import { RootState } from '@shared-redux/store';
+import { IUserQuestionProgress } from '@ui/models/progress';
+import { IQuestionOpt } from '@ui/models/question';
+import { IGameMode } from '@ui/models/tests/tests';
+import { RootState } from '@ui/redux/store';
 
 export const handleInitTestQuestion = (
   state: RootState['game'],

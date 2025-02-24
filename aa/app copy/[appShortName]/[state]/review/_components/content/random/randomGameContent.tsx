@@ -7,7 +7,7 @@ import ProgressQuestion from '@/components/progressQuestion';
 import QuestionContent from '@/components/question';
 import { shouldOpenSubmitTest } from '@/redux/features/tests';
 import { useAppDispatch } from '@/redux/hooks';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useContext } from 'react';
 import { ReviewContext } from '../../context';

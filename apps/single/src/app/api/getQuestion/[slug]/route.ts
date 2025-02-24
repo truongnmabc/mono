@@ -1,4 +1,4 @@
-import { requestGetData } from '@shared-services/client/request';
+import { requestGetData } from '@ui/services/client/request';
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }

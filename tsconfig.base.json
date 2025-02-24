@@ -16,17 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@ui/*": ["libs/ui/src/*"],
-      "@shared-db": ["libs/ui/src/db/index.ts"],
-      "@shared-models": ["libs/ui/src/models/index.ts"],
-      "@shared-models/*": ["libs/ui/src/models/*"],
-      "@shared-redux": ["libs/ui/src/redux/index.ts"],
-      "@shared-redux/*": ["libs/ui/src/redux/*"],
-      "@shared-services": ["libs/ui/src/services/index.ts"],
-      "@shared-services/*": ["libs/ui/src/services/*"],
-      "@shared-uis": ["libs/ui/src/uis/index.ts"],
-      "@shared-uis/*": ["libs/ui/src/uis/*"],
-      "@shared-utils": ["libs/ui/src/utils/index.ts"],
-      "@shared-utils/*": ["libs/ui/src/utils/*"],
+      "@ui/db": ["libs/ui/src/db/index.ts"],
+      "@ui/models/*": ["libs/ui/src/models/*"],
+      "@ui/redux/*": ["libs/ui/src/redux/*"],
+      "@ui/services/*": ["libs/ui/src/services/*"],
+      "@ui/components/*": ["libs/ui/src/components/*"],
+      "@ui/utils/*": ["libs/ui/src/utils/*"],
       "@single/*": ["./apps/single/src/*"]
     }
   },

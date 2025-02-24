@@ -1,5 +1,5 @@
-// import { db } from '@shared-db';
-// import { ITestBase } from '@shared-models/tests';
+// import { db } from '@ui/db';
+// import { ITestBase } from '@ui/models/tests';
 
 // export type IUpdateTestOptions = Partial<
 //   Pick<

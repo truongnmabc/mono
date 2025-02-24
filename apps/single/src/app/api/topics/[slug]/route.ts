@@ -1,4 +1,4 @@
-import { requestGetData } from '@shared-services/client/request';
+import { requestGetData } from '@ui/services/client/request';
 
 /**
  * API Handler cho HTTP GET request.

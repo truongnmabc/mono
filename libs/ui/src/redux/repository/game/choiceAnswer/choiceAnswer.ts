@@ -1,7 +1,7 @@
-import { db } from '@shared-db';
-import { ICurrentGame } from '@shared-models/game';
-import { IAnswer } from '@shared-models/question';
-import { RootState } from '@shared-redux/store';
+import { db } from '@ui/db';
+import { ICurrentGame } from '@ui/models/game';
+import { IAnswer } from '@ui/models/question';
+import { RootState } from '@ui/redux/store';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const choiceAnswer = createAsyncThunk(

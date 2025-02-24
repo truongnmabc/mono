@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMediaQuery } from '@mui/material';
 import Image from 'next/image';
-import LazyLoadImage from '@shared-uis/components/images';
+import LazyLoadImage from '@ui/components/images';
 import './index.scss';
 
 const ActivityComponent = () => {

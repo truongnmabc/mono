@@ -1,9 +1,9 @@
 'use client';
-import { appInfoState } from '@shared-redux/features/appInfo';
-import { useAppSelector } from '@shared-redux/store';
-import LazyLoadImage from '@shared-uis/components/images';
-import ForwardedLinkBlank from '@shared-uis/components/nextLink';
-import { useTheme } from '@shared-uis/hooks/useTheme';
+import { appInfoState } from '@ui/redux/features/appInfo';
+import { useAppSelector } from '@ui/redux/store';
+import LazyLoadImage from '@ui/components/images';
+import ForwardedLinkBlank from '@ui/components/nextLink';
+import { useTheme } from '@ui/hooks/useTheme';
 
 const StoreLogoV4 = () => {
   const { theme } = useTheme();

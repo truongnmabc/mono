@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICurrentGame } from '@shared-models/game';
-import { IGameMode } from '@shared-models/tests/tests';
+import { ICurrentGame } from '@ui/models/game';
+import { IGameMode } from '@ui/models/tests/tests';
 import choiceAnswer, {
   processChoiceAnswer,
 } from '../repository/game/choiceAnswer/choiceAnswer';

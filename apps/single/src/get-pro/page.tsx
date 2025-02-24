@@ -1,4 +1,4 @@
-import LazyLoadImage from '@shared-uis/components/images';
+import LazyLoadImage from '@ui/components/images';
 import ProPackage from './_components/proPackage';
 import StoreLogoV4 from './_components/storeLogo/storeLogoUpPro';
 import TitleGetPro from './_components/titleGetPro';

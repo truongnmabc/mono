@@ -1,7 +1,7 @@
 import { selectCurrentSubTopicIndex } from '@/redux/features/game.reselect';
 import { useAppSelector } from '@/redux/hooks';
 import CloseIcon from 'libs/asset/icon/CloseIcon';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 

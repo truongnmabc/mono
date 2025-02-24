@@ -6,16 +6,16 @@ import {
   OnApproveData,
 } from '@paypal/paypal-js';
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
-import { IPaymentInfos } from '@shared-models/payment';
-import { selectAppInfo } from '@shared-redux/features/appInfo.reselect';
-import { selectUserInfo } from '@shared-redux/features/user.reselect';
-import paymentSuccessThunk from '@shared-redux/repository/payment/paymentSuccess';
-import { useAppDispatch, useAppSelector } from '@shared-redux/store';
+import { IPaymentInfos } from '@ui/models/payment';
+import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
+import { selectUserInfo } from '@ui/redux/features/user.reselect';
+import paymentSuccessThunk from '@ui/redux/repository/payment/paymentSuccess';
+import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import {
   saveToDashboardAPI,
   uploadPaymentInfoAPI,
-} from '@shared-services/client/sync';
-import { updateUserInfoDashboard } from '@shared-services/client/user';
+} from '@ui/services/client/sync';
+import { updateUserInfoDashboard } from '@ui/services/client/user';
 import { useCallback } from 'react';
 import './PayPalButtonView.scss';
 

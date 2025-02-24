@@ -1,6 +1,6 @@
 'use client';
 
-import { useIsMobile } from '@shared-uis/hooks/useIsMobile';
+import { useIsMobile } from '@ui/hooks/useIsMobile';
 import { useEffect, useRef, useState } from 'react';
 import './index.scss';
 

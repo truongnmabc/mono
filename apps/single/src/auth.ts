@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 import jwt from 'jsonwebtoken';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { verifiedCodeApi } from '@shared-services/home';
+import { verifiedCodeApi } from '@ui/services/home';
 
 type IAccountInfo = {
   email: string;

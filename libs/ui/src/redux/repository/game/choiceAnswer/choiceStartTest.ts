@@ -1,9 +1,9 @@
-import { db } from '@shared-db';
-import { ITestBase } from '@shared-models/tests';
+import { db } from '@ui/db';
+import { ITestBase } from '@ui/models/tests';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getLocalUserProgress } from '../initData/initPracticeTest';
-import { IQuestionOpt } from '@shared-models/question';
-import { IGameMode } from '@shared-models/tests/tests';
+import { IQuestionOpt } from '@ui/models/question';
+import { IGameMode } from '@ui/models/tests/tests';
 
 interface IProps extends ITestBase {
   indexSubTopic: number;

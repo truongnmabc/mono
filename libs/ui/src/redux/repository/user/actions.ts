@@ -1,4 +1,4 @@
-import { db } from '@shared-db';
+import { db } from '@ui/db';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 interface IUserActions {

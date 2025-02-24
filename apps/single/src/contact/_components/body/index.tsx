@@ -1,4 +1,4 @@
-import { IAppInfo } from '@shared-models/app';
+import { IAppInfo } from '@ui/models/app';
 import React from 'react';
 import FaqAsvab from '../asvab/faqAsvab';
 import FaqCDL from '../cdl/faqCDL';

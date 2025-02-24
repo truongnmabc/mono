@@ -1,8 +1,8 @@
 import RouterApp from '@constants/router.constant';
 import Dialog from '@mui/material/Dialog';
-import { IAppInfo } from '@shared-models/app';
-import ProPlanSvg from '@shared-uis/components/icon/ProPlanSvg';
-import { getConfigAppPro, IPriceConfig } from '@shared-utils/paypal';
+import { IAppInfo } from '@ui/models/app';
+import ProPlanSvg from '@ui/components/icon/ProPlanSvg';
+import { getConfigAppPro, IPriceConfig } from '@ui/utils/paypal';
 import { useRouter } from 'next/navigation';
 import PayPalBtn from '../paypalButton/payPalBtn';
 import SubScriptionButton from '../paypalButton/subScriptionBtnPayment';

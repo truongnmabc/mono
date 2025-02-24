@@ -1,7 +1,7 @@
 'use client';
-import { appInfoState } from '@shared-redux/features/appInfo';
-import { useAppSelector } from '@shared-redux/store';
-import LazyLoadImage from '@shared-uis/components/images';
+import { appInfoState } from '@ui/redux/features/appInfo';
+import { useAppSelector } from '@ui/redux/store';
+import LazyLoadImage from '@ui/components/images';
 import React from 'react';
 
 const TotalQuestion = () => {

@@ -1,10 +1,10 @@
-import { IPassingModel } from '@shared-models/passing';
-import { IPaymentInfos } from '@shared-models/payment';
-import { IUserQuestionProgress } from '@shared-models/progress';
-import { IQuestionBase } from '@shared-models/question';
-import { ITestBase } from '@shared-models/tests';
-import { ITopicBase } from '@shared-models/topics';
-import { IUserActions } from '@shared-models/user';
+import { IPassingModel } from '@ui/models/passing';
+import { IPaymentInfos } from '@ui/models/payment';
+import { IUserQuestionProgress } from '@ui/models/progress';
+import { IQuestionBase } from '@ui/models/question';
+import { ITestBase } from '@ui/models/tests';
+import { ITopicBase } from '@ui/models/topics';
+import { IUserActions } from '@ui/models/user';
 import Dexie, { Table } from 'dexie';
 
 export class DB extends Dexie {

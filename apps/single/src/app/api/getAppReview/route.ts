@@ -1,4 +1,4 @@
-import { requestGetData } from '@shared-services/client/request';
+import { requestGetData } from '@ui/services/client/request';
 
 export async function GET() {
   const slug = process.env.NEXT_PUBLIC_APP_ID;

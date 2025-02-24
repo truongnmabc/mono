@@ -1,9 +1,9 @@
 'use client';
 import { API_PATH } from '@constants/api.constants';
-import { appInfoState } from '@shared-redux/features/appInfo';
-import { useAppSelector } from '@shared-redux/store';
-import { axiosInstance } from '@shared-services/config/axios';
-import MtUIInfinity from '@shared-uis/components/infiniteScroller';
+import { appInfoState } from '@ui/redux/features/appInfo';
+import { useAppSelector } from '@ui/redux/store';
+import { axiosInstance } from '@ui/services/config/axios';
+import MtUIInfinity from '@ui/components/infiniteScroller';
 import React, { useEffect, useState } from 'react';
 import ReviewPanelV2 from './reviewPanel';
 

@@ -1,6 +1,6 @@
-// import { db } from '@shared-db';
-// import { IPassingModel } from '@shared-models/passing';
-// import { IUserQuestionProgress } from '@shared-models/progress';
+// import { db } from '@ui/db';
+// import { IPassingModel } from '@ui/models/passing';
+// import { IUserQuestionProgress } from '@ui/models/progress';
 
 // export const totalPassingPart = ({
 //   progress,

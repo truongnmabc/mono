@@ -1,5 +1,5 @@
 import { useMediaQuery } from '@mui/material';
-import LazyLoadImage from '@shared-uis/components/images';
+import LazyLoadImage from '@ui/components/images';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { IFAQData } from '..';
 import './index.scss';

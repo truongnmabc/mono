@@ -1,5 +1,5 @@
-import { db } from '@shared-db';
-import { RootState } from '@shared-redux/store';
+import { db } from '@ui/db';
+import { RootState } from '@ui/redux/store';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const finishPracticeThunk = createAsyncThunk(

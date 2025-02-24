@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { IAppInfo } from '@shared-models/app';
-import { syncDataToWebAfterLoginAPI } from '@shared-services/sync';
+import { IAppInfo } from '@ui/models/app';
+import { syncDataToWebAfterLoginAPI } from '@ui/services/sync';
 
 /** lấy dữ liệu payment (web), inAppSubscription (mobile) và update vào redux, gọi mỗi khi vào trang */
 

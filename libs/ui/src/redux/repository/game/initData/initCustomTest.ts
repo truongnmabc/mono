@@ -1,11 +1,11 @@
-import { db } from '@shared-db';
-import { RootState } from '@shared-redux/store';
+import { db } from '@ui/db';
+import { RootState } from '@ui/redux/store';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
 } from './initPracticeTest';
-import { IQuestionOpt } from '@shared-models/question';
+import { IQuestionOpt } from '@ui/models/question';
 const initCustomTestThunk = createAsyncThunk(
   'initCustomTestThunk',
   async (

@@ -8,7 +8,7 @@ import {
 } from '@/redux/features/game.reselect';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import finishPracticeThunk from '@/redux/repository/game/finish/finishPracticeTest';
-import RouterApp from 'libs/constants/router.constant';
+import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import React, { useCallback } from 'react';
 

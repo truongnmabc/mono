@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import useActionsThunk from '../repository/user/actions';
 import getListActionThunk from '../repository/user/getActions';
 import { RootState } from '../store';
-import { IUserActions, IUserInfo, UserInfo } from '@shared-models/user';
+import { IUserActions, IUserInfo, UserInfo } from '@ui/models/user';
 
 export interface IUserReducer {
   userInfo: IUserInfo;

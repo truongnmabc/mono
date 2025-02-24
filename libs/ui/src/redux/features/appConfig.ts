@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IAppConfigData } from '@shared-models/app';
+import { IAppConfigData } from '@ui/models/app';
 import { RootState } from '../store';
 
 export interface IAppConfigReducer {

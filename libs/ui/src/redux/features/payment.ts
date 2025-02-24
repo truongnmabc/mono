@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getUserDeviceLogin } from '../repository/sync/syncData';
 
-import { InAppSubscription, IPaymentInfos } from '@shared-models/payment';
-import { IUserActions } from '@shared-redux/repository/user/getActions';
+import { InAppSubscription, IPaymentInfos } from '@ui/models/payment';
+import { IUserActions } from '@ui/redux/repository/user/getActions';
 import { RootState } from '../store';
 
 export interface IUserReducer {

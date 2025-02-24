@@ -1,5 +1,5 @@
-import { db } from '@shared-db';
-import { IPaymentInfos } from '@shared-models/payment';
+import { db } from '@ui/db';
+import { IPaymentInfos } from '@ui/models/payment';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 type IPaymentSuccess = {

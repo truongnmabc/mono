@@ -1,17 +1,17 @@
 import { PAYPAL_SUBSCRIPTION_CLIENT_ID } from '@constants/index';
-import { IAppInfo } from '@shared-models/app';
-import { IPaymentInfos } from '@shared-models/payment';
-import { selectPaymentInfo } from '@shared-redux/features/payment.reselect';
-import { shouldIsPro } from '@shared-redux/features/user';
-import { selectUserInfo } from '@shared-redux/features/user.reselect';
-import { useAppDispatch, useAppSelector } from '@shared-redux/store';
-import paymentSuccessThunk from '@shared-redux/repository/payment/paymentSuccess';
+import { IAppInfo } from '@ui/models/app';
+import { IPaymentInfos } from '@ui/models/payment';
+import { selectPaymentInfo } from '@ui/redux/features/payment.reselect';
+import { shouldIsPro } from '@ui/redux/features/user';
+import { selectUserInfo } from '@ui/redux/features/user.reselect';
+import { useAppDispatch, useAppSelector } from '@ui/redux/store';
+import paymentSuccessThunk from '@ui/redux/repository/payment/paymentSuccess';
 import {
   cancelSubscriptionAPI,
   checkPaypalStatusAPI,
   IResSubcription,
-} from '@shared-services/client/paypal';
-import { IPriceConfig } from '@shared-utils/paypal';
+} from '@ui/services/client/paypal';
+import { IPriceConfig } from '@ui/utils/paypal';
 import {
   CreateSubscriptionActions,
   OnApproveActions,

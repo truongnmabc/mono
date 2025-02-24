@@ -1,0 +1,12 @@
+:root {
+  --main-background-color: #fff;
+  --main-color: #000;
+  --main-color-bold: #000;
+  --main-back-color-contact: #fff;
+  --main-linear-gradient-banner-download: linear-gradient(
+    180deg,
+    #000000 0%,
+    #000000 100%
+  );
+  /* --main-background-color: rgba(252, 167, 45, 1); */
+}

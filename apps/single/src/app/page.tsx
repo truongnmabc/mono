@@ -1,10 +1,10 @@
-// import BannerHome from '@shared-uis/components/banner';
-// import MyContainer from '@shared-uis/components/container';
-// import GridTest from '@shared-uis/components/home/gridTests/gridTestHome';
-// import GridTopics from '@shared-uis/components/home/gridTopic/gridTopics';
-// import TitleHomeApp from '@shared-uis/components/home/title';
-// import SeoContent from '@shared-uis/components/seoContent';
-import { detectAgent } from '@shared-utils/device';
+// import BannerHome from '@ui/components/banner';
+// import MyContainer from '@ui/components/container';
+// import GridTest from '@ui/components/home/gridTests/gridTestHome';
+// import GridTopics from '@ui/components/home/gridTopic/gridTopics';
+// import TitleHomeApp from '@ui/components/home/title';
+// import SeoContent from '@ui/components/seoContent';
+import { detectAgent } from '@ui/utils/device';
 // import appInfos from '@single/data/appInfos.json';
 // import contentSeo from '@single/data/seo-home.json';
 // import topics from '@single/data/topicsAndTest.json';

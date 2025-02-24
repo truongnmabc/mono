@@ -2,10 +2,10 @@
 // import '@/styles/slick-theme.min.css';
 // import '@/styles/slick.css';
 // import '@/styles/slick.min.css';
-import { IAppInfo } from '@shared-models/app';
-import { IMember } from '@shared-models/memberContact';
-import { getMemberApi } from '@shared-services/client/contact';
-import LazyLoadImage from '@shared-uis/components/images';
+import { IAppInfo } from '@ui/models/app';
+import { IMember } from '@ui/models/memberContact';
+import { getMemberApi } from '@ui/services/client/contact';
+import LazyLoadImage from '@ui/components/images';
 import { useEffect, useState } from 'react';
 import ActivityComponent from './asvab/activity';
 import HeaderComponent from './asvab/header';
