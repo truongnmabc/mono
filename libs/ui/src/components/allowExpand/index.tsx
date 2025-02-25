@@ -4,7 +4,7 @@ import { ITopicBase } from '@ui/models/topics';
 import { selectTopicsId } from '@ui/redux/features/study.reselect';
 import { useAppSelector } from '@ui/redux/store';
 import { detectAgent } from '@ui/utils/device';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import RouterApp from '@ui/constants/router.constant';
 import { usePathname } from 'next/navigation';
 import React, { useContext } from 'react';

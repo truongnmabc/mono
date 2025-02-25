@@ -1,9 +1,9 @@
-import { baseImageUrl } from '@constants/index';
+import { baseImageUrl } from '@ui/constants/index';
 import Dialog from '@mui/material/Dialog';
 import { IAppInfo } from '@ui/models/app';
 import { ICurrentGame } from '@ui/models/game';
 import { decrypt } from '@ui/utils/crypto';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import { MathJax } from 'better-react-mathjax';
 import clsx from 'clsx';
 import GetIconPrefix from '../choicesPanel/getIcon';

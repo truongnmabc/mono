@@ -1,7 +1,7 @@
 'use client';
 import MtUiLSpinningBubbles from '@ui/components/loading';
 import MtUiRipple, { useRipple } from '@ui/components/ripple';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import React, { ForwardRefRenderFunction, useEffect, useState } from 'react';
 import { BaseButtonProps } from './type';

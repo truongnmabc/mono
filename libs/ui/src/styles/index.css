@@ -1,78 +1,77 @@
-@import "./styles/tailwinds.css";
-@import "./styles/root.css";
-@import "./styles/zmp-ui.css";
-@import "./styles/local.css";
-@import "./styles/progress.css";
-@import "./styles/404.css";
+@import './styles/tailwinds.css';
+@import './styles/root.css';
+@import './styles/zmp-ui.css';
+@import './styles/local.css';
+@import './styles/progress.css';
 html,
 body {
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-    overflow: hidden;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 ::-webkit-scrollbar {
-    /* width: 8px !important; */
-    /* display: block !important; */
-    width: 0px !important;
-    display: none !important;
+  /* width: 8px !important; */
+  /* display: block !important; */
+  width: 0px !important;
+  display: none !important;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #fff;
+  background: #fff;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #c9c9c9;
-    border-radius: 8px;
+  background: #c9c9c9;
+  border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #adadad;
+  background: #adadad;
 }
 
 @media screen and (max-width: 600px) {
-    ::-webkit-scrollbar {
-        width: 0px !important;
-        display: none !important;
-    }
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    display: none !important;
+  }
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: #fff;
-    }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
 
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: #c9c9c9;
-        border-radius: 8px;
-    }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #c9c9c9;
+    border-radius: 8px;
+  }
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #adadad;
-    }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #adadad;
+  }
 }
 
 main {
-    font-family: var(--font-poppins);
+  font-family: var(--font-poppins);
 }
 
 .scrollbar-none {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .scrollbar-none::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge, and Opera */
+  display: none; /* Chrome, Safari, Edge, and Opera */
 }
 span,
 div,
@@ -82,45 +81,45 @@ h3,
 h4,
 h5,
 p {
-    color: var(--text-color);
+  color: var(--text-color);
 }
 @media screen and (max-width: 768px) {
-    .max-w-component-desktop {
-        max-width: 100%;
-    }
+  .max-w-component-desktop {
+    max-width: 100%;
+  }
 }
 .max-w-component-desktop {
-    max-width: 1238px;
-    padding-left: 16px;
-    padding-right: 16px;
+  max-width: 1238px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 * {
-    font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .max-w-page {
-    max-width: 1238px;
-    padding-left: 16px;
-    padding-right: 16px;
+  max-width: 1238px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .hover-main-color:hover {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .main-color {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .main-color-bold {
-    color: var(--main-color-bold);
+  color: var(--main-color-bold);
 }
 
 .v4-button-animation {
-    transition: transform 0.15s ease, opacity 0.2s;
+  transition: transform 0.15s ease, opacity 0.2s;
 }
 .v4-button-animation:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
+  transform: translateY(-3px);
+  opacity: 0.9;
 }

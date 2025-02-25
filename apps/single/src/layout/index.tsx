@@ -12,7 +12,8 @@ import appConfig from '../data/appConfig.json';
 import appInfos from '../data/appInfos.json';
 import StoreProvider from './StoreProvider';
 import { IDevice } from '@ui/models/app';
-
+import FooterApp from '@ui/components/footer';
+// import AuthProvider from '@ui/components/layout/authProvider';
 export default function RootLayout({
   children,
   device = 'desktop',
@@ -37,7 +38,7 @@ export default function RootLayout({
           />
           <div className="flex-1 flex flex-col bg-theme-white dark:bg-theme-dark  justify-between">
             {children}
-            {/* <FooterApp /> */}
+            <FooterApp />
           </div>
         </WrapperScroll>
         <ToastContainer autoClose={2000} />
@@ -47,6 +48,8 @@ export default function RootLayout({
         <PopupSubscription />
         <AdsSense />
         <AdsBlockerDetect /> */}
+        {/* <AuthProvider /> */}
+
         <EventListener />
         <IniDexieIndexDb />
       </AppThemeProvider>

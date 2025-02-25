@@ -1,7 +1,5 @@
-'use client';
 import { Grid2 } from '@mui/material';
-import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
-import { useAppSelector } from '@ui/redux/store';
+import { IAppInfo } from '@ui/models';
 import React from 'react';
 import CustomTestSvg from './itemGridTest/icon/iconCustomTest';
 import DiagnosticTestSvg from './itemGridTest/icon/iconDiagnosticTest';
@@ -35,9 +33,13 @@ export const mockGirdTests = [
     name: 'Custom Test',
   },
 ];
-const GridTest = () => {
-  const appInfo = useAppSelector(selectAppInfo);
-
+const GridTest = ({
+  appInfo,
+  isMobile,
+}: {
+  appInfo: IAppInfo;
+  isMobile: boolean;
+}) => {
   return (
     <div className="w-full mt-6 sm:mt-12">
       <h3 className="sm:text-[40px] sm:leading-[60px] text-center text-2xl font-bold">

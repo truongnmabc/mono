@@ -1,6 +1,6 @@
 'use client';
 
-import { baseImageUrl } from '@constants/index';
+import { baseImageUrl } from '@ui/constants/index';
 import { CancelRounded, CheckCircleRounded } from '@mui/icons-material';
 import { ICurrentGame } from '@ui/models/game';
 import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
@@ -10,7 +10,7 @@ import GetIconPrefix from '@ui/components/choicesPanel/getIcon';
 import LazyLoadImage from '@ui/components/images';
 import Reaction from '@ui/components/reaction';
 import { decrypt } from '@ui/utils/crypto';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import { MathJax } from 'better-react-mathjax';
 import clsx from 'clsx';
 import React, { useCallback } from 'react';

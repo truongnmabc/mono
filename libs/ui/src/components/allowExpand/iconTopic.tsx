@@ -1,4 +1,4 @@
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import { CheckedIcon, LockIcon } from './icon';
 import './styles.css';
 export const IconSubTopic = ({

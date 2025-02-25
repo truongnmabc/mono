@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { signIn, useSession } from 'next-auth/react';
 import React, { useCallback, useEffect } from 'react';
 import ModalLogin from '../login';
-const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ID;
+const GOOGLE_CLIENT_ID = process.env['NEXT_PUBLIC_GOOGLE_ID'];
 
 type IUser = {
   id?: string;

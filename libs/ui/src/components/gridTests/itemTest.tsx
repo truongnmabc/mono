@@ -1,4 +1,4 @@
-import { TypeParam } from '@constants/index';
+import { TypeParam } from '@ui/constants/index';
 import { db } from '@ui/db';
 import initTestQuestionThunk from '@ui/redux/repository/game/initData/initPracticeTest';
 import { useAppDispatch } from '@ui/redux/store';

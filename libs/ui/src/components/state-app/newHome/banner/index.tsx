@@ -3,7 +3,7 @@ import LazyLoadImage from '@/components/images';
 import ForwardedLinkBlank from '@/components/nextLink';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { IAppInfo } from '@/models/app/appInfo';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import React from 'react';
 const BannerHome = ({
   appInfo,

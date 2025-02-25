@@ -1,8 +1,8 @@
 'use client';
 
-import { calculatePassingApp } from '@ui/utils/calculate';
 import React, { useEffect, useState } from 'react';
 import './passing.css';
+import { calculatePassingApp } from '@ui/db/calculate';
 
 const PassingProbability = () => {
   const [passingValue, setPassingValue] = useState(0);
@@ -22,7 +22,7 @@ const PassingProbability = () => {
   }, []);
 
   return (
-    <div className="p-4 rounded-md bg-[#2121210A] dark:bg-black">
+    <div className="p-4 rounded-md bg-[#2121210A] dark:bg-black sm:hidden">
       <h3 className="font-semibold truncate text-lg">Passing Probability</h3>
       <div className="mt-3 h-12 w-full custom-progress relative">
         <progress value={passingValue} max={100} className="w-full"></progress>

@@ -11,8 +11,8 @@ const compat = new FlatCompat({
 });
 
 export default [
-  ...fixupConfigRules(compat.extends('next')),
-  ...fixupConfigRules(compat.extends('next/core-web-vitals')),
+  compat.extends('next'),
+  compat.extends('next/core-web-vitals'),
   ...baseConfig,
   ...nx.configs['flat/react-typescript'],
   {

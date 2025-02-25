@@ -1,10 +1,11 @@
-import { requestGetData } from '@ui/services/client/request';
+import { axiosRequest } from '@ui/services/config/axios';
 
 export async function GET() {
   const slug = process.env.NEXT_PUBLIC_APP_ID;
 
   try {
-    const data = await requestGetData({
+    const data = await axiosRequest({
+      method: 'get',
       url:
         'https://dashboard-api2.abc-elearning.org/ratings-reviews?appID=' +
         slug,

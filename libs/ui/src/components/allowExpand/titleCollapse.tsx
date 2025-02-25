@@ -3,7 +3,7 @@ import { ITopicBase } from '@ui/models/topics';
 import { selectSubTopics } from '@ui/redux/features/study';
 import { selectSubTopicsId } from '@ui/redux/features/study.reselect';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import React from 'react';
 import LazyLoadImage from '../images';

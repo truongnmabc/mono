@@ -4,7 +4,7 @@ import { IAnswer } from '@ui/models/question';
 import choiceAnswer from '@ui/redux/repository/game/choiceAnswer/choiceAnswer';
 import { useAppDispatch } from '@ui/redux/store';
 import MtUiSkeleton from '@ui/components/loading-skeleton';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import { MathJax } from 'better-react-mathjax';
 import React, { useCallback } from 'react';
 import GetIconPrefix from '../choicesPanel/getIcon';

@@ -1,5 +1,5 @@
 'use client';
-import { baseImageUrl } from '@constants/index';
+import { baseImageUrl } from '@ui/constants/index';
 import { IGameMode } from '@ui/models/tests/tests';
 import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import {

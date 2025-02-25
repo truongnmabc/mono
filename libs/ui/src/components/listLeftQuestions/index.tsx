@@ -8,7 +8,7 @@ import {
   selectListQuestion,
 } from '@ui/redux/features/game.reselect';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import React from 'react';
 

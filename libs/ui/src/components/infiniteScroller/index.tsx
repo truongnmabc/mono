@@ -1,4 +1,4 @@
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { throttle } from 'throttle-debounce';

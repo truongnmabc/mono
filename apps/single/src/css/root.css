@@ -1,12 +1,18 @@
 :root {
-  --main-background-color: #fff;
-  --main-color: #000;
-  --main-color-bold: #000;
-  --main-back-color-contact: #fff;
+  --main-background-color: #f9f7ee;
+  --main-color: #7c6f5b;
+  --main-color-bold: #443c2f;
+  --main-back-color-contact: #7c6f5b0a;
   --main-linear-gradient-banner-download: linear-gradient(
-    180deg,
-    #000000 0%,
-    #000000 100%
+    90deg,
+    #ffeed5 0%,
+    #fffcd9 100%
   );
+  --base-color: #ebebeb;
+  --highlight-color: #f5f5f5;
+  --animation-duration: 1.5s;
+  --animation-direction: normal;
+  --pseudo-element-display: block;
+  --mtui-background-skeleton: #e9ebed;
   /* --main-background-color: rgba(252, 167, 45, 1); */
 }

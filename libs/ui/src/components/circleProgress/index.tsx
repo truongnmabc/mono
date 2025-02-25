@@ -1,4 +1,4 @@
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 
 type IProps = {
   percentage: number;

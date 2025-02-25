@@ -8,13 +8,14 @@ import { selectSubTopics, selectTopics } from '@ui/redux/features/study';
 import initQuestionThunk from '@ui/redux/repository/game/initData/initLearningQuestion';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { trackingEventGa4 } from '@ui/utils/event';
-import { handleGetNextPart } from '@ui/utils/handleNavigateStudy';
+// import { handleGetNextPart } from '@ui/utils/handleNavigateStudy';
 import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import RouterApp from '@ui/constants/router.constant';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 
 const ListStudyDrawer = ({
   setOpenMenuDrawer,
@@ -46,37 +47,37 @@ const ListStudyDrawer = ({
           to: topic.tag,
         },
       });
-      const { partId, subTopicId, allCompleted, currentIndex, turn } =
-        await handleGetNextPart({
-          topic,
-        });
-      if (!partId) {
-        toast.error('Error: Không tìm thấy partId hợp lệ');
-        return;
-      }
-      if (allCompleted) {
-        router.push(
-          `${RouterApp.Finish}?partId=${partId}&subTopicId=${subTopicId}&topic=${topic.tag}`
-        );
-        return;
-      }
-      const _href = `/study/${topic.tag}-practice-test?type=learn&partId=${partId}`;
+      // const { partId, subTopicId, allCompleted, currentIndex, turn } =
+      //   await handleGetNextPart({
+      //     topic,
+      //   });
+      // if (!partId) {
+      // toast.error('Error: Không tìm thấy partId hợp lệ');
+      //   return;
+      // }
+      // if (allCompleted) {
+      //   router.push(
+      //     `${RouterApp.Finish}?partId=${partId}&subTopicId=${subTopicId}&topic=${topic.tag}`
+      //   );
+      //   return;
+      // }
+      // const _href = `/study/${topic.tag}-practice-test?type=learn&partId=${partId}`;
 
-      dispatch(selectTopics(topic.id));
-      if (subTopicId) dispatch(selectSubTopics(subTopicId));
-      dispatch(setIndexSubTopic(currentIndex + 1));
+      // dispatch(selectTopics(topic.id));
+      // if (subTopicId) dispatch(selectSubTopics(subTopicId));
+      // dispatch(setIndexSubTopic(currentIndex + 1));
 
-      if (partId) {
-        dispatch(
-          initQuestionThunk({
-            partId,
-            subTopicId,
-            attemptNumber: turn,
-          })
-        );
-      }
+      // if (partId) {
+      //   dispatch(
+      //     initQuestionThunk({
+      //       partId,
+      //       subTopicId,
+      //       attemptNumber: turn,
+      //     })
+      //   );
+      // }
       setOpenMenuDrawer(false);
-      router.push(_href);
+      // router.push(_href);
     },
     [router, dispatch, setOpenMenuDrawer]
   );
@@ -109,16 +110,18 @@ const ListStudyDrawer = ({
         })}
       >
         {list.map((item, index) => (
-          <div
-            className="hover:bg-[#2121211f] relative overflow-hidden cursor-pointer"
-            onClick={() => handleClick(item)}
-            key={index}
-          >
-            <div className="p-2 text-lg">{item.name}</div>
-            {index + 1 < list.length && (
-              <div className="w-full h-[1px] bg-[#e4e4e4] "></div>
-            )}
-          </div>
+          <Link key={index} href={`${RouterApp.Study}/${item.tag}`}>
+            <div
+              className="hover:bg-[#2121211f] relative overflow-hidden cursor-pointer"
+              onClick={() => handleClick(item)}
+              key={index}
+            >
+              <div className="p-2 text-lg">{item.name}</div>
+              {index + 1 < list.length && (
+                <div className="w-full h-[1px] bg-[#e4e4e4] "></div>
+              )}
+            </div>
+          </Link>
         ))}
       </div>
     </div>

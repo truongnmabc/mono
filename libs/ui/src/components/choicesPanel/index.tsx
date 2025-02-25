@@ -1,5 +1,5 @@
 'use client';
-import { TypeParam } from '@constants/index';
+import { TypeParam } from '@ui/constants/index';
 import { IGameMode } from '@ui/models/tests/tests';
 import { setCurrentQuestion } from '@ui/redux/features/game';
 import {

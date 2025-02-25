@@ -1,7 +1,7 @@
 'use client';
 import { IAppInfo } from '@ui/models/app';
 import { trackingEventGa4 } from '@ui/utils/event';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import React from 'react';
 import LazyLoadImage from '../images';
 

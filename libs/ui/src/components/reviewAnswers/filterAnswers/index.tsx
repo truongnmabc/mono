@@ -7,7 +7,7 @@ import { MtUiButton } from '@/components/button';
 import DialogResponsive from '@/components/dialogResponsive';
 import { db } from '@/db/db.model';
 import { ITopicBase } from '@/models/topics/topicsProgress';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import React, { useCallback, useEffect, useState } from 'react';
 type IProps = {
   listTopic: ITopicEndTest[];

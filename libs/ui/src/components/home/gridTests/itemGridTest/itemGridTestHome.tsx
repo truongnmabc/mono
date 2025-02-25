@@ -1,4 +1,5 @@
-import { TypeParam } from '@constants/index';
+'use client';
+import { TypeParam } from '@ui/constants/index';
 import { Grid2 } from '@mui/material';
 import { db } from '@ui/db';
 import { resetState } from '@ui/redux/features/game';

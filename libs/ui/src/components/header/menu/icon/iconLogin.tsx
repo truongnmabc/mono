@@ -7,7 +7,7 @@ import { shouldOpenModalLogin } from '@ui/redux/features/user';
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import LazyLoadImage from '@ui/components/images';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import RouterApp from '@ui/constants/router.constant';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';

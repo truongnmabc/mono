@@ -9,7 +9,7 @@ import MtUiRipple, { useRipple } from '@ui/components/ripple';
 import { useIsMobile } from '@ui/hooks/useIsMobile';
 import { trackingEventGa4 } from '@ui/utils/event';
 import { handleNavigateStudy } from '@ui/utils/handleNavigateStudy';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import RouterApp from '@ui/constants/router.constant';
 import { usePathname, useRouter } from 'next/navigation';

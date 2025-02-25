@@ -29,7 +29,7 @@ const GridTopics = ({
 
       <PassingHome isMobile={isMobile} />
 
-      <div
+      {/* <div
         className={clsx(
           'grid  mt-6 sm:mt-10 sm:grid-cols-1 gap-4 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-4 md:gap-4'
         )}
@@ -48,7 +48,7 @@ const GridTopics = ({
             <Wrapper topicsId={topic.id} />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

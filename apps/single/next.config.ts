@@ -63,8 +63,8 @@ const nextConfig: NextConfig = {
 
   //   return config;
   // },
-  // output: 'standalone',
-  // outputFileTracingRoot: __dirname,
+  output: 'standalone',
+  outputFileTracingRoot: __dirname,
 };
 
 const plugins = [withNx];

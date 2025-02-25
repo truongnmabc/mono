@@ -1,8 +1,7 @@
-'use client';
 import React, { Fragment } from 'react';
 import IconGetPro from './icon/iconGetPro';
-// import LoginHeader from './icon/iconLogin';
-// import IconMenuHeader from './icon/iconMenuHeader';
+import LoginHeader from './icon/iconLogin';
+import IconMenuHeader from './icon/iconMenuHeader';
 import IconReviewHeader from './icon/iconReview';
 import IconTopics from './icon/iconTopics';
 
@@ -24,14 +23,14 @@ const menus: IItemMenuHeader[] = [
     name: 'Review',
     icon: <IconReviewHeader />,
   },
-  // {
-  //   name: 'Log in',
-  //   icon: <LoginHeader />,
-  // },
-  // {
-  //   name: 'Menu',
-  //   icon: <IconMenuHeader />,
-  // },
+  {
+    name: 'Log in',
+    icon: <LoginHeader />,
+  },
+  {
+    name: 'Menu',
+    icon: <IconMenuHeader />,
+  },
 ];
 
 const MenuHeaderDesktop = () => {

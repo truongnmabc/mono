@@ -5,13 +5,11 @@ import { IAppInfo } from '@ui/models/app';
 import { appConfigState } from '@ui/redux/features/appConfig';
 import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import { useAppSelector } from '@ui/redux/store';
-import { sendEmailSubscribeApiV4 } from '@ui/services/client/home';
 import FacebookIcon from '@ui/components/icon/FacebookIcon';
 import TwitterIcon from '@ui/components/icon/TwitterIcon';
 import YoutubeIcon from '@ui/components/icon/YoutubeIcon';
 import LazyLoadImage from '@ui/components/images';
 import ForwardedLinkBlank from '@ui/components/nextLink';
-import { getContactApp } from '@ui/utils/getContact';
 import { validateEmail } from '@ui/utils/validate';
 import RouterApp from '@ui/constants/router.constant';
 import Link from 'next/link';
@@ -19,6 +17,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import { memo, useRef } from 'react';
 import './FooterLandingV4.scss';
 import { DmcaIcon } from './info/iconDmca';
+import { getContactApp } from '@ui/utils';
+import { sendEmailSubscribeApiV4 } from '@ui/services/home';
 
 const FooterLandingV4 = () => {
   const router = useRouter();

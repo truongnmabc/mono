@@ -1,5 +1,5 @@
 import { KEY_CLICK_ADS, MAX_CLICK_ADS_PER_USER } from '@/constants';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import React, { useEffect } from 'react';
 import BtnRemove from './BtnRemove';
 import './index.css';

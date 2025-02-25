@@ -1,4 +1,4 @@
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import { CSSProperties } from 'react';
 const MyContainer = ({
   children,

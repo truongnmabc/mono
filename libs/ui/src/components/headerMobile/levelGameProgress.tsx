@@ -2,7 +2,7 @@
 
 import { selectListQuestion } from '@ui/redux/features/game.reselect';
 import { useAppSelector } from '@ui/redux/store';
-import ctx from '@ui/utils/mergeClass';
+import ctx from '@ui/utils/twClass';
 import React from 'react';
 type IProps = {
   isActions?: boolean;

@@ -27,11 +27,16 @@
     "**/*.jsx",
     "**/*.ts",
     "**/*.tsx",
+    "../../dist/.next/types/**/*.ts",
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "postcss.config.mjs",
-    "../../dist/.next/types/**/*.ts",
-    "src/**/*"
+    "src/**/*",
+    "../../dist/apps/single/.next/types/**/*.ts",
+    "../../aa/get-pro",
+    "../../aa/contact",
+    "../../aa/billing",
+    "../../aa/about-us"
   ],
   "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }
