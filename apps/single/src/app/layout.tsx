@@ -4,9 +4,7 @@ import '@ui/styles/index.css';
 import { replaceYear } from '@ui/utils/time';
 import type { Metadata } from 'next';
 import { Poppins, Vampiro_One } from 'next/font/google';
-import Head from 'next/head';
 import { cookies } from 'next/headers';
-import Link from 'next/link';
 import Script from 'next/script';
 import '../css/global.css';
 import appInfo from '../data/appInfos.json';
@@ -55,12 +53,6 @@ export default async function ParentAppLayout({
       lang="en"
       className={`${vampiro?.variable} ${poppins?.variable} font-sans`}
     >
-      <Head>
-        <Link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
       <body>
         <RootLayout
           device={device?.value as IDevice}
