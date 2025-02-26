@@ -9,6 +9,7 @@ import appInfos from '@single/data/appInfos.json';
 import contentSeo from '@single/data/seo-home.json';
 import topics from '@single/data/topicsAndTest.json';
 import { headers } from 'next/headers';
+import Link from 'next/link';
 
 const Page = async () => {
   const headersList = await headers();
@@ -18,6 +19,9 @@ const Page = async () => {
   return (
     <MyContainer>
       <TitleHomeApp appInfo={appInfos} />
+      <Link href="/study" prefetch={true}>
+        Study
+      </Link>
       <GridTopics
         isMobile={isMobile}
         topics={topics.topics.map((topic) => ({
