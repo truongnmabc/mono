@@ -234,7 +234,7 @@
     try {
       const dbName = 'asvab';
       const dbVersion = 10;
-      const db = await window.idb.openDB(dbName, dbVersion, {
+      await window.idb.openDB(dbName, dbVersion, {
         upgrade(db) {
           if (!db.objectStoreNames.contains('userProgress')) {
             const store = db.createObjectStore('userProgress', {

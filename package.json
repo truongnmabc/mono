@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "rename": "node scripts/rename.mjs",
-    "init": "node scripts/init/index.js"
+    "init": "node scripts/init/index.js",
+    "build": "node scripts/b.js"
   },
   "private": true,
   "type": "module",

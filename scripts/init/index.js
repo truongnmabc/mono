@@ -1,18 +1,18 @@
+import { spinner } from '@clack/prompts';
+import { exec } from 'child_process';
+import fs from 'fs';
 import minimist from 'minimist';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
-import fs from 'fs';
-import { exec } from 'child_process';
-import { spinner } from '@clack/prompts';
 
 import {
   getDataSeo,
   getDataSingleApp,
-  getSingleAppConfig,
   getDataTopicsAndTest,
   getQuestionByTopics,
+  getSingleAppConfig,
 } from '../utils/fetchData.js';
-import { saveJSONFile, appendToEnvFile } from '../utils/index.js';
+import { appendToEnvFile, saveJSONFile } from '../utils/index.js';
 
 const DATA_PATH = process.cwd();
 
@@ -85,10 +85,50 @@ function processTopicsAndTests(topicsAndTest, appShortName) {
   const tests = topicsAndTest.tests;
   const slugs = topics.map((topic) => ({
     slug: `${appShortName}-${topic.tag}-practice-test`,
-    tag: topic.tag,
+    tag: `${appShortName}-${topic.tag}-practice-test`,
   }));
-  return { topics, tests, slugs };
+  const branchs = listBranchTest.map((item) => ({
+    slug: `${item.title}-${appShortName}-practice-test`,
+    tag: `${item.title}-${appShortName}-practice-test`,
+  }));
+
+  const listSlug = [
+    ...slugs,
+    ...branchs,
+    {
+      slug: `full-length-${appShortName}-practice-test`,
+      tag: `full-length-${appShortName}-practice-test`,
+    },
+  ];
+  return { topics, tests, slugs: listSlug };
 }
+
+const listBranchTest = [
+  {
+    id: 1,
+    title: 'marine',
+  },
+  {
+    id: 2,
+    title: 'navy',
+  },
+  {
+    id: 3,
+    title: 'army',
+  },
+  {
+    id: 4,
+    title: 'coast-guard',
+  },
+  {
+    id: 5,
+    title: 'air-force',
+  },
+  {
+    id: 6,
+    title: 'national-guard',
+  },
+];
 
 /**
  * 3. Hàm xử lý dữ liệu test
@@ -106,14 +146,173 @@ async function processTestData(topics, tests) {
   const listT = topicsResult.map((item) => item.topics);
   const listQ = topicsResult.flatMap((item) => item.questions);
   const diagnosticTest = await getDiagnosticTest(topics, listQ);
-  return { listTests, listT, listQ, diagnosticTest };
+  const branchTest = await Promise.all(
+    listBranchTest.map(() => getBranchTest(topics, listQ))
+  );
+  return { listTests, listT, listQ, diagnosticTest, branchTest };
+}
+
+const totalQuestionBrachTest = 135;
+const totalDurationBrachTest = 135;
+
+const fetchQuestionsForTopics = async ({
+  selectListTopic,
+  countQuestionTopic,
+  remainderQuestionTopic,
+  excludeListID = [],
+  target,
+  questions,
+}) => {
+  const listQuestion = [];
+  const selectedQuestionIds = new Set();
+
+  const allPartIds = selectListTopic.flatMap((topic) =>
+    topic.topics.flatMap((subTopic) => subTopic.topics.map((part) => part.id))
+  );
+
+  if (!allPartIds.length) return [];
+
+  let allQuestions = questions;
+
+  if (excludeListID.length) {
+    allQuestions = allQuestions?.filter(
+      (question) => !excludeListID.includes(question.id)
+    );
+  }
+
+  const questionMap = new Map();
+
+  allQuestions?.forEach((question) => {
+    if (!questionMap.has(question.partId)) {
+      questionMap.set(question.partId, []);
+    }
+    questionMap.get(question.partId)?.push(question);
+  });
+
+  for (const [topicIndex, topic] of selectListTopic.entries()) {
+    const listPart = topic.topics.flatMap((subTopic) => subTopic.topics);
+    if (!listPart.length) continue;
+
+    const countQuestionPart = Math.floor(countQuestionTopic / listPart.length);
+    const remainderQuestionPart = countQuestionTopic % listPart.length;
+
+    for (const [partIndex, part] of listPart.entries()) {
+      const topicData = questionMap.get(part.id) || [];
+      if (!topicData.length) continue;
+
+      const questionCount =
+        partIndex === listPart.length - 1
+          ? countQuestionPart + remainderQuestionPart
+          : countQuestionPart;
+
+      const randomQuestions = topicData
+        .sort(() => Math.random() - 0.5)
+        .filter((item) => !selectedQuestionIds.has(item.id))
+        .slice(0, questionCount)
+        .map((item) => {
+          selectedQuestionIds.add(item.id);
+          return {
+            ...item,
+            tag: topic.tag,
+            icon: topic.icon,
+            parentId: topic.id,
+          };
+        });
+
+      listQuestion.push(...randomQuestions);
+    }
+
+    if (
+      topicIndex === selectListTopic.length - 1 &&
+      remainderQuestionTopic > 0
+    ) {
+      const lastParts = listPart.slice(-5).map((part) => part.id);
+
+      const extraQuestions = lastParts
+        .flatMap((partId) => questionMap.get(partId) || [])
+        .sort(() => Math.random() - 0.5)
+        .filter((item) => !selectedQuestionIds.has(item.id))
+        .slice(0, remainderQuestionTopic)
+        .map((item) => {
+          selectedQuestionIds.add(item.id);
+          return {
+            ...item,
+            tag: topic.tag,
+            icon: topic.icon,
+            parentId: topic.id,
+          };
+        });
+
+      listQuestion.push(...extraQuestions);
+    }
+  }
+
+  if (listQuestion.length < target) {
+    const remainingCount = target - listQuestion.length;
+
+    // Get all available questions that haven't been selected yet
+    const remainingQuestions = allQuestions
+      .filter((question) => !selectedQuestionIds.has(question.id))
+      .sort(() => Math.random() - 0.5)
+      .slice(0, remainingCount)
+      .map((item) => {
+        const topic = selectListTopic.find((t) =>
+          t.topics.some((st) => st.topics.some((p) => p.id === item.partId))
+        );
+        return {
+          ...item,
+          tag: topic?.tag || '',
+          icon: topic?.icon || '',
+          parentId: topic?.id || 0,
+        };
+      });
+
+    listQuestion.push(...remainingQuestions);
+  }
+
+  return listQuestion;
+};
+
+async function getBranchTest(topics, listQ) {
+  const countQuestionTopic = Math.floor(totalQuestionBrachTest / topics.length);
+  const remainderQuestionTopic = totalQuestionBrachTest % topics.length;
+  const id = generateRandomNegativeId();
+
+  const listQuestion = await fetchQuestionsForTopics({
+    selectListTopic: topics,
+    countQuestionTopic,
+    remainderQuestionTopic,
+    excludeListID: [],
+    target: totalQuestionBrachTest,
+    questions: listQ,
+  });
+  const groupExamData = await generateGroupExamData({
+    questions: listQuestion,
+    topics: topics,
+  });
+  return {
+    totalDuration: totalDurationBrachTest,
+    passingThreshold: 70,
+    isGamePaused: false,
+    id: id,
+    startTime: Date.now(),
+    gameMode: 'branchTest',
+    gameDifficultyLevel: 'newbie',
+    topicIds: topics.map((item) => item.id),
+    status: 0,
+    attemptNumber: 1,
+    elapsedTime: 0,
+    totalQuestion: totalQuestionBrachTest,
+    groupExamData: groupExamData,
+    createDate: Date.now(), // Giữ nguyên createData khi update
+  };
 }
 
 /**
  * 4. Hàm lưu các file JSON liên quan đến dữ liệu test
  */
-function saveTestData(listTests, diagnosticTest, listT, listQ) {
-  const dataTest = [...listTests, diagnosticTest];
+function saveTestData(listTests, diagnosticTest, listT, listQ, branchTest) {
+  const dataTest = [...listTests, diagnosticTest, ...branchTest];
   saveJSONFile(
     path.join(DATA_PATH, '/apps/single/src/data/tests.json'),
     dataTest
@@ -184,7 +383,6 @@ async function processSeoData(slugs, defaultSeo) {
     ...seoByTag,
     home: defaultSeo,
     practiceTest: seoNull,
-    finalTest: seoNull,
     diagnosticTest: seoNull,
     customTest: seoNull,
     review: seoNull,
@@ -464,12 +662,12 @@ const getRandomQuestion = (questions) => {
     questions[Math.floor(Math.random() * questions.length)]
   );
 };
-/* 
-  Lưu ý: 
-  - Các hàm hỗ trợ khác như initDataTopics, initDataTest, getDiagnosticTest, 
-    buildTopicData, calculateTotalQuestionsTopic, calculateAverageLevelTopic, 
-    extractAllQuestions, mapSubTopics, mapTopics, calculateSubTopicTotalQuestions, 
-    calculateAverageLevel, processTopic, generateGroupExamData, generateRandomNegativeId, 
+/*
+  Lưu ý:
+  - Các hàm hỗ trợ khác như initDataTopics, initDataTest, getDiagnosticTest,
+    buildTopicData, calculateTotalQuestionsTopic, calculateAverageLevelTopic,
+    extractAllQuestions, mapSubTopics, mapTopics, calculateSubTopicTotalQuestions,
+    calculateAverageLevel, processTopic, generateGroupExamData, generateRandomNegativeId,
     getRandomQuestion ... giữ nguyên phần định nghĩa như cũ.
 */
 
@@ -478,7 +676,7 @@ const getRandomQuestion = (questions) => {
  * Chia thành các bước rõ ràng:
  * 1. Fetch dữ liệu cho app
  * 2. Xử lý dữ liệu topics và tests
- * 3. Xử lý dữ liệu test (bao gồm diagnostic test)
+ * 3. Xử lý dữ liệu test (bao gồm diagnostic test, brach test)
  * 4. Lưu các file JSON liên quan đến test
  * 5. Xử lý dữ liệu SEO
  * 6. Xử lý thông tin app
@@ -506,19 +704,18 @@ async function setupSingleApp(appShortName) {
 
     // Bước 3: Xử lý dữ liệu test và tạo diagnostic test
     s.start('Bước 3: Xử lý dữ liệu test và tạo diagnostic test...');
-    const { listTests, listT, listQ, diagnosticTest } = await processTestData(
-      topics,
-      tests
-    );
+    const { listTests, listT, listQ, diagnosticTest, branchTest } =
+      await processTestData(topics, tests);
     s.stop('Đã xử lý dữ liệu test.');
 
     // Bước 4: Lưu file dữ liệu test
     s.start('Bước 4: Lưu file dữ liệu test...');
-    saveTestData(listTests, diagnosticTest, listT, listQ);
+    saveTestData(listTests, diagnosticTest, listT, listQ, branchTest);
     s.stop('Đã lưu file dữ liệu test.');
 
     // Bước 5: Xử lý dữ liệu SEO
     s.start('Bước 5: Xử lý dữ liệu SEO...');
+
     const listSeo = await processSeoData(slugs, seo);
     s.stop('Đã xử lý dữ liệu SEO.');
 
