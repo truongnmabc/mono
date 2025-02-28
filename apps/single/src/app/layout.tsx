@@ -1,4 +1,5 @@
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import seoData from '@single/data/seo.json';
 import { IDevice, ITheme } from '@ui/models/app';
 import '@ui/styles/index.css';
 import { replaceYear } from '@ui/utils/time';
@@ -57,6 +58,10 @@ export default async function ParentAppLayout({
         <RootLayout
           device={device?.value as IDevice}
           theme={theme?.value as ITheme}
+          seoData={{
+            topics: seoData.rewrite.test,
+            branch: seoData.rewrite.branch,
+          }}
         >
           {children}
         </RootLayout>
@@ -68,12 +73,6 @@ export default async function ParentAppLayout({
         )}
         <Script src="/init-db.js" strategy="beforeInteractive" />
         <Script src="/sw-register.js" strategy="beforeInteractive" />
-        <Script src="https://accounts.google.com/gsi/client" async defer />
-        <Script
-          src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"
-          async
-          defer
-        />
       </body>
     </html>
   );

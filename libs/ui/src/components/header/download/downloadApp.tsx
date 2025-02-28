@@ -1,8 +1,9 @@
-import { IAppInfo, IDevice } from '@ui/models/app';
 import LazyLoadImage from '@ui/components/images';
+import { IAppInfo, IDevice } from '@ui/models/app';
+import { getImageSrc } from '@ui/utils/image';
+import Link from 'next/link';
 import React from 'react';
 import './style.css';
-import Link from 'next/link';
 
 const DownLoadApp = ({
   appInfo,
@@ -13,14 +14,20 @@ const DownLoadApp = ({
   theme: 'light' | 'dark';
   device: IDevice;
 }) => {
+  const urlDownload = getImageSrc('mobile_app_promo_banner.png');
   return (
-    <div className="bg-cover sm:hidden bg-[url('/images/download/bg-download.png')]  blur-up bg-[position:0_-124px] transition-all w-full bg-white h-16  bg-no-repeat">
+    <div
+      className="bg-cover sm:hidden   blur-up bg-[position:0_-124px] transition-all w-full bg-white h-16  bg-no-repeat"
+      style={{
+        backgroundImage: `url(${urlDownload})`,
+      }}
+    >
       <div className="px-4 py-2 flex gap-2 items-center w-full h-full bg-[#7B705CCC]">
         <div className="flex-1  ">
           <LazyLoadImage
-            src={`/images/logo/${
-              theme == 'light' ? 'logo-light' : 'logo-dark'
-            }.png`}
+            src={getImageSrc(
+              theme == 'dark' ? 'logo-dark.png' : 'logo-light.png'
+            )}
             alt={'logo-' + appInfo.appShortName}
             classNames="h-5 w-16"
           />

@@ -11,6 +11,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "declaration": true,
     "noEmit": false,
+    "target": "ES2021",
     "jsx": "react-jsx",
     "composite": true,
     "resolveJsonModule": true,

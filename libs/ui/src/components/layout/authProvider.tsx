@@ -1,19 +1,16 @@
 'use client';
-import {
-  loginHybrid,
-  logoutHybrid,
-  shouldOpenModalLogin,
-} from '@ui/redux/features/user';
+import { loginHybrid, shouldOpenModalLogin } from '@ui/redux/features/user';
 import {
   selectOpenModalLogin,
   selectUserInfo,
 } from '@ui/redux/features/user.reselect';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { signIn, useSession } from 'next-auth/react';
-import React, { useCallback, useEffect } from 'react';
+import Script from 'next/script';
+import React, { useEffect } from 'react';
 import ModalLogin from '../login';
 const GOOGLE_CLIENT_ID = process.env['NEXT_PUBLIC_GOOGLE_ID'];
-
+const APPLE_CLIENT_ID = process.env['NEXT_PUBLIC_APPLE_ID'];
 type IUser = {
   id?: string;
   email?: string | null;
@@ -42,7 +39,116 @@ interface AppleIDSignInFailureEvent extends Event {
     error: string; // Mô tả lỗi, ví dụ: "popup_closed_by_user"
   };
 }
+interface IdConfiguration {
+  client_id: string;
+  auto_select?: boolean;
+  callback: (handleCredentialResponse: CredentialResponse) => void;
+  login_uri?: string;
+  native_callback?: (...args: any[]) => void;
+  cancel_on_tap_outside?: boolean;
+  prompt_parent_id?: string;
+  nonce?: string;
+  context?: string;
+  state_cookie_domain?: string;
+  ux_mode?: 'popup' | 'redirect';
+  allowed_parent_origin?: string | string[];
+  intermediate_iframe_close_callback?: (...args: any[]) => void;
+}
 
+interface CredentialResponse {
+  credential?: string;
+  select_by?:
+    | 'auto'
+    | 'user'
+    | 'user_1tap'
+    | 'user_2tap'
+    | 'btn'
+    | 'btn_confirm'
+    | 'brn_add_session'
+    | 'btn_confirm_add_session';
+  clientId?: string;
+}
+
+interface GsiButtonConfiguration {
+  type?: 'standard' | 'icon';
+  theme?: 'outline' | 'filled_blue' | 'filled_black';
+  size?: 'large' | 'medium' | 'small';
+  text?: 'signin_with' | 'signup_with' | 'continue_with' | 'signup_with';
+  shape?: 'rectangular' | 'pill' | 'circle' | 'square';
+  logo_alignment?: 'left' | 'center';
+  width?: any;
+  height?: string;
+  locale?: string;
+}
+
+interface PromptMomentNotification {
+  isDisplayMoment: () => boolean;
+  isDisplayed: () => boolean;
+  isNotDisplayed: () => boolean;
+  getNotDisplayedReason: () =>
+    | 'browser_not_supported'
+    | 'invalid_client'
+    | 'missing_client_id'
+    | 'opt_out_or_no_session'
+    | 'secure_http_required'
+    | 'suppressed_by_user'
+    | 'unregistered_origin'
+    | 'unknown_reason';
+  isSkippedMoment: () => boolean;
+  getSkippedReason: () =>
+    | 'auto_cancel'
+    | 'user_cancel'
+    | 'tap_outside'
+    | 'issuing_failed';
+  isDismissedMoment: () => boolean;
+  getDismissedReason: () =>
+    | 'credential_returned'
+    | 'cancel_called'
+    | 'flow_restarted';
+  getMomentType: () => 'display' | 'skipped' | 'dismissed';
+}
+
+interface RevocationResponse {
+  successful: boolean;
+  error: string;
+}
+
+interface Google {
+  accounts: {
+    id: {
+      initialize: (input: IdConfiguration) => void;
+      prompt: (
+        momentListener?: (res: PromptMomentNotification) => void
+      ) => void;
+      renderButton: (
+        parent: HTMLElement,
+        options: GsiButtonConfiguration
+      ) => void;
+      disableAutoSelect: () => void;
+      storeCredential: (credentials: any, callback: () => void) => void;
+      cancel: () => void;
+      onGoogleLibraryLoad: () => void;
+      revoke: (
+        hint: string,
+        callback: (done: RevocationResponse) => void
+      ) => void;
+    };
+  };
+}
+
+interface CredentialResponse {
+  credential?: string;
+  select_by?:
+    | 'auto'
+    | 'user'
+    | 'user_1tap'
+    | 'user_2tap'
+    | 'btn'
+    | 'btn_confirm'
+    | 'brn_add_session'
+    | 'btn_confirm_add_session';
+  clientId?: string;
+}
 interface AppleIDAuth {
   init: (config: {
     clientId: string;
@@ -53,6 +159,7 @@ interface AppleIDAuth {
     state?: string;
     nonce?: string;
   }) => void;
+  signIn: () => void;
 }
 
 interface AppleID {
@@ -62,6 +169,7 @@ interface AppleID {
 declare global {
   interface Window {
     AppleID?: AppleID;
+    google?: Google;
   }
   interface DocumentEventMap {
     AppleIDSignInOnSuccess: AppleIDSignInSuccessEvent;
@@ -75,113 +183,90 @@ const AuthProvider = () => {
   const dispatch = useAppDispatch();
   const [isMount, setIsMount] = React.useState(false);
 
-  const handleClose = useCallback(() => {
+  const handleClose = () => {
     dispatch(shouldOpenModalLogin(false));
-  }, [dispatch]);
+  };
 
-  const handleCredentialResponse = useCallback(
-    async (response: CredentialResponse) => {
-      if (response.credential) {
-        signIn('token', {
-          redirect: false,
-          token: response.credential,
-        });
-        handleClose();
-      }
-    },
-    [handleClose]
-  );
+  const handleCredentialResponse = (response: CredentialResponse) => {
+    if (response.credential) {
+      signIn('token', { redirect: false, token: response.credential });
+      handleClose();
+    }
+  };
 
-  const handleLoginInSuccess = useCallback(
-    async (event: AppleIDSignInSuccessEvent) => {
-      if (event?.detail?.authorization?.id_token) {
-        signIn('token', {
-          redirect: false,
-          token: event.detail.authorization.id_token,
-        });
-        handleClose();
-      }
-    },
-    [handleClose]
-  );
-  const handleLoginFailed = useCallback(
-    async (event: AppleIDSignInFailureEvent) => {
-      try {
-        if (event?.detail?.error != 'popup_closed_by_user') {
-          // await sendErrorToDiscord(event?.detail?.error, "Login Apple Error");
-        }
-      } catch (error) {
-        console.log('error handle', error);
-      }
-    },
-    []
-  );
+  const handleLoginInSuccess = (event: AppleIDSignInSuccessEvent) => {
+    if (event?.detail?.authorization?.id_token) {
+      signIn('token', {
+        redirect: false,
+        token: event.detail.authorization.id_token,
+      });
+      handleClose();
+    }
+  };
+
+  const handleLoginFailed = (event: AppleIDSignInFailureEvent) => {
+    if (event?.detail?.error !== 'popup_closed_by_user') {
+      console.error('❌ Apple Login Error:', event.detail.error);
+    }
+  };
+
+  const handleCheckUserInfo = async (user: IUser) => {
+    dispatch(loginHybrid(user));
+  };
+
+  // useEffect(() => {
+  //   if (status === 'authenticated' && data?.user && !userInfo.id) {
+  //     handleCheckUserInfo(data.user);
+  //   }
+
+  //   if (status === 'unauthenticated' && !data && userInfo.id) {
+  //     dispatch(logoutHybrid());
+  //   }
+  // }, [status, data, userInfo.id, dispatch]);
+
+  // useEffect(() => {
+  //   if (
+  //     status === 'unauthenticated' &&
+  //     typeof window !== 'undefined' &&
+  //     window.google &&
+  //     !isMount
+  //   ) {
+  //     try {
+  //       window.google?.accounts?.id?.prompt();
+  //       setIsMount(true);
+  //     } catch (error) {
+  //       console.error('🚀 Google Login Prompt Error:', error);
+  //     }
+  //   }
+  // }, [status, isMount]);
 
   useEffect(() => {
-    if (
-      status === 'unauthenticated' &&
-      typeof window !== 'undefined' &&
-      window?.google &&
-      !isMount
-    ) {
-      const timeOut = setTimeout(() => {
-        try {
-          window.google?.accounts?.id?.prompt((e) => {
-            console.log('first prompt', e);
-          });
-          setIsMount(true);
-        } catch (error) {
-          console.log('🚀 ~ useEffect ~ error', error);
-        }
-      }, 1000);
+    if (typeof window === 'undefined') return;
 
-      return () => {
-        clearTimeout(timeOut);
-      };
-    }
-    return undefined;
-  }, [status, isMount]);
-
-  const handleCheckUserInfo = useCallback(
-    async (user: IUser) => {
-      dispatch(loginHybrid(user));
-    },
-    [dispatch]
-  );
-
-  useEffect(() => {
-    if (status === 'authenticated' && data && !userInfo.id) {
-      if (data.user) handleCheckUserInfo(data.user);
-    }
-
-    if (status === 'unauthenticated' && !data && userInfo.id) {
-      dispatch(logoutHybrid());
-    }
-  }, [status, data, userInfo, handleCheckUserInfo, dispatch]);
-
-  useEffect(() => {
     try {
-      if (typeof window !== 'undefined' && window?.google && GOOGLE_CLIENT_ID) {
+      // Khởi tạo Google Login nếu client_id hợp lệ
+
+      console.log('🚀 window.google:', window.google);
+      if (window.google && GOOGLE_CLIENT_ID) {
+        console.log('🚀 GOOGLE_CLIENT_ID:', GOOGLE_CLIENT_ID);
+
         window.google?.accounts?.id?.initialize({
           client_id: GOOGLE_CLIENT_ID,
-          callback: (res) => handleCredentialResponse(res),
-          cancel_on_tap_outside: false,
+          callback: handleCredentialResponse,
+          cancel_on_tap_outside: true,
         });
       }
 
-      if (
-        typeof window !== 'undefined' &&
-        window?.AppleID &&
-        process.env['NEXT_PUBLIC_APPLE_ID']
-      ) {
-        console.log('🚀 ~ useEffect ~ AppleID:', window?.AppleID);
+      // Khởi tạo Apple Login nếu có APPLE_CLIENT_ID
+      if (window.AppleID && APPLE_CLIENT_ID) {
         window.AppleID?.auth?.init({
-          clientId: process.env['NEXT_PUBLIC_APPLE_ID'],
+          clientId: APPLE_CLIENT_ID,
           scope: 'email',
           redirectURI: window.location.origin,
           usePopup: true,
           responseMode: 'form_post',
         });
+
         document.addEventListener(
           'AppleIDSignInOnSuccess',
           handleLoginInSuccess
@@ -189,11 +274,54 @@ const AuthProvider = () => {
         document.addEventListener('AppleIDSignInOnFailure', handleLoginFailed);
       }
     } catch (error) {
-      console.log('🚀 ~ useLayoutEffect ~ error', error);
+      console.error('🚀 Auth Initialization Error:', error);
     }
-  }, [handleCredentialResponse, handleLoginInSuccess, handleLoginFailed]);
 
-  return <ModalLogin open={openModal} setOpen={handleClose} />;
+    return () => {
+      document.removeEventListener(
+        'AppleIDSignInOnSuccess',
+        handleLoginInSuccess
+      );
+      document.removeEventListener('AppleIDSignInOnFailure', handleLoginFailed);
+    };
+  }, []);
+
+  return (
+    <>
+      <ModalLogin open={openModal} setOpen={handleClose} />
+      <Script
+        src="https://accounts.google.com/gsi/client"
+        async
+        defer
+        onLoad={() => {
+          console.log('🚀 Google Login loaded');
+          window.google?.accounts?.id?.initialize({
+            client_id: GOOGLE_CLIENT_ID || '',
+            callback: handleCredentialResponse,
+            cancel_on_tap_outside: true,
+          });
+        }}
+        onReady={() => {
+          console.log('🚀 Google Login ready');
+        }}
+      />
+      <Script
+        src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"
+        async
+        defer
+        onLoad={() => {
+          console.log('🚀 Apple Login loaded');
+          window.AppleID?.auth?.init({
+            clientId: APPLE_CLIENT_ID || '',
+            scope: 'email',
+            redirectURI: window.location.origin,
+            usePopup: true,
+            responseMode: 'form_post',
+          });
+        }}
+      />
+    </>
+  );
 };
 
 export default AuthProvider;

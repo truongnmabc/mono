@@ -1,13 +1,8 @@
-interface Post {
-  slug: string;
-}
-import {
-  generateDataPage,
-  generateListRewrite,
-} from '@ui/utils/generateStaticParams';
+import list from '@single/data/seo.json';
+
 // Next.js will invalidate the cache when a
 // request comes in, at most once every 60 seconds.
-export const revalidate = 60;
+export const revalidate = 3600;
 
 // We'll prerender only the params from `generateStaticParams` at build time.
 // If a request comes in for a path that hasn't been generated,
@@ -15,10 +10,23 @@ export const revalidate = 60;
 export const dynamicParams = true; // or false, to 404 on unknown paths
 
 export async function generateStaticParams() {
-  const posts: Post[] = await generateListRewrite('asvab');
+  const posts = Object.keys(list.rewrite);
   return posts.map((post) => ({
-    slug: post.slug,
+    slug: post,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = (await params).slug;
+  const data = list.rewrite[slug as keyof typeof list.rewrite] || list.default;
+  return {
+    title: data.titleSeo,
+    description: data.descSeo,
+  };
 }
 
 export default async function Page({
@@ -27,11 +35,13 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  const { title, content } = await generateDataPage(slug);
+  const data = list.rewrite[slug as keyof typeof list.rewrite];
+  if (!data) {
+    return null; // or handle 404
+  }
   return (
     <main>
-      <h1>{title}</h1>
-      <p>{content}</p>
+      <h1>{data.content}</h1>
     </main>
   );
 }

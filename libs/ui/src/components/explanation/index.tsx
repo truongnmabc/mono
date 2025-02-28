@@ -1,16 +1,16 @@
 'use client';
 import { Collapse } from '@mui/material';
+import CrownIcon from '@ui/components/icon/iconCrown';
+import RouterApp from '@ui/constants/router.constant';
+import { useIsMobile } from '@ui/hooks/useIsMobile';
 import { selectCurrentGame } from '@ui/redux/features/game.reselect';
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import { useAppSelector } from '@ui/redux/store';
-import CrownIcon from '@ui/components/icon/iconCrown';
-import { useIsMobile } from '@ui/hooks/useIsMobile';
+import { decrypt } from '@ui/utils/crypto';
 import { trackingEventGa4 } from '@ui/utils/event';
 import ctx from '@ui/utils/twClass';
-import { MyCrypto } from '@ui/utils/crypto';
 import { MathJax } from 'better-react-mathjax';
 import clsx from 'clsx';
-import RouterApp from '@ui/constants/router.constant';
 import React, { useEffect, useState } from 'react';
 
 type IProps = {
@@ -26,7 +26,7 @@ const FN: React.FC<IProps> = ({ unLock = false }) => {
     if (currentGame?.text && currentGame?.id) {
       try {
         if (userInfo.isPro || unLock) {
-          const content = MyCrypto.decrypt(currentGame?.explanation);
+          const content = decrypt(currentGame?.explanation);
           setText(content);
         } else {
           setText(currentGame?.explanation);

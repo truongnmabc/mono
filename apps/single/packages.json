@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "yarn &&  next dev --turbopack ",
     "build": "next build",
-    "start": "next start",
     "lint": "next lint",
     "type": "tsc",
     "test": "yarn test:unit && yarn test:e2e",

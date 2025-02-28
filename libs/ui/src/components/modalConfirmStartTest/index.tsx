@@ -2,6 +2,7 @@
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
+import { MtUiButton } from '@ui/components/button';
 import { continueGame, startOverGame } from '@ui/redux/features/game';
 import {
   selectCurrentTopicId,
@@ -11,7 +12,6 @@ import initDiagnosticTestQuestionThunk from '@ui/redux/repository/game/initData/
 import initTestQuestionThunk from '@ui/redux/repository/game/initData/initPracticeTest';
 import { updateTimeTest } from '@ui/redux/repository/game/pauseAndResumed/resumedTest';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import { MtUiButton } from '@ui/components/button';
 import { updateDbTestQuestions } from '@ui/utils/updateDb';
 import { usePathname, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect } from 'react';

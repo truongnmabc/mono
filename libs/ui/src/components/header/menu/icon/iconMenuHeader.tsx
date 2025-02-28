@@ -1,11 +1,19 @@
-'use client';
-
 import { Button } from '@mui/material';
+import { IAppInfo, IDevice } from '@ui/models/app';
+import { IContentSeo } from '@ui/models/seo';
 import clsx from 'clsx';
 import React, { Fragment, useState } from 'react';
 import DrawerHeader from '../../drawer/drawerHeader';
-
-const IconMenuHeader = () => {
+type IProps = {
+  appInfo: IAppInfo;
+  device: IDevice;
+  theme: 'light' | 'dark';
+  seoData: {
+    topics: Record<string, IContentSeo>;
+    branch: Record<string, IContentSeo>;
+  };
+};
+const IconMenuHeader = ({ appInfo, device, theme, seoData }: IProps) => {
   const [openMenuDrawer, setOpenMenuDrawer] = useState(false);
   return (
     <Fragment>
@@ -55,6 +63,10 @@ const IconMenuHeader = () => {
       <DrawerHeader
         openMenuDrawer={openMenuDrawer}
         setOpenMenuDrawer={setOpenMenuDrawer}
+        appInfo={appInfo}
+        device={device}
+        theme={theme}
+        seoData={seoData}
       />
     </Fragment>
   );

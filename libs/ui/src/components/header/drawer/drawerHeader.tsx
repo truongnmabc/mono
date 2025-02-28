@@ -1,37 +1,41 @@
-'use client';
 import { Drawer } from '@mui/material';
-import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
-import { selectUserInfo } from '@ui/redux/features/user.reselect';
-import initFinalTestThunk from '@ui/redux/repository/game/initData/initFinalTest';
-import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import IconLinkStoreApp from '@ui/components/iconLinkStoreApp';
-import { useIsMobile } from '@ui/hooks/useIsMobile';
-import { trackingEventGa4 } from '@ui/utils/event';
 import CloseIcon from '@ui/asset/icon/CloseIcon';
+import IconLinkStoreApp from '@ui/components/iconLinkStoreApp';
 import RouterApp from '@ui/constants/router.constant';
-import { useRouter } from 'next/navigation';
+import { IAppInfo, IDevice } from '@ui/models/app';
+import { IContentSeo } from '@ui/models/seo';
+import { trackingEventGa4 } from '@ui/utils/event';
 import React from 'react';
 import ItemDrawerFullTest from './itemDrawer';
+import ListBranchDrawer from './listBranch';
 import ListStudyDrawer from './listStudy';
 type IList = {
   handleClick: () => void;
   name: string;
+  href: string;
 };
 
 const DrawerHeader = ({
   openMenuDrawer,
   setOpenMenuDrawer,
+  appInfo,
+  device,
+  seoData,
 }: {
   openMenuDrawer: boolean;
   setOpenMenuDrawer: (e: boolean) => void;
+  appInfo: IAppInfo;
+  device: IDevice;
+  theme: 'light' | 'dark';
+  seoData: {
+    topics: Record<string, IContentSeo>;
+    branch: Record<string, IContentSeo>;
+  };
 }) => {
-  const appInfo = useAppSelector(selectAppInfo);
-  const router = useRouter();
-
-  const dispatch = useAppDispatch();
-  const userInfo = useAppSelector(selectUserInfo);
-
-  const isMobile = useIsMobile();
+  const isMobile =
+    device === 'mobile' ||
+    device === 'mobile-ios' ||
+    device === 'mobile-android';
   const list: IList[] = [
     ...(isMobile
       ? [
@@ -39,8 +43,8 @@ const DrawerHeader = ({
             name: 'Review',
             handleClick: () => {
               setOpenMenuDrawer(false);
-              router.push(RouterApp.Review);
             },
+            href: RouterApp.Review,
           },
         ]
       : []),
@@ -48,30 +52,30 @@ const DrawerHeader = ({
       name: 'Score Calculator',
       handleClick: () => {
         setOpenMenuDrawer(false);
-        router.push(RouterApp.Score_Calculator);
       },
+      href: RouterApp.Score_Calculator,
     },
     {
       name: 'Study Guides',
       handleClick: () => {
         setOpenMenuDrawer(false);
-        router.push(RouterApp.Study_Guides);
       },
+      href: RouterApp.Study_Guides,
     },
     {
       name: 'Blog',
       handleClick: () => {
         setOpenMenuDrawer(false);
-        router.push(RouterApp.Blog);
       },
+      href: RouterApp.Blog,
     },
 
     {
       name: 'Contact',
       handleClick: () => {
         setOpenMenuDrawer(false);
-        router.push(RouterApp.Contacts);
       },
+      href: RouterApp.Contacts,
     },
   ];
 
@@ -98,28 +102,32 @@ const DrawerHeader = ({
           name={`Full ${appInfo?.appName} Practice Test`}
           handleClick={() => {
             setOpenMenuDrawer(false);
-
-            if (!userInfo.isPro) {
-              const _href = `${RouterApp.Get_pro}`;
-              router.push(_href);
-              return;
-            }
             trackingEventGa4({
               eventName: 'click_menu_full_test',
               value: {
                 from: window.location.href,
               },
             });
-            dispatch(initFinalTestThunk());
-            router.push(RouterApp.Final_test);
           }}
+          href={RouterApp.Final_test}
         />
 
-        <ListStudyDrawer setOpenMenuDrawer={setOpenMenuDrawer} />
+        <ListStudyDrawer
+          topics={seoData.topics}
+          setOpenMenuDrawer={setOpenMenuDrawer}
+          appShortName={appInfo.appShortName}
+        />
+        <ListBranchDrawer
+          branch={seoData.branch}
+          setOpenMenuDrawer={setOpenMenuDrawer}
+          appShortName={appInfo.appShortName}
+        />
+
         {list.map((item) => (
           <ItemDrawerFullTest
             key={item.name}
             name={item.name}
+            href={item.href}
             handleClick={item.handleClick}
           />
         ))}

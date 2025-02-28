@@ -19,6 +19,7 @@ const encrypt = (data: string) => {
   // return Buffer.from(
   //   cipher.update(data, 'utf8', 'hex') + cipher.final('hex')
   // ).toString('base64');
+  return data;
 };
 
 const decrypt = (encryptedData: string) => {
@@ -28,6 +29,7 @@ const decrypt = (encryptedData: string) => {
   //   decipher.update(buff.toString('utf8'), 'hex', 'utf8') +
   //   decipher.final('utf8')
   // );
+  return encryptedData;
 };
 
 export { decrypt, encrypt };

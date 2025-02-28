@@ -1,20 +1,21 @@
+import Link from 'next/link';
+
 const ItemDrawerFullTest = ({
-    name,
-    handleClick,
+  name,
+  href,
+  handleClick,
 }: {
-    handleClick: () => void;
-    name: string;
+  name: string;
+  href: string;
+  handleClick: () => void;
 }) => {
-    return (
-        <div className="p-3 ">
-            <div
-                onClick={handleClick}
-                className="cursor-pointer font-poppins text-2xl font-semibold"
-            >
-                {name}
-            </div>
-        </div>
-    );
+  return (
+    <Link href={href} onClick={handleClick}>
+      <div className="cursor-pointer p-3 font-poppins text-2xl font-semibold">
+        {name}
+      </div>
+    </Link>
+  );
 };
 
 export default ItemDrawerFullTest;

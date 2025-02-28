@@ -85,3 +85,8 @@ export const MAX_CLICK_ADS_PER_USER = 3;
 
 export const BASE_STORE_URL =
   'https://storage.googleapis.com/micro-enigma-235001.appspot.com';
+
+export const BASE_IMAGE_URL =
+  'https://storage.googleapis.com/micro-enigma-235001.appspot.com';
+
+export const PATH_IMAGE = 'web/images';

@@ -1,35 +1,25 @@
-'use client';
 import LazyLoadImage from '@ui/components/images';
 import RouterApp from '@ui/constants/router.constant';
 import { ITheme } from '@ui/models/app';
-import { usePathname, useRouter } from 'next/navigation';
+import { getImageSrc } from '@ui/utils/image';
+import Link from 'next/link';
 import React from 'react';
-const LogoHeader = ({
-  appShortName,
-  theme,
-}: {
-  appShortName: string;
-  theme: ITheme;
-}) => {
-  const { push } = useRouter();
-  const pathname = usePathname() || '';
+const LogoHeader = ({ theme }: { theme: ITheme }) => {
   return (
-    <div
-      className="h-full max-h-10 w-full flex items-center cursor-pointer"
-      onClick={() => {
-        if (pathname === RouterApp.Home) return;
-        push(RouterApp.Home);
-      }}
-      data-testid="logoHeader"
-    >
-      <LazyLoadImage
-        src={`/${appShortName}/logo/${
-          theme == 'dark' ? 'logo-dark' : 'logo-light'
-        }.png`}
-        alt="logoHeader"
-        classNames=" w-full max-w-[128px] max-h-14 min-h-[40px] sm:max-w-[160px]"
-      />
-    </div>
+    <Link href={RouterApp.Home}>
+      <div
+        className="h-full max-h-10 w-full flex items-center cursor-pointer"
+        data-testid="logoHeader"
+      >
+        <LazyLoadImage
+          src={getImageSrc(
+            theme == 'dark' ? 'logo-dark.png' : 'logo-light.png'
+          )}
+          alt="logoHeader"
+          classNames=" w-full max-w-[128px] max-h-14 min-h-[40px] sm:max-w-[160px]"
+        />
+      </div>
+    </Link>
   );
 };
 export default React.memo(LogoHeader);

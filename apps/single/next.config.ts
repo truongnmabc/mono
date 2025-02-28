@@ -63,6 +63,16 @@ const nextConfig: NextConfig = {
 
   //   return config;
   // },
+
+  // async rewrites() {
+  //   const result = Object.keys(data.rewrite).map((key) => ({
+  //     source: key,
+  //     destination: ,
+  //   }));
+
+  //     return result;
+
+  // },
   output: 'standalone',
   outputFileTracingRoot: __dirname,
 };

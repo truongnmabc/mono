@@ -2,19 +2,20 @@
 
 import AppleIcon from '@mui/icons-material/Apple';
 import Divider from '@mui/material/Divider';
+import { useTheme } from '@ui/hooks';
 import { appConfigState } from '@ui/redux/features/appConfig';
 import { appInfoState } from '@ui/redux/features/appInfo';
 import { useAppSelector } from '@ui/redux/store';
-import { sendEmailApi } from '@ui/services/client/home';
-import CloseIcon from 'libs/asset/icon/CloseIcon';
+import { sendEmailApi } from '@ui/services/home';
+import { getImageSrc } from '@ui/utils/image';
+import { signIn } from 'next-auth/react';
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { MtUiButton } from '../button';
+import LazyLoadImage from '../images';
 import InputCodeVerify from './inputCodeLogin';
 import InputEmailAddress from './inputEmailLogin';
 
-import { signIn } from 'next-auth/react';
-
-const GOOGLE_ID = process.env.NEXT_PUBLIC_GOOGLE_ID;
+const GOOGLE_ID = process.env['NEXT_PUBLIC_GOOGLE_ID'];
 
 const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
   const [step, setStep] = useState(1);
@@ -34,7 +35,7 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
           email,
           appName: appInfo?.appName,
         });
-        if (data === 'Sended email!') {
+        if (data.data === 'Sended email!') {
           setStep(2);
         }
       } else {
@@ -58,14 +59,14 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
   };
 
   useLayoutEffect(() => {
-    if (btnRef.current && window.google) {
-      window.google.accounts.id.renderButton(btnRef.current, {
+    if (btnRef.current && window['google']) {
+      window['google'].accounts.id.renderButton(btnRef.current, {
         theme: 'outline',
         size: 'large',
         logo_alignment: 'center',
         type: 'standard',
         text: 'signin_with',
-        width: btnRef.current.clientWidth.toString(),
+        width: btnRef.current.clientWidth,
         height: '40px',
         locale: 'en-us',
       });
@@ -77,40 +78,40 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
   }, []);
 
   const handleLoginApple = useCallback(() => {
-    if (window && window?.AppleID) {
-      window.AppleID?.auth.signIn();
+    if (window && window['AppleID']) {
+      window['AppleID'].auth.signIn();
     }
   }, []);
+  const { theme } = useTheme();
   return (
-    <div className="w-full sm:w-1/3 flex flex-col justify-between px-4 py-6 h-full">
-      <div className="flex flex-col gap-8 ">
-        <div className=" fixed sm:static top-3 left-8 right-8 z-20 flex justify-end">
-          <div
-            className="rounded-full p-1 cursor-pointer hover:bg-[#2121211f] w-fit h-fit "
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
-            <CloseIcon />
-          </div>
+    <div className="w-full sm:w-1/2 sm:shadow-login flex-1 sm:bg-white rounded-xl flex flex-col justify-between sm:p-6 h-full">
+      <div className="flex flex-col  sm:px-6 sm:pb-6 flex-1 gap-6">
+        <div className="w-full sm:flex hidden items-center gap-2 justify-center">
+          <LazyLoadImage
+            src={getImageSrc(
+              theme == 'dark' ? 'logo-dark.png' : 'logo-light.png'
+            )}
+            alt="logoHeader"
+            classNames=" max-h-[108px] h-6"
+          />
         </div>
-        <div className="flex-1">
-          {step == 1 ? (
-            <div className="flex flex-col gap-4">
-              <p className="text-center font-medium text-2xl">
+        {step == 1 ? (
+          <div className="flex-1">
+            <div className="flex flex-col gap-4 sm:gap-6">
+              <p className="text-center capitalize font-semibold text-2xl">
                 Log in to your account
               </p>
 
               <div ref={btnRef} className="w-full h-10" />
               {appConfig.appleClientId && (
                 <MtUiButton
-                  className="rounded"
+                  className="rounded h-10"
                   onClick={handleLoginApple}
                   block
                 >
                   <div className="flex items-center gap-1">
-                    <AppleIcon className="w-[18px] h-" htmlColor="#283544" />
-                    <span className="text-xs">Login with Apple</span>
+                    <AppleIcon className="w-[18px] " htmlColor="#283544" />
+                    <span className="text-xs">Sign in with Apple</span>
                   </div>
                 </MtUiButton>
               )}
@@ -118,32 +119,40 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
               {(GOOGLE_ID || appConfig.appleClientId) && (
                 <div className="flex w-full items-center justify-between gap-1">
                   <Divider className="flex-1" />
-                  <span className="text-xs text-[#c4c4c4]">or</span>
+                  <span className="text-sm text-[#c4c4c4]">or</span>
                   <Divider className="flex-1" />
                 </div>
               )}
-              <p>Email Address</p>
-              <InputEmailAddress
-                onEnter={verifyEmail}
-                onChangeValue={setEmail}
-              />
-            </div>
-          ) : (
-            <div className="flex flex-col  gap-8">
-              <p className="text-2xl text-center px-6  font-semibold">
-                Enter your verification code
-              </p>
-              <p className="text-sm text-center px-6 text-[#949494] ">
-                Please check your inbox for the verification code sent to{' '}
-                {email}
-              </p>
-              <div className="w-full">
-                <p className="text-sm pb-4">Your code</p>
-                <InputCodeVerify onChangeValue={setCode} onEnter={verifyCode} />
+              <div>
+                <p className="pb-2">Email Address</p>
+                <InputEmailAddress
+                  onEnter={verifyEmail}
+                  onChangeValue={setEmail}
+                />
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="flex flex-col  gap-8">
+            <p className="text-2xl text-center px-6  font-semibold">
+              Enter your verification code
+            </p>
+            <p className="text-sm text-center px-6 text-[#949494] ">
+              Please check your inbox for the verification code sent to {email}
+            </p>
+            <div className="w-full">
+              <p className="text-sm pb-4">Your code</p>
+              <InputCodeVerify onChangeValue={setCode} onEnter={verifyCode} />
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="flex-1 sm:hidden block">
+        <LazyLoadImage
+          classNames="h-full aspect-video flex-1"
+          src={getImageSrc('login_banner.png')}
+          alt="logoHeader"
+        />
       </div>
       <MtUiButton
         loading={processing}
@@ -154,7 +163,7 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
         }}
         type="primary"
         size="large"
-        className="mb-4 sm:mb-0"
+        className="mb-4 sm:h-12 text-base sm:mb-0 rounded-xl"
       >
         Verify
       </MtUiButton>

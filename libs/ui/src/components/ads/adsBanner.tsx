@@ -1,4 +1,4 @@
-import { KEY_CLICK_ADS, MAX_CLICK_ADS_PER_USER } from '@/constants';
+import { KEY_CLICK_ADS, MAX_CLICK_ADS_PER_USER } from '@ui/constants';
 import ctx from '@ui/utils/twClass';
 import React, { useEffect } from 'react';
 import BtnRemove from './BtnRemove';

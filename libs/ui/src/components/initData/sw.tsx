@@ -1,5 +1,5 @@
 'use client';
-import { API_PATH } from '@constants/api.constants';
+import { API_PATH } from '@ui/constants/api.constants';
 import { IAppInfo } from '@ui/models/app';
 import { setIsDataFetched } from '@ui/redux/features/appInfo';
 import { useEffect } from 'react';

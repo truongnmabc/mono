@@ -5,9 +5,9 @@ import React, { CSSProperties } from 'react';
 // import "./styles.css";
 import './style.scss';
 
-import { appInfoState } from '@ui/redux/features/appInfo';
 import IconLinkStoreApp from '@ui/components/iconLinkStoreApp';
 import LazyLoadImage from '@ui/components/images';
+import { appInfoState } from '@ui/redux/features/appInfo';
 import QRCode from 'react-qr-code';
 
 const DownloadApp = () => {
@@ -35,20 +35,20 @@ const DownloadApp = () => {
       ),
       mobile: true,
     },
-    {
-      title:
-        appInfo.totalQuestion -
-        (appInfo.totalQuestion % 10) +
-        '+ unique questions',
-      icon: (
-        <LazyLoadImage
-          alt="unique questions"
-          src="/images/home/v4-unique-questions.webp"
-          classNames="w-6 h-6"
-        />
-      ),
-      mobile: true,
-    },
+    // {
+    //   title:
+    //     appInfo?.totalQuestion -
+    //     (appInfo?.totalQuestion % 10) +
+    //     '+ unique questions',
+    //   icon: (
+    //     <LazyLoadImage
+    //       alt="unique questions"
+    //       src="/images/home/v4-unique-questions.webp"
+    //       classNames="w-6 h-6"
+    //     />
+    //   ),
+    //   mobile: true,
+    // },
     {
       title: 'Easy to use',
       icon: (

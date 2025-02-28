@@ -1,17 +1,23 @@
 import { Grid2 } from '@mui/material';
 import { IAppInfo, IDevice } from '@ui/models/app';
+import { IContentSeo } from '@ui/models/seo';
 import clsx from 'clsx';
 import React from 'react';
 import DownLoadApp from './download/downloadApp';
 import LogoHeader from './logo/logoHeader';
 import MenuHeader from './menu/menuHeader';
+
 type IProps = {
   appInfo: IAppInfo;
   device: IDevice;
   type: 'single' | 'multi' | 'state';
   theme: 'light' | 'dark';
+  seoData: {
+    topics: Record<string, IContentSeo>;
+    branch: Record<string, IContentSeo>;
+  };
 };
-const HeaderApp = ({ appInfo, type, device, theme }: IProps) => {
+const HeaderApp = ({ appInfo, type, device, theme, seoData }: IProps) => {
   if (type === 'state') {
     return <div>State</div>;
   }
@@ -36,7 +42,7 @@ const HeaderApp = ({ appInfo, type, device, theme }: IProps) => {
                 md: 4,
               }}
             >
-              <LogoHeader theme={theme} appShortName={appInfo.appShortName} />
+              <LogoHeader theme={theme} />
             </Grid2>
             <Grid2
               size={{
@@ -45,7 +51,12 @@ const HeaderApp = ({ appInfo, type, device, theme }: IProps) => {
                 md: 8,
               }}
             >
-              <MenuHeader />
+              <MenuHeader
+                appInfo={appInfo}
+                device={device}
+                theme={theme}
+                seoData={seoData}
+              />
             </Grid2>
           </Grid2>
         </div>

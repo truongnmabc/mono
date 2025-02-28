@@ -1,40 +1,26 @@
-"use client";
-import { ITopicEndTest } from "@/app/[appShortName]/[state]/result_test/_components";
-import { ITableData } from "@/app/[appShortName]/[state]/result_test/_components/resultContext";
-import TabPanelReview from "@/app/[appShortName]/[state]/result_test/_components/tabPanelReview";
-import { AntTab, AntTabs } from "@/components/tabs";
-import React, { Fragment } from "react";
-import Empty from "../empty";
-import FilterIcon from "./filterAnswers";
+'use client';
+import React, { Fragment } from 'react';
 
 type IProps = {
-    tableData: ITableData;
-    showFilter?: boolean;
-    listTopic: ITopicEndTest[];
-    correctIds: number[];
-    setTabletData: (e: ITableData) => void;
-    title?: string;
-    type?: "default" | "custom";
+  // tableData: ITableData;
+  showFilter?: boolean;
+  // listTopic: ITopicEndTest[];
+  correctIds: number[];
+  // setTabletData: (e: ITableData) => void;
+  title?: string;
+  type?: 'default' | 'custom';
 };
 
-const ReviewAnswerResult: React.FC<IProps> = ({
-    tableData,
-    setTabletData,
-    listTopic,
-    showFilter = true,
-    title,
-    type,
-    correctIds,
-}) => {
-    const [value, setValue] = React.useState(0);
+const ReviewAnswerResult: React.FC<IProps> = ({}) => {
+  // const [value, setValue] = React.useState(0);
 
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-    };
+  // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  //   setValue(newValue);
+  // };
 
-    return (
-        <Fragment>
-            {title && <p className="text-2xl mt-6 font-semibold">{title}</p>}
+  return (
+    <Fragment>
+      {/* {title && <p className="text-2xl mt-6 font-semibold">{title}</p>}
             <div className="flex pb-2 justify-between items-center gap-4 w-full">
                 <AntTabs
                     value={value}
@@ -98,26 +84,26 @@ const ReviewAnswerResult: React.FC<IProps> = ({
                 </div>
             ) : (
                 <Empty />
-            )}
-        </Fragment>
-    );
+            )} */}
+    </Fragment>
+  );
 };
 
 export default ReviewAnswerResult;
 
-const LabelReviewAnswerResult = ({
-    title,
-    count,
-}: {
-    title: string;
-    count: number;
-}) => {
-    return (
-        <span className="flex items-center gap-1">
-            {title}{" "}
-            <span className="text-[8px] w-6 h-6 flex items-center justify-center text-[#7C6F5B] p-1 rounded-full bg-[#7C6F5B14]">
-                {count}
-            </span>
-        </span>
-    );
-};
+// const LabelReviewAnswerResult = ({
+//     title,
+//     count,
+// }: {
+//     title: string;
+//     count: number;
+// }) => {
+//     return (
+//         <span className="flex items-center gap-1">
+//             {title}{" "}
+//             <span className="text-[8px] w-6 h-6 flex items-center justify-center text-[#7C6F5B] p-1 rounded-full bg-[#7C6F5B14]">
+//                 {count}
+//             </span>
+//         </span>
+//     );
+// };

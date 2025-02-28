@@ -1,92 +1,82 @@
-import CardTopic, {
-  IconCheck,
-} from '@/app/[appShortName]/[state]/custom_test/_components/modalSetting/cardTopic';
-import { ITopicEndTest } from '@/app/[appShortName]/[state]/result_test/_components';
-import { ITableData } from '@/app/[appShortName]/[state]/result_test/_components/resultContext';
-import { MtUiButton } from '@/components/button';
-import DialogResponsive from '@/components/dialogResponsive';
-import { db } from '@/db/db.model';
-import { ITopicBase } from '@/models/topics/topicsProgress';
-import ctx from '@ui/utils/twClass';
-import React, { useCallback, useEffect, useState } from 'react';
+// import CardTopic, {
+//   IconCheck,
+// } from '@/app/[appShortName]/[state]/custom_test/_components/modalSetting/cardTopic';
+// import { ITopicEndTest } from '@/app/[appShortName]/[state]/result_test/_components';
+// import { ITableData } from '@/app/[appShortName]/[state]/result_test/_components/resultContext';
+import React from 'react';
 type IProps = {
-  listTopic: ITopicEndTest[];
-  correctIds: number[];
-  setTabletData: (e: ITableData) => void;
-  tableData: ITableData;
+  // listTopic: ITopicEndTest[];
+  // correctIds: number[];
+  // setTabletData: (e: ITableData) => void;
+  // tableData: ITableData;
 };
-const FilterIcon: React.FC<IProps> = ({
-  setTabletData,
-  listTopic,
-  correctIds,
-  tableData,
-}) => {
-  const [open, setOpen] = React.useState(false);
-  const [topics, setTopics] = useState<ITopicBase[]>([]);
-  const [selectListTopic, setSelectListTopic] = useState<ITopicBase[]>([]);
-  const [tempSelectListTopic, setTempSelectListTopic] = useState<ITopicBase[]>(
-    []
-  );
+const FilterIcon: React.FC<IProps> = ({}) => {
+  // const [open, setOpen] = React.useState(false);
+  // const [topics, setTopics] = useState<ITopicBase[]>([]);
+  // const [selectListTopic, setSelectListTopic] = useState<ITopicBase[]>([]);
+  // const [tempSelectListTopic, setTempSelectListTopic] = useState<ITopicBase[]>(
+  //   []
+  // );
 
-  const handleClose = useCallback(() => {
-    // Khi đóng, reset lại temp về giá trị trước đó
-    setTempSelectListTopic(selectListTopic);
-    setOpen(false);
-  }, [selectListTopic]);
-  const handleOpen = useCallback(() => setOpen(true), []);
+  // const handleClose = useCallback(() => {
+  //   // Khi đóng, reset lại temp về giá trị trước đó
+  //   setTempSelectListTopic(selectListTopic);
+  //   setOpen(false);
+  // }, [selectListTopic]);
+  // const handleOpen = useCallback(() => setOpen(true), []);
 
-  const handleSelectAll = useCallback(() => {
-    if (listTopic?.length && tempSelectListTopic.length !== listTopic.length)
-      setTempSelectListTopic(listTopic);
-    else setTempSelectListTopic([]);
-  }, [listTopic, tempSelectListTopic]);
+  // const handleSelectAll = useCallback(() => {
+  //   if (listTopic?.length && tempSelectListTopic.length !== listTopic.length)
+  //     setTempSelectListTopic(listTopic);
+  //   else setTempSelectListTopic([]);
+  // }, [listTopic, tempSelectListTopic]);
 
-  const handleApply = useCallback(() => {
-    setSelectListTopic(tempSelectListTopic);
+  // const handleApply = useCallback(() => {
+  //   setSelectListTopic(tempSelectListTopic);
 
-    // Lọc danh sách câu hỏi thuộc các chủ đề đã chọn
-    const newList = tableData.defaultData?.filter((item) =>
-      tempSelectListTopic.some(
-        (selectedTopic) => item.topicId === selectedTopic.id
-      )
-    );
+  //   // Lọc danh sách câu hỏi thuộc các chủ đề đã chọn
+  //   const newList = tableData.defaultData?.filter((item) =>
+  //     tempSelectListTopic.some(
+  //       (selectedTopic) => item.topicId === selectedTopic.id
+  //     )
+  //   );
 
-    // Xác định danh sách câu hỏi đúng và sai
-    const correctList = newList.filter((item) => correctIds.includes(item.id));
-    const incorrectList = newList.filter(
-      (item) => !correctIds.includes(item.id)
-    );
+  //   // Xác định danh sách câu hỏi đúng và sai
+  //   const correctList = newList.filter((item) => correctIds.includes(item.id));
+  //   const incorrectList = newList.filter(
+  //     (item) => !correctIds.includes(item.id)
+  //   );
 
-    // Cập nhật state
-    setTabletData?.({
-      all: newList,
-      correct: correctList,
-      incorrect: incorrectList,
-      defaultData: tableData.defaultData,
-    });
-    setOpen(false);
-  }, [tempSelectListTopic, setTabletData, tableData, correctIds]);
+  //   // Cập nhật state
+  //   setTabletData?.({
+  //     all: newList,
+  //     correct: correctList,
+  //     incorrect: incorrectList,
+  //     defaultData: tableData.defaultData,
+  //   });
+  //   setOpen(false);
+  // }, [tempSelectListTopic, setTabletData, tableData, correctIds]);
 
-  useEffect(() => {
-    const handleGetData = async () => {
-      const data = await db?.topics.toArray();
-      if (data) {
-        setTopics(data);
-      }
-    };
-    handleGetData();
-  }, []);
+  // useEffect(() => {
+  //   const handleGetData = async () => {
+  //     const data = await db?.topics.toArray();
+  //     if (data) {
+  //       setTopics(data);
+  //     }
+  //   };
+  //   handleGetData();
+  // }, []);
 
-  useEffect(() => {
-    if (listTopic?.length > 0) {
-      setSelectListTopic(listTopic);
-      setTempSelectListTopic(listTopic);
-    }
-  }, [listTopic]);
+  // useEffect(() => {
+  //   if (listTopic?.length > 0) {
+  //     setSelectListTopic(listTopic);
+  //     setTempSelectListTopic(listTopic);
+  //   }
+  // }, [listTopic]);
 
   return (
     <div className=" rounded-lg px-2 sm:px-5 py-2 bg-[#5497FF1F]">
-      <div
+      {/* <div
         onClick={handleOpen}
         className="text-[#5497FF] cursor-pointer flex items-center text-base gap-1 font-medium"
       >
@@ -198,7 +188,7 @@ const FilterIcon: React.FC<IProps> = ({
             </MtUiButton>
           </div>
         </div>
-      </DialogResponsive>
+      </DialogResponsive> */}
     </div>
   );
 };

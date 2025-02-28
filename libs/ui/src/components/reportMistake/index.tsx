@@ -6,6 +6,7 @@ import {
   FormGroup,
   TextField,
 } from '@mui/material';
+import { MtUiButton } from '@ui/components/button';
 import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import { setShouldListenKeyboard } from '@ui/redux/features/game';
 import {
@@ -15,8 +16,7 @@ import {
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import userActionsThunk from '@ui/redux/repository/user/actions';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import reportMistakeApi from '@ui/services/client/report';
-import { MtUiButton } from '@ui/components/button';
+import { reportMistakeApi } from '@ui/services/report';
 import React, { useCallback, useEffect, useState } from 'react';
 
 const listReport = [

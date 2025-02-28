@@ -1,7 +1,7 @@
 'use client';
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import { useAppSelector } from '@ui/redux/store';
-import getCountryAPI from '@ui/utils/getCountryAPI';
+import { getCountryAPI } from '@ui/services';
 import Script from 'next/script';
 import React, { useEffect, useRef, useState } from 'react';
 import { getAdClientId } from './utils';
