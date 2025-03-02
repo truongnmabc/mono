@@ -6,6 +6,7 @@ import LoginHeader from './icon/iconLogin';
 import IconMenuHeader from './icon/iconMenuHeader';
 import IconReviewHeader from './icon/iconReview';
 import IconTopics from './icon/iconTopics';
+import type { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
 
 export interface IItemMenuHeader {
   name: string;
@@ -17,8 +18,8 @@ type IProps = {
   device: IDevice;
   theme: 'light' | 'dark';
   seoData: {
-    topics: Record<string, IContentSeo>;
-    branch: Record<string, IContentSeo>;
+    topics: ITopicHomeJson[];
+    branch: IBranchHomeJson;
   };
 };
 

@@ -1,5 +1,6 @@
 import { ExpandMore } from '@mui/icons-material';
-import { IContentSeo } from '@ui/models/seo';
+import { TypeParam } from '@ui/constants';
+import { IBranchHomeJson } from '@ui/models/other';
 import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -11,11 +12,11 @@ const ListBranchDrawer = ({
   appShortName,
 }: {
   setOpenMenuDrawer: (e: boolean) => void;
-  branch: Record<string, IContentSeo>;
+  branch: IBranchHomeJson['list'];
   appShortName: string;
 }) => {
   const [isExpand, setIsExpand] = useState(false);
-  const list = Object.keys(branch);
+  const list = branch.map((item) => item.slug);
 
   return (
     <div className="p-3">
@@ -44,18 +45,21 @@ const ListBranchDrawer = ({
           block: isExpand,
         })}
       >
-        {list.map((key, index) => (
-          <Link href={key} key={key}>
+        {branch.map((key, index) => (
+          <Link
+            href={key.slug + `?type=${TypeParam.branchTest}&testId=${key.id}`}
+            key={key.id}
+          >
             <div
               className="hover:bg-[#2121211f] relative overflow-hidden cursor-pointer"
               onClick={() => setOpenMenuDrawer(false)}
             >
               <div className="p-2  capitalize text-lg">
-                {key
+                {key.slug
                   .replaceAll('-', ' ')
                   .replace(appShortName, appShortName.toUpperCase())}
               </div>
-              {index + 1 < list.length && (
+              {index + 1 < branch.length && (
                 <div className="w-full h-[1px] bg-[#e4e4e4] "></div>
               )}
             </div>

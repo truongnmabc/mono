@@ -1,7 +1,7 @@
 import Grid2 from '@mui/material/Grid2';
 import appInfo from '@single/data/appInfos.json';
 import list from '@single/data/seo.json';
-import data from '@single/data/topicsAndTest.json';
+import data from '@single/data/home/data.json';
 import BannerDownloadApp from '@ui/components/bannerDownload';
 import MyContainer from '@ui/components/container';
 import SeoContent from '@ui/components/seoContent';
@@ -86,7 +86,11 @@ export default async function Page({
               }}
             >
               <QuestionGroup
-                data={data}
+                data={{
+                  topics: data.topics,
+                  tests: data.tests.practiceTests,
+                  branch: data.tests.branchTest,
+                }}
                 type={type as IGameMode}
                 appShortName={appInfo.appShortName}
                 id={id}
@@ -106,7 +110,7 @@ export default async function Page({
                 id={Number(id)}
                 data={{
                   topics: data.topics,
-                  tests: data.tests,
+                  tests: data.tests.practiceTests,
                 }}
                 appInfo={appInfo}
                 subId={Number(subId)}

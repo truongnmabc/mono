@@ -14,20 +14,20 @@ import { ToastContainer } from 'react-toastify';
 import appConfig from '../data/appConfig.json';
 import appInfos from '../data/appInfos.json';
 import StoreProvider from './StoreProvider';
+import { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
 
-import { IContentSeo } from '@ui/models/seo';
 export default function RootLayout({
   children,
   device = 'desktop',
   theme = 'light',
-  seoData,
+  data,
 }: {
   children: React.ReactNode;
   device?: IDevice;
   theme: 'light' | 'dark';
-  seoData: {
-    topics: Record<string, IContentSeo>;
-    branch: Record<string, IContentSeo>;
+  data: {
+    topics: ITopicHomeJson[];
+    branch: IBranchHomeJson;
   };
 }) {
   return (
@@ -42,7 +42,7 @@ export default function RootLayout({
             appInfo={appInfos}
             device={device}
             theme={theme}
-            seoData={seoData}
+            seoData={data}
           />
           <div className="flex-1 flex flex-col bg-theme-white dark:bg-theme-dark  justify-between">
             {children}

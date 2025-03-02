@@ -9,7 +9,7 @@ export async function GET(
   const slug = (await params).slug;
   const filePath = path.join(
     process.cwd(),
-    'src/data',
+    'src/data/sw',
     `questions_${slug}.json`
   );
 

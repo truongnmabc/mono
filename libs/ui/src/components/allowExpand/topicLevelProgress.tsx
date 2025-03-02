@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import React, { Fragment, useEffect, useRef } from 'react';
 import IconProgress from './iconProgress';
 import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
+import { ITopicHomeJson } from '@ui/models/other';
 
 type CenterPosition = {
   x: number;
@@ -52,7 +53,7 @@ function getCenterPosition(
   return { x: 0, y: 0 };
 }
 
-const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeProps }) => {
+const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const selectedSubTopics = useAppSelector(selectSubTopicsId);
@@ -123,7 +124,7 @@ const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeProps }) => {
 const Wrapper = ({
   data,
 }: {
-  data: { id: number; value: ITopicHomeProps[] }[];
+  data: { id: number; value: ITopicHomeJson[] }[];
 }) => {
   const readySubTopic = data
     .flatMap((group) => group.value)

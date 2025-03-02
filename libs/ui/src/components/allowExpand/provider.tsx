@@ -1,17 +1,16 @@
 'use client';
-import { ITopicBase } from '@ui/models/topics';
+import { ITopicHomeJson } from '@ui/models/other';
 import React, { ReactNode } from 'react';
-import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
 
 export interface IContextAllowExpand {
   color?: string;
-  mainTopic?: ITopicHomeProps | null;
-  mainTopicTag: string | null;
+  mainTopic?: ITopicHomeJson | null;
+  mainTopicTag: string | undefined;
 }
 
 export const AllowExpandContext = React.createContext<IContextAllowExpand>({
   color: 'red',
-  mainTopic: undefined,
+  mainTopic: null,
   mainTopicTag: '',
 });
 
@@ -20,11 +19,11 @@ const AllowExpandProvider = ({
   topic,
 }: {
   children: ReactNode;
-  topic: ITopicHomeProps | null;
+  topic: ITopicHomeJson | null;
 }) => {
   const value = {
     mainTopic: topic,
-    mainTopicTag: topic ? topic.tag : '',
+    mainTopicTag: topic ? topic.slug : '',
   };
 
   return (

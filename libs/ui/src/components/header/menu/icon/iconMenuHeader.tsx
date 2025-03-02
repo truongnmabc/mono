@@ -1,16 +1,17 @@
 import { Button } from '@mui/material';
 import { IAppInfo, IDevice } from '@ui/models/app';
-import { IContentSeo } from '@ui/models/seo';
 import clsx from 'clsx';
 import React, { Fragment, useState } from 'react';
 import DrawerHeader from '../../drawer/drawerHeader';
+import type { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
+
 type IProps = {
   appInfo: IAppInfo;
   device: IDevice;
   theme: 'light' | 'dark';
   seoData: {
-    topics: Record<string, IContentSeo>;
-    branch: Record<string, IContentSeo>;
+    topics: ITopicHomeJson[];
+    branch: IBranchHomeJson;
   };
 };
 const IconMenuHeader = ({ appInfo, device, theme, seoData }: IProps) => {

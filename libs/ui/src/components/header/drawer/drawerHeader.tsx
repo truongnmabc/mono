@@ -9,6 +9,8 @@ import React from 'react';
 import ItemDrawerFullTest from './itemDrawer';
 import ListBranchDrawer from './listBranch';
 import ListStudyDrawer from './listStudy';
+import { IBranchHomeJson } from '@ui/models/other';
+import { ITopicHomeJson } from '@ui/models/other';
 type IList = {
   handleClick: () => void;
   name: string;
@@ -28,8 +30,8 @@ const DrawerHeader = ({
   device: IDevice;
   theme: 'light' | 'dark';
   seoData: {
-    topics: Record<string, IContentSeo>;
-    branch: Record<string, IContentSeo>;
+    topics: ITopicHomeJson[];
+    branch: IBranchHomeJson;
   };
 }) => {
   const isMobile =
@@ -118,7 +120,7 @@ const DrawerHeader = ({
           appShortName={appInfo.appShortName}
         />
         <ListBranchDrawer
-          branch={seoData.branch}
+          branch={seoData.branch.list}
           setOpenMenuDrawer={setOpenMenuDrawer}
           appShortName={appInfo.appShortName}
         />

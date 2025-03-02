@@ -5,12 +5,15 @@ import { IAppInfo, ITestBase } from '@ui/models';
 import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
-import CustomTestSvg from './itemGridTest/icon/iconCustomTest';
-import DiagnosticTestSvg from './itemGridTest/icon/iconDiagnosticTest';
-import FinalTestSvg from './itemGridTest/icon/iconFinalTest';
-import PracticeTestsSvg from './itemGridTest/icon/iconPracticeTests';
+import CustomTestSvg from './icon/iconCustomTest';
+import DiagnosticTestSvg from './icon/iconDiagnosticTest';
+import FinalTestSvg from './icon/iconFinalTest';
+import PracticeTestsSvg from './icon/iconPracticeTests';
 import IconGridTest from '@ui/components/icon/iconGridTest';
 import { TypeParam } from '@ui/constants';
+import { ITestsHomeJson } from '@ui/models/other';
+import IconGetProHover from './icon/iconGetProHover';
+
 export const mockGirdTests = [
   {
     id: 'DT',
@@ -44,14 +47,23 @@ export const mockGirdTests = [
 const GridTest = ({
   appInfo,
   isMobile,
-  practice,
+  tests,
   showList,
 }: {
   appInfo: IAppInfo;
   isMobile: boolean;
-  practice: ITestBase[];
+  tests: ITestsHomeJson;
   showList: boolean;
 }) => {
+  const listTest = mockGirdTests.map((item) => ({
+    ...item,
+    testId:
+      item.id === 'FT'
+        ? tests.finalTests.testId
+        : item.id === 'DT'
+        ? tests.diagnosticTest.testId
+        : '',
+  }));
   return (
     <div className="w-full mt-6 sm:mt-12">
       <h3 className="sm:text-[40px] sm:leading-[60px] text-center text-2xl font-bold">
@@ -65,7 +77,7 @@ const GridTest = ({
       </h4>
       <div className="w-full mt-6 sm:mt-10 ">
         <Grid2 container spacing={2}>
-          {mockGirdTests.map((test) => (
+          {listTest.map((test) => (
             <Grid2
               size={{
                 xs: 12,
@@ -79,7 +91,7 @@ const GridTest = ({
                 href={
                   isMobile && test.id === 'PT'
                     ? `?selectTest=${showList ? 'false' : 'true'}`
-                    : `${test.href}?id=${test.id}&type=${
+                    : `${test.href}?id=${test.testId}&type=${
                         test.id === 'PT'
                           ? TypeParam.practiceTest
                           : test.id === 'DT'
@@ -93,7 +105,7 @@ const GridTest = ({
               >
                 <div
                   className={clsx(
-                    'flex border p-2 relative hover:border-primary overflow-hidden bg-white cursor-pointer w-full h-[52px] sm:h-[72px] rounded-md'
+                    'flex border p-2 relative group hover:border-primary overflow-hidden bg-white cursor-pointer w-full h-[52px] sm:h-[72px] rounded-md'
                   )}
                 >
                   <div
@@ -107,6 +119,11 @@ const GridTest = ({
                   <h3 className="pl-4 flex-1 text-base sm:text-lg  flex items-center justify-start font-medium ">
                     {test.name}
                   </h3>
+                  {(test.id === 'FT' || test.id === 'CT') && (
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <IconGetProHover />
+                    </div>
+                  )}
                 </div>
               </Link>
               {isMobile && test.id === 'PT' && (
@@ -117,7 +134,7 @@ const GridTest = ({
                   className="w-full mt-2"
                 >
                   <div className="w-full flex  flex-col gap-2">
-                    {practice?.map((test, index) => (
+                    {tests?.practiceTests?.list?.map((test, index) => (
                       <Link
                         href={`${RouterApp.Practice_Tests}?testId=${test.id}`}
                         key={index}
@@ -135,7 +152,7 @@ const GridTest = ({
                               'text-xs  pl-3  pr-2 flex-1 truncate font-medium'
                             )}
                           >
-                            Practice Tests {index + 1}
+                            {test.name}
                           </h3>
                         </div>
                       </Link>

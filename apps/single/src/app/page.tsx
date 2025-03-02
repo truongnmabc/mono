@@ -6,10 +6,8 @@ import TitleHomeApp from '@ui/components/home/title';
 import SeoContent from '@ui/components/seoContent';
 import { detectAgent } from '@ui/utils/device';
 import appInfos from '@single/data/appInfos.json';
-import contentSeo from '@single/data/seo.json';
-import topics from '@single/data/topicsAndTest.json';
+import data from '@single/data/home/data.json';
 import { headers } from 'next/headers';
-import { ITestBase } from '@ui/models';
 
 const Page = async ({
   searchParams,
@@ -20,28 +18,27 @@ const Page = async ({
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
-
   return (
     <MyContainer>
       <TitleHomeApp appInfo={appInfos} />
       <GridTopics
         isMobile={isMobile}
-        topics={topics.topics}
+        topics={data.topics}
         appInfo={appInfos}
         selectTopic={selectTopic}
       />
       <GridTest
         appInfo={appInfos}
         isMobile={isMobile}
-        practice={topics.tests as unknown as ITestBase[]}
+        tests={data.tests}
         showList={selectTest === 'true'}
       />
       <div className="sm:my-[48px] sm:mb-[120px] my-[24px] mb-[48px]">
         <BannerHome appInfo={appInfos} isHomePage={true} />
       </div>
-      {contentSeo.default.home.content && (
+      {data.seo.content && (
         <div className="p-4 mb-28 sm:mb-0 sm:p-6 rounded-md  overflow-hidden bg-white dark:bg-black">
-          <SeoContent content={contentSeo.default.home.content} />
+          <SeoContent content={data.seo.content} />
         </div>
       )}
     </MyContainer>

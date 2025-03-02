@@ -1,0 +1,1616 @@
+{
+  "seo": {
+    "content": null,
+    "titleSeo": null,
+    "descSeo": null
+  },
+  "topics": [
+    {
+      "id": 4643957105491968,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
+      "name": "Mechanical Comprehension",
+      "slug": "asvab-mechanical-comprehension-practice-test",
+      "topics": [
+        {
+          "id": 5666897542512640,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/machines.svg",
+          "name": "Machines",
+          "slug": "asvab-mechanical-comprehension-practice-test",
+          "topics": [
+            {
+              "id": 4596897775878144,
+              "icon": "",
+              "name": "Machines Extended 3",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5080679536656384,
+              "icon": "",
+              "name": "Machines 2",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5643629490077696,
+              "icon": "",
+              "name": "Machines 1",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6070407060783104,
+              "icon": "",
+              "name": "Machines Extended 2",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6206579443499008,
+              "icon": "",
+              "name": "Machines 3",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6686581456896000,
+              "icon": "",
+              "name": "Machines Extended 1",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5746080767541248,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/fundamentals-of-mechanics.svg",
+          "name": "Fundamentals of Mechanics",
+          "slug": "asvab-mechanical-comprehension-practice-test",
+          "topics": [
+            {
+              "id": 4799204559945728,
+              "icon": "",
+              "name": "Fundamentals of Mechanics 1",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5362154513367040,
+              "icon": "",
+              "name": "Fundamentals of Mechanics 3",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5668232136491008,
+              "icon": "",
+              "name": "Fundamentals of Mechanics Extended 1",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5925104466788352,
+              "icon": "",
+              "name": "Fundamentals of Mechanics 2",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6488054420209664,
+              "icon": "",
+              "name": "Fundamentals of Mechanics 4",
+              "slug": "asvab-mechanical-comprehension-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4830925621821440,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
+      "name": "Assembling Objects",
+      "slug": "asvab-assembling-objects-practice-test",
+      "topics": [
+        {
+          "id": 5141998918959104,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/connection-items.svg",
+          "name": "Connection Items",
+          "slug": "asvab-assembling-objects-practice-test",
+          "topics": [
+            {
+              "id": 5155304660533248,
+              "icon": "",
+              "name": "Connection Items 2",
+              "slug": "asvab-assembling-objects-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5718254613954560,
+              "icon": "",
+              "name": "Connection Items 1",
+              "slug": "asvab-assembling-objects-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6281204567375872,
+              "icon": "",
+              "name": "Connection Items 3",
+              "slug": "asvab-assembling-objects-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5144478012669952,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/puzzle-items.svg",
+          "name": "Puzzle Items",
+          "slug": "asvab-assembling-objects-practice-test",
+          "topics": [
+            {
+              "id": 4873829683822592,
+              "icon": "",
+              "name": "Puzzle Items 1",
+              "slug": "asvab-assembling-objects-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5999729590665216,
+              "icon": "",
+              "name": "Puzzle Items 2",
+              "slug": "asvab-assembling-objects-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5533861310103552,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+      "name": "General Science",
+      "slug": "asvab-general-science-practice-test",
+      "topics": [
+        {
+          "id": 5749048187289600,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/earth-science.svg",
+          "name": "Earth Science",
+          "slug": "asvab-general-science-practice-test",
+          "topics": [
+            {
+              "id": 4583197996220416,
+              "icon": "",
+              "name": "Earth Science Extended 2",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4678659726114816,
+              "icon": "",
+              "name": "Earth Science 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5804559632957440,
+              "icon": "",
+              "name": "Earth Science 2",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5946170165690368,
+              "icon": "",
+              "name": "Earth Science Extended 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6483823432826880,
+              "icon": "",
+              "name": "Earth Science Extended 3",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5913375045320704,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/ecology.svg",
+          "name": "Ecology",
+          "slug": "asvab-general-science-practice-test",
+          "topics": [
+            {
+              "id": 5964665075007488,
+              "icon": "",
+              "name": "Ecology Extended 3",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6117465406832640,
+              "icon": "",
+              "name": "Ecology Extended 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6367509586378752,
+              "icon": "",
+              "name": "Ecology 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6558426519830528,
+              "icon": "",
+              "name": "Ecology Extended 2",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5978274081538048,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/nutrition--health.svg",
+          "name": "Nutrition & Health",
+          "slug": "asvab-general-science-practice-test",
+          "topics": [
+            {
+              "id": 4972937287303168,
+              "icon": "",
+              "name": "Nutrition & Health Extended 3",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5023671991140352,
+              "icon": "",
+              "name": "Nutrition & Health 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5461107028262912,
+              "icon": "",
+              "name": "Nutrition & Health Extended 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6413265819140096,
+              "icon": "",
+              "name": "Nutrition & Health Extended 2",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5998439892516864,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/cellular-biology.svg",
+          "name": "Cellular Biology",
+          "slug": "asvab-general-science-practice-test",
+          "topics": [
+            {
+              "id": 5618955666325504,
+              "icon": "",
+              "name": "Cellular Biology Extended 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6316508795895808,
+              "icon": "",
+              "name": "Cellular Biology Extended 2",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6350790444711936,
+              "icon": "",
+              "name": "Cellular Biology Extended 3",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6508247074734080,
+              "icon": "",
+              "name": "Cellular Biology 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6195848736145408,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/human-body-systems.svg",
+          "name": "Human Body Systems",
+          "slug": "asvab-general-science-practice-test",
+          "topics": [
+            {
+              "id": 5160459317542912,
+              "icon": "",
+              "name": "Human Body Systems Extended 3",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5241609679536128,
+              "icon": "",
+              "name": "Human Body Systems 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5603096768020480,
+              "icon": "",
+              "name": "Human Body Systems Extended 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6588707205283840,
+              "icon": "",
+              "name": "Human Body Systems Extended 2",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6321939983368192,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/physical-science.svg",
+          "name": "Physical Science",
+          "slug": "asvab-general-science-practice-test",
+          "topics": [
+            {
+              "id": 4819397214470144,
+              "icon": "",
+              "name": "Physical Science 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5382347167891456,
+              "icon": "",
+              "name": "Physical Science 3",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5639004573663232,
+              "icon": "",
+              "name": "Physical Science Extended 2",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5945297121312768,
+              "icon": "",
+              "name": "Physical Science 2",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6572076420825088,
+              "icon": "",
+              "name": "Physical Science Extended 1",
+              "slug": "asvab-general-science-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5549399260266496,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
+      "name": "Electronics Information",
+      "slug": "asvab-electronics-information-practice-test",
+      "topics": [
+        {
+          "id": 5710226380554240,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electricity.svg",
+          "name": "Electricity",
+          "slug": "asvab-electronics-information-practice-test",
+          "topics": [
+            {
+              "id": 4784910975893504,
+              "icon": "",
+              "name": "Electricity 4",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5488598417670144,
+              "icon": "",
+              "name": "Electricity 2",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5910810882736128,
+              "icon": "",
+              "name": "Electricity 5",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6051548371091456,
+              "icon": "",
+              "name": "Electricity 1",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6614498324512768,
+              "icon": "",
+              "name": "Electricity 3",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6638202945273856,
+              "icon": "",
+              "name": "Electricity Extended 1",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5737078717415424,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electrical-systems.svg",
+          "name": "Electrical Systems",
+          "slug": "asvab-electronics-information-practice-test",
+          "topics": [
+            {
+              "id": 4925648464248832,
+              "icon": "",
+              "name": "Electrical Systems 4",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5207123440959488,
+              "icon": "",
+              "name": "Electrical Systems 2",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5518281632907264,
+              "icon": "",
+              "name": "Electrical Systems Extended 1",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5770073394380800,
+              "icon": "",
+              "name": "Electrical Systems 1",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6333023347802112,
+              "icon": "",
+              "name": "Electrical Systems 3",
+              "slug": "asvab-electronics-information-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5861375517655040,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
+      "name": "Auto and Shop Information",
+      "slug": "asvab-auto-and-shop-information-practice-test",
+      "topics": [
+        {
+          "id": 5100952218501120,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-systems.svg",
+          "name": "Mechanical Systems",
+          "slug": "asvab-auto-and-shop-information-practice-test",
+          "topics": [
+            {
+              "id": 4690630965985280,
+              "icon": "",
+              "name": "Mechanical Systems Extended 3",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4698664433876992,
+              "icon": "",
+              "name": "Mechanical Systems Extended 1",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5582728330215424,
+              "icon": "",
+              "name": "Mechanical Systems Extended 2",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6226772098023424,
+              "icon": "",
+              "name": "Mechanical Systems 1",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5734393758875648,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/metal-shop.svg",
+          "name": "Metal Shop",
+          "slug": "asvab-auto-and-shop-information-practice-test",
+          "topics": [
+            {
+              "id": 4888261377916928,
+              "icon": "",
+              "name": "Metal Shop Extended 2",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5100872191180800,
+              "icon": "",
+              "name": "Metal Shop 1",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5463924526809088,
+              "icon": "",
+              "name": "Metal Shop Extended 1",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6380715671289856,
+              "icon": "",
+              "name": "Metal Shop Extended 3",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5749266223988736,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/woodworking.svg",
+          "name": "Woodworking",
+          "slug": "asvab-auto-and-shop-information-practice-test",
+          "topics": [
+            {
+              "id": 4537922237759488,
+              "icon": "",
+              "name": "Woodworking 1",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4766215679508480,
+              "icon": "",
+              "name": "Woodworking Extended 2",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5026661288378368,
+              "icon": "",
+              "name": "Woodworking Extended 1",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5663822144602112,
+              "icon": "",
+              "name": "Woodworking 2",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5691986191319040,
+              "icon": "",
+              "name": "Woodworking Extended 3",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6018553694126080,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/automotive-knowledge.svg",
+          "name": "Automotive Knowledge",
+          "slug": "asvab-auto-and-shop-information-practice-test",
+          "topics": [
+            {
+              "id": 5048095633047552,
+              "icon": "",
+              "name": "Automotive Knowledge 3",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5216035095445504,
+              "icon": "",
+              "name": "Automotive Knowledge Extended 1",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5329570609758208,
+              "icon": "",
+              "name": "Automotive Knowledge 1",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5611045586468864,
+              "icon": "",
+              "name": "Automotive Knowledge 5",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6173995539890176,
+              "icon": "",
+              "name": "Automotive Knowledge 4",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6455470516600832,
+              "icon": "",
+              "name": "Automotive Knowledge 2",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6736945493311488,
+              "icon": "",
+              "name": "Automotive Knowledge 6",
+              "slug": "asvab-auto-and-shop-information-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5878262490202112,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+      "name": "Arithmetic Reasoning",
+      "slug": "asvab-arithmetic-reasoning-practice-test",
+      "topics": [
+        {
+          "id": 5078480647618560,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/fraction.svg",
+          "name": "Fraction",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 4726139650048000,
+              "icon": "",
+              "name": "Fraction Extended 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5119311651799040,
+              "icon": "",
+              "name": "Fraction Extended 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5486345732489216,
+              "icon": "",
+              "name": "Fraction Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5542332753510400,
+              "icon": "",
+              "name": "Fraction 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6668232660353024,
+              "icon": "",
+              "name": "Fraction 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5093201379590144,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/statistics.svg",
+          "name": "Statistics",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 4872818244190208,
+              "icon": "",
+              "name": "Statistics Extended 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4966711639932928,
+              "icon": "",
+              "name": "Statistics Extended 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4979382800089088,
+              "icon": "",
+              "name": "Statistics 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6083847531790336,
+              "icon": "",
+              "name": "Statistics Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6105282706931712,
+              "icon": "",
+              "name": "Statistics 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5366063965405184,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/distance-rate--time.svg",
+          "name": "Distance, Rate, & Time",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 4627539079200768,
+              "icon": "",
+              "name": "Distance, Rate, & Time 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5165552922263552,
+              "icon": "",
+              "name": "Distance, Rate, & Time Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5595905113718784,
+              "icon": "",
+              "name": "Distance, Rate, & Time Extended 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5753438986043392,
+              "icon": "",
+              "name": "Distance, Rate, & Time 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6515234273492992,
+              "icon": "",
+              "name": "Distance, Rate, & Time Extended 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5646081379532800,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/math-operations.svg",
+          "name": "Math Operations",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 4768276567556096,
+              "icon": "",
+              "name": "Math Operations 7",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4909014055911424,
+              "icon": "",
+              "name": "Math Operations 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5190489032622080,
+              "icon": "",
+              "name": "Math Operations 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5471964009332736,
+              "icon": "",
+              "name": "Math Operations 5",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6034913962754048,
+              "icon": "",
+              "name": "Math Operations 4",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6316388939464704,
+              "icon": "",
+              "name": "Math Operations 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6451628357976064,
+              "icon": "",
+              "name": "Math Operations Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6597863916175360,
+              "icon": "",
+              "name": "Math Operations 6",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5656151333011456,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/percentage.svg",
+          "name": "Percentage",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 4697907823378432,
+              "icon": "",
+              "name": "Percentage 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5260857776799744,
+              "icon": "",
+              "name": "Percentage 5",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5401595265155072,
+              "icon": "",
+              "name": "Percentage 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5460007424360448,
+              "icon": "",
+              "name": "Percentage Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5823807730221056,
+              "icon": "",
+              "name": "Percentage 4",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6386757683642368,
+              "icon": "",
+              "name": "Percentage 6",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6527495171997696,
+              "icon": "",
+              "name": "Percentage 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5656998582419456,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/ratio--proportion.svg",
+          "name": "Ratio & Proportion",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 4838645311733760,
+              "icon": "",
+              "name": "Ratio & Proportion 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5184035106062336,
+              "icon": "",
+              "name": "Ratio & Proportion Extended 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5964545218576384,
+              "icon": "",
+              "name": "Ratio & Proportion 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6007742816845824,
+              "icon": "",
+              "name": "Ratio & Proportion Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6246020195287040,
+              "icon": "",
+              "name": "Ratio & Proportion 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5701466861862912,
+          "icon": "https://storage.googleapis.com/app-data-center/asvab/icons/geometry.svg",
+          "name": "Geometry",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 4761575906869248,
+              "icon": "",
+              "name": "Geometry Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5125704442183680,
+              "icon": "",
+              "name": "Geometry Extended 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5577517125599232,
+              "icon": "",
+              "name": "Geometry 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6140467079020544,
+              "icon": "",
+              "name": "Geometry 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6394770909822976,
+              "icon": "",
+              "name": "Geometry Extended 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5767001150586880,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/unit-conversion.svg",
+          "name": "Unit Conversion ",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 4557170335023104,
+              "icon": "",
+              "name": "Unit Conversion  2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4849791984992256,
+              "icon": "",
+              "name": "Unit Conversion  Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5120120288444416,
+              "icon": "",
+              "name": "Unit Conversion  4",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5683070241865728,
+              "icon": "",
+              "name": "Unit Conversion  3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6703417032441856,
+              "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/unit-conversion-1.svg",
+              "name": "Unit Conversion  1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5823429974425600,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/number-properties.svg",
+          "name": "Number Properties",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 5161978528006144,
+              "icon": "",
+              "name": "Number Properties Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5325854750015488,
+              "icon": "",
+              "name": "Number Properties Extended 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6457126427820032,
+              "icon": "",
+              "name": "Number Properties 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6666387997065216,
+              "icon": "",
+              "name": "Number Properties Extended 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6604121750634496,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/equations.svg",
+          "name": "Equations",
+          "slug": "asvab-arithmetic-reasoning-practice-test",
+          "topics": [
+            {
+              "id": 5331226520977408,
+              "icon": "",
+              "name": "Equations 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5894176474398720,
+              "icon": "",
+              "name": "Equations 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6155878117933056,
+              "icon": "",
+              "name": "Equations Extended 2",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6401807945302016,
+              "icon": "",
+              "name": "Equations Extended 1",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6486168484970496,
+              "icon": "",
+              "name": "Equations Extended 3",
+              "slug": "asvab-arithmetic-reasoning-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5945201837211648,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
+      "name": "Mathematics Knowledge",
+      "slug": "asvab-mathematics-knowledge-practice-test",
+      "topics": [
+        {
+          "id": 5200229548687360,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/algebra.svg",
+          "name": "Algebra",
+          "slug": "asvab-mathematics-knowledge-practice-test",
+          "topics": [
+            {
+              "id": 4676710951813120,
+              "icon": "",
+              "name": "Algebra 4",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5380398393589760,
+              "icon": "",
+              "name": "Algebra 2",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5705996265586688,
+              "icon": "",
+              "name": "Algebra Extended 1",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5802610858655744,
+              "icon": "",
+              "name": "Algebra 5",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5943348347011072,
+              "icon": "",
+              "name": "Algebra 1",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6506298300432384,
+              "icon": "",
+              "name": "Algebra 3",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6588795092729856,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/geometry.svg",
+          "name": "Geometry",
+          "slug": "asvab-mathematics-knowledge-practice-test",
+          "topics": [
+            {
+              "id": 4817448440168448,
+              "icon": "",
+              "name": "Geometry 4",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5098923416879104,
+              "icon": "",
+              "name": "Geometry 2",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5661873370300416,
+              "icon": "",
+              "name": "Geometry 1",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5712882842992640,
+              "icon": "",
+              "name": "Geometry Extended 1",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6224823323721728,
+              "icon": "",
+              "name": "Geometry 3",
+              "slug": "asvab-mathematics-knowledge-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5984778887102464,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
+      "name": "Paragraph Comprehension",
+      "slug": "asvab-paragraph-comprehension-practice-test",
+      "topics": [
+        {
+          "id": 4862919997128704,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/main-idea.svg",
+          "name": "Main Idea",
+          "slug": "asvab-paragraph-comprehension-practice-test",
+          "topics": [
+            {
+              "id": 5544674919972864,
+              "icon": "",
+              "name": "Main Idea Extended 1",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5679428805853184,
+              "icon": "",
+              "name": "Main Idea Extended 3",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6503143135248384,
+              "icon": "",
+              "name": "Main Idea Extended 2",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6639201768439808,
+              "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/main-idea-1.svg",
+              "name": "Main Idea 1",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5383754038116352,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/wider-implications.svg",
+          "name": "Wider Implications",
+          "slug": "asvab-paragraph-comprehension-practice-test",
+          "topics": [
+            {
+              "id": 4598508187287552,
+              "icon": "",
+              "name": "Wider Implications 1",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4815248745824256,
+              "icon": "",
+              "name": "Wider Implications Extended 1",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5161458140708864,
+              "icon": "",
+              "name": "Wider Implications 3",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5724408094130176,
+              "icon": "",
+              "name": "Wider Implications 2",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6287358047551488,
+              "icon": "",
+              "name": "Wider Implications 4",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5946703991537664,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-meaning-in-context.svg",
+          "name": "Word Meaning in Context",
+          "slug": "asvab-paragraph-comprehension-practice-test",
+          "topics": [
+            {
+              "id": 5040172584402944,
+              "icon": "",
+              "name": "Word Meaning in Context Extended 3",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6427577656803328,
+              "icon": "",
+              "name": "Word Meaning in Context Extended 1",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6447547467956224,
+              "icon": "",
+              "name": "Word Meaning in Context Extended 2",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6550008383930368,
+              "icon": "",
+              "name": "Word Meaning in Context 1",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 6462653715185664,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/finding-information.svg",
+          "name": "Finding Information",
+          "slug": "asvab-paragraph-comprehension-practice-test",
+          "topics": [
+            {
+              "id": 4912312079089664,
+              "icon": "",
+              "name": "Finding Information Extended 2",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5513301861597184,
+              "icon": "",
+              "name": "Finding Information 2",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5654559737249792,
+              "icon": "",
+              "name": "Finding Information Extended 3",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6037264542990336,
+              "icon": "",
+              "name": "Finding Information Extended 1",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6076251815018496,
+              "icon": "",
+              "name": "Finding Information 1",
+              "slug": "asvab-paragraph-comprehension-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6473544454111232,
+      "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
+      "name": "Word Knowledge",
+      "slug": "asvab-word-knowledge-practice-test",
+      "topics": [
+        {
+          "id": 5068150714400768,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/contextualised-questions.svg",
+          "name": "Contextualised Questions",
+          "slug": "asvab-word-knowledge-practice-test",
+          "topics": [
+            {
+              "id": 4673555786629120,
+              "icon": "",
+              "name": "Contextualised Questions Extended 1",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4739245675642880,
+              "icon": "",
+              "name": "Contextualised Questions 5",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 4879983163998208,
+              "icon": "",
+              "name": "Contextualised Questions 1",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5302195629064192,
+              "icon": "",
+              "name": "Contextualised Questions 7",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5442933117419520,
+              "icon": "",
+              "name": "Contextualised Questions 3",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5865145582485504,
+              "icon": "",
+              "name": "Contextualised Questions 6",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6005883070840832,
+              "icon": "",
+              "name": "Contextualised Questions 2",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6568833024262144,
+              "icon": "",
+              "name": "Contextualised Questions 4",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            }
+          ]
+        },
+        {
+          "id": 5720040716369920,
+          "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/synonymbased-questions.svg",
+          "name": "Synonym-based Questions",
+          "slug": "asvab-word-knowledge-practice-test",
+          "topics": [
+            {
+              "id": 4524639741018112,
+              "icon": "",
+              "name": "Synonym-based Questions Extended 1",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 5020720652353536,
+              "icon": "",
+              "name": "Synonym-based Questions 2",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6146620559196160,
+              "icon": "",
+              "name": "Synonym-based Questions 3",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6428095535906816,
+              "icon": "",
+              "name": "Synonym-based Questions 1",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            },
+            {
+              "id": 6731324547137536,
+              "icon": "",
+              "name": "Synonym-based Questions Extended 2",
+              "slug": "asvab-word-knowledge-practice-test",
+              "topics": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "finalTests": {
+      "id": "FT",
+      "testId": 4886547081986048
+    },
+    "practiceTests": {
+      "id": "PT",
+      "list": [
+        {
+          "id": 4668183050977280,
+          "name": "Practice Test 1",
+          "slug": "asvab-practice-test-1"
+        },
+        {
+          "id": 5231133004398592,
+          "name": "Practice Test 2",
+          "slug": "asvab-practice-test-2"
+        },
+        {
+          "id": 5371870492753920,
+          "name": "Practice Test 3",
+          "slug": "asvab-practice-test-3"
+        },
+        {
+          "id": 5794082957819904,
+          "name": "Practice Test 4",
+          "slug": "asvab-practice-test-4"
+        },
+        {
+          "id": 6357032911241216,
+          "name": "Practice Test 5",
+          "slug": "asvab-practice-test-5"
+        },
+        {
+          "id": 6497770399596544,
+          "name": "Practice Test 6",
+          "slug": "asvab-practice-test-6"
+        }
+      ]
+    },
+    "diagnosticTest": {
+      "id": "DT",
+      "testId": -13421090
+    },
+    "branchTest": {
+      "id": "BT",
+      "list": [
+        {
+          "id": -9600450,
+          "name": "marine",
+          "slug": "marine-asvab-practice-test"
+        },
+        {
+          "id": -6056783,
+          "name": "navy",
+          "slug": "navy-asvab-practice-test"
+        },
+        {
+          "id": -3144292,
+          "name": "army",
+          "slug": "army-asvab-practice-test"
+        },
+        {
+          "id": -3012565,
+          "name": "coast-guard",
+          "slug": "coast-guard-asvab-practice-test"
+        },
+        {
+          "id": -11730215,
+          "name": "air-force",
+          "slug": "air-force-asvab-practice-test"
+        },
+        {
+          "id": -14961839,
+          "name": "national-guard",
+          "slug": "national-guard-asvab-practice-test"
+        }
+      ]
+    }
+  }
+}

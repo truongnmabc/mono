@@ -13,6 +13,7 @@ import { ITopicHomeProps } from '@ui/components/home/gridTopic/gridTopics';
 import Loading from '@ui/components/loading';
 import initLearnQuestionThunk from '@ui/redux/repository/game/initData/initLearningQuestion';
 import { db } from '@ui/db';
+import { ITestsHomeJson } from '@ui/models/other';
 
 const TitleQuestion = dynamic(() => import('@ui/components/titleQuestion'), {
   ssr: false,
@@ -31,7 +32,7 @@ const ClockIcon = dynamic(() => import('@ui/components/icon/ClockIcon'), {
 
 interface IDataJsonHomePage {
   topics: ITopicHomeProps[];
-  tests: ITestBase[];
+  tests: ITestsHomeJson['practiceTests'];
 }
 const MainStudyView = ({
   type,

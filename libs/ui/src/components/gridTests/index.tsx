@@ -3,14 +3,14 @@
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
+import IconGridTest from '@ui/components/icon/iconGridTest';
+import { TypeParam } from '@ui/constants';
+import { IBranchHomeJson } from '@ui/models/other';
 import { ITestBase } from '@ui/models/tests';
 import { IGameMode } from '@ui/models/tests/tests';
-import React, { useCallback } from 'react';
-import ItemTestLeft from './itemTest';
-import { TypeParam } from '@ui/constants';
 import clsx from 'clsx';
 import Link from 'next/link';
-import IconGridTest from '@ui/components/icon/iconGridTest';
+import React from 'react';
 export interface IListTest extends ITestBase {
   index: number;
   title: string;
@@ -24,7 +24,7 @@ const FN = ({
   appShortName: string;
   type?: IGameMode;
   id?: string;
-  tests: IListTest[];
+  tests: IBranchHomeJson['list'];
 }) => {
   const [open, setOpen] = React.useState(
     type === TypeParam.practiceTest || type === TypeParam.branchTest
@@ -71,7 +71,7 @@ const FN = ({
                     'text-xs  pl-3  pr-2 flex-1 truncate font-medium'
                   )}
                 >
-                  Practice Tests {index + 1}
+                  {test.name}
                 </h3>
               </div>
             </Link>

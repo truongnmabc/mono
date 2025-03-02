@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import passing from '@single/data/passing.json' assert { type: 'json' };
+import passing from '@single/data/sw/passing.json' assert { type: 'json' };
 export const dynamic = 'force-static';
 export async function GET() {
   try {

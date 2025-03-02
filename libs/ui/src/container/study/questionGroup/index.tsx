@@ -1,6 +1,8 @@
 import GridTestsLeft from '@ui/components/gridTests';
 import GridTopicLeft from '@ui/components/gridTopics';
 import RouterApp from '@ui/constants/router.constant';
+import { IPracticeTestsHomeJson, IBranchHomeJson } from '@ui/models/other';
+import { ITopicHomeJson } from '@ui/models/other';
 import { IGameMode } from '@ui/models/tests/tests';
 import Link from 'next/link';
 import React from 'react';
@@ -10,11 +12,16 @@ const QuestionGroup = ({
   appShortName,
   id,
 }: {
-  type?: IGameMode;
-  data: any;
+  type: IGameMode;
+  data: {
+    topics: ITopicHomeJson[];
+    tests: IPracticeTestsHomeJson;
+    branch: IBranchHomeJson;
+  };
   appShortName: string;
   id?: string;
 }) => {
+  const tests = type === 'branchTest' ? data.branch.list : data.tests.list;
   return (
     <div className="hidden sm:block w-full">
       <div className="flex p-3 bg-white rounded-xl flex-col gap-4">
@@ -24,7 +31,7 @@ const QuestionGroup = ({
               appShortName={appShortName}
               type={type}
               id={id}
-              tests={data.tests}
+              tests={tests}
             />
             <div className="w-full h-[1px] bg-[#21212129]"></div>
             <GridTopicLeft
@@ -47,7 +54,7 @@ const QuestionGroup = ({
               appShortName={appShortName}
               type={type}
               id={id}
-              tests={data.tests}
+              tests={tests}
             />
           </>
         )}

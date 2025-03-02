@@ -4,18 +4,18 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import AllowExpandProvider from '@ui/components/allowExpand/provider';
+import MtUiRipple, { useRipple } from '@ui/components/ripple';
+import { ITopicHomeJson } from '@ui/models/other';
 import { IGameMode } from '@ui/models/tests/tests';
-import { ITopicBase } from '@ui/models/topics';
+import { selectTopics } from '@ui/redux/features/study';
 import { selectTopicsId } from '@ui/redux/features/study.reselect';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
+import { trackingEventGa4 } from '@ui/utils/event';
 import ctx from '@ui/utils/twClass';
 import React, { Fragment } from 'react';
-import LazyLoadImage from '../images';
-import MtUiRipple, { useRipple } from '@ui/components/ripple';
-import { selectTopics } from '@ui/redux/features/study';
-import { trackingEventGa4 } from '@ui/utils/event';
-import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
 import TitleCollapse from '../allowExpand/titleCollapse';
+import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
+import LazyLoadImage from '../images';
 
 const GridTopicLeft = ({
   appShortName,
@@ -26,7 +26,7 @@ const GridTopicLeft = ({
   appShortName: string;
   type?: IGameMode;
   id?: string;
-  topics: ITopicBase[];
+  topics: ITopicHomeJson[];
 }) => {
   const selectedTopics = useAppSelector(selectTopicsId);
 
@@ -45,7 +45,7 @@ const GridTopicLeft = ({
         onClick={handleOpen}
       >
         <h3 className="font-semibold text-xl font-poppins">
-          More <span className="uppercase">{appShortName}</span> Tests
+          More <span className="uppercase">{appShortName}</span> Topics
         </h3>
         {open ? <ExpandLess /> : <ExpandMore />}
       </div>
@@ -73,7 +73,7 @@ const Wrapper = ({
   selectedTopics,
   index,
 }: {
-  subTopic: ITopicBase;
+  subTopic: ITopicHomeJson;
   selectedTopics: number;
   index: number;
 }) => {
@@ -92,7 +92,7 @@ const Wrapper = ({
       eventName: 'click_topic',
       value: {
         from: window.location.href,
-        to: subTopic.tag,
+        to: subTopic.slug,
       },
     });
 
@@ -141,11 +141,9 @@ const Wrapper = ({
             <div className="flex gap-2 flex-col ">
               {subTopic?.topics &&
                 subTopic?.topics?.length > 0 &&
-                subTopic?.topics?.map(
-                  (subTopic: ITopicHomeProps, index: number) => (
-                    <TitleCollapse subTopic={subTopic} key={index} />
-                  )
-                )}
+                subTopic?.topics?.map((subTopic, index) => (
+                  <TitleCollapse subTopic={subTopic} key={index} />
+                ))}
             </div>
           </div>
         </AllowExpandProvider>

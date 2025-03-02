@@ -54,7 +54,7 @@ export type IGameMode =
   | 'finalTests'
   | 'practiceTests'
   | 'diagnosticTest'
-  | 'customTets'
+  | 'customTests'
   | 'learn'
   | 'branchTest';
 

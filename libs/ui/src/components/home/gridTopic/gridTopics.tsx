@@ -3,7 +3,6 @@ import AllowExpandProvider from '@ui/components/allowExpand/provider';
 import TitleCollapse from '@ui/components/allowExpand/titleCollapse';
 import LazyLoadImage from '@ui/components/images';
 import { IAppInfo } from '@ui/models/app';
-import { ITopicBase } from '@ui/models/topics';
 import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -11,16 +10,11 @@ import React from 'react';
 import PassingHome from '../passing';
 import { TypeParam } from '@ui/constants';
 // DONE:
-export interface ITopicHomeProps
-  extends Omit<
-    ITopicBase,
-    'status' | 'averageLevel' | 'turn' | 'partId' | 'totalQuestion' | 'topics'
-  > {
-  status?: number;
-  averageLevel?: number;
-  turn?: number;
-  partId?: number;
-  totalQuestion?: number | null;
+export interface ITopicHomeProps {
+  id: number;
+  icon: string;
+  name: string;
+  slug?: string;
   topics: ITopicHomeProps[];
 }
 const GridTopics = ({
@@ -100,26 +94,31 @@ const GridTopics = ({
                 </div>
               </Link>
               {isMobile && (
-                <Collapse timeout="auto" unmountOnExit in={isSelect}>
-                  <AllowExpandProvider topic={topic}>
-                    <div
-                      className={ctx('bg-white transition-all ', {
-                        'border mt-2 p-2  border-primary rounded-md rounded-br-md border-solid':
-                          isSelect,
-                      })}
-                    >
-                      <div className="flex gap-2 flex-col ">
-                        {topic?.topics &&
-                          topic?.topics?.length > 0 &&
-                          topic?.topics?.map(
-                            (subTopic: ITopicHomeProps, index: number) => (
-                              <TitleCollapse subTopic={subTopic} key={index} />
-                            )
-                          )}
+                <div>
+                  <Collapse timeout="auto" unmountOnExit in={isSelect}>
+                    <AllowExpandProvider topic={topic}>
+                      <div
+                        className={ctx('bg-white transition-all ', {
+                          'border mt-2 p-2  border-primary rounded-md rounded-br-md border-solid':
+                            isSelect,
+                        })}
+                      >
+                        <div className="flex gap-2 flex-col ">
+                          {topic?.topics &&
+                            topic?.topics?.length > 0 &&
+                            topic?.topics?.map(
+                              (subTopic: ITopicHomeProps, index: number) => (
+                                <TitleCollapse
+                                  subTopic={subTopic}
+                                  key={index}
+                                />
+                              )
+                            )}
+                        </div>
                       </div>
-                    </div>
-                  </AllowExpandProvider>
-                </Collapse>
+                    </AllowExpandProvider>
+                  </Collapse>
+                </div>
               )}
             </div>
           );

@@ -1,5 +1,5 @@
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-import seoData from '@single/data/seo.json';
+import seoData from '@single/data/home/data.json';
 import { IDevice, ITheme } from '@ui/models/app';
 import '@ui/styles/index.css';
 import { replaceYear } from '@ui/utils/time';
@@ -58,9 +58,9 @@ export default async function ParentAppLayout({
         <RootLayout
           device={device?.value as IDevice}
           theme={theme?.value as ITheme}
-          seoData={{
-            topics: seoData.rewrite.test,
-            branch: seoData.rewrite.branch,
+          data={{
+            topics: seoData.topics,
+            branch: seoData.tests.branchTest,
           }}
         >
           {children}

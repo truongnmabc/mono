@@ -1,20 +1,19 @@
 import { Grid2 } from '@mui/material';
 import { IAppInfo, IDevice } from '@ui/models/app';
-import { IContentSeo } from '@ui/models/seo';
+import type { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
 import clsx from 'clsx';
 import React from 'react';
 import DownLoadApp from './download/downloadApp';
 import LogoHeader from './logo/logoHeader';
 import MenuHeader from './menu/menuHeader';
-
 type IProps = {
   appInfo: IAppInfo;
   device: IDevice;
   type: 'single' | 'multi' | 'state';
   theme: 'light' | 'dark';
   seoData: {
-    topics: Record<string, IContentSeo>;
-    branch: Record<string, IContentSeo>;
+    topics: ITopicHomeJson[];
+    branch: IBranchHomeJson;
   };
 };
 const HeaderApp = ({ appInfo, type, device, theme, seoData }: IProps) => {

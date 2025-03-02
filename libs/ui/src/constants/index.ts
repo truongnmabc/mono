@@ -41,7 +41,7 @@ export const TypeParam = {
   diagnosticTest: 'diagnosticTest',
   finalTest: 'finalTest',
   customTest: 'customTest',
-  practiceTest: 'practiceTest',
+  practiceTest: 'practiceTests',
   review: 'review',
   branchTest: 'branchTest',
   learn: 'learn',
