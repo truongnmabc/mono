@@ -1,5 +1,9 @@
 'use client';
-import { loginHybrid, shouldOpenModalLogin } from '@ui/redux/features/user';
+import {
+  loginHybrid,
+  logoutHybrid,
+  shouldOpenModalLogin,
+} from '@ui/redux/features/user';
 import {
   selectOpenModalLogin,
   selectUserInfo,
@@ -176,18 +180,30 @@ declare global {
     AppleIDSignInOnFailure: AppleIDSignInFailureEvent;
   }
 }
+
+const checkFedCMAvailability = async () => {
+  if (!navigator.credentials) return false;
+
+  try {
+    await navigator.credentials.get({ mediation: 'conditional' });
+    return true;
+  } catch (error) {
+    console.log('🚀 FedCM is not available:', error);
+    return false;
+  }
+};
 const AuthProvider = () => {
   const { status, data } = useSession();
   const openModal = useAppSelector(selectOpenModalLogin);
   const userInfo = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
-  const [isMount, setIsMount] = React.useState(false);
 
   const handleClose = () => {
     dispatch(shouldOpenModalLogin(false));
   };
 
   const handleCredentialResponse = (response: CredentialResponse) => {
+    console.log('🚀 handleCredentialResponse ~ response:', response);
     if (response.credential) {
       signIn('token', { redirect: false, token: response.credential });
       handleClose();
@@ -214,68 +230,19 @@ const AuthProvider = () => {
     dispatch(loginHybrid(user));
   };
 
-  // useEffect(() => {
-  //   if (status === 'authenticated' && data?.user && !userInfo.id) {
-  //     handleCheckUserInfo(data.user);
-  //   }
+  useEffect(() => {
+    if (status === 'authenticated' && data?.user && !userInfo.id) {
+      handleCheckUserInfo(data.user);
+    }
 
-  //   if (status === 'unauthenticated' && !data && userInfo.id) {
-  //     dispatch(logoutHybrid());
-  //   }
-  // }, [status, data, userInfo.id, dispatch]);
-
-  // useEffect(() => {
-  //   if (
-  //     status === 'unauthenticated' &&
-  //     typeof window !== 'undefined' &&
-  //     window.google &&
-  //     !isMount
-  //   ) {
-  //     try {
-  //       window.google?.accounts?.id?.prompt();
-  //       setIsMount(true);
-  //     } catch (error) {
-  //       console.error('🚀 Google Login Prompt Error:', error);
-  //     }
-  //   }
-  // }, [status, isMount]);
+    if (status === 'unauthenticated' && !data && userInfo.id) {
+      dispatch(logoutHybrid());
+    }
+  }, [status, data, userInfo.id, dispatch]);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    try {
-      // Khởi tạo Google Login nếu client_id hợp lệ
-
-      console.log('🚀 window.google:', window.google);
-      if (window.google && GOOGLE_CLIENT_ID) {
-        console.log('🚀 GOOGLE_CLIENT_ID:', GOOGLE_CLIENT_ID);
-
-        window.google?.accounts?.id?.initialize({
-          client_id: GOOGLE_CLIENT_ID,
-          callback: handleCredentialResponse,
-          cancel_on_tap_outside: true,
-        });
-      }
-
-      // Khởi tạo Apple Login nếu có APPLE_CLIENT_ID
-      if (window.AppleID && APPLE_CLIENT_ID) {
-        window.AppleID?.auth?.init({
-          clientId: APPLE_CLIENT_ID,
-          scope: 'email',
-          redirectURI: window.location.origin,
-          usePopup: true,
-          responseMode: 'form_post',
-        });
-
-        document.addEventListener(
-          'AppleIDSignInOnSuccess',
-          handleLoginInSuccess
-        );
-        document.addEventListener('AppleIDSignInOnFailure', handleLoginFailed);
-      }
-    } catch (error) {
-      console.error('🚀 Auth Initialization Error:', error);
-    }
+    document.addEventListener('AppleIDSignInOnSuccess', handleLoginInSuccess);
+    document.addEventListener('AppleIDSignInOnFailure', handleLoginFailed);
 
     return () => {
       document.removeEventListener(
@@ -294,15 +261,25 @@ const AuthProvider = () => {
         async
         defer
         onLoad={() => {
-          console.log('🚀 Google Login loaded');
           window.google?.accounts?.id?.initialize({
             client_id: GOOGLE_CLIENT_ID || '',
             callback: handleCredentialResponse,
             cancel_on_tap_outside: true,
+            // ux_mode: 'popup',
           });
         }}
         onReady={() => {
-          console.log('🚀 Google Login ready');
+          checkFedCMAvailability().then((isAvailable) => {
+            if (isAvailable) {
+              try {
+                window.google?.accounts?.id?.prompt();
+              } catch (error) {
+                console.error('🚀 Google Login Prompt Error:', error);
+              }
+            } else {
+              console.warn('🚀 FedCM is disabled or unavailable.');
+            }
+          });
         }}
       />
       <Script
@@ -310,13 +287,12 @@ const AuthProvider = () => {
         async
         defer
         onLoad={() => {
-          console.log('🚀 Apple Login loaded');
           window.AppleID?.auth?.init({
             clientId: APPLE_CLIENT_ID || '',
             scope: 'email',
             redirectURI: window.location.origin,
             usePopup: true,
-            responseMode: 'form_post',
+            responseMode: 'query',
           });
         }}
       />

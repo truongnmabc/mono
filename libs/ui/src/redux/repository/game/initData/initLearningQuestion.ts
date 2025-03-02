@@ -159,6 +159,7 @@ const fetchQuestions = async ({
     .where('partId')
     .equals(partId)
     .toArray();
+  console.log('🚀 ~ listQuestions:', listQuestions);
 
   if (!listQuestions || listQuestions?.length === 0) {
     const data = (await axiosRequest({

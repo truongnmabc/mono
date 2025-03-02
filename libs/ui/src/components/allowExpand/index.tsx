@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation';
 import React, { useContext } from 'react';
 import { AllowExpandContext, IContextAllowExpand } from './provider';
 import TitleCollapse from './titleCollapse';
+import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
 const AllowExpand = () => {
   const pathname = usePathname();
   const { mainTopic } = useContext<IContextAllowExpand>(AllowExpandContext);
@@ -22,7 +23,7 @@ const AllowExpand = () => {
       ? false
       : selectedTopics === mainTopic?.id;
   return (
-    <Collapse timeout="auto" unmountOnExit in={open}>
+    <Collapse timeout="auto" unmountOnExit in={true}>
       <div
         className={ctx('bg-white transition-all ', {
           'border p-2 border-t-0 border-primary rounded-bl-md rounded-br-md border-solid':
@@ -33,9 +34,11 @@ const AllowExpand = () => {
         <div className="flex gap-2 flex-col ">
           {mainTopic?.topics &&
             mainTopic?.topics?.length > 0 &&
-            mainTopic?.topics?.map((subTopic: ITopicBase, index: number) => (
-              <TitleCollapse subTopic={subTopic} key={index} />
-            ))}
+            mainTopic?.topics?.map(
+              (subTopic: ITopicHomeProps, index: number) => (
+                <TitleCollapse subTopic={subTopic} key={index} />
+              )
+            )}
         </div>
       </div>
     </Collapse>

@@ -18,6 +18,7 @@
       "@single/*": ["./apps/single/src/*"],
       "@ui/*": ["libs/ui/src/*"],
       "@ui/components/*": ["libs/ui/src/components/*"],
+      "@ui/container/*": ["libs/ui/src/container/*"],
       "@ui/db": ["libs/ui/src/db/index.ts"],
       "@ui/models/*": ["libs/ui/src/models/*"],
       "@ui/redux/*": ["libs/ui/src/redux/*"],

@@ -56,7 +56,7 @@ const BannerHome = ({
             Resources
           </h3>
           <h4 className="sm:text-2xl text-lg mt-4 sm:mt-8 font-medium sm:font-semibold text-center sm:text-start">
-            Practice for your <span className=" capitalize">{_state}</span>{' '}
+            Prepare to pass <span className=" capitalize">{_state}</span>{' '}
             <span className="uppercase">{appInfo?.appShortName}</span> on any
             device
           </h4>
@@ -64,7 +64,7 @@ const BannerHome = ({
       )}
       {isHomePage && (
         <h3 className="text-center px-4 text-[24px] leading-[36px] font-bold sm:text-[40px] sm:leading-[60px]">
-          Practice for your <span className=" capitalize">{_state}</span>{' '}
+          Prepare to pass <span className=" capitalize">{_state}</span>{' '}
           <span className="uppercase">{appInfo?.appShortName}</span> on any
           device
         </h3>

@@ -87,19 +87,20 @@ function processTopicsAndTests(topicsAndTest, appShortName) {
     slug: `${appShortName}-${topic.tag}-practice-test`,
     tag: `${appShortName}-${topic.tag}-practice-test`,
   }));
-  const branchs = listBranchTest.map((item) => ({
+  const branch = listBranchTest.map((item) => ({
     slug: `${item.title}-${appShortName}-practice-test`,
     tag: `${item.title}-${appShortName}-practice-test`,
   }));
 
-  const listSlug = [
-    ...slugs,
-    ...branchs,
-    {
+  const listSlug = {
+    test: [...slugs],
+    branch: [...branch],
+    fullLength: {
       slug: `full-length-${appShortName}-practice-test`,
       tag: `full-length-${appShortName}-practice-test`,
     },
-  ];
+  };
+
   return { topics, tests, slugs: listSlug };
 }
 
@@ -311,7 +312,7 @@ async function getBranchTest(topics, listQ) {
 /**
  * 4. Hàm lưu các file JSON liên quan đến dữ liệu test
  */
-function saveTestData(listTests, diagnosticTest, listT, listQ, branchTest) {
+function saveTestData(listTests, diagnosticTest, listQ, branchTest) {
   const dataTest = [...listTests, diagnosticTest, ...branchTest];
   saveJSONFile(
     path.join(DATA_PATH, '/apps/single/src/data/tests.json'),
@@ -331,10 +332,6 @@ function saveTestData(listTests, diagnosticTest, listT, listQ, branchTest) {
     totalQuestion,
   };
 
-  saveJSONFile(
-    path.join(DATA_PATH, '/apps/single/src/data/topics.json'),
-    listT
-  );
   saveJSONFile(
     path.join(DATA_PATH, '/apps/single/src/data/passing.json'),
     passing
@@ -360,13 +357,13 @@ function saveTestData(listTests, diagnosticTest, listT, listQ, branchTest) {
  * - Gộp thêm dữ liệu SEO mặc định cho các trang khác nếu không có dữ liệu
  */
 async function processSeoData(slugs, defaultSeo) {
-  const dataSeo = await Promise.all(
-    slugs.map(async (item) => {
+  const dataSeoTest = await Promise.all(
+    slugs.test.map(async (item) => {
       const data = await getDataSeo(item.slug);
       return { tag: item.tag, data };
     })
   );
-  const seoByTag = dataSeo.reduce((result, item) => {
+  const seoTopic = dataSeoTest.reduce((result, item) => {
     result[item.tag] = {
       content: item?.data?.content,
       titleSeo: item?.data?.titleSeo[0],
@@ -374,18 +371,44 @@ async function processSeoData(slugs, defaultSeo) {
     };
     return result;
   }, {});
+  const dataSeoBranch = await Promise.all(
+    slugs.branch.map(async (item) => {
+      const data = await getDataSeo(item.slug);
+      return { tag: item.tag, data };
+    })
+  );
+  const seoBranch = dataSeoBranch.reduce((result, item) => {
+    result[item.tag] = {
+      content: item?.data?.content,
+      titleSeo: item?.data?.titleSeo[0],
+      descSeo: item?.data?.descSeo[0],
+    };
+    return result;
+  }, {});
+  const dataSeoFullLength = await getDataSeo(slugs.fullLength.slug);
+
   const seoNull = {
     content: '',
     titleSeo: '',
     descSeo: '',
   };
   return {
-    ...seoByTag,
-    home: defaultSeo,
-    practiceTest: seoNull,
-    diagnosticTest: seoNull,
-    customTest: seoNull,
-    review: seoNull,
+    rewrite: {
+      test: seoTopic,
+      branch: seoBranch,
+      [slugs.fullLength.tag]: {
+        content: dataSeoFullLength?.content,
+        titleSeo: dataSeoFullLength?.titleSeo[0],
+        descSeo: dataSeoFullLength?.descSeo[0],
+      },
+    },
+    default: {
+      home: defaultSeo,
+      practiceTest: seoNull,
+      diagnosticTest: seoNull,
+      customTest: seoNull,
+      review: seoNull,
+    },
   };
 }
 
@@ -490,7 +513,7 @@ const buildTopicData = (topic, data) => {
     name: topic.name,
     parentId: topic.parentId,
     topics: mapTopics(topic.topics, data),
-    slug: `${topic.tag}-practice-test`,
+    slug: `${appShortName}-${topic.tag}-practice-test`,
     totalQuestion: calculateTotalQuestionsTopic(data),
     averageLevel: calculateAverageLevelTopic(data),
     status: 0,
@@ -564,7 +587,7 @@ const mapSubTopics = (topics = [], data) =>
       contentType,
       name,
       parentId,
-      slug: `${tag}-practice-test`,
+      slug: '',
       topics: [],
       status: 0,
       turn: 1,
@@ -588,7 +611,7 @@ const mapTopics = (topics = [], data) =>
       contentType,
       name,
       parentId,
-      slug: `${tag}-practice-test`,
+      slug: '',
       topics: mapSubTopics(topics, topicData.topics),
       totalQuestion: total,
       averageLevel: averageLevel / total,
@@ -687,14 +710,12 @@ const getRandomQuestion = (questions) => {
 async function setupSingleApp(appShortName) {
   const s = spinner();
   try {
-    // Bước 1: Lấy dữ liệu ứng dụng
     s.start('Bước 1: Lấy dữ liệu ứng dụng...');
     const { appInfoCore, appConfig, topicsAndTest, seo } = await fetchAppData(
       appShortName
     );
     s.stop('Đã lấy dữ liệu ứng dụng.');
 
-    // Bước 2: Xử lý dữ liệu topics và tests
     s.start('Bước 2: Xử lý dữ liệu topics và tests...');
     const { topics, tests, slugs } = processTopicsAndTests(
       topicsAndTest,
@@ -702,49 +723,34 @@ async function setupSingleApp(appShortName) {
     );
     s.stop('Đã xử lý topics và tests.');
 
-    // Bước 3: Xử lý dữ liệu test và tạo diagnostic test
     s.start('Bước 3: Xử lý dữ liệu test và tạo diagnostic test...');
     const { listTests, listT, listQ, diagnosticTest, branchTest } =
       await processTestData(topics, tests);
     s.stop('Đã xử lý dữ liệu test.');
 
-    // Bước 4: Lưu file dữ liệu test
     s.start('Bước 4: Lưu file dữ liệu test...');
-    saveTestData(listTests, diagnosticTest, listT, listQ, branchTest);
+    saveTestData(listTests, diagnosticTest, listQ, branchTest);
     s.stop('Đã lưu file dữ liệu test.');
 
-    // Bước 5: Xử lý dữ liệu SEO
     s.start('Bước 5: Xử lý dữ liệu SEO...');
 
     const listSeo = await processSeoData(slugs, seo);
     s.stop('Đã xử lý dữ liệu SEO.');
 
-    // Bước 6: Xử lý thông tin ứng dụng
     s.start('Bước 6: Xử lý thông tin ứng dụng...');
     const appInfo = processAppInfo(appInfoCore);
     s.stop('Đã xử lý thông tin ứng dụng.');
 
-    // Bước 7: Cập nhật file môi trường và lưu dữ liệu ứng dụng
     s.start('Bước 7: Cập nhật file môi trường và lưu dữ liệu ứng dụng...');
 
     const listTopicsAndTest = {
-      topics: topicsAndTest.topic.map((topic) => ({
-        ...topic,
-        slug: `${topic.tag}-practice-test`,
-        id: Number(topic.id),
-        topics: topic.topics?.map((item) => ({
-          ...item,
-          slug: `${item.tag}-practice-test`,
-          topics: item.topics?.filter((subItem) => subItem.contentType === 0),
-        })),
-      })),
+      topics: listT,
       tests: topicsAndTest.tests?.practiceTests,
     };
 
     updateEnvAndSave(appInfo[0], appConfig[0], listTopicsAndTest, listSeo);
     s.stop('Đã cập nhật file môi trường và lưu dữ liệu.');
 
-    // Bước 8: Xác thực ứng dụng
     s.start('Bước 8: Xác thực ứng dụng...');
     getAuth();
     s.stop('Đã xác thực ứng dụng.');

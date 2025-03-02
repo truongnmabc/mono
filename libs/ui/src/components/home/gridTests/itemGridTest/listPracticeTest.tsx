@@ -1,38 +1,17 @@
+'use client';
 import Collapse from '@mui/material/Collapse';
-import { db } from '@ui/db';
 import ItemTestLeft from '@ui/components/gridTests/itemTest';
-import React, { useCallback, useEffect, useState } from 'react';
+import { ITestBase } from '@ui/models';
+import { useSearchParams } from 'next/navigation';
+import React from 'react';
 
-type IListTest = {
-  parentId: number;
-  duration: number;
-};
-
-const ListPracticeTest = ({ open }: { open: boolean }) => {
-  const [listPracticeTests, setListPracticeTests] = useState<IListTest[]>([]);
-
-  const handleGetData = useCallback(async () => {
-    const listData = await db?.testQuestions
-      .filter((test) => test.gameMode === 'practiceTests')
-      .toArray();
-
-    if (listData) {
-      setListPracticeTests(
-        listData?.map((item) => ({
-          duration: item.totalDuration,
-          parentId: item.id,
-        }))
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    handleGetData();
-  }, [handleGetData]);
+const ListPracticeTest = ({ practice, }: { practice: ITestBase[] }) => {
+  const searchParams = useSearchParams();
+  const test = searchParams.get('showList');
   return (
-    <Collapse in={open} timeout="auto" unmountOnExit className="w-full">
+    <Collapse in={!!test} timeout="auto" unmountOnExit className="w-full mt-2">
       <div className="w-full flex  flex-col gap-2">
-        {listPracticeTests?.map((test, index) => (
+        {practice?.map((test, index) => (
           <ItemTestLeft key={index} index={index} test={test} />
         ))}
       </div>

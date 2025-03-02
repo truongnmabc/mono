@@ -1,11 +1,11 @@
 'use client';
-import { ITopicBase } from '@ui/models/topics';
 import { selectSubTopicsId } from '@ui/redux/features/study.reselect';
 import { useAppSelector } from '@ui/redux/store';
 import { groupTopics } from '@ui/utils/math';
 import clsx from 'clsx';
 import React, { Fragment, useEffect, useRef } from 'react';
 import IconProgress from './iconProgress';
+import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
 
 type CenterPosition = {
   x: number;
@@ -52,7 +52,7 @@ function getCenterPosition(
   return { x: 0, y: 0 };
 }
 
-const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicBase }) => {
+const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeProps }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const selectedSubTopics = useAppSelector(selectSubTopicsId);
@@ -120,7 +120,11 @@ const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicBase }) => {
   );
 };
 
-const Wrapper = ({ data }: { data: { id: number; value: ITopicBase[] }[] }) => {
+const Wrapper = ({
+  data,
+}: {
+  data: { id: number; value: ITopicHomeProps[] }[];
+}) => {
   const readySubTopic = data
     .flatMap((group) => group.value)
     .find((item) => item.status === 0);

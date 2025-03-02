@@ -15,11 +15,11 @@ import { IQuestionBase, ITopicBase } from '../type';
  * // ]
  */
 
-export const groupTopics = (
-  listTopic: ITopicBase[],
+export const groupTopics = <T>(
+  listTopic: T[],
   sequence: number
-): Array<{ id: number; value: ITopicBase[] }> => {
-  const arr: Array<{ id: number; value: ITopicBase[] }> = [];
+): Array<{ id: number; value: T[] }> => {
+  const arr: Array<{ id: number; value: T[] }> = [];
   let idx = 0;
 
   for (let i = 0; i < listTopic.length; i++) {

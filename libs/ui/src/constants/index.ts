@@ -38,11 +38,13 @@ export const isProduction = process.env['NODE_ENV'] === 'production';
 export const listAppState = ['cdl'];
 
 export const TypeParam = {
-  diagnosticTest: 'diagnostic_test',
-  finalTest: 'final_test',
-  customTest: 'custom_test',
-  practiceTest: 'practice_test',
+  diagnosticTest: 'diagnosticTest',
+  finalTest: 'finalTest',
+  customTest: 'customTest',
+  practiceTest: 'practiceTest',
   review: 'review',
+  branchTest: 'branchTest',
+  learn: 'learn',
 };
 
 export const baseImageUrl =

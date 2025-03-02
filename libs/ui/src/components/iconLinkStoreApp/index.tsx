@@ -1,5 +1,4 @@
 import { IAppInfo } from '@ui/models/app';
-import { trackingEventGa4 } from '@ui/utils/event';
 import ctx from '@ui/utils/twClass';
 import Link from 'next/link';
 import React from 'react';
@@ -27,12 +26,6 @@ const IconLinkStoreApp = ({
           'icon-download-app  h-[20px] sm:w-[180px] cursor-pointer sm:h-[50px]',
           classNames
         )}
-        onClick={() => {
-          trackingEventGa4({
-            eventName: type === 'ios' ? 'click_app_store' : 'click_gg_store',
-            value: {},
-          });
-        }}
       />
     </Link>
   );

@@ -3,87 +3,62 @@
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
-import { db } from '@ui/db';
-import { ITopicBase } from '@ui/models/topics';
-import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
-import { selectTopicsId } from '@ui/redux/features/study.reselect';
-import { useAppSelector } from '@ui/redux/store';
-import AllowExpand from '@ui/components/allowExpand';
 import AllowExpandProvider from '@ui/components/allowExpand/provider';
-import TitleTopic from '@ui/components/home/gridTopic/item/titleTopic';
-import { useSearchParams } from 'next/navigation';
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import { IGameMode } from '@ui/models/tests/tests';
+import { ITopicBase } from '@ui/models/topics';
+import { selectTopicsId } from '@ui/redux/features/study.reselect';
+import { useAppDispatch, useAppSelector } from '@ui/redux/store';
+import ctx from '@ui/utils/twClass';
+import React, { Fragment } from 'react';
+import LazyLoadImage from '../images';
+import MtUiRipple, { useRipple } from '@ui/components/ripple';
+import { selectTopics } from '@ui/redux/features/study';
+import { trackingEventGa4 } from '@ui/utils/event';
+import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
+import TitleCollapse from '../allowExpand/titleCollapse';
 
-export const generateMockTopics = (size: number): ITopicBase[] => {
-  return Array.from({ length: size }, (_, index) => {
-    return {
-      id: index,
-      contentType: 1,
-      icon: '',
-      name: '',
-      status: 0,
-      tag: '',
-      totalQuestion: 0,
-      parentId: 0,
-      topics: [],
-      slug: '',
-      averageLevel: 0, // or any default value
-      turn: 0, // or any default value
-      partId: -1,
-    };
-  });
-};
-export const mockData: ITopicBase[] = generateMockTopics(10);
-
-const FN = () => {
-  const appInfo = useAppSelector(selectAppInfo);
+const GridTopicLeft = ({
+  appShortName,
+  type,
+  id,
+  topics,
+}: {
+  appShortName: string;
+  type?: IGameMode;
+  id?: string;
+  topics: ITopicBase[];
+}) => {
   const selectedTopics = useAppSelector(selectTopicsId);
-  const [listMainTopics, setListMainTopics] = useState<ITopicBase[]>(mockData);
-  const type = useSearchParams()?.get('type');
 
   const [open, setOpen] = React.useState(type === 'learn');
 
-  const handleClick = () => setOpen(!open);
-
-  const handleGetData = useCallback(async () => {
-    const listData = await db?.topics.toArray();
-    if (listData) {
-      setListMainTopics(listData);
-    }
-  }, []);
-
-  useEffect(() => {
-    handleGetData();
-  }, [handleGetData]);
-
+  const handleOpen = () => setOpen(!open);
+  const sortedTopics = topics.sort((a, b) => {
+    if (String(a.id) === id) return -1; // Đưa testId lên đầu
+    if (String(b.id) === id) return 1;
+    return 0;
+  });
   return (
     <div className="w-full flex flex-col gap-4">
       <div
         className="flex justify-between items-center w-full"
-        onClick={handleClick}
+        onClick={handleOpen}
       >
         <h3 className="font-semibold text-xl font-poppins">
-          More {appInfo.appName} Topics
+          More <span className="uppercase">{appShortName}</span> Tests
         </h3>
         {open ? <ExpandLess /> : <ExpandMore />}
       </div>
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <div className="w-full flex flex-col gap-2">
-          {listMainTopics?.map((subTopic, index) => (
-            <Fragment key={index}>
-              <TitleTopic
-                topic={subTopic}
-                priority={3}
-                classNames=" h-[52px] "
-                imgClassNames="w-8 h-8 sm:w-10 sm:h-10"
-              />
-              {selectedTopics === subTopic.id && (
-                <AllowExpandProvider topic={subTopic}>
-                  <AllowExpand />
-                </AllowExpandProvider>
-              )}
-            </Fragment>
+          {sortedTopics?.map((subTopic, index) => (
+            <Wrapper
+              key={index}
+              subTopic={subTopic}
+              selectedTopics={selectedTopics}
+              index={index}
+            />
           ))}
         </div>
       </Collapse>
@@ -91,6 +66,90 @@ const FN = () => {
   );
 };
 
-const GridTopicLeft = React.memo(FN);
+export default React.memo(GridTopicLeft);
 
-export default GridTopicLeft;
+const Wrapper = ({
+  subTopic,
+  selectedTopics,
+  index,
+}: {
+  subTopic: ITopicBase;
+  selectedTopics: number;
+  index: number;
+}) => {
+  const isAllowExpand = selectedTopics === subTopic.id;
+  const dispatch = useAppDispatch();
+
+  const {
+    ripples,
+    onClick: onRippleClickHandler,
+    onClear: onClearRipple,
+  } = useRipple();
+
+  const handleClick: React.MouseEventHandler<HTMLDivElement> = async (e) => {
+    onRippleClickHandler(e);
+    trackingEventGa4({
+      eventName: 'click_topic',
+      value: {
+        from: window.location.href,
+        to: subTopic.tag,
+      },
+    });
+
+    dispatch(selectTopics(isAllowExpand ? -1 : subTopic.id));
+  };
+  return (
+    <Fragment key={index}>
+      <div
+        className={ctx(
+          'flex items-center relative p-2 overflow-hidden rounded-md hover:border-primary bg-white h-[52px]  cursor-pointer w-full transition-all  border-solid border border-[#2121211F]'
+        )}
+        onClick={handleClick}
+      >
+        <div
+          className={ctx(
+            'rounded-md border-solid bg-primary-16 h-9 w-9 border-primary transition-all flex items-center rounded-tl-md  justify-center'
+          )}
+        >
+          {subTopic.icon ? (
+            <LazyLoadImage
+              src={subTopic.icon}
+              classNames="w-6 h-6"
+              priority={false}
+              styles={{
+                filter:
+                  'brightness(0) saturate(100%) invert(81%) sepia(50%) saturate(2746%) hue-rotate(336deg) brightness(100%) contrast(98%) ',
+              }}
+            />
+          ) : (
+            <div className="w-8 h-8"></div>
+          )}
+        </div>
+        <h3 className=" pl-3  pr-2 flex-1 truncate font-medium text-xs">
+          {subTopic.name}
+        </h3>
+        <MtUiRipple ripples={ripples} onClear={onClearRipple} />
+      </div>
+      <Collapse timeout="auto" unmountOnExit in={isAllowExpand}>
+        <AllowExpandProvider topic={subTopic}>
+          <div
+            className={ctx('bg-white transition-all ', {
+              'border mt-2 p-2  border-primary rounded-md rounded-br-md border-solid':
+                isAllowExpand,
+            })}
+          >
+            <div className="flex gap-2 flex-col ">
+              {subTopic?.topics &&
+                subTopic?.topics?.length > 0 &&
+                subTopic?.topics?.map(
+                  (subTopic: ITopicHomeProps, index: number) => (
+                    <TitleCollapse subTopic={subTopic} key={index} />
+                  )
+                )}
+            </div>
+          </div>
+        </AllowExpandProvider>
+      </Collapse>
+    </Fragment>
+  );
+};

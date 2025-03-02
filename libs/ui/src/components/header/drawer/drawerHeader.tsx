@@ -53,21 +53,21 @@ const DrawerHeader = ({
       handleClick: () => {
         setOpenMenuDrawer(false);
       },
-      href: RouterApp.Score_Calculator,
+      href: process.env['NEXT_PUBLIC_API_URL'] + RouterApp.Score_Calculator,
     },
     {
       name: 'Study Guides',
       handleClick: () => {
         setOpenMenuDrawer(false);
       },
-      href: RouterApp.Study_Guides,
+      href: process.env['NEXT_PUBLIC_API_URL'] + RouterApp.Study_Guides,
     },
     {
       name: 'Blog',
       handleClick: () => {
         setOpenMenuDrawer(false);
       },
-      href: RouterApp.Blog,
+      href: process.env['NEXT_PUBLIC_API_URL'] + RouterApp.Blog,
     },
 
     {

@@ -32,12 +32,12 @@ const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/';
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: replaceYear(appInfo.title),
-  description: appInfo.descriptionSEO,
+  description: replaceYear(appInfo.descriptionSEO),
   keywords: appInfo.keywordSEO,
   icons: `/infos/${appInfo?.appShortName}/logo60.png`,
   openGraph: {
-    description: appInfo.descriptionSEO,
-    title: appInfo.title,
+    description: replaceYear(appInfo.descriptionSEO),
+    title: replaceYear(appInfo.title),
     images: `/infos/${appInfo?.appShortName}/logo60.png`,
   },
 };

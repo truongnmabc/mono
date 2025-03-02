@@ -1,6 +1,5 @@
 import { IAppInfo } from '@ui/models/app';
-import './styles.scss';
-
+// DONE:
 import React from 'react';
 const TitleHomeApp = ({ appInfo }: { appInfo: IAppInfo }) => {
   return (

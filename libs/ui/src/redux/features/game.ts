@@ -161,11 +161,11 @@ const gameSlice = createSlice({
     //     });
     //   }
     // });
-    // builder.addCase(initLearnQuestionThunk.fulfilled, (state, action) => {
-    //   if (action.payload) {
-    //     handleInitLearnQuestion(state, action.payload);
-    //   }
-    // });
+    builder.addCase(initLearnQuestionThunk.fulfilled, (state, action) => {
+      if (action.payload) {
+        handleInitLearnQuestion(state, action.payload);
+      }
+    });
     // builder.addCase(initFinalTestThunk.fulfilled, (state, action) => {
     //   state.gameMode = 'finalTests';
     //   if (action.payload) {

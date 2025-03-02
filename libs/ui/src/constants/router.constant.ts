@@ -16,9 +16,10 @@ const RouterApp = {
   ResultTest: '/result_test',
   Billing: '/billing',
   Edit_policy: '/editorial-policy',
-  Diagnostic_test: '/diagnostic_test',
-  Custom_test: '/custom_test',
-  Final_test: '/final_test',
+  Diagnostic_test: '/diagnostic-test',
+  Custom_test: '/custom-test',
+  Final_test: '/final-test',
+  Practice_Tests: '/practice_tests',
   Study: '/study',
 };
 export default RouterApp;

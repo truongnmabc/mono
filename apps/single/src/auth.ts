@@ -95,4 +95,14 @@ export const { auth, handlers, signOut } = NextAuth({
   },
   secret: process.env['AUTH_SECRET'],
   trustHost: true,
+  // cookies: {
+  //   sessionToken: {
+  //     name: `__Secure-next-auth.session-token`,
+  //     options: {
+  //       httpOnly: true,
+  //       secure: process.env.NODE_ENV === 'production',
+  //       sameSite: 'none',
+  //     },
+  //   },
+  // },
 });

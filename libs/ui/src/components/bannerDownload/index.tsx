@@ -1,14 +1,14 @@
-'use client';
-
-import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
-import { useAppSelector } from '@ui/redux/store';
 import IconLinkStoreApp from '@ui/components/iconLinkStoreApp';
-import { useIsMobile } from '@ui/hooks/useIsMobile';
+import { IAppInfo } from '@ui/models/app';
 import React from 'react';
 import ImgRightBannerApp from './imgRight';
-const BannerDownloadApp = () => {
-  const appInfo = useAppSelector(selectAppInfo);
-  const isMobile = useIsMobile();
+const BannerDownloadApp = ({
+  appInfo,
+  isMobile,
+}: {
+  appInfo: IAppInfo;
+  isMobile: boolean;
+}) => {
   return (
     <div className="bg-white hidden sm:flex  justify-between items-center gap-3 flex-col sm:flex-row dark:bg-black rounded-md overflow-hidden">
       <div className="p-4 flex flex-col gap-6 sm:p-6">

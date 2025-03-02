@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import passing from '@single/data/topics.json' assert { type: 'json' };
+import data from '@single/data/topicsAndTest.json' assert { type: 'json' };
 export const dynamic = 'force-static';
 export async function GET() {
   try {
-    return NextResponse.json(passing);
+    return NextResponse.json(data.topics);
   } catch (error) {
     console.log('🚀 ~ GET ~ error:', error);
     return new NextResponse(JSON.stringify({ error: 'Không thể đọc file ' }), {

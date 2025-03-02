@@ -31,7 +31,6 @@ const WrapperBtnActions: React.FC<IPropsBottomAction> = ({
   const idTopic = useAppSelector(selectCurrentTopicId);
   const listQuestion = useAppSelector(selectListQuestion);
   const indexCurrentQuestion = useAppSelector(selectCurrentQuestionIndex);
-  // console.log("🚀 ~ indexCurrentQuestion click:", indexCurrentQuestion);
   const isEndTimeTest = useAppSelector(selectIsTimeUp);
   const gameDifficultyLevel = useAppSelector(selectGameDifficultyLevel);
 

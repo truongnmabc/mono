@@ -1,9 +1,11 @@
+'use client';
 import { ITopicBase } from '@ui/models/topics';
 import React, { ReactNode } from 'react';
+import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
 
 export interface IContextAllowExpand {
   color?: string;
-  mainTopic?: ITopicBase | null;
+  mainTopic?: ITopicHomeProps | null;
   mainTopicTag: string | null;
 }
 
@@ -18,7 +20,7 @@ const AllowExpandProvider = ({
   topic,
 }: {
   children: ReactNode;
-  topic: ITopicBase | null;
+  topic: ITopicHomeProps | null;
 }) => {
   const value = {
     mainTopic: topic,

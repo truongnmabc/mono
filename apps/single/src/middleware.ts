@@ -15,28 +15,6 @@ export function middleware(request: NextRequest) {
       deviceInfo = 'mobile';
     }
   }
-  if (pathname === '/blog') {
-    const redirectUrl = `https://${process.env.NEXT_PUBLIC_APP_SHORT_NAME}.com/blog`;
-    return NextResponse.redirect(redirectUrl);
-  }
-
-  const redirectPaths: string[] = [
-    'score-calculator',
-    'refund-policy',
-    'terms-of-service',
-    'privacy',
-    'editorial-policy',
-    'study-guide',
-    'blog',
-  ];
-
-  if (redirectPaths.includes(slug)) {
-    const redirectUrl = `https://${
-      process.env.NEXT_PUBLIC_APP_SHORT_NAME
-    }-prep.com/${process.env.NEXT_PUBLIC_APP_SHORT_NAME + '-' + slug}`;
-    console.log('🚀 ~ middleware ~ redirectUrl:', redirectUrl);
-    return NextResponse.redirect(redirectUrl);
-  }
 
   const response = NextResponse.next();
   response.cookies.set('device', deviceInfo);

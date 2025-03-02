@@ -1,3 +1,4 @@
+'use client';
 import { Collapse } from '@mui/material';
 import { ITopicBase } from '@ui/models/topics';
 import { selectSubTopics } from '@ui/redux/features/study';
@@ -8,8 +9,9 @@ import clsx from 'clsx';
 import React from 'react';
 import LazyLoadImage from '../images';
 import TopicLevelProgress from './topicLevelProgress';
+import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
 
-const TitleCollapse = ({ subTopic }: { subTopic: ITopicBase }) => {
+const TitleCollapse = ({ subTopic }: { subTopic: ITopicHomeProps }) => {
   const selectedSubTopics = useAppSelector(selectSubTopicsId);
   const isExpand = selectedSubTopics === subTopic.id;
   const dispatch = useAppDispatch();

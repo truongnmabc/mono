@@ -1,5 +1,3 @@
-'use client';
-
 import { useMediaQuery } from '@mui/material';
 import { IAppInfo } from '@ui/models/app';
 import { appConfigState } from '@ui/redux/features/appConfig';
@@ -19,15 +17,12 @@ import './FooterLandingV4.scss';
 import { DmcaIcon } from './info/iconDmca';
 import { getContactApp } from '@ui/utils';
 import { sendEmailSubscribeApiV4 } from '@ui/services/home';
+import { getImageSrc } from '@ui/utils/image';
 
 const FooterLandingV4 = () => {
   const router = useRouter();
   const isMobile = useMediaQuery('(max-width:768px)');
   const emailSupport = 'support@abc-elearning.org';
-  const getSrcLogo = () => {
-    const logo = `/${appInfo.appShortName}/logo/logo-dark.png`;
-    return logo;
-  };
   const pathname = usePathname();
   const appInfo = useAppSelector(selectAppInfo);
   const _email = useRef<HTMLInputElement>(null);
@@ -100,19 +95,29 @@ const FooterLandingV4 = () => {
         <div className="item-footer cluster-legal">
           <div className="title">Legal</div>
 
-          <ForwardedLinkBlank href={RouterApp.Edit_policy}>
+          <ForwardedLinkBlank
+            href={process.env['NEXT_PUBLIC_API_URL'] + RouterApp.Edit_policy}
+          >
             Editorial Policy
           </ForwardedLinkBlank>
 
-          <ForwardedLinkBlank href={RouterApp.Privacy}>
+          <ForwardedLinkBlank
+            href={process.env['NEXT_PUBLIC_API_URL'] + RouterApp.Privacy}
+          >
             Privacy Policy
           </ForwardedLinkBlank>
 
-          <ForwardedLinkBlank href={RouterApp.Teams_of_service}>
+          <ForwardedLinkBlank
+            href={
+              process.env['NEXT_PUBLIC_API_URL'] + RouterApp.Teams_of_service
+            }
+          >
             Terms & Conditions
           </ForwardedLinkBlank>
 
-          <ForwardedLinkBlank href={RouterApp.Refund_policy}>
+          <ForwardedLinkBlank
+            href={process.env['NEXT_PUBLIC_API_URL'] + RouterApp.Refund_policy}
+          >
             Refund Policy
           </ForwardedLinkBlank>
         </div>
@@ -137,11 +142,11 @@ const FooterLandingV4 = () => {
       <div className="v4-footer-landing-container-0 max-w-component-desktop">
         <div className="item-footer  cluster-logo-description">
           <div className="cluster-logo-protected">
-            <Link href="/">
+            <Link href="/" prefetch={false}>
               <div className={'logo-footer-v4'}>
                 <LazyLoadImage
                   classNames="img-logo-footer w-[162px]"
-                  src={getSrcLogo()}
+                  src={getImageSrc('logo-light.png')}
                   alt={'logo-' + appInfo.appShortName}
                 />
               </div>

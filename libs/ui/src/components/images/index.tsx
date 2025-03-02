@@ -22,7 +22,8 @@ export interface ILazyLoadImages {
   height?: number;
 }
 
-const FALLBACK_IMAGE = '/images/logo/logo60.png';
+const FALLBACK_IMAGE =
+  'https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/web/images/logo-light.png?t=1740749268663';
 
 const LazyLoadImage: React.FC<ILazyLoadImages> = ({
   src,
