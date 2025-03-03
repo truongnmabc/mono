@@ -1,9 +1,12 @@
 'use client';
+
 import { selectCurrentSubTopicIndex } from '@ui/redux/features/game.reselect';
 import { useAppSelector } from '@ui/redux/store';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 import { useParams, usePathname } from 'next/navigation';
 import React, { useMemo } from 'react';
+
 // DONE
 export const getKeyTest = (
   pathname: string | string[] | undefined
@@ -38,13 +41,17 @@ const TitleQuestion = ({ type }: { type?: string }) => {
     [params, pathname]
   );
   const index = useAppSelector(selectCurrentSubTopicIndex);
+
   return (
-    <div
-      className={clsx(
-        'w-full text-center hidden sm:block capitalize text-xl font-semibold'
-      )}
-    >
-      {defaultTitle} {type === 'learn' ? `- Core ${index}` : ''}
+    <div className={clsx('w-full flex items-center justify-center')}>
+      <motion.span
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="text-center hidden sm:block capitalize text-xl font-semibold overflow-hidden border-transparent whitespace-nowrap"
+      >
+        {defaultTitle} {type === 'learn' ? `- Core ${index}` : ''}
+      </motion.span>
     </div>
   );
 };

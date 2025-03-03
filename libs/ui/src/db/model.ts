@@ -36,7 +36,7 @@ export class DB extends Dexie {
       questions: '++id,partId,subTopicId',
 
       //  chứa thông tin của mainTopic và subTopic
-      topics: '++id,slug',
+      topics: '++id,parentId,slug',
 
       // lưu thông tin bookmark, like của người dùng
       useActions: '++id,partId,questionId',

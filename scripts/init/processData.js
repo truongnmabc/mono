@@ -65,6 +65,7 @@ const getDiagnosticTest = async (topics, allQuestions) => {
 };
 
 const buildTopicData = (topic, data, appShortName) => {
+  const slug = `${appShortName}-${topic.tag}-practice-test`;
   return {
     id: Number(topic.id),
     icon: topic.icon,
@@ -72,8 +73,8 @@ const buildTopicData = (topic, data, appShortName) => {
     contentType: topic.contentType,
     name: topic.name,
     parentId: topic.parentId,
-    topics: mapTopics(topic.topics, data),
-    slug: `${appShortName}-${topic.tag}-practice-test`,
+    topics: mapTopics(topic.topics, data, slug),
+    slug: slug,
     totalQuestion: calculateTotalQuestionsTopic(data),
     averageLevel: calculateAverageLevelTopic(data),
     status: 0,
@@ -291,7 +292,7 @@ async function getBranchTest(topics, listQ) {
   };
 }
 
-const mapSubTopics = (topics = [], data) =>
+const mapSubTopics = (topics = [], data, slug) =>
   topics.map(({ id, icon, tag, contentType, name, parentId }) => {
     const subTopicData = data.find((t) => Number(t.id) === id);
     const total = subTopicData?.questions?.length || 0;
@@ -302,7 +303,7 @@ const mapSubTopics = (topics = [], data) =>
       contentType,
       name,
       parentId,
-      slug: '',
+      slug: slug,
       topics: [],
       status: 0,
       turn: 1,
@@ -315,7 +316,7 @@ const mapSubTopics = (topics = [], data) =>
     };
   });
 
-const mapTopics = (topics = [], data) =>
+const mapTopics = (topics = [], data, slug) =>
   topics.map(({ id, icon, tag, contentType, name, parentId, topics }) => {
     const topicData = data.find((t) => Number(t.id) === id);
     const total = calculateSubTopicTotalQuestions(topicData.topics);
@@ -327,8 +328,8 @@ const mapTopics = (topics = [], data) =>
       contentType,
       name,
       parentId,
-      slug: '',
-      topics: mapSubTopics(topics, topicData.topics),
+      slug: slug,
+      topics: mapSubTopics(topics, topicData.topics, slug),
       totalQuestion: total,
       averageLevel: averageLevel / total,
       status: 0,
@@ -419,7 +420,11 @@ async function processTestData(topics, tests, appShortName) {
 
   const topicsResult = await initDataTopics(topics, appShortName);
 
-  const listTopics = topicsResult.map((item) => item.topics);
+  const list = topicsResult.flatMap((item) => item.topics);
+  const listTopics = list.flatMap((item) =>
+    item.topics.flatMap((i) => i.topics)
+  );
+
   const questions = topicsResult.flatMap((item) => item.questions);
 
   const diagnosticTest = await getDiagnosticTest(topics, questions);
@@ -452,4 +457,4 @@ async function processTestData(topics, tests, appShortName) {
   };
 }
 
-export { processTestData, generateRandomNegativeId };
+export { generateRandomNegativeId, processTestData };

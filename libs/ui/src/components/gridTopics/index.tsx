@@ -3,7 +3,6 @@
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
-import AllowExpandProvider from '@ui/components/allowExpand/provider';
 import MtUiRipple, { useRipple } from '@ui/components/ripple';
 import { ITopicHomeJson } from '@ui/models/other';
 import { IGameMode } from '@ui/models/tests/tests';
@@ -14,13 +13,11 @@ import { trackingEventGa4 } from '@ui/utils/event';
 import ctx from '@ui/utils/twClass';
 import React, { Fragment } from 'react';
 import TitleCollapse from '../allowExpand/titleCollapse';
-import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
 import LazyLoadImage from '../images';
 
 const GridTopicLeft = ({
   appShortName,
   type,
-  id,
   topics,
 }: {
   appShortName: string;
@@ -33,11 +30,7 @@ const GridTopicLeft = ({
   const [open, setOpen] = React.useState(type === 'learn');
 
   const handleOpen = () => setOpen(!open);
-  const sortedTopics = topics.sort((a, b) => {
-    if (String(a.id) === id) return -1; // Đưa testId lên đầu
-    if (String(b.id) === id) return 1;
-    return 0;
-  });
+
   return (
     <div className="w-full flex flex-col gap-4">
       <div
@@ -52,7 +45,7 @@ const GridTopicLeft = ({
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <div className="w-full flex flex-col gap-2">
-          {sortedTopics?.map((subTopic, index) => (
+          {topics?.map((subTopic, index) => (
             <Wrapper
               key={index}
               subTopic={subTopic}
@@ -131,22 +124,20 @@ const Wrapper = ({
         <MtUiRipple ripples={ripples} onClear={onClearRipple} />
       </div>
       <Collapse timeout="auto" unmountOnExit in={isAllowExpand}>
-        <AllowExpandProvider topic={subTopic}>
-          <div
-            className={ctx('bg-white transition-all ', {
-              'border mt-2 p-2  border-primary rounded-md rounded-br-md border-solid':
-                isAllowExpand,
-            })}
-          >
-            <div className="flex gap-2 flex-col ">
-              {subTopic?.topics &&
-                subTopic?.topics?.length > 0 &&
-                subTopic?.topics?.map((subTopic, index) => (
-                  <TitleCollapse subTopic={subTopic} key={index} />
-                ))}
-            </div>
+        <div
+          className={ctx('bg-white transition-all ', {
+            'border mt-2 p-2  border-primary rounded-md rounded-br-md border-solid':
+              isAllowExpand,
+          })}
+        >
+          <div className="flex gap-2 flex-col ">
+            {subTopic?.topics &&
+              subTopic?.topics?.length > 0 &&
+              subTopic?.topics?.map((subTopic, index) => (
+                <TitleCollapse subTopic={subTopic} key={index} />
+              ))}
           </div>
-        </AllowExpandProvider>
+        </div>
       </Collapse>
     </Fragment>
   );

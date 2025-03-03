@@ -274,6 +274,7 @@
               keyPath: 'id',
               autoIncrement: true,
             });
+            store.createIndex('parentId', 'parentId', { unique: false });
             store.createIndex('slug', 'slug', { unique: false });
           }
           // Tạo bảng useActions với các chỉ mục partId và questionId

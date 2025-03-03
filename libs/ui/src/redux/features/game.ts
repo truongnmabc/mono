@@ -127,111 +127,111 @@ const gameSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    // builder.addCase(nextQuestionDiagnosticThunk.fulfilled, (state, action) => {
-    //   if (action.payload) {
-    //     const { nextLever, listQuestion, indexCurrentQuestion } =
-    //       action.payload;
-    //     state.listQuestion = listQuestion;
-    //     state.currentGame = nextLever;
-    //     state.currentQuestionIndex = indexCurrentQuestion;
-    //     state.remainingTime = 80;
-    //   }
-    // });
-    // builder.addCase(reloadStateThunk.fulfilled, (state, action) => {
-    //   const { attemptNumber } = action.payload;
-    //   state.attemptNumber = attemptNumber;
-    // });
-    // builder.addCase(nextQuestionThunk.fulfilled, (state, action) => {
-    //   const data = action.payload;
-    //   state.currentGame = data?.nextQuestion ?? state.listQuestion[0];
-    //   state.isFirstAttempt = data?.isFirst ?? true;
-    //   state.currentQuestionIndex = data?.nextLever ?? 0;
-    // });
-    // builder.addCase(choiceAnswer.fulfilled, (state, action) => {
-    //   if (action.payload) {
-    //     processChoiceAnswer(state, action.payload);
-    //   }
-    // });
-    // builder.addCase(initPracticeThunk.fulfilled, (state, action) => {
-    //   state.gameMode = 'practiceTests';
-    //   if (action.payload) {
-    //     handleInitTestQuestion(state, {
-    //       ...action.payload,
-    //       questions: action.payload.questions || [],
-    //     });
-    //   }
-    // });
+    builder.addCase(nextQuestionDiagnosticThunk.fulfilled, (state, action) => {
+      if (action.payload) {
+        const { nextLever, listQuestion, indexCurrentQuestion } =
+          action.payload;
+        state.listQuestion = listQuestion;
+        state.currentGame = nextLever;
+        state.currentQuestionIndex = indexCurrentQuestion;
+        state.remainingTime = 80;
+      }
+    });
+    builder.addCase(reloadStateThunk.fulfilled, (state, action) => {
+      const { attemptNumber } = action.payload;
+      state.attemptNumber = attemptNumber;
+    });
+    builder.addCase(nextQuestionThunk.fulfilled, (state, action) => {
+      const data = action.payload;
+      state.currentGame = data?.nextQuestion ?? state.listQuestion[0];
+      state.isFirstAttempt = data?.isFirst ?? true;
+      state.currentQuestionIndex = data?.nextLever ?? 0;
+    });
+    builder.addCase(choiceAnswer.fulfilled, (state, action) => {
+      if (action.payload) {
+        processChoiceAnswer(state, action.payload);
+      }
+    });
+    builder.addCase(initPracticeThunk.fulfilled, (state, action) => {
+      state.gameMode = 'practiceTests';
+      if (action.payload) {
+        handleInitTestQuestion(state, {
+          ...action.payload,
+          questions: action.payload.questions || [],
+        });
+      }
+    });
     builder.addCase(initLearnQuestionThunk.fulfilled, (state, action) => {
       if (action.payload) {
         handleInitLearnQuestion(state, action.payload);
       }
     });
-    // builder.addCase(initFinalTestThunk.fulfilled, (state, action) => {
-    //   state.gameMode = 'finalTests';
-    //   if (action.payload) {
-    //     handleInitTestQuestion(state, action.payload);
-    //   }
-    // });
-    // builder.addCase(choiceStartCustomTestThunk.fulfilled, (state, action) => {
-    //   state.gameMode = 'customTets';
-    //   if (action.payload) {
-    //     state.currentSubTopicIndex = action.payload.currentSubTopicIndex;
-    //     handleInitTestQuestion(state, action.payload);
-    //   }
-    // });
-    // builder.addCase(initCustomTestThunk.fulfilled, (state, action) => {
-    //   if (action.payload) {
-    //     const data = {
-    //       ...action.payload,
-    //       remainingTime: action.payload.remainingTime || 0,
-    //       questions: action.payload.questions || [],
-    //       gameMode: action.payload.gameMode as IGameMode,
-    //     };
-    //     handleInitTestQuestion(state, {
-    //       ...data,
-    //     });
-    //     const {
-    //       passingThreshold,
-    //       attemptNumber,
-    //       gameDifficultyLevel,
-    //       currentSubTopicIndex,
-    //     } = action.payload;
-    //     state.currentSubTopicIndex = currentSubTopicIndex;
-    //     state.passingThreshold = passingThreshold;
-    //     state.attemptNumber = attemptNumber;
-    //     state.gameDifficultyLevel = gameDifficultyLevel;
-    //   } else {
-    //     state.listQuestion = [];
-    //     state.currentGame = plateHolderCurrentGame;
-    //     state.isGamePaused = false;
-    //     state.gameMode = 'customTets';
-    //   }
-    //   state.isDataLoaded = true;
-    // });
-    // builder.addCase(
-    //   initDiagnosticTestQuestionThunk.fulfilled,
-    //   (state, action) => {
-    //     if (action.payload) {
-    //       const {
-    //         listQuestion,
-    //         isGamePaused,
-    //         currentTopicId,
-    //         progressData,
-    //         attemptNumber,
-    //       } = action.payload;
-    //       handleInitTestQuestion(state, {
-    //         gameMode: 'diagnosticTest',
-    //         progressData: progressData || [],
-    //         questions: listQuestion,
-    //         currentTopicId: currentTopicId,
-    //         totalDuration: 1,
-    //         isGamePaused: isGamePaused,
-    //         remainingTime: 80,
-    //         attemptNumber,
-    //       });
-    //     }
-    //   }
-    // );
+    builder.addCase(initFinalTestThunk.fulfilled, (state, action) => {
+      state.gameMode = 'finalTests';
+      if (action.payload) {
+        handleInitTestQuestion(state, action.payload);
+      }
+    });
+    builder.addCase(choiceStartCustomTestThunk.fulfilled, (state, action) => {
+      state.gameMode = 'customTests';
+      if (action.payload) {
+        state.currentSubTopicIndex = action.payload.currentSubTopicIndex;
+        handleInitTestQuestion(state, action.payload);
+      }
+    });
+    builder.addCase(initCustomTestThunk.fulfilled, (state, action) => {
+      if (action.payload) {
+        const data = {
+          ...action.payload,
+          remainingTime: action.payload.remainingTime || 0,
+          questions: action.payload.questions || [],
+          gameMode: action.payload.gameMode as IGameMode,
+        };
+        handleInitTestQuestion(state, {
+          ...data,
+        });
+        const {
+          passingThreshold,
+          attemptNumber,
+          gameDifficultyLevel,
+          currentSubTopicIndex,
+        } = action.payload;
+        state.currentSubTopicIndex = currentSubTopicIndex;
+        state.passingThreshold = passingThreshold;
+        state.attemptNumber = attemptNumber;
+        state.gameDifficultyLevel = gameDifficultyLevel;
+      } else {
+        state.listQuestion = [];
+        state.currentGame = plateHolderCurrentGame;
+        state.isGamePaused = false;
+        state.gameMode = 'customTests';
+      }
+      state.isDataLoaded = true;
+    });
+    builder.addCase(
+      initDiagnosticTestQuestionThunk.fulfilled,
+      (state, action) => {
+        if (action.payload) {
+          const {
+            listQuestion,
+            isGamePaused,
+            currentTopicId,
+            progressData,
+            attemptNumber,
+          } = action.payload;
+          handleInitTestQuestion(state, {
+            gameMode: 'diagnosticTest',
+            progressData: progressData || [],
+            questions: listQuestion,
+            currentTopicId: currentTopicId,
+            totalDuration: 1,
+            isGamePaused: isGamePaused,
+            remainingTime: 80,
+            attemptNumber,
+          });
+        }
+      }
+    );
   },
 });
 

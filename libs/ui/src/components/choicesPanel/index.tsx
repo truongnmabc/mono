@@ -1,5 +1,6 @@
 'use client';
 import { TypeParam } from '@ui/constants/index';
+import RouterApp from '@ui/constants/router.constant';
 import { IGameMode } from '@ui/models/tests/tests';
 import { setCurrentQuestion } from '@ui/redux/features/game';
 import {
@@ -18,7 +19,6 @@ import finishQuestionThunk from '@ui/redux/repository/game/finish/finishQuestion
 import nextQuestionThunk from '@ui/redux/repository/game/nextQuestion/nextQuestion';
 import nextQuestionDiagnosticThunk from '@ui/redux/repository/game/nextQuestion/nextQuestionDiagnosticTest';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import RouterApp from '@ui/constants/router.constant';
 import {
   useParams,
   usePathname,
@@ -67,7 +67,7 @@ const ChoicesPanel: React.FC<IProps> = ({
 
   const listRandomQuestion = useMemo(
     () =>
-      currentGame?.answers
+      currentGame?.answers.length
         ? shuffleArray(currentGame.answers)
         : MOCK_TEMP_LIST_ANSWER,
     [currentGame?.answers]

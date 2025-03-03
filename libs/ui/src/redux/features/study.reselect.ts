@@ -1,12 +1,17 @@
-import { createSelector } from "reselect";
-import { studyState } from "./study";
+import { createSelector } from 'reselect';
+import { studyState } from './study';
 
 export const selectSubTopicsId = createSelector(
-    [studyState],
-    (reducer) => reducer.selectedSubTopics
+  [studyState],
+  (reducer) => reducer.selectedSubTopics
 );
 
 export const selectTopicsId = createSelector(
-    [studyState],
-    (reducer) => reducer.selectedTopics
+  [studyState],
+  (reducer) => reducer.selectedTopics
+);
+
+export const selectListStatus = createSelector(
+  [studyState],
+  (reducer) => reducer.listStatus
 );

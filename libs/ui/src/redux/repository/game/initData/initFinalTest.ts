@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@ui/db';
 import { IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
-import { RootState } from '@ui/redux/store';
 import { axiosRequest } from '@ui/services/config/axios';
 import {
   getLocalUserProgress,
@@ -17,19 +16,16 @@ const updateDB = async (id: number) => {
 };
 const initFinalTestThunk = createAsyncThunk(
   'initFinalTestThunk',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState() as RootState;
-    let { isDataFetched } = state.appInfo;
+  async ({ id }: { id: number }, thunkAPI) => {
+    // const state = thunkAPI.getState() as RootState;
+    // let { isDataFetched } = state.appInfo;
 
-    while (!isDataFetched) {
-      await new Promise((resolve) => setTimeout(resolve, 100)); // Đợi 100ms trước khi kiểm tra lại
-      isDataFetched = (thunkAPI.getState() as RootState).appInfo.isDataFetched;
-    }
+    // while (!isDataFetched) {
+    //   await new Promise((resolve) => setTimeout(resolve, 100)); // Đợi 100ms trước khi kiểm tra lại
+    //   isDataFetched = (thunkAPI.getState() as RootState).appInfo.isDataFetched;
+    // }
 
-    const dataStore = await db?.testQuestions
-      .where('gameMode')
-      .equals('finalTests')
-      .first();
+    const dataStore = await db?.testQuestions.get(id);
 
     if (dataStore) {
       const listIds =

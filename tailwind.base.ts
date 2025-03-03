@@ -28,6 +28,36 @@ export default {
         slider: 'calc((100% / 3) - 16px)',
         'silder_2/3': 'calc((100% / 2) - 24px)',
       },
+
+      animation: {
+        typing: 'typing 1.5s steps(40, end)',
+        'progress-slide': 'progressSlide 0.7s ease-out',
+        'progress-width': 'progressWidth 0.7s ease-out',
+      },
+      keyframes: {
+        typing: {
+          from: { width: '0' },
+          to: { width: '100%' },
+        },
+        progressSlide: {
+          '0%': {
+            transform: 'scaleX(0)',
+            transformOrigin: 'left',
+          },
+          '100%': {
+            transform: 'scaleX(1)',
+            transformOrigin: 'left',
+          },
+        },
+        progressWidth: {
+          '0%': {
+            transform: 'scaleX(0)',
+          },
+          '100%': {
+            transform: 'scaleX(1)',
+          },
+        },
+      },
     },
   },
   plugins: [],

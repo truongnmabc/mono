@@ -4,19 +4,23 @@ import ChoicesPanel from '@ui/components/choicesPanel';
 import ExplanationDetail from '@ui/components/explanation';
 import ProgressQuestion from '@ui/components/progressQuestion';
 import QuestionContent from '@ui/components/question';
-import React, { Fragment, useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { useAppDispatch } from '@ui/redux/store';
-import { IGameMode, ITestBase } from '@ui/models/tests/tests';
-import { IAppInfo } from '@ui/models';
-import { ITopicHomeProps } from '@ui/components/home/gridTopic/gridTopics';
-import Loading from '@ui/components/loading';
-import initLearnQuestionThunk from '@ui/redux/repository/game/initData/initLearningQuestion';
 import { db } from '@ui/db';
-import { ITestsHomeJson } from '@ui/models/other';
+import { IAppInfo } from '@ui/models';
+import { ITestsHomeJson, ITopicHomeJson } from '@ui/models/other';
+import { IGameMode } from '@ui/models/tests/tests';
+import { resetStateStudy, selectTopics } from '@ui/redux/features/study';
+import initLearnQuestionThunk from '@ui/redux/repository/game/initData/initLearningQuestion';
+import initPracticeThunk from '@ui/redux/repository/game/initData/initPracticeTest';
+import selectSubTopicThunk from '@ui/redux/repository/study/select';
+import { useAppDispatch } from '@ui/redux/store';
+import dynamic from 'next/dynamic';
+import React, { Fragment, useEffect } from 'react';
 
 const TitleQuestion = dynamic(() => import('@ui/components/titleQuestion'), {
   ssr: false,
+  loading: () => (
+    <div className="w-full flex bg-white rounded-md items-center justify-center h-8"></div>
+  ),
 });
 
 const CountTimeRemainPracticeTest = dynamic(
@@ -31,7 +35,7 @@ const ClockIcon = dynamic(() => import('@ui/components/icon/ClockIcon'), {
 });
 
 interface IDataJsonHomePage {
-  topics: ITopicHomeProps[];
+  topics: ITopicHomeJson[];
   tests: ITestsHomeJson['practiceTests'];
 }
 const MainStudyView = ({
@@ -42,6 +46,7 @@ const MainStudyView = ({
   partId,
   appInfo,
   isMobile,
+  slug,
 }: {
   type: IGameMode;
   id?: number;
@@ -50,64 +55,71 @@ const MainStudyView = ({
   subId?: number;
   isMobile: boolean;
   partId?: number;
+  slug?: string;
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useAppDispatch();
-
   useEffect(() => {
+    dispatch(resetStateStudy());
     const handleGetData = async () => {
       try {
         if (type === 'learn') {
-          if (partId && subId) {
+          if (partId) {
             dispatch(
               initLearnQuestionThunk({
                 partId: partId,
-                subTopicId: subId,
               })
             );
             return;
           }
-          const currentTopic = await db?.topics.get(id);
-          if (currentTopic) {
-            const currentSubTopic = currentTopic.topics.find(
-              (item) => item.status === 0
+          const currentPart = await db?.topics
+            .where('slug')
+            .equals(slug || '')
+            .filter((item) => item.status === 0)
+            .first();
+
+          if (currentPart) {
+            dispatch(
+              initLearnQuestionThunk({
+                partId: currentPart.id,
+              })
             );
-            if (currentSubTopic) {
-              const currentPart = currentSubTopic.topics.find(
-                (item) => item.status === 0
-              );
-              if (currentPart) {
-                dispatch(
-                  initLearnQuestionThunk({
-                    partId: currentPart.id,
-                    subTopicId: currentSubTopic.id,
-                  })
-                );
+            setTimeout(() => {
+              dispatch(selectSubTopicThunk(currentPart.parentId));
+              dispatch(selectTopics(id || -1));
+            }, 500);
+          }
+        }
+
+        if (type === 'practiceTests') {
+          if (!id || id === -1) {
+            const list = await db?.testQuestions
+              .where('gameMode')
+              .equals('practiceTests')
+              .toArray();
+
+            if (list?.length) {
+              const currentTest = list.find((item) => item.status === 0);
+              if (currentTest) {
+                dispatch(initPracticeThunk({ testId: currentTest.id }));
               }
             }
           }
         }
       } catch (err) {
       } finally {
-        setIsLoading(false);
       }
     };
     handleGetData();
   }, []);
 
-  if (isLoading)
-    return (
-      <div className="w-full flex items-center justify-center h-1/4">
-        <Loading />
-      </div>
-    );
   return (
     <Fragment>
-      <div className=" sm:shadow-custom bg-transparent sm:bg-white  rounded-2xl dark:bg-black">
+      <div className="sm:shadow-custom bg-transparent min-h-[380px] relative sm:bg-white  rounded-2xl dark:bg-black">
         <div className="sm:p-4 flex flex-col gap-3">
-          {type && <TitleQuestion type={type} />}
+          <TitleQuestion type={type} />
+
           <ProgressQuestion />
-          {type === 'practiceTests' && (
+          {type !== 'learn' && (
             <div className="w-full flex items-center justify-center">
               <div className="flex items-center justify-center w-fit gap-2">
                 <ClockIcon />

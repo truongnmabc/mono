@@ -1,34 +1,45 @@
 import { selectListQuestion } from '@ui/redux/features/game.reselect';
 import { useAppSelector } from '@ui/redux/store';
-import ctx from '@ui/utils/twClass';
 
 type IProps = {
   isActions?: boolean;
 };
+
 const ProgressQuestion: React.FC<IProps> = ({ isActions = false }) => {
   const listQuestion = useAppSelector(selectListQuestion);
-  const sortedListQuestion = [...listQuestion].sort((a, b) => {
-    if (a.localStatus === 'correct' && b.localStatus !== 'correct') return -1;
-    if (a.localStatus !== 'correct' && b.localStatus === 'correct') return 1;
-    if (a.localStatus === 'incorrect' && b.localStatus !== 'incorrect')
-      return -1;
-    if (a.localStatus !== 'incorrect' && b.localStatus === 'incorrect')
-      return 1;
-    return 0;
-  });
 
-  return (
-    <div className="sm:flex rounded-lg hidden bg-[#21212133] overflow-hidden w-full h-[6px]">
-      {sortedListQuestion.map((item, index) => (
+  const total = listQuestion.length;
+
+  const correctCount = listQuestion.filter(
+    (q) => q.localStatus === 'correct'
+  ).length;
+
+  const incorrectCount = listQuestion.filter(
+    (q) => q.localStatus === 'incorrect'
+  ).length;
+
+  const answeredCount = correctCount + incorrectCount;
+
+  if (isActions) {
+    return (
+      <div className="sm:flex rounded-lg hidden overflow-hidden w-full h-2 relative">
+        <div className="absolute top-0 left-0 h-full bg-[#21212133] w-full" />
         <div
-          key={index}
-          className={ctx('h-2  w-full', {
-            'bg-[#21212185]': isActions && item.localStatus !== 'new',
-            'bg-[#07C58C]': item.localStatus === 'correct' && !isActions,
-            'bg-[#FF746D]': item.localStatus === 'incorrect' && !isActions,
-          })}
-        ></div>
-      ))}
+          className="absolute top-0 left-0 h-full bg-[#21212185]
+            transition-all duration-700 ease-out animate-progress-slide"
+          style={{ width: `${(answeredCount / total) * 100}%` }}
+        />
+      </div>
+    );
+  }
+  return (
+    <div className="sm:flex rounded-lg hidden  w-full h-[6px] relative">
+      <div className="study-progress  absolute bg-transparent rounded-2xl w-full z-10  top-0  left-0 h-[6px] ">
+        <progress max={total} value={correctCount} />
+      </div>
+      <div className="study-progress-incorrect absolute bg-[#21212133]  rounded-2xl w-full z-0 top-0 left-0 h-[6px] ">
+        <progress max={total} value={incorrectCount + correctCount} />
+      </div>
     </div>
   );
 };

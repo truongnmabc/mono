@@ -1,14 +1,14 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@ui/db';
+import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionOpt } from '@ui/models/question';
+import { IGameMode } from '@ui/models/tests/tests';
 import { RootState } from '@ui/redux/store';
 import { axiosRequest } from '@ui/services/config/axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
 } from './initPracticeTest';
-import { IUserQuestionProgress } from '@ui/models/progress';
-import { IGameMode } from '@ui/models/tests/tests';
 
 type IInitQuestion = {
   subTopicTag?: string;
@@ -159,7 +159,6 @@ const fetchQuestions = async ({
     .where('partId')
     .equals(partId)
     .toArray();
-  console.log('🚀 ~ listQuestions:', listQuestions);
 
   if (!listQuestions || listQuestions?.length === 0) {
     const data = (await axiosRequest({

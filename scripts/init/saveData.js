@@ -1,6 +1,6 @@
+import fs from 'fs';
 import path from 'path';
 import { appendToEnvFile, saveJSONFile } from '../utils/index.js';
-import fs from 'fs';
 
 const DATA_PATH = process.cwd();
 
@@ -52,6 +52,7 @@ function updateEnvAndSave({
   seo,
   home,
   authSecret,
+  server: { diagnosticTest },
 }) {
   // config
   const envFilePath = path.join(DATA_PATH, '/apps/single/.env.local');
@@ -100,6 +101,12 @@ function updateEnvAndSave({
     path.join(DATA_PATH, '/apps/single/src/data/home/data.json'),
     home
   );
+  // server
+  saveJSONFile(path.join(DATA_PATH, '/apps/single/src/data/server/dia.json'), {
+    titleSeo: seo.default.diagnosticTest.titleSeo,
+    descSeo: seo.default.diagnosticTest.descSeo,
+    content: seo.default.diagnosticTest.content,
+  });
 }
 
 export { updateEnvAndSave };

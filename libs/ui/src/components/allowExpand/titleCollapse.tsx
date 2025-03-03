@@ -1,25 +1,26 @@
 'use client';
 import { Collapse } from '@mui/material';
-import { selectSubTopics } from '@ui/redux/features/study';
+import { ITopicHomeJson } from '@ui/models/other';
 import { selectSubTopicsId } from '@ui/redux/features/study.reselect';
+import selectSubTopicThunk from '@ui/redux/repository/study/select';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import React from 'react';
 import LazyLoadImage from '../images';
 import TopicLevelProgress from './topicLevelProgress';
-import { ITopicHomeJson } from '@ui/models/other';
 
 const TitleCollapse = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
   const selectedSubTopics = useAppSelector(selectSubTopicsId);
   const isExpand = selectedSubTopics === subTopic.id;
   const dispatch = useAppDispatch();
+  const titleRef = React.useRef<HTMLDivElement>(null);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full transition-all h-full" ref={titleRef}>
       <div
         className={ctx(
-          'w-full bg-[#F3F5F6] p-3  cursor-pointer flex gap-2 items-center justify-between',
+          'w-full bg-[#F3F5F6] p-3  transition-all cursor-pointer flex gap-2 items-center justify-between',
           {
             'rounded-t-md': isExpand,
             'rounded-md': !isExpand,
@@ -27,9 +28,9 @@ const TitleCollapse = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
         )}
         onClick={() => {
           if (isExpand) {
-            dispatch(selectSubTopics(-1));
+            dispatch(selectSubTopicThunk(-1));
           } else {
-            dispatch(selectSubTopics(subTopic.id));
+            dispatch(selectSubTopicThunk(subTopic.id));
           }
         }}
       >

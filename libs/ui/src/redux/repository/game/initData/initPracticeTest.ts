@@ -1,11 +1,10 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { API_PATH } from '@ui/constants/api.constants';
 import { db } from '@ui/db';
-import { IQuestionOpt } from '@ui/models/question';
-import { RootState } from '@ui/redux/store';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { axiosRequest } from '@ui/services/config/axios';
 import { IUserQuestionProgress } from '@ui/models/progress';
+import { IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
+import { axiosRequest } from '@ui/services/config/axios';
 
 type IInitQuestion = {
   testId: number;
@@ -151,14 +150,6 @@ export const mapQuestionsWithProgress = (
 const initPracticeThunk = createAsyncThunk(
   'initPracticeThunk',
   async ({ testId }: IInitQuestion, thunkAPI) => {
-    const state = thunkAPI.getState() as RootState;
-    let { isDataFetched } = state.appInfo;
-
-    while (!isDataFetched) {
-      await new Promise((resolve) => setTimeout(resolve, 100)); // Đợi 100ms trước khi kiểm tra lại
-      isDataFetched = (thunkAPI.getState() as RootState).appInfo.isDataFetched;
-    }
-
     const currentTest = await db?.testQuestions
       .where('id')
       .equals(testId)

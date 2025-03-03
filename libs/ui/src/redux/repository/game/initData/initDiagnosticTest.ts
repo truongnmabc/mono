@@ -1,14 +1,13 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@ui/db';
 import { IQuestionOpt } from '@ui/models/question';
 import { IGroupExam, ITestBase } from '@ui/models/tests';
-import { RootState } from '@ui/redux/store';
+import { ITopicBase } from '@ui/models/topics';
 import { generateRandomNegativeId } from '@ui/utils/math';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
 } from './initPracticeTest';
-import { ITopicBase } from '@ui/models/topics';
 
 /**
  * Lưu trữ dữ liệu bài kiểm tra chuẩn đoán vào local database (IndexedDB).
@@ -201,19 +200,16 @@ export const getExistingDiagnosticTest = async (diagnostic: ITestBase) => {
  */
 const initDiagnosticTestQuestionThunk = createAsyncThunk(
   'initDiagnosticTest',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState() as RootState;
-    let { isDataFetched } = state.appInfo;
+  async ({ id }: { id: number }, thunkAPI) => {
+    // const state = thunkAPI.getState() as RootState;
+    // let { isDataFetched } = state.appInfo;
 
-    while (!isDataFetched) {
-      await new Promise((resolve) => setTimeout(resolve, 100)); // Đợi 100ms trước khi kiểm tra lại
-      isDataFetched = (thunkAPI.getState() as RootState).appInfo.isDataFetched;
-    }
+    // while (!isDataFetched) {
+    //   await new Promise((resolve) => setTimeout(resolve, 100)); // Đợi 100ms trước khi kiểm tra lại
+    //   isDataFetched = (thunkAPI.getState() as RootState).appInfo.isDataFetched;
+    // }
 
-    const diagnostic = await db?.testQuestions
-      .where('gameMode')
-      .equals('diagnosticTest')
-      .first();
+    const diagnostic = await db?.testQuestions.get(id);
 
     return diagnostic
       ? await getExistingDiagnosticTest(diagnostic)

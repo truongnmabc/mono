@@ -1,8 +1,11 @@
 import GridTestsLeft from '@ui/components/gridTests';
 import GridTopicLeft from '@ui/components/gridTopics';
 import RouterApp from '@ui/constants/router.constant';
-import { IPracticeTestsHomeJson, IBranchHomeJson } from '@ui/models/other';
-import { ITopicHomeJson } from '@ui/models/other';
+import {
+  IBranchHomeJson,
+  IPracticeTestsHomeJson,
+  ITopicHomeJson,
+} from '@ui/models/other';
 import { IGameMode } from '@ui/models/tests/tests';
 import Link from 'next/link';
 import React from 'react';
@@ -31,14 +34,22 @@ const QuestionGroup = ({
               appShortName={appShortName}
               type={type}
               id={id}
-              tests={tests}
+              tests={tests.sort((a, b) => {
+                if (String(a.id) === id) return -1;
+                if (String(b.id) === id) return 1;
+                return 0;
+              })}
             />
             <div className="w-full h-[1px] bg-[#21212129]"></div>
             <GridTopicLeft
               appShortName={appShortName}
               type={type}
               id={id}
-              topics={data.topics}
+              topics={data.topics.sort((a, b) => {
+                if (String(a.id) === id) return -1; // Đưa testId lên đầu
+                if (String(b.id) === id) return 1;
+                return 0;
+              })}
             />
           </>
         ) : (
@@ -47,14 +58,22 @@ const QuestionGroup = ({
               appShortName={appShortName}
               type={type}
               id={id}
-              topics={data.topics}
+              topics={data.topics.sort((a, b) => {
+                if (String(a.id) === id) return -1; // Đưa testId lên đầu
+                if (String(b.id) === id) return 1;
+                return 0;
+              })}
             />
             <div className="w-full h-[1px] bg-[#21212129]"></div>
             <GridTestsLeft
               appShortName={appShortName}
               type={type}
               id={id}
-              tests={tests}
+              tests={tests.sort((a, b) => {
+                if (String(a.id) === id) return -1;
+                if (String(b.id) === id) return 1;
+                return 0;
+              })}
             />
           </>
         )}

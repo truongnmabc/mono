@@ -1,18 +1,20 @@
 import { spinner } from '@clack/prompts';
 
 import minimist from 'minimist';
-import { listBranchTest } from './processTopicsAndTests.js';
 import {
   getDataSeo,
   getDataSingleApp,
   getDataTopicsAndTest,
   getSingleAppConfig,
 } from '../utils/fetchData.js';
-import { processTopicsAndTests } from './processTopicsAndTests.js';
-import { updateEnvAndSave } from './saveData.js';
 import { processTestData } from './processData.js';
-import { processSeoData } from './processSeoData.js';
 import { processDataHome } from './processDataHome.js';
+import { processSeoData } from './processSeoData.js';
+import {
+  listBranchTest,
+  processTopicsAndTests,
+} from './processTopicsAndTests.js';
+import { updateEnvAndSave } from './saveData.js';
 
 /**
  * 1. Hàm fetch dữ liệu cần thiết cho app
@@ -122,6 +124,9 @@ async function setupSingleApp(appShortName) {
       seo: listSeo,
       home: dataHome,
       authSecret,
+      server: {
+        diagnosticTest: diagnosticTest,
+      },
     });
     s.stop('Updating env and saving data completed!');
 

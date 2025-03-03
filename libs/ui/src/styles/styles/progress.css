@@ -1,29 +1,73 @@
-.custom-header-progress progress {
+/* Common styles for all progress bars */
+progress {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   border: none;
-  height: 8px;
   border-radius: 16px;
-  background-color: #21212114;
   overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Progress bar background */
+progress::-webkit-progress-bar {
+  background-color: transparent;
+  border-radius: 16px;
+}
+
+/* Custom header progress specific */
+.custom-header-progress progress {
+  height: 8px;
+  background-color: #21212114;
   position: relative;
 }
 
 .custom-header-progress progress::-webkit-progress-bar {
   background-color: #21212114;
-  border-radius: 16px;
 }
 
 .custom-header-progress progress::-webkit-progress-value {
-  background-color: var(
-    --color-primary,
-    #6200ea
-  ); /* Màu primary, fallback là #6200ea */
+  background-color: var(--color-primary, #6200ea);
   height: 100%;
 }
 
 .custom-header-progress progress::-moz-progress-bar {
   background-color: var(--color-primary, #6200ea);
-  border-radius: 16px;
+}
+
+/* Study progress bars */
+.study-progress progress,
+.study-progress-incorrect progress {
+  height: 6px;
+  animation: progressGrow 0.7s ease-out;
+}
+
+.study-progress progress::-webkit-progress-value {
+  background-color: #07c58c;
+}
+
+.study-progress-incorrect progress::-webkit-progress-value {
+  background-color: #ff746d;
+}
+@keyframes progressGrow {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Hỗ trợ cho webkit */
+@-webkit-keyframes progressGrow {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }

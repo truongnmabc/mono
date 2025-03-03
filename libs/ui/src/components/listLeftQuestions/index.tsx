@@ -10,6 +10,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 /**
@@ -24,14 +25,34 @@ type IProps = {
   isActions?: boolean;
   isCenter?: boolean;
   wrapperClassName?: string;
+  defaultQuestionCount?: number;
+  shouldUnlocked?: string;
 };
 
 const AnswerSheet: React.FC<IProps> = ({
   isActions = false,
   isCenter = false,
   wrapperClassName = 'bg-white',
+  defaultQuestionCount = 10,
+  shouldUnlocked = 'true',
 }) => {
   const listQuestion = useAppSelector(selectListQuestion);
+
+  // Tạo mảng default questions
+  const defaultQuestions: ICurrentGame[] = React.useMemo(
+    () =>
+      Array(defaultQuestionCount).fill({
+        id: '',
+        localStatus: 'new',
+      }),
+    [defaultQuestionCount]
+  );
+
+  // Sử dụng listQuestion nếu có, ngược lại sử dụng defaultQuestions
+  const displayQuestions = listQuestion?.length
+    ? listQuestion
+    : defaultQuestions;
+
   const currentGame = useAppSelector(selectCurrentGame);
   const indexCurrentGame = useAppSelector(selectCurrentQuestionIndex);
   const dispatch = useAppDispatch();
@@ -70,17 +91,24 @@ const AnswerSheet: React.FC<IProps> = ({
           'justify-center': isCenter,
         })}
       >
-        {listQuestion?.map((q, index) => (
-          <div
+        {displayQuestions?.map((q, index) => (
+          <motion.div
             key={index}
             className={getClassNames(q, index)}
             onClick={() => {
-              if (isActions && currentGame?.id !== q.id)
+              if (
+                shouldUnlocked === 'true' &&
+                isActions &&
+                currentGame?.id !== q.id
+              )
                 dispatch(setCurrentQuestion(index));
             }}
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
           >
             {index + 1}
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

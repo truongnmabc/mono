@@ -1,5 +1,8 @@
 'use client';
+import LazyLoadImage from '@ui/components/images';
+import MtUiSkeleton from '@ui/components/loading-skeleton';
 import { baseImageUrl } from '@ui/constants/index';
+import { useIsMobile } from '@ui/hooks/useIsMobile';
 import { IGameMode } from '@ui/models/tests/tests';
 import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import {
@@ -8,9 +11,6 @@ import {
   selectListQuestion,
 } from '@ui/redux/features/game.reselect';
 import { useAppSelector } from '@ui/redux/store';
-import LazyLoadImage from '@ui/components/images';
-import MtUiSkeleton from '@ui/components/loading-skeleton';
-import { useIsMobile } from '@ui/hooks/useIsMobile';
 import { decrypt } from '@ui/utils/crypto';
 import { MathJax } from 'better-react-mathjax';
 import clsx from 'clsx';
@@ -38,7 +38,6 @@ const QuestionContent = ({
 
   useEffect(() => {
     if (currentGame?.text && currentGame?.id) {
-      console.log('🚀 ~ useEffect ~ text:', currentGame?.text);
       try {
         const content = decrypt(currentGame?.text);
         setText(content);
@@ -53,7 +52,7 @@ const QuestionContent = ({
   return (
     <div
       className={clsx(
-        'w-full rounded-md p-3 flex flex-col gap-2 bg-white sm:bg-transparent relative py-2',
+        'w-full rounded-md p-3 min-h-8 flex flex-col gap-2 bg-white sm:bg-transparent relative py-2',
         {
           'shadow-custom sm:shadow-none': showShadow,
         }

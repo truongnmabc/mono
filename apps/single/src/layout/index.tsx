@@ -9,12 +9,12 @@ import { ProgressBar } from '@ui/components/progressBar/progressBar';
 import AppThemeProvider from '@ui/components/theme';
 import { initializeDB } from '@ui/db';
 import { IDevice } from '@ui/models/app';
+import { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import appConfig from '../data/appConfig.json';
 import appInfos from '../data/appInfos.json';
 import StoreProvider from './StoreProvider';
-import { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
 
 export default function RootLayout({
   children,

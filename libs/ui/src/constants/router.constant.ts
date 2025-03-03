@@ -19,7 +19,7 @@ const RouterApp = {
   Diagnostic_test: '/diagnostic-test',
   Custom_test: '/custom-test',
   Final_test: '/final-test',
-  Practice_Tests: '/practice_tests',
+  Practice_Tests: '/practiceTest',
   Study: '/study',
 };
 export default RouterApp;

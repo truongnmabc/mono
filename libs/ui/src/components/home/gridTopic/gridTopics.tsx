@@ -1,14 +1,13 @@
 import { Collapse } from '@mui/material';
-import AllowExpandProvider from '@ui/components/allowExpand/provider';
 import TitleCollapse from '@ui/components/allowExpand/titleCollapse';
 import LazyLoadImage from '@ui/components/images';
+import { TypeParam } from '@ui/constants';
 import { IAppInfo } from '@ui/models/app';
 import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import PassingHome from '../passing';
-import { TypeParam } from '@ui/constants';
 // DONE:
 export interface ITopicHomeProps {
   id: number;
@@ -59,7 +58,7 @@ const GridTopics = ({
                     ? isSelect
                       ? '?'
                       : `?selectTopic=${topic.id}`
-                    : `${topic.slug}?id=${topic.id}&type=${TypeParam.learn}`
+                    : `${topic.slug}?type=${TypeParam.learn}&id=${topic.id}`
                 }
                 scroll={isMobile ? false : true}
               >
@@ -96,27 +95,22 @@ const GridTopics = ({
               {isMobile && (
                 <div>
                   <Collapse timeout="auto" unmountOnExit in={isSelect}>
-                    <AllowExpandProvider topic={topic}>
-                      <div
-                        className={ctx('bg-white transition-all ', {
-                          'border mt-2 p-2  border-primary rounded-md rounded-br-md border-solid':
-                            isSelect,
-                        })}
-                      >
-                        <div className="flex gap-2 flex-col ">
-                          {topic?.topics &&
-                            topic?.topics?.length > 0 &&
-                            topic?.topics?.map(
-                              (subTopic: ITopicHomeProps, index: number) => (
-                                <TitleCollapse
-                                  subTopic={subTopic}
-                                  key={index}
-                                />
-                              )
-                            )}
-                        </div>
+                    <div
+                      className={ctx('bg-white transition-all ', {
+                        'border mt-2 p-2  border-primary rounded-md rounded-br-md border-solid':
+                          isSelect,
+                      })}
+                    >
+                      <div className="flex gap-2 flex-col ">
+                        {topic?.topics &&
+                          topic?.topics?.length > 0 &&
+                          topic?.topics?.map(
+                            (subTopic: ITopicHomeProps, index: number) => (
+                              <TitleCollapse subTopic={subTopic} key={index} />
+                            )
+                          )}
                       </div>
-                    </AllowExpandProvider>
+                    </div>
                   </Collapse>
                 </div>
               )}

@@ -1,12 +1,9 @@
 'use client';
-import { selectSubTopicsId } from '@ui/redux/features/study.reselect';
-import { useAppSelector } from '@ui/redux/store';
+import { ITopicHomeJson } from '@ui/models/other';
 import { groupTopics } from '@ui/utils/math';
 import clsx from 'clsx';
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import IconProgress from './iconProgress';
-import { ITopicHomeProps } from '../home/gridTopic/gridTopics';
-import { ITopicHomeJson } from '@ui/models/other';
 
 type CenterPosition = {
   x: number;
@@ -56,11 +53,9 @@ function getCenterPosition(
 const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const selectedSubTopics = useAppSelector(selectSubTopicsId);
-  const isExpand = selectedSubTopics === subTopic.id;
 
   useEffect(() => {
-    if (!isExpand || !canvasRef.current || !containerRef.current) return;
+    if (!canvasRef.current || !containerRef.current) return;
 
     const canvas = canvasRef.current;
     const container = containerRef.current;
@@ -94,7 +89,7 @@ const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
     return () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
-  }, [isExpand]);
+  }, []);
 
   const arr = groupTopics(subTopic?.topics || [], 3);
 
@@ -102,60 +97,34 @@ const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
     <div
       ref={containerRef}
       className={clsx(
-        'w-full h-full relative bg-[#F3F5F6] py-2 justify-center rounded-b-md transition-all',
-        {
-          flex: isExpand,
-          hidden: !isExpand,
-        }
+        'w-full h-full relative flex bg-[#F3F5F6] py-2 justify-center rounded-b-md transition-all'
       )}
       id={`container-${subTopic.id}`}
     >
       <div className="flex flex-wrap gap-2 w-[200px]">
-        <Wrapper data={arr} />
+        {arr.map((line, index) => (
+          <div
+            className={clsx(
+              'flex w-[200px] relative transition-all flex-wrap gap-4',
+              {
+                'justify-center': index === 0,
+                'justify-start': index % 2 === 0,
+                'flex-row-reverse': index % 2 === 1,
+              }
+            )}
+            key={index}
+          >
+            {line.value.map((part, i) => (
+              <IconProgress part={part} index={index * 3 + i + 1} key={i} />
+            ))}
+          </div>
+        ))}
       </div>
       <canvas
         ref={canvasRef}
         className="absolute w-full h-full top-0 left-0 z-0"
       />
     </div>
-  );
-};
-
-const Wrapper = ({
-  data,
-}: {
-  data: { id: number; value: ITopicHomeJson[] }[];
-}) => {
-  const readySubTopic = data
-    .flatMap((group) => group.value)
-    .find((item) => item.status === 0);
-
-  return (
-    <Fragment>
-      {data.map((line, index) => (
-        <div
-          className={clsx(
-            'flex w-[200px] relative transition-all flex-wrap gap-4',
-            {
-              'justify-center': index === 0,
-              'justify-start': index % 2 === 0,
-              'flex-row-reverse': index % 2 === 1,
-            }
-          )}
-          key={index}
-        >
-          {line.value.map((part, i) => (
-            <IconProgress
-              part={part}
-              index={index * 3 + i + 1}
-              key={i}
-              readySubTopic={readySubTopic}
-              isPass={part.status === 1}
-            />
-          ))}
-        </div>
-      ))}
-    </Fragment>
   );
 };
 

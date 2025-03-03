@@ -1,9 +1,10 @@
 import Grid2 from '@mui/material/Grid2';
 import appInfo from '@single/data/appInfos.json';
-import list from '@single/data/seo.json';
 import data from '@single/data/home/data.json';
+import list from '@single/data/seo.json';
 import BannerDownloadApp from '@ui/components/bannerDownload';
 import MyContainer from '@ui/components/container';
+import HeaderMobile from '@ui/components/headerMobile';
 import SeoContent from '@ui/components/seoContent';
 import MainStudyView from '@ui/container/study/mainStudyView';
 import QuestionGroup from '@ui/container/study/questionGroup';
@@ -11,8 +12,7 @@ import { IGameMode } from '@ui/models/tests/tests';
 import { detectAgent } from '@ui/utils/device';
 import { headers } from 'next/headers';
 import { Fragment } from 'react';
-
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 export const dynamicParams = true;
 
@@ -33,6 +33,7 @@ export async function generateMetadata({
   const listRewrite = {
     ...list.rewrite.test,
     ...list.rewrite.branch,
+    practiceTest: list.default.practiceTest,
   };
   const data = listRewrite[slug as keyof typeof listRewrite];
   return {
@@ -60,7 +61,6 @@ export default async function Page({
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
-
   return (
     <Fragment>
       {isMobile && (
@@ -72,7 +72,7 @@ export default async function Page({
               xs: 12,
             }}
           >
-            {/* <HeaderMobile /> */}
+            <HeaderMobile />
           </Grid2>
         </Grid2>
       )}
@@ -107,7 +107,7 @@ export default async function Page({
             <div className="w-full pb-24 sm:pb-0  min-h-full flex flex-1 flex-col gap-4 sm:gap-6   h-full">
               <MainStudyView
                 type={type as IGameMode}
-                id={Number(id)}
+                id={id ? Number(id) : -1}
                 data={{
                   topics: data.topics,
                   tests: data.tests.practiceTests,
@@ -116,6 +116,7 @@ export default async function Page({
                 subId={Number(subId)}
                 partId={Number(partId)}
                 isMobile={isMobile}
+                slug={slug}
               />
               <BannerDownloadApp appInfo={appInfo} isMobile={isMobile} />
               {content && (
