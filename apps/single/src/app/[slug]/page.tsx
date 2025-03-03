@@ -108,12 +108,7 @@ export default async function Page({
               <MainStudyView
                 type={type as IGameMode}
                 id={id ? Number(id) : -1}
-                data={{
-                  topics: data.topics,
-                  tests: data.tests.practiceTests,
-                }}
                 appInfo={appInfo}
-                subId={Number(subId)}
                 partId={Number(partId)}
                 isMobile={isMobile}
                 slug={slug}

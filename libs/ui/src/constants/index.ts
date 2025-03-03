@@ -92,3 +92,30 @@ export const BASE_IMAGE_URL =
   'https://storage.googleapis.com/micro-enigma-235001.appspot.com';
 
 export const PATH_IMAGE = 'web/images';
+
+export const listBranchTest = [
+  {
+    id: 1,
+    title: 'marine',
+  },
+  {
+    id: 2,
+    title: 'navy',
+  },
+  {
+    id: 3,
+    title: 'army',
+  },
+  {
+    id: 4,
+    title: 'coast guard',
+  },
+  {
+    id: 5,
+    title: 'air force',
+  },
+  {
+    id: 6,
+    title: 'national guard',
+  },
+];

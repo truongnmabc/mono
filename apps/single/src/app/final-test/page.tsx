@@ -5,7 +5,7 @@ import BannerDownloadApp from '@ui/components/bannerDownload';
 import MyContainer from '@ui/components/container';
 import HeaderMobile from '@ui/components/headerMobile';
 import SeoContent from '@ui/components/seoContent';
-import FinalTestContainer, { HanldeSelectAnswer } from '@ui/container/final';
+import FinalTestContainer, { HandleSelectAnswer } from '@ui/container/final';
 import { IGameMode } from '@ui/models/tests/tests';
 import { detectAgent } from '@ui/utils/device';
 import { Metadata } from 'next';
@@ -25,6 +25,7 @@ const Page = async ({
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
+
   return (
     <Fragment>
       {isMobile && (
@@ -42,14 +43,17 @@ const Page = async ({
       )}
       <MyContainer className="py-4">
         <Grid2 container spacing={{ xs: 0, sm: 2 }} className="w-full h-full">
-          <Grid2
-            size={{
-              sm: 3,
-              xs: 0,
-            }}
-          >
-            <HanldeSelectAnswer />
-          </Grid2>
+          {!isMobile && (
+            <Grid2
+              size={{
+                sm: 3,
+                xs: 0,
+              }}
+            >
+              <HandleSelectAnswer />
+            </Grid2>
+          )}
+
           <Grid2
             size={{
               sm: 9,

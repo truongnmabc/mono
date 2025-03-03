@@ -41,8 +41,6 @@ interface IDataJsonHomePage {
 const MainStudyView = ({
   type,
   id,
-  data,
-  subId,
   partId,
   appInfo,
   isMobile,
@@ -50,7 +48,6 @@ const MainStudyView = ({
 }: {
   type: IGameMode;
   id?: number;
-  data: IDataJsonHomePage;
   appInfo: IAppInfo;
   subId?: number;
   isMobile: boolean;
@@ -90,7 +87,7 @@ const MainStudyView = ({
           }
         }
 
-        if (type === 'practiceTests') {
+        if (type === 'practiceTests' || type === 'branchTest') {
           if (!id || id === -1) {
             const list = await db?.testQuestions
               .where('gameMode')
@@ -101,16 +98,23 @@ const MainStudyView = ({
               const currentTest = list.find((item) => item.status === 0);
               if (currentTest) {
                 dispatch(initPracticeThunk({ testId: currentTest.id }));
+              } else {
+                dispatch(
+                  initPracticeThunk({ testId: list[list.length - 1].id })
+                );
               }
             }
+          } else {
+            dispatch(initPracticeThunk({ testId: id }));
           }
         }
       } catch (err) {
+        console.log('🚀 ~ handleGetData ~ err:', err);
       } finally {
       }
     };
     handleGetData();
-  }, []);
+  }, [id, slug, type, partId]);
 
   return (
     <Fragment>

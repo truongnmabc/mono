@@ -150,10 +150,7 @@ export const mapQuestionsWithProgress = (
 const initPracticeThunk = createAsyncThunk(
   'initPracticeThunk',
   async ({ testId }: IInitQuestion, thunkAPI) => {
-    const currentTest = await db?.testQuestions
-      .where('id')
-      .equals(testId)
-      .first();
+    const currentTest = await db?.testQuestions.get(testId);
 
     let listQuestion: IQuestionOpt[] = [];
     const totalDuration = currentTest?.totalDuration || 60;

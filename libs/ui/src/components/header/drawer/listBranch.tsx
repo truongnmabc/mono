@@ -47,7 +47,7 @@ const ListBranchDrawer = ({
       >
         {branch.map((key, index) => (
           <Link
-            href={key.slug + `?type=${TypeParam.branchTest}&testId=${key.id}`}
+            href={key.slug + `?type=${TypeParam.branchTest}&id=${key.id}`}
             key={key.id}
           >
             <div

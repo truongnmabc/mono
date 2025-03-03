@@ -11,7 +11,9 @@ import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import initFinalTestThunk from '@ui/redux/repository/game/initData/initFinalTest';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { useEffect } from 'react';
-
+import CountTimeFinalTest from './countTimeFinal';
+import { db } from '@ui/db/model';
+import { useRouter } from 'next/navigation';
 const FinalTestContainer = ({
   isMobile,
   type,
@@ -23,9 +25,12 @@ const FinalTestContainer = ({
 }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (id) {
-      dispatch(initFinalTestThunk({ id: Number(id) }));
-    }
+    const handleGetData = async () => {
+      if (id) {
+        dispatch(initFinalTestThunk({ id: Number(id) }));
+      }
+    };
+    handleGetData();
   }, [id]);
   return (
     <div className=" sm:shadow-custom bg-transparent sm:bg-white  rounded-2xl dark:bg-black">
@@ -35,7 +40,7 @@ const FinalTestContainer = ({
         <div className="w-full flex items-center justify-center">
           <div className="flex items-center justify-center w-fit gap-2">
             <ClockIcon />
-            {/* <CountTimeFinalTest /> */}
+            <CountTimeFinalTest />
           </div>
         </div>
         <QuestionContent showStatus={false} showQuestionsCount />
@@ -50,16 +55,14 @@ const FinalTestContainer = ({
 
 export default FinalTestContainer;
 
-export const HanldeSelectAnswer = () => {
+export const HandleSelectAnswer = () => {
   const userInfo = useAppSelector(selectUserInfo);
   return (
-    <div className="hidden sm:block">
-      <AnswerSheet
-        isCenter
-        isActions
-        shouldUnlocked={userInfo.isPro ? 'true' : 'false'}
-        defaultQuestionCount={225}
-      />
-    </div>
+    <AnswerSheet
+      isCenter
+      isActions
+      shouldUnlocked={userInfo.isPro ? 'true' : 'false'}
+      defaultQuestionCount={225}
+    />
   );
 };
