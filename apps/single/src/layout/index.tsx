@@ -15,7 +15,8 @@ import { ToastContainer } from 'react-toastify';
 import appConfig from '../data/appConfig.json';
 import appInfos from '../data/appInfos.json';
 import StoreProvider from './StoreProvider';
-
+import { useAppDispatch } from '@ui/redux/store';
+import { setIsDataFetched } from '@ui/redux/features/appInfo';
 export default function RootLayout({
   children,
   device = 'desktop',
@@ -68,9 +69,11 @@ export default function RootLayout({
 }
 
 const IniDexieIndexDb = () => {
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (appInfos) {
       initializeDB(appInfos.appShortName);
+      dispatch(setIsDataFetched(true));
     }
   }, [appInfos]);
 

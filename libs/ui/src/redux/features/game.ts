@@ -14,11 +14,14 @@ import initLearnQuestionThunk, {
 import initPracticeThunk from '../repository/game/initData/initPracticeTest';
 import nextQuestionThunk from '../repository/game/nextQuestion/nextQuestion';
 import nextQuestionDiagnosticThunk from '../repository/game/nextQuestion/nextQuestionDiagnosticTest';
-import { handleInitTestQuestion } from '../repository/game/utils';
+import {
+  handleInitTestQuestion,
+  handleMigrateDataGame,
+} from '../repository/game/utils';
 import { reloadStateThunk } from '../repository/utils/reload';
 import { RootState } from '../store';
 import { initGameReducer, plateHolderCurrentGame } from './game.placeholder';
-
+import initDataGame from '../repository/game/initData/initData';
 const gameSlice = createSlice({
   name: 'game',
   initialState: initGameReducer,
@@ -165,6 +168,12 @@ const gameSlice = createSlice({
     builder.addCase(initLearnQuestionThunk.fulfilled, (state, action) => {
       if (action.payload) {
         handleInitLearnQuestion(state, action.payload);
+      }
+    });
+
+    builder.addCase(initDataGame.fulfilled, (state, action) => {
+      if (action.payload) {
+        handleMigrateDataGame(state, action.payload);
       }
     });
     builder.addCase(initFinalTestThunk.fulfilled, (state, action) => {

@@ -157,65 +157,70 @@ const handleAllQuestionsAnswered = (
  * @param {IInitQuestion} params - The parameters for fetching questions.
  * @return {Promise<IResInitQuestion>} The processed question data.
  */
-const fetchQuestions = async ({
-  partId,
-  subTopicId,
-  isReset,
-  attemptNumber,
-}: IInitQuestion): Promise<IResInitQuestion> => {
-  const listQuestions = await db?.questions
-    .where('partId')
-    .equals(partId)
-    .toArray();
-
-  if (!listQuestions || listQuestions?.length === 0) {
-    const data = (await axiosRequest({
-      url: `api/question/get-questions-by-part-id?partId=${partId}`,
-      baseUrl: 'https://api-cms-v2-dot-micro-enigma-235001.appspot.com',
-    })) as unknown as IQuestionOpt[];
-
-    return {
-      questions: data.map((item) => ({
-        ...item,
-        text: item.text,
-        explanation: item.explanation,
-        localStatus: 'new',
-      })),
-      progressData: [],
-      id: partId || 0,
-      parentId: subTopicId || 0,
-      gameMode: 'learn',
-      attemptNumber: attemptNumber || 1,
-    };
-  }
-
-  const questionIdsSet = listQuestions.map((q) => q.id);
-
-  const progressData = await getLocalUserProgress(
-    questionIdsSet,
-    'learn',
-    attemptNumber || 1,
-    partId
-  );
-
-  const questions = mapQuestionsWithProgress(
-    listQuestions,
-    progressData
-  ) as IQuestionOpt[];
-
-  return {
-    questions: questions,
-    progressData: isReset ? [] : progressData,
-    id: partId,
-    parentId: subTopicId || 0,
-    gameMode: 'learn',
-    attemptNumber: attemptNumber || 1,
-    timeStart: new Date().getTime(),
-  };
-};
 
 const initLearnQuestionThunk = createAsyncThunk(
   'initLearnQuestionThunk',
-  fetchQuestions
+  async (
+    { partId, subTopicId, isReset, attemptNumber }: IInitQuestion,
+    thunkAPI
+  ): Promise<IResInitQuestion> => {
+    console.log('🚀 ~ attemptNumber:', attemptNumber);
+    const state = thunkAPI.getState() as RootState;
+    let { isDataFetched } = state.appInfo;
+
+    while (!isDataFetched) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      isDataFetched = (thunkAPI.getState() as RootState).appInfo.isDataFetched;
+    }
+    const listQuestions = await db?.questions
+      .where('partId')
+      .equals(partId)
+      .toArray();
+
+    if (!listQuestions || listQuestions?.length === 0) {
+      const data = (await axiosRequest({
+        url: `api/question/get-questions-by-part-id?partId=${partId}`,
+        baseUrl: 'https://api-cms-v2-dot-micro-enigma-235001.appspot.com',
+      })) as unknown as IQuestionOpt[];
+
+      return {
+        questions: data.map((item) => ({
+          ...item,
+          text: item.text,
+          explanation: item.explanation,
+          localStatus: 'new',
+        })),
+        progressData: [],
+        id: partId || 0,
+        parentId: subTopicId || 0,
+        gameMode: 'learn',
+        attemptNumber: attemptNumber || 1,
+      };
+    }
+
+    const questionIdsSet = listQuestions.map((q) => q.id);
+
+    const progressData = await getLocalUserProgress(
+      questionIdsSet,
+      'learn',
+      attemptNumber || 1,
+      partId
+    );
+
+    const questions = mapQuestionsWithProgress(
+      listQuestions,
+      progressData
+    ) as IQuestionOpt[];
+
+    return {
+      questions: questions,
+      progressData: isReset ? [] : progressData,
+      id: partId,
+      parentId: subTopicId || 0,
+      gameMode: 'learn',
+      attemptNumber: attemptNumber || 1,
+      timeStart: new Date().getTime(),
+    };
+  }
 );
 export default initLearnQuestionThunk;

@@ -1,7 +1,12 @@
 'use client';
+import { useAppSelector } from '@ui/redux/store';
+import { selectIsTester } from '@ui/redux/features/user.reselect';
 
 const BtnTets = ({ correct }: { correct: boolean }) => {
-  const isTester = sessionStorage.getItem('isTester') || true;
+  const isTester =
+    process.env['NODE_ENV'] === 'development'
+      ? true
+      : useAppSelector(selectIsTester);
   if (isTester && correct)
     return (
       <div>

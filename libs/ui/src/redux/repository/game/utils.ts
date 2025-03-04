@@ -54,3 +54,38 @@ export const handleInitTestQuestion = (
     };
   }
 };
+
+type IResInitDataGame = {
+  progressData: IUserQuestionProgress[];
+  questions: IQuestionOpt[];
+  gameMode: IGameMode;
+  currentTopicId: number;
+  totalDuration: number;
+  isGamePaused: boolean;
+  remainingTime: number;
+  attemptNumber?: number;
+};
+
+export const handleMigrateDataGame = (
+  state: RootState['game'],
+  payload: IResInitDataGame
+) => {
+  const {
+    progressData,
+    questions,
+    gameMode,
+    currentTopicId,
+    totalDuration,
+    isGamePaused,
+    remainingTime,
+    attemptNumber,
+  } = payload;
+
+  if (gameMode) state.gameMode = gameMode;
+  if (questions) state.listQuestion = questions;
+  if (currentTopicId) state.currentTopicId = currentTopicId;
+  if (totalDuration) state.totalDuration = totalDuration;
+  if (isGamePaused) state.isGamePaused = isGamePaused;
+  if (remainingTime) state.remainingTime = remainingTime;
+  if (attemptNumber) state.attemptNumber = attemptNumber;
+};

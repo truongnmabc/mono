@@ -67,7 +67,7 @@ const ChoicesPanel: React.FC<IProps> = ({
 
   const listRandomQuestion = useMemo(
     () =>
-      currentGame?.answers.length
+      currentGame?.answers?.length
         ? shuffleArray(currentGame.answers)
         : MOCK_TEMP_LIST_ANSWER,
     [currentGame?.answers]

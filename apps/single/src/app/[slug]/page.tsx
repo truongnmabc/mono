@@ -50,7 +50,7 @@ export default async function Page({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const slug = (await params).slug;
-  const { type, topicId, partId, testId } = await searchParams;
+  const { type, topicId, partId, testId, turn } = await searchParams;
   const listRewrite = {
     ...list.rewrite.test,
     ...list.rewrite.branch,
@@ -113,6 +113,7 @@ export default async function Page({
                 testId={Number(testId)}
                 isMobile={isMobile}
                 slug={slug}
+                turn={Number(turn)}
               />
               <BannerDownloadApp appInfo={appInfo} isMobile={isMobile} />
               {content && (

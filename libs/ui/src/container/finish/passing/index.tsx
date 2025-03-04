@@ -94,7 +94,9 @@ const PassingFinishPage = ({
       await removeCompletedTest({
         id: currentPart.id,
       });
-      const _href = `/${topic}?type=learn&partId=${currentPart.id}`;
+      const _href = `/${topic}?type=learn&partId=${currentPart.id}&turn=${
+        currentTurn + 1
+      }`;
       router.push(_href);
     }
   }, [currentPart, currentTurn, topicName, dispatch, router, topic]);
