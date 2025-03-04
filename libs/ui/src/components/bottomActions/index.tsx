@@ -8,6 +8,10 @@ import BtnMobile from './btnMobile';
 export type IPropsBottomAction = {
   type: IGameMode | 'review';
   isMobile: boolean;
+  partId?: number;
+  topicId?: number;
+  testId?: number;
+  slug?: string;
 };
 
 // Bản mobile và test custom, test final, test diagnostic sẽ sử dụng component BtnMobile
@@ -15,6 +19,7 @@ export type IPropsBottomAction = {
 const BottomActions: React.FC<IPropsBottomAction> = ({
   type = 'learn',
   isMobile,
+  ...rest
 }) => {
   return (
     <div className="flex overflow-hidden fixed sm:static shadow-bottom sm:shadow-none bottom-0 left-0 right-0 z-50 bg-theme-dark sm:px-4 sm:bg-[#7C6F5B0F] flex-col sm:flex-row pb-8 pt-3 sm:py-3 justify-between gap-2 sm:gap-4 items-center">
@@ -27,7 +32,7 @@ const BottomActions: React.FC<IPropsBottomAction> = ({
         {isMobile && type !== 'learn' ? (
           <BtnMobile />
         ) : (
-          <WrapperBtnActions type={type} isMobile={isMobile} />
+          <WrapperBtnActions type={type} isMobile={isMobile} {...rest} />
         )}
       </div>
     </div>

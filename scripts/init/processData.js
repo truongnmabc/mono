@@ -292,8 +292,8 @@ async function getBranchTest(topics, listQ) {
   };
 }
 
-const mapSubTopics = (topics = [], data, slug) =>
-  topics.map(({ id, icon, tag, contentType, name, parentId }) => {
+const mapSubTopics = (topics = [], data, slug, startIndex) =>
+  topics.map(({ id, icon, tag, contentType, name, parentId }, index) => {
     const subTopicData = data.find((t) => Number(t.id) === id);
     const total = subTopicData?.questions?.length || 0;
     return {
@@ -313,29 +313,33 @@ const mapSubTopics = (topics = [], data, slug) =>
           (sum, part) => sum + (part.level === -1 ? 50 : part.level),
           0
         ) || 0) / total,
+      index: Number(`${startIndex}.${index}`),
     };
   });
 
 const mapTopics = (topics = [], data, slug) =>
-  topics.map(({ id, icon, tag, contentType, name, parentId, topics }) => {
-    const topicData = data.find((t) => Number(t.id) === id);
-    const total = calculateSubTopicTotalQuestions(topicData.topics);
-    const averageLevel = calculateAverageLevel(topicData.topics);
-    return {
-      id: Number(id),
-      icon,
-      tag,
-      contentType,
-      name,
-      parentId,
-      slug: slug,
-      topics: mapSubTopics(topics, topicData.topics, slug),
-      totalQuestion: total,
-      averageLevel: averageLevel / total,
-      status: 0,
-      turn: 1,
-    };
-  });
+  topics.map(
+    ({ id, icon, tag, contentType, name, parentId, topics }, index) => {
+      const topicData = data.find((t) => Number(t.id) === id);
+      const total = calculateSubTopicTotalQuestions(topicData.topics);
+      const averageLevel = calculateAverageLevel(topicData.topics);
+      return {
+        id: Number(id),
+        icon,
+        tag,
+        contentType,
+        name,
+        parentId,
+        slug: slug,
+        topics: mapSubTopics(topics, topicData.topics, slug, index + 1),
+        totalQuestion: total,
+        averageLevel: averageLevel / total,
+        status: 0,
+        turn: 1,
+        index: index + 1,
+      };
+    }
+  );
 
 const calculateSubTopicTotalQuestions = (data) => {
   return (

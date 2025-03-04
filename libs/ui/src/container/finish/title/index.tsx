@@ -1,21 +1,25 @@
 import CloseIcon from '@ui/asset/icon/CloseIcon';
 import RouterApp from '@ui/constants/router.constant';
-import { selectCurrentSubTopicIndex } from '@ui/redux/features/game.reselect';
-import { useAppSelector } from '@ui/redux/store';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const replaceName = (path?: string) => {
-  const key = path?.replace('-practice-test', '');
+  const key = path
+    ?.replace('-practice-test', '')
+    .replaceAll(process.env['NEXT_PUBLIC_APP_SHORT_NAME'] || '', '');
   return key?.replaceAll('-', ' ');
 };
 
-const TitleFinishPage = () => {
-  const topicName = useSearchParams()?.get('topic');
-  const topic = replaceName(topicName || '');
+const TitleFinishPage = ({
+  topic,
+  index,
+}: {
+  topic?: string;
+  index?: string;
+}) => {
+  const topicName = replaceName(topic || '');
   const router = useRouter();
   const handleBack = () => router.push(RouterApp.Home);
-  const indexSubTopic = useAppSelector(selectCurrentSubTopicIndex);
   return (
     <div className="w-full flex flex-col gap-4 sm:gap-6">
       <div className="text-center hidden sm:block mx-6 py-2 relative bg-white rounded-full">
@@ -26,7 +30,7 @@ const TitleFinishPage = () => {
           <CloseIcon />
         </div>
         <h3 className="text-2xl font-semibold capitalize font-poppins">
-          {topic}
+          {topicName}
         </h3>
       </div>
 
@@ -44,13 +48,15 @@ const TitleFinishPage = () => {
             </svg>
           </div>
         </div>
-        <h3 className="text-lg font-medium capitalize font-poppins">{topic}</h3>
+        <h3 className="text-lg font-medium capitalize font-poppins">
+          {topicName}
+        </h3>
         <div></div>
       </div>
 
       <div>
         <h2 className="text-2xl sm:text-3xl text-center font-semibold">
-          Core {indexSubTopic} Completed!
+          Core {index} Completed!
         </h2>
         <h3 className="text-center pt-2 sm:pt-4 text-sm  sm:text-base font-normal">
           Time for a dance break! (Disclaimer: App is not responsible for any

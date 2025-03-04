@@ -8,7 +8,7 @@ self.addEventListener('activate', (event) => {
 
 const initData = async () => {
   const dbName = 'asvab';
-  const dbVersion = 10;
+  const dbVersion = 1;
   const openRequest = indexedDB.open(dbName, dbVersion);
 
   openRequest.onerror = (event) => {

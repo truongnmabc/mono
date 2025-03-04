@@ -26,6 +26,7 @@ interface IResInitQuestion {
   parentId: number;
   gameMode: IGameMode;
   attemptNumber: number;
+  timeStart?: number;
 }
 
 /**
@@ -37,8 +38,15 @@ export const handleInitLearnQuestion = (
   state: RootState['game'],
   payload: IResInitQuestion
 ) => {
-  const { progressData, questions, id, parentId, gameMode, attemptNumber } =
-    payload;
+  const {
+    progressData,
+    questions,
+    id,
+    parentId,
+    gameMode,
+    attemptNumber,
+    timeStart,
+  } = payload;
   state.gameMode = gameMode;
   if (!questions || questions.length === 0) {
     console.error('Questions data is undefined or empty!');
@@ -49,7 +57,7 @@ export const handleInitLearnQuestion = (
   state.currentTopicId = id;
   state.currentSubTopicProgressId = parentId;
   state.attemptNumber = attemptNumber;
-
+  state.timeStart = timeStart;
   if (!progressData || progressData.length === 0) {
     initializeNewState(state, questions);
   } else {
@@ -186,7 +194,8 @@ const fetchQuestions = async ({
   const progressData = await getLocalUserProgress(
     questionIdsSet,
     'learn',
-    attemptNumber || 1
+    attemptNumber || 1,
+    partId
   );
 
   const questions = mapQuestionsWithProgress(
@@ -201,6 +210,7 @@ const fetchQuestions = async ({
     parentId: subTopicId || 0,
     gameMode: 'learn',
     attemptNumber: attemptNumber || 1,
+    timeStart: new Date().getTime(),
   };
 };
 

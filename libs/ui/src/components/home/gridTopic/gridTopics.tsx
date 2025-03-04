@@ -58,7 +58,7 @@ const GridTopics = ({
                     ? isSelect
                       ? '?'
                       : `?selectTopic=${topic.id}`
-                    : `${topic.slug}?type=${TypeParam.learn}&id=${topic.id}`
+                    : `${topic.slug}?type=${TypeParam.learn}&topicId=${topic.id}`
                 }
                 scroll={isMobile ? false : true}
               >

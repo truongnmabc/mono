@@ -233,7 +233,7 @@
   (async function () {
     try {
       const dbName = 'asvab';
-      const dbVersion = 10;
+      const dbVersion = 1;
       await window.idb.openDB(dbName, dbVersion, {
         upgrade(db) {
           if (!db.objectStoreNames.contains('userProgress')) {

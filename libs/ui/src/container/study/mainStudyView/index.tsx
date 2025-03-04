@@ -40,18 +40,20 @@ interface IDataJsonHomePage {
 }
 const MainStudyView = ({
   type,
-  id,
+  topicId,
   partId,
+  testId,
   appInfo,
   isMobile,
   slug,
 }: {
   type: IGameMode;
-  id?: number;
   appInfo: IAppInfo;
   subId?: number;
   isMobile: boolean;
   partId?: number;
+  topicId?: number;
+  testId?: number;
   slug?: string;
 }) => {
   const dispatch = useAppDispatch();
@@ -68,11 +70,12 @@ const MainStudyView = ({
             );
             return;
           }
-          const currentPart = await db?.topics
+          const list = await db?.topics
             .where('slug')
             .equals(slug || '')
-            .filter((item) => item.status === 0)
-            .first();
+            .sortBy('index');
+
+          const currentPart = list?.find((item) => item.status === 0);
 
           if (currentPart) {
             dispatch(
@@ -82,13 +85,13 @@ const MainStudyView = ({
             );
             setTimeout(() => {
               dispatch(selectSubTopicThunk(currentPart.parentId));
-              dispatch(selectTopics(id || -1));
+              dispatch(selectTopics(topicId || -1));
             }, 500);
           }
         }
 
         if (type === 'practiceTests' || type === 'branchTest') {
-          if (!id || id === -1) {
+          if (!testId || testId === -1) {
             const list = await db?.testQuestions
               .where('gameMode')
               .equals('practiceTests')
@@ -105,7 +108,7 @@ const MainStudyView = ({
               }
             }
           } else {
-            dispatch(initPracticeThunk({ testId: id }));
+            dispatch(initPracticeThunk({ testId: testId }));
           }
         }
       } catch (err) {
@@ -114,7 +117,7 @@ const MainStudyView = ({
       }
     };
     handleGetData();
-  }, [id, slug, type, partId]);
+  }, [testId, slug, type, partId, topicId]);
 
   return (
     <Fragment>
@@ -136,7 +139,14 @@ const MainStudyView = ({
           <ExplanationDetail />
         </div>
 
-        <BottomActions type={type} isMobile={isMobile} />
+        <BottomActions
+          type={type}
+          isMobile={isMobile}
+          topicId={topicId}
+          testId={testId}
+          partId={partId}
+          slug={slug}
+        />
       </div>
     </Fragment>
   );

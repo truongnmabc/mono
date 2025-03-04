@@ -73,7 +73,8 @@ export const fetchQuestions = async (
 export const getLocalUserProgress = async (
   listIds: number[],
   gameMode: IGameMode,
-  turn: number
+  turn: number,
+  testId: number
 ) => {
   // Lấy toàn bộ dữ liệu từ IndexedDB
   const userProgress = await db?.userProgress
@@ -87,13 +88,19 @@ export const getLocalUserProgress = async (
   return userProgress
     .filter((progress) =>
       progress.selectedAnswers.some(
-        (answer) => answer.turn === turn && answer.type === gameMode
+        (answer) =>
+          answer.turn === turn &&
+          answer.type === gameMode &&
+          answer.parentId === testId
       )
     )
     .map((progress) => ({
       ...progress,
       selectedAnswers: progress.selectedAnswers.filter(
-        (answer) => answer.turn === turn && answer.type === gameMode
+        (answer) =>
+          answer.turn === turn &&
+          answer.type === gameMode &&
+          answer.parentId === testId
       ),
     }));
 };
@@ -174,7 +181,8 @@ const initPracticeThunk = createAsyncThunk(
     const progressData = await getLocalUserProgress(
       listIds,
       'practiceTests',
-      currentTest?.attemptNumber || 1
+      currentTest?.attemptNumber || 1,
+      currentTest?.id || 0
     );
     const remainingTime = totalDuration * 60 - (currentTest?.elapsedTime || 0);
 

@@ -1,48 +1,26 @@
 import { MtUiButton } from '@ui/components/button';
 import { db } from '@ui/db';
-import { setIndexSubTopic, setTurtGame } from '@ui/redux/features/game';
-import { selectSubTopics } from '@ui/redux/features/study';
 import { useAppDispatch } from '@ui/redux/store';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { ITopicBase } from '@ui/models/topics';
-import { calculatePassingApp } from '../calculate';
 import { initLearnQuestionThunk } from '@ui/redux';
+import { removeCompletedTest } from '@ui/services/server/actions';
+import { calculatePassingApp } from '../calculate';
 type NavigateToHrefParams = {
   topicName: string;
   nextPart: ITopicBase;
 };
 
-const updateTurnTopic = async ({
-  partId,
-  currentTopicId,
-  subTopicId,
-}: {
-  partId: number;
-  currentTopicId: number;
-  subTopicId: number;
-}) => {
-  if (!partId || !currentTopicId || !subTopicId) return;
-
+const updateTurnTopic = async ({ id }: { id: number }) => {
   try {
     await db?.topics
       .where('id')
-      .equals(currentTopicId)
+      .equals(id)
       .modify((topic) => {
-        topic.topics = topic.topics.map((subTopic) => {
-          if (subTopic.id === subTopicId) {
-            return {
-              ...subTopic,
-              topics: subTopic.topics.map((part) =>
-                part.id === partId
-                  ? { ...part, turn: (part.turn ?? 0) + 1 }
-                  : part
-              ),
-            };
-          }
-          return subTopic;
-        });
+        topic.turn = (topic.turn ?? 0) + 1;
+        topic.status = 0;
       });
   } catch (error) {
     console.error('❌ Lỗi khi cập nhật turn của part:', error);
@@ -54,19 +32,13 @@ const PassingFinishPage = ({
   currentPart,
   currentTurn,
   extraPoint,
-  currentTopicId,
-  indexSubTopic,
-  isNextSubTopic,
-  isNextTopic,
+  topic,
 }: {
   currentPart: ITopicBase | null;
   nextPart: ITopicBase | null;
   currentTurn: number;
   extraPoint: number;
-  currentTopicId: number;
-  indexSubTopic: number;
-  isNextSubTopic: boolean;
-  isNextTopic: boolean;
+  topic?: string;
 }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -98,46 +70,34 @@ const PassingFinishPage = ({
   );
 
   const handleNextPart = useCallback(async () => {
-    if (nextPart && topicName) {
-      dispatch(setIndexSubTopic(indexSubTopic + 1));
-      dispatch(
-        setTurtGame({
-          turn: 1,
-        })
-      );
-      dispatch(selectSubTopics(nextPart.parentId));
-      navigateToHref({
-        topicName,
-        nextPart: nextPart,
-      });
-
-      return;
-    }
-  }, [nextPart, navigateToHref, dispatch, topicName, indexSubTopic]);
+    // if (nextPart && topicName) {
+    //   dispatch(setIndexSubTopic(indexSubTopic + 1));
+    //   dispatch(
+    //     setTurtGame({
+    //       turn: 1,
+    //     })
+    //   );
+    //   dispatch(selectSubTopics(nextPart.parentId));
+    //   navigateToHref({
+    //     topicName,
+    //     nextPart: nextPart,
+    //   });
+    //   return;
+    // }
+  }, [nextPart, navigateToHref, dispatch, topicName]);
 
   const handleTryAgainFn = useCallback(async () => {
     if (currentPart?.id) {
-      dispatch(
-        setTurtGame({
-          turn: currentTurn + 1,
-        })
-      );
-      dispatch(
-        initLearnQuestionThunk({
-          partId: currentPart.id,
-          subTopicId: currentPart.parentId,
-          attemptNumber: currentTurn + 1,
-        })
-      );
       await updateTurnTopic({
-        partId: currentPart.id,
-        currentTopicId: currentTopicId,
-        subTopicId: currentPart.parentId,
+        id: currentPart.id,
       });
-      const _href = `study/${topicName}?type=learn&subTopic=${currentPart.parentId}&partId=${currentPart.id}`;
+      await removeCompletedTest({
+        id: currentPart.id,
+      });
+      const _href = `/${topic}?type=learn&partId=${currentPart.id}`;
       router.push(_href);
     }
-  }, [currentPart, currentTurn, topicName, dispatch, router, currentTopicId]);
+  }, [currentPart, currentTurn, topicName, dispatch, router, topic]);
 
   const oldPassing = passing - extraPoint;
   const oldPassingRounded = Math.ceil(oldPassing);
@@ -198,7 +158,7 @@ const PassingFinishPage = ({
         >
           Try Again
         </MtUiButton>
-        {!isNextTopic && (
+        {/* {!isNextTopic && (
           <MtUiButton
             block
             size="large"
@@ -207,7 +167,7 @@ const PassingFinishPage = ({
           >
             {isNextSubTopic ? 'Next Sub Topic' : 'Continue'}
           </MtUiButton>
-        )}
+        )} */}
       </div>
     </div>
   );

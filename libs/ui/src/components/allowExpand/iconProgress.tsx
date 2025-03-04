@@ -87,7 +87,7 @@ const IconWrapper = ({
     };
 
     fetchProgress();
-  }, [part.id, listQuestion.length, turn, status]);
+  }, [part.id, listQuestion, turn, status]);
 
   const currentLevelScore =
     status === 'completed' ? 100 : status === 'unlocked' ? progress : 0;

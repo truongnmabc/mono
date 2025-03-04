@@ -146,6 +146,7 @@ const gameSlice = createSlice({
       state.currentGame = data?.nextQuestion ?? state.listQuestion[0];
       state.isFirstAttempt = data?.isFirst ?? true;
       state.currentQuestionIndex = data?.nextLever ?? 0;
+      state.timeStart = data?.timeStart ?? new Date().getTime();
     });
     builder.addCase(choiceAnswer.fulfilled, (state, action) => {
       if (action.payload) {

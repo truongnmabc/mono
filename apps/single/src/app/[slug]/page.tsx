@@ -50,7 +50,7 @@ export default async function Page({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const slug = (await params).slug;
-  const { type, id, subId, partId } = await searchParams;
+  const { type, topicId, partId, testId } = await searchParams;
   const listRewrite = {
     ...list.rewrite.test,
     ...list.rewrite.branch,
@@ -93,7 +93,7 @@ export default async function Page({
                 }}
                 type={type as IGameMode}
                 appShortName={appInfo.appShortName}
-                id={id}
+                id={topicId}
               />
             </Grid2>
           )}
@@ -107,9 +107,10 @@ export default async function Page({
             <div className="w-full pb-24 sm:pb-0  min-h-full flex flex-1 flex-col gap-4 sm:gap-6   h-full">
               <MainStudyView
                 type={type as IGameMode}
-                id={id ? Number(id) : -1}
+                topicId={topicId ? Number(topicId) : -1}
                 appInfo={appInfo}
                 partId={Number(partId)}
+                testId={Number(testId)}
                 isMobile={isMobile}
                 slug={slug}
               />

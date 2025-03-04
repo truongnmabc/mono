@@ -1,7 +1,11 @@
+import RouterApp from '@ui/constants/router.constant';
+import { db } from '@ui/db';
 import { setCurrentQuestion } from '@ui/redux/features/game';
 import {
+  selectAttemptNumber,
   selectCurrentGame,
   selectCurrentQuestionIndex,
+  selectCurrentSubTopicIndex,
   selectCurrentSubTopicProgressId,
   selectCurrentTopicId,
   selectGameDifficultyLevel,
@@ -9,22 +13,24 @@ import {
   selectListQuestion,
 } from '@ui/redux/features/game.reselect';
 import { shouldOpenSubmitTest } from '@ui/redux/features/tests';
-import finishQuestionThunk from '@ui/redux/repository/game/finish/finishQuestion';
 import nextQuestionThunk from '@ui/redux/repository/game/nextQuestion/nextQuestion';
 import nextQuestionDiagnosticThunk from '@ui/redux/repository/game/nextQuestion/nextQuestionDiagnosticTest';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import RouterApp from '@ui/constants/router.constant';
+import { handleFinishTest } from '@ui/services/server/actions';
 import { useParams, useRouter } from 'next/navigation';
-import React, { Fragment, useCallback, useMemo } from 'react';
+import React, { Fragment, useMemo, useState } from 'react';
 import { IPropsBottomAction } from '.';
 import { MtUiButton } from '../button';
 
 const WrapperBtnActions: React.FC<IPropsBottomAction> = ({
   type = 'learn',
+  slug,
 }) => {
   const params = useParams();
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const turn = useAppSelector(selectAttemptNumber);
+  const indexSubTopic = useAppSelector(selectCurrentSubTopicIndex);
 
   const currentGame = useAppSelector(selectCurrentGame);
   const subTopicProgressId = useAppSelector(selectCurrentSubTopicProgressId);
@@ -35,7 +41,7 @@ const WrapperBtnActions: React.FC<IPropsBottomAction> = ({
   const gameDifficultyLevel = useAppSelector(selectGameDifficultyLevel);
 
   const setOpenConfirm = () => dispatch(shouldOpenSubmitTest(true));
-
+  const [isLoading, setIsLoading] = useState(false);
   const isFinish =
     type === 'learn' &&
     listQuestion.every((item) => item.localStatus === 'correct');
@@ -67,58 +73,64 @@ const WrapperBtnActions: React.FC<IPropsBottomAction> = ({
     gameDifficultyLevel,
   ]);
 
-  const handleFinish = useCallback(() => {
-    switch (type) {
-      case 'finalTests':
-        dispatch(setCurrentQuestion(indexCurrentQuestion + 1));
-        break;
-      case 'diagnosticTest':
-        dispatch(nextQuestionDiagnosticThunk());
-        break;
-      case 'learn':
-        if (isFinish) {
-          dispatch(
-            finishQuestionThunk({
-              subTopicProgressId,
-              topicId: idTopic,
-            })
-          );
-          router.replace(
-            `${RouterApp.Finish}?subTopicId=${subTopicProgressId}&topic=${params?.['slug']}&partId=${idTopic}`,
-            { scroll: true }
-          );
-        } else {
-          dispatch(nextQuestionThunk());
-        }
-        break;
-      case 'practiceTests':
-      case 'review':
-      case 'customTets':
-        if (gameDifficultyLevel === 'exam') {
+  const handleFinish = async () => {
+    try {
+      setIsLoading(true);
+
+      switch (type) {
+        case 'finalTests':
           dispatch(setCurrentQuestion(indexCurrentQuestion + 1));
-        } else {
+          break;
+        case 'diagnosticTest':
+          dispatch(nextQuestionDiagnosticThunk());
+          break;
+        case 'learn':
+          if (isFinish) {
+            const currentTopics = await db?.topics.get(idTopic);
+
+            if (currentTopics) {
+              await db?.topics
+                .where('id')
+                .equals(idTopic)
+                .modify((topic) => {
+                  topic.status = 1;
+                });
+            }
+
+            await handleFinishTest(idTopic);
+            router.replace(
+              `${RouterApp.Finish}?topic=${slug}&resultId=${idTopic}&index=${currentTopics?.index}&turn=${currentTopics?.turn} `,
+              { scroll: true }
+            );
+          } else {
+            dispatch(nextQuestionThunk());
+          }
+          break;
+        case 'practiceTests':
+        case 'branchTest':
+        case 'review':
+        case 'customTests':
+          if (gameDifficultyLevel === 'exam') {
+            dispatch(setCurrentQuestion(indexCurrentQuestion + 1));
+          } else {
+            dispatch(nextQuestionThunk());
+          }
+          break;
+        default:
           dispatch(nextQuestionThunk());
-        }
-        break;
-      default:
-        dispatch(nextQuestionThunk());
-        break;
+          break;
+      }
+    } catch (err) {
+      console.log('err', err);
+    } finally {
+      setIsLoading(false);
     }
-  }, [
-    isFinish,
-    dispatch,
-    subTopicProgressId,
-    idTopic,
-    router,
-    params,
-    type,
-    indexCurrentQuestion,
-    gameDifficultyLevel,
-  ]);
+  };
 
   return (
     <Fragment>
       {[
+        'branchTest',
         'practiceTests',
         'finalTests',
         'diagnosticTest',
@@ -127,6 +139,7 @@ const WrapperBtnActions: React.FC<IPropsBottomAction> = ({
       ].includes(type) && (
         <MtUiButton
           animated
+          loading={isLoading}
           className="py-3 px-8 border-primary text-primary"
           block
           onClick={setOpenConfirm}
@@ -139,6 +152,7 @@ const WrapperBtnActions: React.FC<IPropsBottomAction> = ({
         block
         onClick={handleFinish}
         disabled={isFinish ? false : isDisabled}
+        loading={isLoading}
         type="primary"
         className="py-3 px-8"
       >

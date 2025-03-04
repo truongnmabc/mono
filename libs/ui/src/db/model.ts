@@ -25,7 +25,7 @@ export class DB extends Dexie {
   constructor(appName: string) {
     super(appName);
 
-    this.version(1).stores({
+    this.version(0.1).stores({
       userProgress: '++id,parentId',
 
       testQuestions: '++id,gameMode',

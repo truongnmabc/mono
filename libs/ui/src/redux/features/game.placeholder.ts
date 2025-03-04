@@ -49,4 +49,5 @@ export const initGameReducer: IGameReducer = {
   hasRetakenDiagnosticTest: false, // Xác định rằng đã làm qua 1 lần diagnostic test, nhưng lần sau là làm lại
   shouldLoading: false,
   isCreateNewTest: false,
+  timeStart: new Date().getTime(), // Thời gian bắt đầu trả lời câu hỏi
 };

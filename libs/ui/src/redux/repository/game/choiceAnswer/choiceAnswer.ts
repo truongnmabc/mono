@@ -1,8 +1,8 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@ui/db';
 import { ICurrentGame } from '@ui/models/game';
 import { IAnswer } from '@ui/models/question';
 import { RootState } from '@ui/redux/store';
-import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const choiceAnswer = createAsyncThunk(
   'choiceAnswer',
@@ -11,7 +11,7 @@ const choiceAnswer = createAsyncThunk(
     thunkAPI
   ) => {
     const state = thunkAPI.getState() as RootState;
-    const { attemptNumber, currentTopicId, gameMode } = state.game;
+    const { attemptNumber, currentTopicId, gameMode, timeStart } = state.game;
 
     const isEx = await db?.userProgress.get(question.id);
 
@@ -25,6 +25,8 @@ const choiceAnswer = createAsyncThunk(
             index: choice.index,
             correct: choice.correct,
             type: gameMode,
+            startAt: timeStart,
+            endAt: new Date().getTime(),
           },
         ]
       : [
@@ -35,6 +37,8 @@ const choiceAnswer = createAsyncThunk(
             correct: choice.correct,
             index: choice.index,
             type: gameMode,
+            startAt: timeStart,
+            endAt: new Date().getTime(),
           },
         ];
 

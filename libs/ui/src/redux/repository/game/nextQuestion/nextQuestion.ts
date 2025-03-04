@@ -6,6 +6,7 @@ type IRes = {
   nextLever: number;
   nextQuestion: ICurrentGame;
   isFirst: boolean;
+  timeStart: number;
 };
 const nextQuestionThunk = createAsyncThunk(
   'nextQuestionThunk',
@@ -23,6 +24,7 @@ const nextQuestionThunk = createAsyncThunk(
         nextLever: currentQuestionIndex + 1,
         nextQuestion: listQuestion[currentQuestionIndex + 1],
         isFirst: true,
+        timeStart: new Date().getTime(),
       };
     }
 
@@ -41,6 +43,7 @@ const nextQuestionThunk = createAsyncThunk(
           localStatus: 'new',
         },
         isFirst: false,
+        timeStart: new Date().getTime(),
       };
     }
     return undefined;

@@ -72,4 +72,6 @@ export interface IGameReducer {
   shouldLoading?: boolean;
 
   isCreateNewTest?: boolean;
+
+  timeStart?: number; // Thời gian bắt đầu trả lời câu hỏi
 }
