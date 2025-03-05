@@ -39,8 +39,8 @@ export const listAppState = ['cdl'];
 
 export const TypeParam = {
   diagnosticTest: 'diagnosticTest',
-  finalTest: 'finalTest',
-  customTest: 'customTest',
+  finalTest: 'finalTests',
+  customTest: 'customTests',
   practiceTest: 'practiceTests',
   review: 'review',
   branchTest: 'branchTest',

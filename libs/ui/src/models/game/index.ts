@@ -45,7 +45,7 @@ export interface IGameReducer {
   isGamePaused: boolean; // Game đang bị tạm dừng hay không
 
   // indexSubTopic: number;
-  currentSubTopicIndex: number; // Vị trí của sub-topic hiện tại trong game
+  currentSubTopicIndex: string; // Vị trí của sub-topic hiện tại trong game
 
   // passing?: number;
   passingThreshold?: number; // Phần trăm đúng cần để qua bài test

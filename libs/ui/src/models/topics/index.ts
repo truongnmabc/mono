@@ -16,5 +16,5 @@ export interface ITopicBase {
   totalQuestion: number;
   turn: number;
   partId: number;
-  index: number;
+  index: string;
 }

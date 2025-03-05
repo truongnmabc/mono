@@ -17,6 +17,15 @@ progress::-webkit-progress-bar {
   border-radius: 16px;
 }
 
+.custom-finish-progress progress {
+  height: 20px;
+  top: 8px;
+  left: 8px;
+}
+
+.custom-finish-progress progress::-webkit-progress-bar {
+  background-color: #21212114;
+}
 /* Custom header progress specific */
 .custom-header-progress progress {
   height: 8px;

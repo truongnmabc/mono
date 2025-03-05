@@ -2,15 +2,15 @@ import { db } from '@ui/db';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export interface IUserActions {
-  partId: number;
+  ids: number[];
 }
 
 const getListActionThunk = createAsyncThunk(
   'getListActionThunk',
-  async ({ partId }: IUserActions) => {
+  async ({ ids }: IUserActions) => {
     const existingAction = await db?.useActions
-      .where('partId')
-      .equals(partId)
+      .where('questionId')
+      .anyOf(ids)
       .toArray();
 
     return { list: existingAction || [] };

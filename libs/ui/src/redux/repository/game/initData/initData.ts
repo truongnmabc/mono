@@ -1,14 +1,17 @@
-import { db } from '@ui/db';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionBase, IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
-import { IUserQuestionProgress } from '@ui/models/progress';
+import { selectTopics } from '@ui/redux/features/study';
 import { RootState } from '@ui/redux/store';
-import { axiosRequest } from '@ui/services/config/axios';
+import selectSubTopicThunk from '../../study/select';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
 } from './initPracticeTest';
+import { handleGetDataDiagnosticTest } from './utils/diagnostic';
+import { handleGetDataLean } from './utils/learn';
+import { handleGetDataFinalTest } from './utils/final';
 
 type IInitQuestion = {
   subTopicTag?: string;
@@ -23,25 +26,23 @@ type IInitQuestion = {
   topicId?: number;
 };
 interface IResInitQuestion {
-  progressData?: IUserQuestionProgress[] | null | undefined;
+  progressData: IUserQuestionProgress[];
   questions: IQuestionOpt[];
   id: number;
   gameMode: IGameMode;
-  turn: number;
   timeStart?: number;
   currentTopicId: number;
   totalDuration: number;
   isGamePaused: boolean;
   remainingTime: number;
   attemptNumber?: number;
+  currentSubTopicIndex?: string;
 }
 
 const initDataGame = createAsyncThunk(
   'initDataGame',
-  async (
-    { partId, type, slug, turn, isReset }: IInitQuestion,
-    thunkAPI
-  ): Promise<IResInitQuestion> => {
+  async (params: IInitQuestion, thunkAPI): Promise<IResInitQuestion> => {
+    const { partId, type, slug, turn, topicId, testId } = params;
     const state = thunkAPI.getState() as RootState;
     let { isDataFetched } = state.appInfo;
 
@@ -49,79 +50,96 @@ const initDataGame = createAsyncThunk(
       await new Promise((resolve) => setTimeout(resolve, 100));
       isDataFetched = (thunkAPI.getState() as RootState).appInfo.isDataFetched;
     }
-    let listQuestions: IQuestionBase[] = [];
-    let attemptNumber = turn || 1;
-    let id = partId || -1;
-    switch (type) {
-      case 'learn':
-        const {
-          turn,
-          list,
-          id: idPart,
-        } = await handleGetDataLean({
-          partId,
-          slug,
-        });
-        attemptNumber = turn || 1;
-        listQuestions = list || [];
-        id = idPart;
-        break;
-      default:
-        break;
-    }
+
+    const modeHandlers: Record<
+      IGameMode,
+      () => Promise<{
+        listQuestions: IQuestionBase[];
+        id?: number;
+        attemptNumber?: number;
+        index?: string;
+        parentId?: number;
+        isGamePaused?: boolean;
+        subTopicId?: number;
+      }>
+    > = {
+      learn: async () => await handleGetDataLean({ partId, slug }),
+      diagnosticTest: async () => await handleGetDataDiagnosticTest({ testId }),
+      finalTests: async () => handleGetDataFinalTest({ testId }),
+      branchTest: async () => ({
+        listQuestions: [],
+        id: -1,
+        subTopicId: -1,
+        attemptNumber: 1,
+        index: '',
+      }),
+      customTests: async () => ({
+        listQuestions: [],
+        id: -1,
+        subTopicId: -1,
+        attemptNumber: 1,
+        index: '',
+      }),
+      practiceTests: async () => ({
+        listQuestions: [],
+        id: -1,
+        subTopicId: -1,
+        attemptNumber: 1,
+        index: '',
+      }),
+      review: async () => ({
+        listQuestions: [],
+        id: -1,
+        subTopicId: -1,
+        attemptNumber: 1,
+        index: '',
+      }),
+    };
+
+    const { listQuestions, id, subTopicId, attemptNumber, index } = await (
+      modeHandlers[type] || modeHandlers.learn
+    )();
+
     const questionIdsSet = listQuestions.map((q) => q.id);
-    const progressData = await getLocalUserProgress(
-      questionIdsSet,
-      type,
-      attemptNumber,
-      id
-    );
+
+    const progressData =
+      (await getLocalUserProgress(
+        questionIdsSet,
+        type,
+        attemptNumber || 1,
+        id || -1
+      )) || [];
+
     const questions = mapQuestionsWithProgress(
       listQuestions,
       progressData
     ) as IQuestionOpt[];
+
+    if (topicId) {
+      setTimeout(() => {
+        thunkAPI.dispatch(selectTopics(topicId));
+      }, 500);
+    }
+
+    if (subTopicId) {
+      setTimeout(() => {
+        thunkAPI.dispatch(selectSubTopicThunk(subTopicId));
+      }, 1000);
+    }
+
     return {
       questions: questions,
       progressData: progressData,
-      id: id,
+      id: id || -1,
       timeStart: new Date().getTime(),
-      turn: attemptNumber,
       gameMode: type,
-      currentTopicId: id,
+      currentTopicId: id || -1,
       totalDuration: 0,
       isGamePaused: false,
       remainingTime: 0,
+      currentSubTopicIndex: index,
+      attemptNumber: attemptNumber,
     };
   }
 );
 export default initDataGame;
-
-type IPropsLearn = {
-  partId?: number;
-  slug?: string;
-};
-const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
-  let id = partId || -1;
-  let attemptNumber = 1;
-  if (!partId) {
-    const list = await db?.topics
-      .where('slug')
-      .equals(slug || '')
-      .sortBy('index');
-    const currentPart = list?.find((item) => item.status === 0);
-    if (currentPart) {
-      id = currentPart.id;
-      attemptNumber = currentPart.turn;
-    }
-  } else {
-    const topics = await db?.topics.get(partId);
-    if (topics) {
-      id = topics.id;
-      attemptNumber = topics.turn;
-    }
-  }
-
-  const listQuestions =
-    (await db?.questions.where('partId').equals(id).toArray()) || [];
-  return { turn: attemptNumber, list: listQuestions, id };
-};

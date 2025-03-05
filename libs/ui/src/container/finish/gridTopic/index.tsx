@@ -8,8 +8,11 @@ import clsx from 'clsx';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
-const GridTopicProgress = () => {
-  const [listSubTopics, setListSubTopics] = useState<ITopicBase | null>();
+const GridTopicProgress = ({
+  listSubTopics,
+}: {
+  listSubTopics: ITopicBase[];
+}) => {
   const slug = useSearchParams()?.get('topic');
   const dispatch = useAppDispatch();
   const pathname = usePathname();
@@ -18,7 +21,6 @@ const GridTopicProgress = () => {
       const data = await db?.topics.where('slug').equals(slug).first();
       if (data) {
         dispatch(selectTopics(data.id));
-        setListSubTopics(data as ITopicBase);
       }
     }
   }, [slug, dispatch]);

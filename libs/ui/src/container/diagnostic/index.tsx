@@ -13,6 +13,8 @@ import BottomActions from '@ui/components/bottomActions';
 import { useEffect } from 'react';
 import EmotionComponent from './emotion/emotionComponent';
 import TimeTestGetLever from './timeTest';
+import initDataGame from '@ui/redux/repository/game/initData/initData';
+import { IGameMode } from '@ui/models/tests/tests';
 const ClockIcon = dynamic(() => import('@ui/components/icon/ClockIcon'), {
   ssr: false,
 });
@@ -24,22 +26,30 @@ const DiagnosticContainer = ({
   isMobile,
   type,
   id,
+  turn,
 }: {
   isMobile: boolean;
-  type?: string;
-  id?: string;
+  type?: IGameMode;
+  id?: number;
+  turn?: number;
 }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (id) {
-      dispatch(initDiagnosticTestQuestionThunk({ id: Number(id) }));
-    }
-  }, [id]);
+    const handleGetData = async () => {
+      const testId = id;
+      try {
+        dispatch(initDataGame({ type: 'diagnosticTest', turn, testId }));
+      } catch (err) {
+        console.log('🚀 ~ handleGetData ~ err:', err);
+      }
+    };
+    handleGetData();
+  }, [id, type, turn]);
 
   return (
     <div className=" sm:shadow-custom bg-transparent min-h-[420px] sm:bg-white  rounded-2xl dark:bg-black">
       <div className="sm:p-4  flex flex-col gap-3">
-        <TitleQuestion />
+        <TitleQuestion title="Diagnostic Test" />
         <ProgressQuestion />
         {isMobile && (
           <div className="flex items-center justify-center w-full gap-2">

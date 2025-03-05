@@ -5,7 +5,7 @@ import { getDataSeo } from '../utils/fetchData.js';
  * - Lấy dữ liệu SEO cho từng slug và chuyển thành object với key là tag
  * - Gộp thêm dữ liệu SEO mặc định cho các trang khác nếu không có dữ liệu
  */
-async function processSeoData(slugs, defaultSeo) {
+async function processSeoData(slugs) {
   const dataSeoTest = await Promise.all(
     slugs.test.map(async (item) => {
       const data = await getDataSeo(item.slug);
@@ -35,7 +35,12 @@ async function processSeoData(slugs, defaultSeo) {
     return result;
   }, {});
   const dataSeoFullLength = await getDataSeo(slugs.fullLength.slug);
-
+  const dataSeoHome = await getDataSeo('home');
+  const defaultSeo = {
+    content: dataSeoHome?.content,
+    titleSeo: dataSeoHome?.titleSeo[0],
+    descSeo: dataSeoHome?.descSeo[0],
+  };
   const seoNull = {
     content: '',
     titleSeo: '',

@@ -1,11 +1,7 @@
-'use client';
-
-import { selectCurrentSubTopicIndex } from '@ui/redux/features/game.reselect';
-import { useAppSelector } from '@ui/redux/store';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useParams, usePathname } from 'next/navigation';
-import React, { useMemo } from 'react';
+import React from 'react';
+import TitleIndex from './titleIndex';
 
 // DONE
 export const getKeyTest = (
@@ -33,25 +29,17 @@ export const getLastPathSegment = (pathname?: string | null): string | null => {
   return lastSegment;
 };
 
-const TitleQuestion = ({ type }: { type?: string }) => {
-  const params = useParams();
-  const pathname = usePathname();
-  const defaultTitle = useMemo(
-    () => getKeyTest(params?.['slug']) || getLastPathSegment(pathname),
-    [params, pathname]
-  );
-  const index = useAppSelector(selectCurrentSubTopicIndex);
-
+const TitleQuestion = ({ type, title }: { type?: string; title: string }) => {
   return (
     <div className={clsx('w-full flex items-center justify-center')}>
-      <motion.span
+      <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className="text-center hidden sm:block capitalize text-xl font-semibold overflow-hidden border-transparent whitespace-nowrap"
       >
-        {defaultTitle} {type === 'learn' ? `- Core ${index}` : ''}
-      </motion.span>
+        {title} {type === 'learn' && <TitleIndex />}
+      </motion.h1>
     </div>
   );
 };

@@ -5,9 +5,7 @@ import ExplanationDetail from '@ui/components/explanation';
 import ProgressQuestion from '@ui/components/progressQuestion';
 import QuestionContent from '@ui/components/question';
 import { IAppInfo } from '@ui/models';
-import { ITestsHomeJson, ITopicHomeJson } from '@ui/models/other';
 import { IGameMode } from '@ui/models/tests/tests';
-import { resetStateStudy, selectTopics } from '@ui/redux/features/study';
 import initDataGame from '@ui/redux/repository/game/initData/initData';
 import { useAppDispatch } from '@ui/redux/store';
 import dynamic from 'next/dynamic';
@@ -31,10 +29,6 @@ const ClockIcon = dynamic(() => import('@ui/components/icon/ClockIcon'), {
   ssr: false,
 });
 
-interface IDataJsonHomePage {
-  topics: ITopicHomeJson[];
-  tests: ITestsHomeJson['practiceTests'];
-}
 const MainStudyView = ({
   type,
   topicId,
@@ -57,14 +51,11 @@ const MainStudyView = ({
 }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(resetStateStudy());
-
     const handleGetData = async () => {
       try {
         dispatch(initDataGame({ partId, type, slug, turn, testId, topicId }));
       } catch (err) {
         console.log('🚀 ~ handleGetData ~ err:', err);
-      } finally {
       }
     };
     handleGetData();
@@ -74,7 +65,15 @@ const MainStudyView = ({
     <Fragment>
       <div className="sm:shadow-custom bg-transparent min-h-[380px] relative sm:bg-white  rounded-2xl dark:bg-black">
         <div className="sm:p-4 flex flex-col gap-3">
-          <TitleQuestion type={type} />
+          <TitleQuestion
+            type={type}
+            title={
+              slug
+                ?.replace('-practice-test', ' ')
+                .replace(appInfo.appShortName, '')
+                .replaceAll('-', ' ') || ''
+            }
+          />
 
           <ProgressQuestion />
           {type !== 'learn' && (

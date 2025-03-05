@@ -64,6 +64,7 @@ type IResInitDataGame = {
   isGamePaused: boolean;
   remainingTime: number;
   attemptNumber?: number;
+  currentSubTopicIndex?: string;
 };
 
 export const handleMigrateDataGame = (
@@ -79,6 +80,7 @@ export const handleMigrateDataGame = (
     isGamePaused,
     remainingTime,
     attemptNumber,
+    currentSubTopicIndex,
   } = payload;
 
   if (gameMode) state.gameMode = gameMode;
@@ -88,25 +90,14 @@ export const handleMigrateDataGame = (
   if (isGamePaused) state.isGamePaused = isGamePaused;
   if (remainingTime) state.remainingTime = remainingTime;
   if (attemptNumber) state.attemptNumber = attemptNumber;
+  if (currentSubTopicIndex) state.currentSubTopicIndex = currentSubTopicIndex;
   if (!progressData || progressData.length === 0) {
-    initializeNewState(state, questions);
+    state.currentQuestionIndex = 0;
+    state.currentGame = questions[0];
+    state.isFirstAttempt = true;
   } else {
     updateExistingState(state, questions, progressData);
   }
-};
-
-/**
- * Initializes the state when no progress data exists.
- * @param {RootState["gameReducer"]} state - The game state.
- * @param {IQuestionOpt[]} questions - The list of questions.
- */
-const initializeNewState = (
-  state: RootState['game'],
-  questions: IQuestionOpt[]
-) => {
-  state.currentQuestionIndex = 0;
-  state.currentGame = questions[0];
-  state.isFirstAttempt = true;
 };
 
 /**

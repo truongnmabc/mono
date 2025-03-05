@@ -21,13 +21,12 @@ import { updateEnvAndSave } from './saveData.js';
  * Lấy thông tin app, config, topics & tests và SEO cùng lúc
  */
 async function fetchAppData(appShortName) {
-  const [appInfoCore, appConfig, topicsAndTest, seo] = await Promise.all([
+  const [appInfoCore, appConfig, topicsAndTest] = await Promise.all([
     getDataSingleApp(appShortName),
     getSingleAppConfig(appShortName),
     getDataTopicsAndTest(appShortName),
-    getDataSeo(appShortName),
   ]);
-  return { appInfoCore, appConfig, topicsAndTest, seo };
+  return { appInfoCore, appConfig, topicsAndTest };
 }
 
 /**
@@ -61,7 +60,7 @@ async function setupSingleApp(appShortName) {
   const s = spinner();
   try {
     s.start('Fetching data...');
-    const { appInfoCore, appConfig, topicsAndTest, seo } = await fetchAppData(
+    const { appInfoCore, appConfig, topicsAndTest } = await fetchAppData(
       appShortName
     );
     s.stop('Fetching data completed!');
@@ -86,7 +85,7 @@ async function setupSingleApp(appShortName) {
     s.stop('Processing test data completed!');
 
     s.start('Processing seo data...');
-    const listSeo = await processSeoData(slugs, seo);
+    const listSeo = await processSeoData(slugs);
     s.stop('Processing seo data completed!');
 
     s.start('Processing app info...');
@@ -95,7 +94,7 @@ async function setupSingleApp(appShortName) {
 
     s.start('Processing home data...');
     const dataHome = processDataHome({
-      seo,
+      seo: listSeo.default.home,
       topics,
       diagnosticTestId: diagnosticTest.id,
       branchTest: Object.keys(listSeo.rewrite.branch).map((item, index) => ({
@@ -127,6 +126,7 @@ async function setupSingleApp(appShortName) {
       server: {
         diagnosticTest: diagnosticTest,
       },
+      appShortName,
     });
     s.stop('Updating env and saving data completed!');
 

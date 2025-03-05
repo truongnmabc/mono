@@ -4,12 +4,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 interface IUserActions {
   status: 'like' | 'dislike' | 'save';
   questionId: number;
-  partId: number;
 }
 
 const userActionsThunk = createAsyncThunk(
   'useActionsThunk',
-  async ({ status, questionId, partId }: IUserActions) => {
+  async ({ status, questionId }: IUserActions) => {
     const existingAction = await db?.useActions
       .where('questionId')
       .equals(questionId)
@@ -30,18 +29,16 @@ const userActionsThunk = createAsyncThunk(
       return {
         questionId,
         status: newListActions,
-        partId,
       };
     } else {
       await db?.useActions.add({
         questionId,
         actions: [status],
         userId: -1,
-        partId,
       });
     }
 
-    return { status: [status], questionId, partId };
+    return { status: [status], questionId };
   }
 );
 

@@ -28,7 +28,7 @@ const Page = async ({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
-  const { type, id } = await searchParams;
+  const { type, id, turn } = await searchParams;
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
@@ -108,8 +108,8 @@ const Page = async ({
             <div className="w-full min-h-full flex flex-1 flex-col gap-4 sm:gap-6 h-full pb-24 sm:pb-0">
               <DiagnosticContainer
                 isMobile={isMobile}
-                type={type as IGameMode}
-                id={id}
+                id={Number(id) || -1}
+                turn={Number(turn) || 1}
               />
               <BannerDownloadApp appInfo={appInfos} isMobile={isMobile} />
               {data.content && (

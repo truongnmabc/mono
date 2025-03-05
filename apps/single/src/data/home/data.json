@@ -1,8 +1,8 @@
 {
   "seo": {
-    "content": null,
-    "titleSeo": null,
-    "descSeo": null
+    "content": "<!-- wp:paragraph -->\r\n<p><strong>ASVAB Practice Test by ABC E-learning</strong> is a free browser/web platform that provides people with unique ASVAB training and testing services. Our ASVAB practice questions and tests have been collected carefully and are all based on the real ASVAB test format. Let's fulfill your knowledge to get 100% ready for your coming ASVAB exam!</p>\r\n<p>&nbsp;</p>\r\n<!-- /wp:paragraph -->",
+    "titleSeo": "2025 ASVAB Practice Test: Practice ASVAB Tests Effectively",
+    "descSeo": "Our ASVAB practice tests have helped thousands of users have passed their exam. 1000+ ASVAB prep test questions for all ASVAB topics are available. Practice now!"
   },
   "topics": [
     {
@@ -1575,38 +1575,38 @@
     },
     "diagnosticTest": {
       "id": "DT",
-      "testId": -1868548
+      "testId": -12519019
     },
     "branchTest": {
       "id": "BT",
       "list": [
         {
-          "id": -11030503,
+          "id": -15335163,
           "name": "marine",
           "slug": "marine-asvab-practice-test"
         },
         {
-          "id": -8594238,
+          "id": -1241853,
           "name": "navy",
           "slug": "navy-asvab-practice-test"
         },
         {
-          "id": -12654438,
+          "id": -14862306,
           "name": "army",
           "slug": "army-asvab-practice-test"
         },
         {
-          "id": -6251406,
+          "id": -7969157,
           "name": "coast-guard",
           "slug": "coast-guard-asvab-practice-test"
         },
         {
-          "id": -8808576,
+          "id": -16135158,
           "name": "air-force",
           "slug": "air-force-asvab-practice-test"
         },
         {
-          "id": -4668393,
+          "id": -4665849,
           "name": "national-guard",
           "slug": "national-guard-asvab-practice-test"
         }

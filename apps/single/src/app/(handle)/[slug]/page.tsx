@@ -10,6 +10,7 @@ import MainStudyView from '@ui/container/study/mainStudyView';
 import QuestionGroup from '@ui/container/study/questionGroup';
 import { IGameMode } from '@ui/models/tests/tests';
 import { detectAgent } from '@ui/utils/device';
+import { replaceYear } from '@ui/utils/time';
 import { headers } from 'next/headers';
 import { Fragment } from 'react';
 // export const revalidate = 3600;
@@ -37,8 +38,19 @@ export async function generateMetadata({
   };
   const data = listRewrite[slug as keyof typeof listRewrite];
   return {
-    title: data.titleSeo,
-    description: data.descSeo,
+    title: replaceYear(data.titleSeo),
+    description: replaceYear(data.descSeo),
+    openGraph: {
+      title: replaceYear(data.titleSeo),
+      description: replaceYear(data.descSeo),
+    },
+    twitter: {
+      title: replaceYear(data.titleSeo),
+      description: replaceYear(data.descSeo),
+    },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_API_URL}${slug}`,
+    },
   };
 }
 
@@ -113,7 +125,7 @@ export default async function Page({
                 testId={Number(testId)}
                 isMobile={isMobile}
                 slug={slug}
-                turn={Number(turn)}
+                turn={Number(turn) || 1}
               />
               <BannerDownloadApp appInfo={appInfo} isMobile={isMobile} />
               {content && (

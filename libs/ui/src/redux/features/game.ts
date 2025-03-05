@@ -172,7 +172,6 @@ const gameSlice = createSlice({
     });
 
     builder.addCase(initDataGame.fulfilled, (state, action) => {
-      console.log('🚀 ~ builder.addCase ~ action:', action.payload);
       if (action.payload) {
         handleMigrateDataGame(state, action.payload);
       }

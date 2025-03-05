@@ -21,7 +21,7 @@ const Page = async ({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
-  const { type, id } = await searchParams;
+  const { type, id, turn } = await searchParams;
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
@@ -64,7 +64,9 @@ const Page = async ({
               <FinalTestContainer
                 isMobile={isMobile}
                 type={type as IGameMode}
-                id={id}
+                id={Number(id) || -1}
+                turn={Number(turn) || 1}
+                appInfos={appInfos}
               />
               <BannerDownloadApp appInfo={appInfos} isMobile={isMobile} />
               {data.content && (

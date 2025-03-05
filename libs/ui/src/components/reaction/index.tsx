@@ -8,20 +8,25 @@ import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import IconBookmark from '@ui/components/icon/iconBookmark';
 import IconDislike from '@ui/components/icon/iconDislike';
 import IconLike from '@ui/components/icon/iconLike';
-import { useIsMobile } from '@ui/hooks/useIsMobile';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import ReportMistake from '../reportMistake';
+
 const Sheet = dynamic(() => import('@ui/components/sheet'), {
   ssr: false,
 });
-const Reaction = ({ item }: { item?: ICurrentGame }) => {
+const Reaction = ({
+  item,
+  isMobile,
+}: {
+  item?: ICurrentGame;
+  isMobile: boolean;
+}) => {
   const currentGame = useAppSelector(selectCurrentGame);
   const listActions = useAppSelector(selectListActions);
   const [openModal, setOpenModal] = useState(false);
-  const isMobile = useIsMobile();
   const dispatch = useAppDispatch();
   const [status, setStatus] = useState({
     like: false,
@@ -60,10 +65,9 @@ const Reaction = ({ item }: { item?: ICurrentGame }) => {
       userActionsThunk({
         status: 'save',
         questionId: item?.id || currentGame.id,
-        partId: item?.parentId || currentGame.parentId,
       })
     );
-  }, [dispatch, currentGame?.id, currentGame?.parentId, item, status.save]);
+  }, [dispatch, currentGame?.id, item, status.save]);
 
   const likeAction = useCallback(() => {
     if (!status.like) {
@@ -73,10 +77,9 @@ const Reaction = ({ item }: { item?: ICurrentGame }) => {
       userActionsThunk({
         status: 'like',
         questionId: item?.id || currentGame.id,
-        partId: item?.parentId || currentGame.parentId,
       })
     );
-  }, [dispatch, currentGame?.id, currentGame?.parentId, item, status.like]);
+  }, [dispatch, currentGame?.id, item, status.like]);
 
   const dislikeAction = () => setOpenModal(true);
 

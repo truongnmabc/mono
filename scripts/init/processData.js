@@ -313,7 +313,7 @@ const mapSubTopics = (topics = [], data, slug, startIndex) =>
           (sum, part) => sum + (part.level === -1 ? 50 : part.level),
           0
         ) || 0) / total,
-      index: Number(`${startIndex}.${index}`),
+      index: `${startIndex}.${index}`,
     };
   });
 
@@ -336,7 +336,7 @@ const mapTopics = (topics = [], data, slug) =>
         averageLevel: averageLevel / total,
         status: 0,
         turn: 1,
-        index: index + 1,
+        index: `${index + 1}.0`,
       };
     }
   );
@@ -425,10 +425,14 @@ async function processTestData(topics, tests, appShortName) {
   const topicsResult = await initDataTopics(topics, appShortName);
 
   const list = topicsResult.flatMap((item) => item.topics);
-  const listTopics = list.flatMap((item) =>
-    item.topics.flatMap((i) => i.topics)
-  );
-
+  const listSubTopic = list.flatMap((item) => item.topics);
+  const listPart = listSubTopic.flatMap((item) => item.topics);
+  const listSubMap = listSubTopic.map((item) => ({
+    ...item,
+    topics: [],
+    slug: '',
+  }));
+  const listTopics = [...listPart, ...listSubMap];
   const questions = topicsResult.flatMap((item) => item.questions);
 
   const diagnosticTest = await getDiagnosticTest(topics, questions);

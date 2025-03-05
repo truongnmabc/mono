@@ -1,12 +1,14 @@
 'use client';
+import TitleCollapse from '@ui/components/allowExpand/titleCollapse';
 import MyContainer from '@ui/components/container';
 import { db } from '@ui/db';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionBase } from '@ui/models/question';
 import { ITopicBase } from '@ui/models/topics';
+import { selectIsDataFetched } from '@ui/redux/features/appInfo.reselect';
+import { useAppSelector } from '@ui/redux/store';
 import React, { useEffect, useState } from 'react';
 import { totalPassingPart } from './calculate';
-import GridTopicProgress from './gridTopic';
 import PassingFinishPage from './passing';
 import ProgressFinishPage from './progress';
 import TitleFinishPage from './title';
@@ -46,76 +48,6 @@ const calculateProgress = (
   return {
     correct: correctAnswers,
     total: questions?.length || 1,
-  };
-};
-
-const findNextPart = async ({
-  currentTopic,
-  currentSubTopic,
-}: {
-  currentTopic: ITopicBase;
-  currentSubTopic?: ITopicBase;
-}) => {
-  if (!currentTopic || !currentSubTopic)
-    return {
-      nextPart: null,
-      index: -1,
-      isNextSubTopic: false,
-      isNextTopic: false,
-    };
-
-  // Tìm part chưa hoàn thành trong subtopic hiện tại
-  const nextPartIndex = currentSubTopic.topics.findIndex((p) => p.status === 0);
-  if (nextPartIndex !== -1) {
-    return {
-      nextPart: currentSubTopic.topics[nextPartIndex],
-      index: nextPartIndex,
-      isNextSubTopic: false,
-      isNextTopic: false,
-    };
-  }
-
-  // Nếu tất cả part của subtopic đã hoàn thành, tìm subtopic khác chưa hoàn thành
-  const nextSubTopic = currentTopic.topics.find((sub) => sub.status === 0);
-  if (nextSubTopic) {
-    const nextPartIndex = nextSubTopic.topics.findIndex((p) => p.status === 0);
-    if (nextPartIndex !== -1) {
-      return {
-        nextPart: nextSubTopic.topics[nextPartIndex],
-        index: nextPartIndex,
-        isNextSubTopic: true,
-        isNextTopic: false,
-      };
-    }
-  }
-
-  // Nếu tất cả subtopic đã hoàn thành, tìm topic tiếp theo trong danh sách topic
-  const nextTopic = await db?.topics
-    .filter((topic) => topic.status === 0)
-    .first();
-  if (nextTopic) {
-    const nextSubTopic = nextTopic.topics.find((sub) => sub.status === 0);
-    if (nextSubTopic) {
-      const nextPartIndex = nextSubTopic.topics.findIndex(
-        (p) => p.status === 0
-      );
-      if (nextPartIndex !== -1) {
-        return {
-          nextPart: nextSubTopic.topics[nextPartIndex],
-          index: nextPartIndex,
-          isNextSubTopic: false,
-          isNextTopic: true,
-        };
-      }
-    }
-  }
-
-  // Nếu không tìm thấy part nào, trả về null
-  return {
-    nextPart: null,
-    index: -1,
-    isNextSubTopic: false,
-    isNextTopic: false,
   };
 };
 
@@ -161,17 +93,20 @@ const FinishLayout = ({
     extraPoint: number;
     total: number;
     correct: number;
+    isNextTopic: boolean;
   }>({
     currentPart: null,
     nextPart: null,
     extraPoint: 0,
     total: 1,
     correct: 0,
+    isNextTopic: false,
   });
   const subIndex = Number(index?.split('.')[1] || 0);
-
+  const [listSubTopics, setListSubTopics] = useState<ITopicBase[]>([]);
+  const isDataFetched = useAppSelector(selectIsDataFetched);
   useEffect(() => {
-    if (!topic || !resultId || !turn) return;
+    if (!topic || !resultId || !turn || !isDataFetched) return;
     const handleGetData = async () => {
       const { currentTopic, progress, questions } =
         await getCurrentProgressData({
@@ -200,19 +135,52 @@ const FinishLayout = ({
         correct,
         total,
         extraPoint,
+        isNextTopic: !!nextPart,
       });
+
+      const mainTopics = currentTopic.reduce((acc, topic) => {
+        if (!acc.has(topic.parentId)) {
+          acc.set(topic.parentId, []);
+        }
+        const group = acc.get(topic.parentId);
+        if (group) {
+          group.push(topic);
+        }
+        return acc;
+      }, new Map());
+
+      const parentTopicIds = Array.from(mainTopics.keys());
+      const subs =
+        (await db?.topics.where('id').anyOf(parentTopicIds).toArray()) || [];
+
+      const subsWithTopics = subs.map((sub) => ({
+        ...sub,
+        topics: mainTopics.get(sub.id) || [],
+      }));
+
+      setListSubTopics(subsWithTopics || []);
     };
 
     handleGetData();
-  }, [resultId, turn, topic]);
+  }, [resultId, turn, topic, isDataFetched]);
 
   return (
     <MyContainer>
       <div className="w-full py-6 h-full gap-8 flex flex-col">
-        <TitleFinishPage topic={topic} index={(subIndex + 1).toString()} />
+        <TitleFinishPage topic={topic} index={subIndex + 1} />
         <ProgressFinishPage correct={game.correct} total={game.total} />
-        <PassingFinishPage {...game} topic={topic} currentTurn={turn || 1} />
-        <GridTopicProgress />
+        <PassingFinishPage
+          {...game}
+          topic={topic}
+          currentTurn={turn || 1}
+          index={index}
+          topicId={listSubTopics[0]?.parentId}
+        />
+        <div className="flex gap-2 flex-col ">
+          {listSubTopics.map((value) => (
+            <TitleCollapse subTopic={value} key={value.id} />
+          ))}
+        </div>
       </div>
     </MyContainer>
   );

@@ -50,7 +50,7 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(useActionsThunk.fulfilled, (state, action) => {
-      const { questionId, status, partId } = action.payload;
+      const { questionId, status } = action.payload;
 
       const existingActionIndex = state.listActions.findIndex(
         (item) => item.questionId === questionId
@@ -67,7 +67,6 @@ const userSlice = createSlice({
           questionId,
           actions: Array.isArray(status) ? status : [],
           userId: parseInt(state.userInfo?.id) || -1,
-          partId,
         });
       }
     });

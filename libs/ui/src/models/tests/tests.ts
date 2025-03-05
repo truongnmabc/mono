@@ -56,7 +56,8 @@ export type IGameMode =
   | 'diagnosticTest'
   | 'customTests'
   | 'learn'
-  | 'branchTest';
+  | 'branchTest'
+  | 'review';
 
 export interface ITestBase {
   id: number;

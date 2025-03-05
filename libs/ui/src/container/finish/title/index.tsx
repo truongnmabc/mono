@@ -15,7 +15,7 @@ const TitleFinishPage = ({
   index,
 }: {
   topic?: string;
-  index?: string;
+  index?: string | number;
 }) => {
   const topicName = replaceName(topic || '');
   const router = useRouter();

@@ -1,22 +1,22 @@
 'use client';
-import { selectCurrentTopicId } from '@ui/redux/features/game.reselect';
+import { selectListQuestion } from '@ui/redux/features/game.reselect';
 import getListActionThunk from '@ui/redux/repository/user/getActions';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { useEffect } from 'react';
 
 const UserActionListen = () => {
-  const idTopic = useAppSelector(selectCurrentTopicId);
+  const listQuestion = useAppSelector(selectListQuestion);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (idTopic) {
+    if (listQuestion.length > 0) {
       dispatch(
         getListActionThunk({
-          partId: idTopic,
+          ids: listQuestion.map((item) => item.id),
         })
       );
     }
-  }, [idTopic, dispatch]);
+  }, [listQuestion.length, dispatch]);
 
   return null;
 };

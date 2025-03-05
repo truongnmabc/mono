@@ -53,6 +53,7 @@ function updateEnvAndSave({
   home,
   authSecret,
   server: { diagnosticTest },
+  appShortName,
 }) {
   // config
   const envFilePath = path.join(DATA_PATH, '/apps/single/.env.local');
@@ -107,6 +108,28 @@ function updateEnvAndSave({
     descSeo: seo.default.diagnosticTest.descSeo,
     content: seo.default.diagnosticTest.content,
   });
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/final.json'),
+    {
+      titleSeo:
+        seo.rewrite[`full-length-${appShortName}-practice-test`].titleSeo,
+      descSeo: seo.rewrite[`full-length-${appShortName}-practice-test`].descSeo,
+      content: seo.rewrite[`full-length-${appShortName}-practice-test`].content,
+    }
+  );
+  saveJSONFile(path.join(DATA_PATH, '/apps/single/src/data/server/pra.json'), {
+    titleSeo: seo.default.practiceTest.titleSeo,
+    descSeo: seo.default.practiceTest.descSeo,
+    content: seo.default.practiceTest.content,
+  });
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/review.json'),
+    {
+      titleSeo: seo.default.review.titleSeo,
+      descSeo: seo.default.review.descSeo,
+      content: seo.default.review.content,
+    }
+  );
 }
 
 export { updateEnvAndSave };

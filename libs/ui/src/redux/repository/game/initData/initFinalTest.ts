@@ -39,7 +39,8 @@ const initFinalTestThunk = createAsyncThunk(
       const progressData = await getLocalUserProgress(
         listIds,
         'finalTests',
-        dataStore.attemptNumber
+        dataStore.attemptNumber,
+        dataStore.id
       );
 
       if (progressData && questionsDb) {
