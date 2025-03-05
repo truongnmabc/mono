@@ -10,6 +10,7 @@ export default {
         foreground: 'var(--foreground)',
         primary: 'var(--text-color-primary)',
       },
+
       backgroundColor: {
         'theme-white': 'var(--main-background-color)',
         'theme-dark': 'var(--main-background-color)',

@@ -5,10 +5,11 @@ export async function GET() {
 
   try {
     const data = await axiosRequest({
-      method: 'get',
-      url:
-        'https://dashboard-api2.abc-elearning.org/ratings-reviews?appID=' +
-        slug,
+      method: 'post',
+      url: 'https://api-cms-v2-dot-micro-enigma-235001.appspot.com/api/app-rating/get-app-good-rating-reviews',
+      data: {
+        appID: slug,
+      },
     });
     return Response.json({
       data: data,

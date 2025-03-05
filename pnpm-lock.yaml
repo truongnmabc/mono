@@ -65,6 +65,9 @@ importers:
       embla-carousel:
         specifier: ^8.5.1
         version: 8.5.2
+      embla-carousel-auto-scroll:
+        specifier: ^8.5.2
+        version: 8.5.2(embla-carousel@8.5.2)
       embla-carousel-react:
         specifier: ^8.5.1
         version: 8.5.2(react@19.0.0)
@@ -4232,6 +4235,11 @@ packages:
 
   electron-to-chromium@1.5.102:
     resolution: {integrity: sha512-eHhqaja8tE/FNpIiBrvBjFV/SSKpyWHLvxuR9dPTdo+3V9ppdLmFB7ZZQ98qNovcngPLYIz0oOBF9P0FfZef5Q==}
+
+  embla-carousel-auto-scroll@8.5.2:
+    resolution: {integrity: sha512-B0QF4vcHRLu7DJwDpgTq5q8qsX4185hOuXfpWPtOlZW+a+QG7ZIN3zTSUTI3Xt0MTWkAB5ZJ0gsFj2zUMKL3ig==}
+    peerDependencies:
+      embla-carousel: 8.5.2
 
   embla-carousel-react@8.5.2:
     resolution: {integrity: sha512-Tmx+uY3MqseIGdwp0ScyUuxpBgx5jX1f7od4Cm5mDwg/dptEiTKf9xp6tw0lZN2VA9JbnVMl/aikmbc53c6QFA==}
@@ -13175,6 +13183,10 @@ snapshots:
       jake: 10.9.2
 
   electron-to-chromium@1.5.102: {}
+
+  embla-carousel-auto-scroll@8.5.2(embla-carousel@8.5.2):
+    dependencies:
+      embla-carousel: 8.5.2
 
   embla-carousel-react@8.5.2(react@19.0.0):
     dependencies:

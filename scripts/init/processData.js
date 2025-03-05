@@ -257,7 +257,7 @@ const fetchQuestionsForTopics = async ({
   return listQuestion;
 };
 
-async function getBranchTest(topics, listQ) {
+async function getBranchTest(topics, listQ, excludedQuestions = []) {
   const countQuestionTopic = Math.floor(totalQuestionBrachTest / topics.length);
   const remainderQuestionTopic = totalQuestionBrachTest % topics.length;
   const id = generateRandomNegativeId();
@@ -266,7 +266,7 @@ async function getBranchTest(topics, listQ) {
     selectListTopic: topics,
     countQuestionTopic,
     remainderQuestionTopic,
-    excludeListID: [],
+    excludeListID: excludedQuestions,
     target: totalQuestionBrachTest,
     questions: listQ,
   });
@@ -432,9 +432,17 @@ async function processTestData(topics, tests, appShortName) {
   const questions = topicsResult.flatMap((item) => item.questions);
 
   const diagnosticTest = await getDiagnosticTest(topics, questions);
-  const branchTest = await Promise.all(
-    listBranchTest.map(() => getBranchTest(topics, questions))
-  );
+  const branchTest = [];
+  const usedQuestionIds = [];
+
+  for (const _ of listBranchTest) {
+    const test = await getBranchTest(topics, questions, usedQuestionIds);
+    branchTest.push(test);
+    // Thêm các ID câu hỏi đã sử dụng vào danh sách loại trừ
+    usedQuestionIds.push(
+      ...test.groupExamData.flatMap((group) => group.questionIds)
+    );
+  }
 
   const totalQuestion = questions.length;
 

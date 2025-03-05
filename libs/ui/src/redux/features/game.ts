@@ -6,6 +6,7 @@ import choiceAnswer, {
 } from '../repository/game/choiceAnswer/choiceAnswer';
 import choiceStartCustomTestThunk from '../repository/game/choiceAnswer/choiceStartTest';
 import initCustomTestThunk from '../repository/game/initData/initCustomTest';
+import initDataGame from '../repository/game/initData/initData';
 import initDiagnosticTestQuestionThunk from '../repository/game/initData/initDiagnosticTest';
 import initFinalTestThunk from '../repository/game/initData/initFinalTest';
 import initLearnQuestionThunk, {
@@ -21,7 +22,6 @@ import {
 import { reloadStateThunk } from '../repository/utils/reload';
 import { RootState } from '../store';
 import { initGameReducer, plateHolderCurrentGame } from './game.placeholder';
-import initDataGame from '../repository/game/initData/initData';
 const gameSlice = createSlice({
   name: 'game',
   initialState: initGameReducer,
@@ -172,6 +172,7 @@ const gameSlice = createSlice({
     });
 
     builder.addCase(initDataGame.fulfilled, (state, action) => {
+      console.log('🚀 ~ builder.addCase ~ action:', action.payload);
       if (action.payload) {
         handleMigrateDataGame(state, action.payload);
       }
