@@ -20,7 +20,8 @@ export const dynamicParams = true;
 export async function generateStaticParams() {
   const tests = Object.keys(list.rewrite.test);
   const branch = Object.keys(list.rewrite.branch);
-  return [...tests, ...branch].map((post) => ({
+  const practiceTest = Object.keys(list.default.practiceTest);
+  return [...tests, ...branch, ...practiceTest].map((post) => ({
     slug: post,
   }));
 }

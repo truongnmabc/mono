@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionBase, IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
+import { setIsUnmount } from '@ui/redux/features/appInfo';
 import { selectTopics } from '@ui/redux/features/study';
 import { RootState } from '@ui/redux/store';
 import selectSubTopicThunk from '../../study/select';
@@ -10,8 +11,9 @@ import {
   mapQuestionsWithProgress,
 } from './initPracticeTest';
 import { handleGetDataDiagnosticTest } from './utils/diagnostic';
-import { handleGetDataLean } from './utils/learn';
 import { handleGetDataFinalTest } from './utils/final';
+import { handleGetDataLean } from './utils/learn';
+import { handleGetDataPracticeTest } from './utils/practice';
 
 type IInitQuestion = {
   subTopicTag?: string;
@@ -26,17 +28,19 @@ type IInitQuestion = {
   topicId?: number;
 };
 interface IResInitQuestion {
-  progressData: IUserQuestionProgress[];
-  questions: IQuestionOpt[];
-  id: number;
-  gameMode: IGameMode;
+  progressData?: IUserQuestionProgress[];
+  questions?: IQuestionOpt[];
+  id?: number;
+  gameMode?: IGameMode;
   timeStart?: number;
-  currentTopicId: number;
-  totalDuration: number;
-  isGamePaused: boolean;
-  remainingTime: number;
+  currentTopicId?: number;
+  totalDuration?: number;
+  isGamePaused?: boolean;
+  remainingTime?: number;
   attemptNumber?: number;
   currentSubTopicIndex?: string;
+  isCompleted?: boolean;
+  resultId?: number;
 }
 
 const initDataGame = createAsyncThunk(
@@ -54,25 +58,24 @@ const initDataGame = createAsyncThunk(
     const modeHandlers: Record<
       IGameMode,
       () => Promise<{
-        listQuestions: IQuestionBase[];
+        listQuestions?: IQuestionBase[];
         id?: number;
         attemptNumber?: number;
         index?: string;
         parentId?: number;
         isGamePaused?: boolean;
         subTopicId?: number;
+        isCompleted?: boolean;
       }>
     > = {
       learn: async () => await handleGetDataLean({ partId, slug }),
       diagnosticTest: async () => await handleGetDataDiagnosticTest({ testId }),
-      finalTests: async () => handleGetDataFinalTest({ testId }),
-      branchTest: async () => ({
-        listQuestions: [],
-        id: -1,
-        subTopicId: -1,
-        attemptNumber: 1,
-        index: '',
-      }),
+      finalTests: async () => await handleGetDataFinalTest({ testId }),
+      branchTest: async () =>
+        await handleGetDataPracticeTest({
+          testId,
+          type: 'branchTest',
+        }),
       customTests: async () => ({
         listQuestions: [],
         id: -1,
@@ -80,13 +83,8 @@ const initDataGame = createAsyncThunk(
         attemptNumber: 1,
         index: '',
       }),
-      practiceTests: async () => ({
-        listQuestions: [],
-        id: -1,
-        subTopicId: -1,
-        attemptNumber: 1,
-        index: '',
-      }),
+      practiceTests: async () =>
+        await handleGetDataPracticeTest({ testId, type: 'practiceTests' }),
       review: async () => ({
         listQuestions: [],
         id: -1,
@@ -96,11 +94,20 @@ const initDataGame = createAsyncThunk(
       }),
     };
 
-    const { listQuestions, id, subTopicId, attemptNumber, index } = await (
-      modeHandlers[type] || modeHandlers.learn
-    )();
+    const { listQuestions, id, subTopicId, attemptNumber, index, isCompleted } =
+      await (modeHandlers[type] || modeHandlers.learn)();
 
-    const questionIdsSet = listQuestions.map((q) => q.id);
+    if (isCompleted) {
+      thunkAPI.dispatch(setIsUnmount(true));
+
+      return {
+        isCompleted: true,
+        resultId: id,
+        currentSubTopicIndex: index,
+        attemptNumber,
+      };
+    }
+    const questionIdsSet = listQuestions?.map((q) => q.id) || [];
 
     const progressData =
       (await getLocalUserProgress(
@@ -111,7 +118,7 @@ const initDataGame = createAsyncThunk(
       )) || [];
 
     const questions = mapQuestionsWithProgress(
-      listQuestions,
+      listQuestions || [],
       progressData
     ) as IQuestionOpt[];
 

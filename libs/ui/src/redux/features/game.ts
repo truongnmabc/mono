@@ -172,7 +172,7 @@ const gameSlice = createSlice({
     });
 
     builder.addCase(initDataGame.fulfilled, (state, action) => {
-      if (action.payload) {
+      if (action.payload && !action.payload.isCompleted) {
         handleMigrateDataGame(state, action.payload);
       }
     });

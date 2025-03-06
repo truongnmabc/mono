@@ -5,12 +5,14 @@ import { RootState } from '../store';
 export interface IAppInfoReducer {
   appInfo: IAppInfo;
   isDataFetched: boolean;
+  isUnmount: boolean;
 }
 
 const initApp = new AppInfo();
 const initialState: IAppInfoReducer = {
   appInfo: initApp,
   isDataFetched: false,
+  isUnmount: false,
 };
 const appInfoSlice = createSlice({
   name: 'appInfo',
@@ -22,12 +24,15 @@ const appInfoSlice = createSlice({
     setIsDataFetched: (state, action: PayloadAction<boolean>) => {
       state.isDataFetched = action.payload;
     },
+    setIsUnmount: (state, action: PayloadAction<boolean>) => {
+      state.isUnmount = action.payload;
+    },
   },
 });
 const { reducer: appInfoReducer, actions } = appInfoSlice;
 
 export default appInfoReducer;
 
-export const { setAppInfo, setIsDataFetched } = actions;
+export const { setAppInfo, setIsDataFetched, setIsUnmount } = actions;
 
 export const appInfoState = (state: RootState) => state.appInfo;

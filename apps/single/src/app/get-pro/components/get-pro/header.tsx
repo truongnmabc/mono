@@ -33,7 +33,7 @@ export default function HeaderGetPro({
   const bgSrc = getImageSrc('get-pro-bg.png');
   return (
     <div
-      className="w-full bg-no-repeat bg-right  pb-6 sm:pb-14"
+      className="w-full bg-no-repeat   pb-6 sm:pb-14"
       style={{
         backgroundImage: `url(${bgSrc})`,
         backgroundSize: isMobile ? 'cover' : '100% 100%',

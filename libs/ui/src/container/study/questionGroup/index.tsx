@@ -9,6 +9,7 @@ import {
 import { IGameMode } from '@ui/models/tests/tests';
 import Link from 'next/link';
 import React from 'react';
+import ClientLayout from './clientLayout';
 const QuestionGroup = ({
   type,
   data,
@@ -26,7 +27,7 @@ const QuestionGroup = ({
 }) => {
   const tests = type === 'branchTest' ? data.branch.list : data.tests.list;
   return (
-    <div className="hidden sm:block w-full">
+    <ClientLayout>
       <div className="flex p-3 bg-white rounded-xl flex-col gap-4">
         {type === 'practiceTests' || type === 'branchTest' ? (
           <>
@@ -89,7 +90,7 @@ const QuestionGroup = ({
           </div>
         </Link>
       </div>
-    </div>
+    </ClientLayout>
   );
 };
 export default React.memo(QuestionGroup);

@@ -4,11 +4,13 @@ import ChoicesPanel from '@ui/components/choicesPanel';
 import ExplanationDetail from '@ui/components/explanation';
 import ProgressQuestion from '@ui/components/progressQuestion';
 import QuestionContent from '@ui/components/question';
+import RouterApp from '@ui/constants/router.constant';
 import { IAppInfo } from '@ui/models';
 import { IGameMode } from '@ui/models/tests/tests';
 import initDataGame from '@ui/redux/repository/game/initData/initData';
 import { useAppDispatch } from '@ui/redux/store';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 import React, { Fragment, useEffect } from 'react';
 
 const TitleQuestion = dynamic(() => import('@ui/components/titleQuestion'), {
@@ -28,7 +30,20 @@ const CountTimeRemainPracticeTest = dynamic(
 const ClockIcon = dynamic(() => import('@ui/components/icon/ClockIcon'), {
   ssr: false,
 });
-
+interface GameResult {
+  isCompleted?: boolean;
+  resultId?: number;
+  currentSubTopicIndex?: string;
+  attemptNumber?: number;
+}
+type InitDataGameReturn = {
+  payload: GameResult;
+  type: string;
+  meta: {
+    requestId: string;
+    requestStatus: 'fulfilled' | 'rejected';
+  };
+};
 const MainStudyView = ({
   type,
   topicId,
@@ -50,10 +65,24 @@ const MainStudyView = ({
   turn?: number;
 }) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   useEffect(() => {
     const handleGetData = async () => {
       try {
-        dispatch(initDataGame({ partId, type, slug, turn, testId, topicId }));
+        const result = (await dispatch(
+          initDataGame({ partId, type, slug, turn, testId, topicId })
+        )) as unknown as InitDataGameReturn;
+        if (result.payload?.isCompleted) {
+          const { resultId, currentSubTopicIndex, attemptNumber } =
+            result.payload;
+          setTimeout(() => {
+            router.replace(
+              `${RouterApp.Finish}?topic=${slug}&resultId=${resultId}&index=${currentSubTopicIndex}&turn=${attemptNumber}`
+            );
+          }, 300);
+        }
+
+        console.log('🚀 ~ handleGetData ~ result:', result);
       } catch (err) {
         console.log('🚀 ~ handleGetData ~ err:', err);
       }
@@ -68,10 +97,12 @@ const MainStudyView = ({
           <TitleQuestion
             type={type}
             title={
-              slug
-                ?.replace('-practice-test', ' ')
-                .replace(appInfo.appShortName, '')
-                .replaceAll('-', ' ') || ''
+              (type === 'practiceTests'
+                ? slug
+                    ?.replace('-practice-test', ' ')
+                    .replace(appInfo.appShortName, '')
+                    .replaceAll('-', ' ')
+                : slug?.replaceAll('-', ' ')) || ''
             }
           />
 

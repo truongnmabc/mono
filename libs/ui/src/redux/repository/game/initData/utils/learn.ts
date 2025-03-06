@@ -9,6 +9,7 @@ export const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
   let attemptNumber = 1;
   let parentId = -1;
   let index = '';
+  let isCompleted = false;
   if (!partId) {
     const list = await db?.topics
       .where('slug')
@@ -23,15 +24,17 @@ export const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
     }
   } else {
     const topics = await db?.topics.get(partId);
-    if (topics) {
+    attemptNumber = topics?.turn || 1;
+    index = topics?.index.split('.')[1] || '1';
+    if (topics && topics.status === 0) {
       id = topics.id;
-      attemptNumber = topics.turn;
       parentId = topics.parentId;
-      index = topics.index.split('.')[1];
+    } else if (topics && topics.status === 1) {
+      isCompleted = true;
     }
   }
 
   const listQuestions =
     (await db?.questions.where('partId').equals(id).toArray()) || [];
-  return { attemptNumber, listQuestions, id, parentId, index };
+  return { attemptNumber, listQuestions, id, parentId, index, isCompleted };
 };

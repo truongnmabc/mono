@@ -12,16 +12,16 @@ export function middleware(request: NextRequest) {
 
   const completedTestIds: number[] = JSON.parse(completedTests);
 
-  if (testId && completedTestIds.includes(Number(testId)) && type !== 'learn') {
-    const resultUrl = new URL('/result-test', request.url);
-    resultUrl.searchParams.set('resultId', testId);
-    return NextResponse.redirect(resultUrl);
-  }
-  if (partId && completedTestIds.includes(Number(partId)) && type === 'learn') {
-    const resultUrl = new URL('/finish', request.url);
-    resultUrl.searchParams.set('resultId', partId);
-    return NextResponse.redirect(resultUrl);
-  }
+  // if (testId && completedTestIds.includes(Number(testId)) && type !== 'learn') {
+  //   const resultUrl = new URL('/result-test', request.url);
+  //   resultUrl.searchParams.set('resultId', testId);
+  //   return NextResponse.redirect(resultUrl);
+  // }
+  // if (partId && completedTestIds.includes(Number(partId)) && type === 'learn') {
+  //   const resultUrl = new URL('/finish', request.url);
+  //   resultUrl.searchParams.set('resultId', partId);
+  //   return NextResponse.redirect(resultUrl);
+  // }
   const { device, os } = userAgent(request);
   let deviceInfo = 'desktop';
   if (device.type === 'mobile') {

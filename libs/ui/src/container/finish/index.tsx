@@ -5,8 +5,9 @@ import { db } from '@ui/db';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionBase } from '@ui/models/question';
 import { ITopicBase } from '@ui/models/topics';
+import { setIsUnmount } from '@ui/redux/features/appInfo';
 import { selectIsDataFetched } from '@ui/redux/features/appInfo.reselect';
-import { useAppSelector } from '@ui/redux/store';
+import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import React, { useEffect, useState } from 'react';
 import { totalPassingPart } from './calculate';
 import PassingFinishPage from './passing';
@@ -105,7 +106,9 @@ const FinishLayout = ({
   const subIndex = Number(index?.split('.')[1] || 0);
   const [listSubTopics, setListSubTopics] = useState<ITopicBase[]>([]);
   const isDataFetched = useAppSelector(selectIsDataFetched);
+  const dispatch = useAppDispatch();
   useEffect(() => {
+    dispatch(setIsUnmount(false));
     if (!topic || !resultId || !turn || !isDataFetched) return;
     const handleGetData = async () => {
       const { currentTopic, progress, questions } =
