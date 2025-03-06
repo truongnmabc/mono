@@ -13,5 +13,10 @@ export const selectIsDataFetched = createSelector(
 
 export const selectIsUnmount = createSelector(
   [appInfoState],
-  (appInfoReducer) => appInfoReducer.isUnmount
+  (appInfoReducer) => appInfoReducer.isStartAnimationNext
+);
+
+export const selectIsUnmountPrevious = createSelector(
+  [appInfoState],
+  (appInfoReducer) => appInfoReducer.isStartAnimationPrevious
 );

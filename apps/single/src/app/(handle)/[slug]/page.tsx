@@ -7,6 +7,7 @@ import MyContainer from '@ui/components/container';
 import HeaderMobile from '@ui/components/headerMobile';
 import SeoContent from '@ui/components/seoContent';
 import MainStudyView from '@ui/container/study/mainStudyView';
+import WrapperAnimation from '@ui/container/study/mainStudyView/wrapperAnimationRight';
 import QuestionGroup from '@ui/container/study/questionGroup';
 import { IGameMode } from '@ui/models/tests/tests';
 import { detectAgent } from '@ui/utils/device';
@@ -39,15 +40,15 @@ export async function generateMetadata({
   };
   const data = listRewrite[slug as keyof typeof listRewrite];
   return {
-    title: replaceYear(data.titleSeo),
-    description: replaceYear(data.descSeo),
+    title: replaceYear(data?.titleSeo),
+    description: replaceYear(data?.descSeo),
     openGraph: {
-      title: replaceYear(data.titleSeo),
-      description: replaceYear(data.descSeo),
+      title: replaceYear(data?.titleSeo),
+      description: replaceYear(data?.descSeo),
     },
     twitter: {
-      title: replaceYear(data.titleSeo),
-      description: replaceYear(data.descSeo),
+      title: replaceYear(data?.titleSeo),
+      description: replaceYear(data?.descSeo),
     },
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_API_URL}${slug}`,
@@ -65,11 +66,11 @@ export default async function Page({
   const slug = (await params).slug;
   const { type, topicId, partId, testId, turn } = await searchParams;
   const listRewrite = {
-    ...list.rewrite.test,
-    ...list.rewrite.branch,
+    ...list?.rewrite?.test,
+    ...list?.rewrite?.branch,
   };
   const { content } =
-    listRewrite[slug as keyof typeof listRewrite] || list.default;
+    listRewrite[slug as keyof typeof listRewrite] || list?.default;
 
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
@@ -90,7 +91,7 @@ export default async function Page({
         </Grid2>
       )}
 
-      <MyContainer className="py-4">
+      <MyContainer className="py-4 min-h-full">
         <Grid2 container spacing={{ xs: 0, sm: 2 }} className="w-full h-full">
           {!isMobile && (
             <Grid2
@@ -110,14 +111,13 @@ export default async function Page({
               />
             </Grid2>
           )}
-
           <Grid2
             size={{
               sm: 9,
               xs: 12,
             }}
           >
-            <div className="w-full pb-24 sm:pb-0  min-h-full flex flex-1 flex-col gap-4 sm:gap-6   h-full">
+            <WrapperAnimation>
               <MainStudyView
                 type={type as IGameMode}
                 topicId={topicId ? Number(topicId) : -1}
@@ -134,7 +134,7 @@ export default async function Page({
                   <SeoContent content={content} />
                 </div>
               )}
-            </div>
+            </WrapperAnimation>
           </Grid2>
         </Grid2>
       </MyContainer>

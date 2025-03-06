@@ -161,10 +161,11 @@ import { MtUiButton } from '@ui/components/button';
 import { db } from '@ui/db';
 import { useAppDispatch } from '@ui/redux/store';
 import { useRouter } from 'next/navigation';
-import React, { useCallback, useEffect, useState, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TypeParam } from '@ui/constants';
 import { ITopicBase } from '@ui/models/topics';
+import { shouldEnableAnimaton } from '@ui/redux/features/appInfo';
 import { removeCompletedTest } from '@ui/services/server/actions';
 import { calculatePassingApp } from '../calculate';
 
@@ -216,13 +217,16 @@ const PassingFinishPage = ({
   const subIndex = index?.split('.')[0];
   const partIndex = nextPart?.index?.split('.')[0];
   const isNextSubTopic = subIndex !== partIndex;
-
+  const dispatch = useAppDispatch();
   const handleNextPart = useCallback(() => {
     if (!nextPart) return;
-    router.push(
-      `${nextPart.slug}?type=${TypeParam.learn}&topicId=${topicId}&partId=${nextPart.id}`,
-      { scroll: true }
-    );
+    dispatch(shouldEnableAnimaton());
+    setTimeout(() => {
+      router.push(
+        `${nextPart.slug}?type=${TypeParam.learn}&topicId=${topicId}&partId=${nextPart.id}`,
+        { scroll: true }
+      );
+    }, 300);
   }, [nextPart, topicId, router]);
 
   const handleTryAgain = useCallback(async () => {

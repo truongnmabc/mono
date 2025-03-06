@@ -5,7 +5,7 @@ import { db } from '@ui/db';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionBase } from '@ui/models/question';
 import { ITopicBase } from '@ui/models/topics';
-import { setIsUnmount } from '@ui/redux/features/appInfo';
+import { setIsStartAnimationPrevious } from '@ui/redux/features/appInfo';
 import { selectIsDataFetched } from '@ui/redux/features/appInfo.reselect';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import React, { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ import { totalPassingPart } from './calculate';
 import PassingFinishPage from './passing';
 import ProgressFinishPage from './progress';
 import TitleFinishPage from './title';
+import WrapperAnimation from './wrapperAnimation';
 
 const getCurrentProgressData = async ({
   partId,
@@ -108,7 +109,8 @@ const FinishLayout = ({
   const isDataFetched = useAppSelector(selectIsDataFetched);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(setIsUnmount(false));
+    dispatch(setIsStartAnimationPrevious(true));
+
     if (!topic || !resultId || !turn || !isDataFetched) return;
     const handleGetData = async () => {
       const { currentTopic, progress, questions } =
@@ -169,7 +171,7 @@ const FinishLayout = ({
 
   return (
     <MyContainer>
-      <div className="w-full py-6 h-full gap-8 flex flex-col">
+      <WrapperAnimation>
         <TitleFinishPage topic={topic} index={subIndex + 1} />
         <ProgressFinishPage correct={game.correct} total={game.total} />
         <PassingFinishPage
@@ -184,7 +186,7 @@ const FinishLayout = ({
             <TitleCollapse subTopic={value} key={value.id} />
           ))}
         </div>
-      </div>
+      </WrapperAnimation>
     </MyContainer>
   );
 };

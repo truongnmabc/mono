@@ -7,7 +7,7 @@ type IPropsLearn = {
 export const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
   let id = partId || -1;
   let attemptNumber = 1;
-  let parentId = -1;
+  let subTopicId = -1;
   let index = '';
   let isCompleted = false;
   if (!partId) {
@@ -19,7 +19,7 @@ export const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
     if (currentPart) {
       id = currentPart.id;
       attemptNumber = currentPart.turn;
-      parentId = currentPart.parentId;
+      subTopicId = currentPart.parentId;
       index = currentPart.index.split('.')[1];
     }
   } else {
@@ -28,7 +28,7 @@ export const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
     index = topics?.index.split('.')[1] || '1';
     if (topics && topics.status === 0) {
       id = topics.id;
-      parentId = topics.parentId;
+      subTopicId = topics.parentId;
     } else if (topics && topics.status === 1) {
       isCompleted = true;
     }
@@ -36,5 +36,5 @@ export const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
 
   const listQuestions =
     (await db?.questions.where('partId').equals(id).toArray()) || [];
-  return { attemptNumber, listQuestions, id, parentId, index, isCompleted };
+  return { attemptNumber, listQuestions, id, subTopicId, index, isCompleted };
 };

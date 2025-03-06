@@ -9,7 +9,7 @@ import {
 import { IGameMode } from '@ui/models/tests/tests';
 import Link from 'next/link';
 import React from 'react';
-import ClientLayout from './clientLayout';
+import ClientLayout from '../mainStudyView/wrapperAnimationLeft';
 const QuestionGroup = ({
   type,
   data,

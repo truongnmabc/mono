@@ -5,14 +5,18 @@ import { RootState } from '../store';
 export interface IAppInfoReducer {
   appInfo: IAppInfo;
   isDataFetched: boolean;
-  isUnmount: boolean;
+  isStartAnimationNext: boolean;
+  isStartAnimationPrevious: boolean;
 }
 
 const initApp = new AppInfo();
 const initialState: IAppInfoReducer = {
   appInfo: initApp,
   isDataFetched: false,
-  isUnmount: false,
+  // false => Show , true :  Hidden
+  isStartAnimationNext: false,
+  // true => Show, false : Hidden
+  isStartAnimationPrevious: true,
 };
 const appInfoSlice = createSlice({
   name: 'appInfo',
@@ -24,8 +28,15 @@ const appInfoSlice = createSlice({
     setIsDataFetched: (state, action: PayloadAction<boolean>) => {
       state.isDataFetched = action.payload;
     },
-    setIsUnmount: (state, action: PayloadAction<boolean>) => {
-      state.isUnmount = action.payload;
+    shouldEnableAnimaton: (state) => {
+      state.isStartAnimationNext = !state.isStartAnimationNext;
+      state.isStartAnimationPrevious = !state.isStartAnimationPrevious;
+    },
+    setIsStartAnimationNext: (state, action: PayloadAction<boolean>) => {
+      state.isStartAnimationNext = action.payload;
+    },
+    setIsStartAnimationPrevious: (state, action: PayloadAction<boolean>) => {
+      state.isStartAnimationPrevious = action.payload;
     },
   },
 });
@@ -33,6 +44,12 @@ const { reducer: appInfoReducer, actions } = appInfoSlice;
 
 export default appInfoReducer;
 
-export const { setAppInfo, setIsDataFetched, setIsUnmount } = actions;
+export const {
+  setAppInfo,
+  setIsDataFetched,
+  shouldEnableAnimaton,
+  setIsStartAnimationNext,
+  setIsStartAnimationPrevious,
+} = actions;
 
 export const appInfoState = (state: RootState) => state.appInfo;

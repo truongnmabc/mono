@@ -3,8 +3,10 @@ import MtUiLSpinningBubbles from '@ui/components/loading';
 import MtUiRipple, { useRipple } from '@ui/components/ripple';
 import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 import React, { ForwardRefRenderFunction, useEffect, useState } from 'react';
 import { BaseButtonProps } from './type';
+
 const BtnComponent: ForwardRefRenderFunction<
   HTMLButtonElement,
   BaseButtonProps
@@ -46,6 +48,7 @@ const BtnComponent: ForwardRefRenderFunction<
       }
     };
   }, [loading]);
+
   let content = children;
   const defaultClass = clsx(
     prefixCls,
@@ -61,14 +64,14 @@ const BtnComponent: ForwardRefRenderFunction<
       'w-full': block,
     },
     `${prefixCls}-type-${type}`,
-
     `${prefixCls}-${size}`,
-    'border border-solid border-[#d9d9d9]  mt-shadow-small'
+    'border border-solid border-[#d9d9d9] mt-shadow-small'
   );
+
   if (shape && shape === 'circle' && typeof content === 'string') {
-    const newContent = content.slice(0, 1);
-    content = newContent;
+    content = content.slice(0, 1);
   }
+
   const classes = ctx(defaultClass, className);
   const {
     ripples,
@@ -84,40 +87,53 @@ const BtnComponent: ForwardRefRenderFunction<
       onClick(e);
     }
   };
+
   return (
-    <button
+    <motion.button
       ref={ref}
       onClick={handleClick}
       type={htmlType}
       style={style}
       disabled={disabled}
       className={classes}
+      whileHover={{ y: -8 }} // Hiệu ứng hover phóng nhẹ button
+      animate={{ opacity: isLoading ? 0.6 : 1, scale: isLoading ? 0.9 : 1 }} // Hiệu ứng khi loading
+      transition={{ duration: 0.2, ease: 'easeOut' }}
     >
       {animated && <MtUiRipple ripples={ripples} onClear={onClearRipple} />}
 
       {((icon && iconPosition === 'start') ||
         (iconPosition === 'start' && isLoading)) && (
-        <div className="mtui-btn-item-icon">
+        <motion.div
+          className="mtui-btn-item-icon"
+          animate={{ rotate: isLoading ? 360 : 0 }}
+          transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+        >
           {icon ? (
             icon
           ) : loading ? (
             <MtUiLSpinningBubbles color="#ccc" width={16} height={16} />
           ) : null}
-        </div>
+        </motion.div>
       )}
 
       {content}
+
       {((icon && iconPosition === 'end') ||
         (isLoading && iconPosition === 'end')) && (
-        <div className="mtui-btn-item-icon ">
+        <motion.div
+          className="mtui-btn-item-icon"
+          animate={{ rotate: isLoading ? 360 : 0 }}
+          transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+        >
           {icon ? (
             icon
           ) : loading ? (
             <MtUiLSpinningBubbles color="#ccc" width={16} height={16} />
           ) : null}
-        </div>
+        </motion.div>
       )}
-    </button>
+    </motion.button>
   );
 };
 

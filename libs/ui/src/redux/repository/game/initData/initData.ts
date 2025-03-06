@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionBase, IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
-import { setIsUnmount } from '@ui/redux/features/appInfo';
+import { setIsStartAnimationNext } from '@ui/redux/features/appInfo';
 import { selectTopics } from '@ui/redux/features/study';
 import { RootState } from '@ui/redux/store';
 import selectSubTopicThunk from '../../study/select';
@@ -98,7 +98,7 @@ const initDataGame = createAsyncThunk(
       await (modeHandlers[type] || modeHandlers.learn)();
 
     if (isCompleted) {
-      thunkAPI.dispatch(setIsUnmount(true));
+      thunkAPI.dispatch(setIsStartAnimationNext(true));
 
       return {
         isCompleted: true,

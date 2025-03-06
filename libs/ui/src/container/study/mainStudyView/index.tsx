@@ -11,7 +11,7 @@ import initDataGame from '@ui/redux/repository/game/initData/initData';
 import { useAppDispatch } from '@ui/redux/store';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 const TitleQuestion = dynamic(() => import('@ui/components/titleQuestion'), {
   ssr: false,
@@ -79,10 +79,8 @@ const MainStudyView = ({
             router.replace(
               `${RouterApp.Finish}?topic=${slug}&resultId=${resultId}&index=${currentSubTopicIndex}&turn=${attemptNumber}`
             );
-          }, 300);
+          }, 250);
         }
-
-        console.log('🚀 ~ handleGetData ~ result:', result);
       } catch (err) {
         console.log('🚀 ~ handleGetData ~ err:', err);
       }
@@ -91,45 +89,43 @@ const MainStudyView = ({
   }, [testId, slug, type, partId, topicId, turn]);
 
   return (
-    <Fragment>
-      <div className="sm:shadow-custom bg-transparent min-h-[380px] relative sm:bg-white  rounded-2xl dark:bg-black">
-        <div className="sm:p-4 flex flex-col gap-3">
-          <TitleQuestion
-            type={type}
-            title={
-              (type === 'practiceTests'
-                ? slug
-                    ?.replace('-practice-test', ' ')
-                    .replace(appInfo.appShortName, '')
-                    .replaceAll('-', ' ')
-                : slug?.replaceAll('-', ' ')) || ''
-            }
-          />
-
-          <ProgressQuestion />
-          {type !== 'learn' && (
-            <div className="w-full flex items-center justify-center">
-              <div className="flex items-center justify-center w-fit gap-2">
-                <ClockIcon />
-                <CountTimeRemainPracticeTest />
-              </div>
-            </div>
-          )}
-          <QuestionContent showStatus={type === 'learn'} />
-          <ChoicesPanel />
-          <ExplanationDetail />
-        </div>
-
-        <BottomActions
+    <div className="sm:shadow-custom bg-transparent min-h-[380px] relative sm:bg-white  rounded-2xl dark:bg-black">
+      <div className="sm:p-4 flex flex-col gap-3">
+        <TitleQuestion
           type={type}
-          isMobile={isMobile}
-          topicId={topicId}
-          testId={testId}
-          partId={partId}
-          slug={slug}
+          title={
+            (type === 'practiceTests'
+              ? slug
+                  ?.replace('-practice-test', ' ')
+                  .replace(appInfo.appShortName, '')
+                  .replaceAll('-', ' ')
+              : slug?.replaceAll('-', ' ')) || ''
+          }
         />
+
+        <ProgressQuestion />
+        {type !== 'learn' && (
+          <div className="w-full flex items-center justify-center">
+            <div className="flex items-center justify-center w-fit gap-2">
+              <ClockIcon />
+              <CountTimeRemainPracticeTest />
+            </div>
+          </div>
+        )}
+        <QuestionContent showStatus={type === 'learn'} />
+        <ChoicesPanel />
+        <ExplanationDetail />
       </div>
-    </Fragment>
+
+      <BottomActions
+        type={type}
+        isMobile={isMobile}
+        topicId={topicId}
+        testId={testId}
+        partId={partId}
+        slug={slug}
+      />
+    </div>
   );
 };
 
