@@ -12,6 +12,7 @@ type IProps = {
   seoData: {
     topics: ITopicHomeJson[];
     branch: IBranchHomeJson;
+    finalTest: number;
   };
 };
 const IconMenuHeader = ({ appInfo, device, theme, seoData }: IProps) => {

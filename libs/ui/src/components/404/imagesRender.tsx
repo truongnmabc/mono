@@ -8,22 +8,23 @@ type ISize = {
 };
 
 const ImagesRender = ({
-  name,
+  src,
   size,
+  className,
   mobileSize,
   isMobile,
 }: {
-  name: string;
+  className: string;
   size: ISize;
   mobileSize: ISize;
   isMobile: boolean;
+  src: string;
 }) => {
-  const mobileFolder = isMobile ? '/mobile' : '';
   return (
     <Image
-      className={name}
-      src={'/images/404' + mobileFolder + '/' + name + '.png'}
-      alt={name}
+      className={className}
+      src={src}
+      alt={className}
       height={isMobile ? size.height : mobileSize.height}
       width={isMobile ? size.width : mobileSize.width}
     />

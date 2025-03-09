@@ -4,33 +4,37 @@ import CircleProgress from '@ui/components/circleProgress';
 import MyContainer from '@ui/components/container';
 import IconBack from '@ui/components/icon/iconBack';
 import LazyLoadImage from '@ui/components/images';
-import { useIsMobile } from '@ui/hooks/useIsMobile';
+import RouterApp from '@ui/constants/router.constant';
+import { getImageSrc } from '@ui/utils/image';
 import clsx from 'clsx';
-
+import { motion, useSpring } from 'framer-motion';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+const imgSrc = getImageSrc('result_end_diagnostic.png');
 type IProps = {
-  handleStartLearning: () => void;
   handleTryAgain: () => void;
-  handleBack: () => void;
   percentage: number;
+  isMobile: boolean;
 };
 const HeaderResultDiagnostic = ({
   handleTryAgain,
   percentage,
-  handleBack,
+  isMobile,
 }: IProps) => {
-  const isMobile = useIsMobile();
   return (
     <MyContainer className="sm:py-8  flex flex-col sm:flex-row gap-8 ">
       <div className="bg-white rounded-xl w-full p-4 sm:p-6 flex flex-col sm:flex-row  justify-between">
-        <div
-          className="w-10 h-10 hidden sm:flex rounded-full cursor-pointer bg-[#21212114]  items-center justify-center"
-          onClick={handleBack}
-        >
-          <CloseIcon />
-        </div>
-        <div className=" sm:hidden " onClick={handleBack}>
-          <IconBack />
-        </div>
+        <Link href={RouterApp.Home}>
+          <div className="w-10 h-10 hidden sm:flex rounded-full cursor-pointer bg-[#21212114]  items-center justify-center">
+            <CloseIcon />
+          </div>
+        </Link>
+        <Link href={RouterApp.Home}>
+          <div className=" sm:hidden ">
+            <IconBack />
+          </div>
+        </Link>
+
         <div className=" flex w-full flex-col-reverse sm:flex-row gap-3 sm:gap-4 justify-center items-center">
           <div className="p-2 rounded-full bg-[#7C6F5B1F]">
             <CircleProgress
@@ -42,16 +46,15 @@ const HeaderResultDiagnostic = ({
               customText={
                 <div className=" absolute inset-0 z-10 flex items-center flex-col gap-2 justify-center">
                   <LazyLoadImage
-                    src="/end/endTest.png"
+                    src={imgSrc}
                     alt="icon_pass_result_test"
                     classNames="w-10 h-fit"
                   />
                   <p className="text-[#7C6F5B] text-xs sm:text-sm font-normal">
                     Your result is
                   </p>
-                  <p className="text-[#7C6F5B] text-base sm:text-3xl font-semibold">
-                    {percentage.toFixed(1)} %
-                  </p>
+
+                  <AnimationNumber percentage={percentage} />
                 </div>
               }
             />
@@ -104,4 +107,23 @@ const formatDate = (): string => {
     year: 'numeric',
   };
   return date.toLocaleDateString('en-US', options);
+};
+
+const AnimationNumber = ({ percentage }: { percentage: number }) => {
+  const [value, setValue] = useState(0);
+  const stringCount = useSpring(0, {
+    stiffness: 50,
+    damping: 20,
+    duration: 1000,
+  });
+  stringCount.on('change', (e) => setValue(Math.round(e)));
+
+  useEffect(() => {
+    stringCount.set(percentage);
+  }, [percentage]);
+  return (
+    <motion.p className="text-[#7C6F5B] text-base sm:text-3xl font-semibold">
+      {value} %
+    </motion.p>
+  );
 };

@@ -86,7 +86,7 @@ export default async function Page({
               xs: 12,
             }}
           >
-            <HeaderMobile />
+            <HeaderMobile type={type as IGameMode} />
           </Grid2>
         </Grid2>
       )}
@@ -104,10 +104,12 @@ export default async function Page({
                   topics: data.topics,
                   tests: data.tests.practiceTests,
                   branch: data.tests.branchTest,
+                  finalTests: data.tests.finalTests.testId,
                 }}
                 type={type as IGameMode}
                 appShortName={appInfo.appShortName}
-                id={topicId}
+                topicId={Number(topicId) || -1}
+                testId={Number(testId) || -1}
               />
             </Grid2>
           )}
@@ -117,20 +119,20 @@ export default async function Page({
               xs: 12,
             }}
           >
-            <WrapperAnimation>
+            <WrapperAnimation className="w-full pb-20 sm:pb-0  min-h-full flex flex-1 flex-col gap-4 sm:gap-6   h-full">
               <MainStudyView
                 type={type as IGameMode}
-                topicId={topicId ? Number(topicId) : -1}
+                topicId={Number(topicId) || -1}
                 appInfo={appInfo}
-                partId={Number(partId)}
-                testId={Number(testId)}
+                partId={Number(partId) || -1}
+                testId={Number(testId) || -1}
                 isMobile={isMobile}
                 slug={slug}
                 turn={Number(turn) || 1}
               />
               <BannerDownloadApp appInfo={appInfo} isMobile={isMobile} />
               {content && (
-                <div className="p-4 mb-28 sm:mb-0 sm:p-6 rounded-md  overflow-hidden bg-white dark:bg-black">
+                <div className="p-4  sm:p-6 rounded-md  overflow-hidden bg-white dark:bg-black">
                   <SeoContent content={content} />
                 </div>
               )}

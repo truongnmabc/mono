@@ -3,14 +3,11 @@ import {
   CheckCircleRounded,
   ErrorRounded,
 } from '@mui/icons-material';
-import { selectCurrentGame } from '@ui/redux/features/game.reselect';
-import { useAppSelector } from '@ui/redux/store';
 import InfoIcon from '@ui/components/icon/InfoIcon';
 import React from 'react';
 
-const StatusAnswer = () => {
-  const currentGame = useAppSelector(selectCurrentGame);
-  if (currentGame?.localStatus === 'incorrect') {
+const StatusAnswer = ({ localStatus }: { localStatus?: string }) => {
+  if (localStatus === 'incorrect') {
     return (
       <div className="flex text-sm sm:text-base transition-all gap-2">
         <div className="w-6 h-6">
@@ -25,7 +22,7 @@ const StatusAnswer = () => {
       </div>
     );
   }
-  if (currentGame?.localStatus === 'correct') {
+  if (localStatus === 'correct') {
     return (
       <div className="flex text-sm sm:text-base transition-all gap-2">
         <div className="w-6 h-6">
@@ -41,7 +38,7 @@ const StatusAnswer = () => {
     );
   }
 
-  if (currentGame?.localStatus === 'learning') {
+  if (localStatus === 'learning') {
     return (
       <div className="flex text-sm sm:text-base transition-all gap-2">
         <div className="w-6 h-6">
@@ -57,7 +54,7 @@ const StatusAnswer = () => {
     );
   }
 
-  if (currentGame?.localStatus === 'new') {
+  if (localStatus === 'new') {
     return (
       <div className="flex text-sm sm:text-base transition-all gap-2">
         <div className="w-6 h-6">
@@ -70,7 +67,7 @@ const StatusAnswer = () => {
     );
   }
 
-  if (currentGame?.localStatus === 'review')
+  if (localStatus === 'review')
     return (
       <div className="flex transition-all text-sm sm:text-base gap-2">
         <div className="w-6 h-6">

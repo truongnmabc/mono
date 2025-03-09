@@ -12,16 +12,25 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 import { IconSubTopic } from './iconTopic';
+import queryString from 'query-string';
+import { TypeParam } from '@ui/constants';
 
 type IProps = {
   part: ITopicHomeJson;
   index: number;
   isPass?: boolean;
+  topicId?: number;
 };
 
-const IconProgress = ({ part, index }: IProps) => {
+const IconProgress = ({ part, index, topicId }: IProps) => {
   const listStatus = useAppSelector(selectListStatus);
   const status = listStatus.find((item) => item.id === part.id);
+
+  const param = queryString.stringify({
+    type: TypeParam.learn,
+    partId: part?.id,
+    topicId: topicId,
+  });
   return (
     <div
       className={clsx('w-14 z-10  flex flex-col  items-center justify-center', {
@@ -31,7 +40,7 @@ const IconProgress = ({ part, index }: IProps) => {
       key={index}
     >
       <Link
-        href={`${part.slug}?type=learn&partId=${part?.id}`}
+        href={`${part.slug}?${param}`}
         onClick={(e) => {
           if (status?.status === 'locked') {
             e.preventDefault();
@@ -51,6 +60,7 @@ const IconProgress = ({ part, index }: IProps) => {
 };
 
 export default IconProgress;
+
 const IconWrapper = ({
   part,
   status,

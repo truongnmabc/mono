@@ -2,26 +2,24 @@ import CountTime from '@ui/components/countTime';
 import { TypeParam } from '@ui/constants';
 import RouterApp from '@ui/constants/router.constant';
 import {
-  selectCurrentTopicId,
   selectIsGamePaused,
   selectRemainingTime,
 } from '@ui/redux/features/game.reselect';
+import submitTestThunk from '@ui/redux/repository/game/submit/submitTest';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import finishFinalThunk from '@ui/redux/repository/game/finish/finishFinal';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
-const CountTimeFinalTest = () => {
+const CountTimeFinalTest = ({ testId }: { testId: number }) => {
   const dispatch = useAppDispatch();
   const remainTime = useAppSelector(selectRemainingTime);
   const isPause = useAppSelector(selectIsGamePaused);
   const router = useRouter();
-  const idTopics = useAppSelector(selectCurrentTopicId);
-  const handleEndTime = useCallback(() => {
-    dispatch(finishFinalThunk());
-    const _href = `${RouterApp.ResultTest}?type=${TypeParam.finalTest}&testId=${idTopics}`;
+  const handleEndTime = useCallback(async () => {
+    const result = await dispatch(submitTestThunk());
+    const _href = `${RouterApp.ResultTest}?type=${TypeParam.finalTests}&testId=${testId}`;
     router.replace(_href);
-  }, [dispatch, router, idTopics]);
+  }, [dispatch, router, testId]);
 
   return (
     <CountTime

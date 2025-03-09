@@ -3,7 +3,6 @@ import CloseIcon from '@ui/asset/icon/CloseIcon';
 import IconLinkStoreApp from '@ui/components/iconLinkStoreApp';
 import RouterApp from '@ui/constants/router.constant';
 import { IAppInfo, IDevice } from '@ui/models/app';
-import { IContentSeo } from '@ui/models/seo';
 import { trackingEventGa4 } from '@ui/utils/event';
 import React from 'react';
 import ItemDrawerFullTest from './itemDrawer';
@@ -11,6 +10,10 @@ import ListBranchDrawer from './listBranch';
 import ListStudyDrawer from './listStudy';
 import { IBranchHomeJson } from '@ui/models/other';
 import { ITopicHomeJson } from '@ui/models/other';
+import { TypeParam } from '@ui/constants';
+import { useAppSelector, useAppDispatch } from '@ui/redux/store';
+import { selectUserInfo } from '@ui/redux/features/user.reselect';
+import { shouldOpenModalLogin } from '@ui/redux/features/user';
 type IList = {
   handleClick: () => void;
   name: string;
@@ -32,12 +35,14 @@ const DrawerHeader = ({
   seoData: {
     topics: ITopicHomeJson[];
     branch: IBranchHomeJson;
+    finalTest: number;
   };
 }) => {
   const isMobile =
     device === 'mobile' ||
     device === 'mobile-ios' ||
     device === 'mobile-android';
+  const userInfo = useAppSelector(selectUserInfo);
   const list: IList[] = [
     ...(isMobile
       ? [
@@ -80,6 +85,7 @@ const DrawerHeader = ({
       href: RouterApp.Contacts,
     },
   ];
+  const dispatch = useAppDispatch();
 
   return (
     <Drawer
@@ -111,18 +117,19 @@ const DrawerHeader = ({
               },
             });
           }}
-          href={RouterApp.Final_test}
+          href={`${RouterApp.Final_test}?type=${TypeParam.finalTests}&testId=${seoData.finalTest}`}
+          blank={false}
         />
 
         <ListStudyDrawer
           topics={seoData.topics}
           setOpenMenuDrawer={setOpenMenuDrawer}
-          appShortName={appInfo.appShortName}
+          appShortName={appInfo.appName}
         />
         <ListBranchDrawer
           branch={seoData.branch.list}
           setOpenMenuDrawer={setOpenMenuDrawer}
-          appShortName={appInfo.appShortName}
+          appShortName={appInfo.appName}
         />
 
         {list.map((item) => (
@@ -130,9 +137,21 @@ const DrawerHeader = ({
             key={item.name}
             name={item.name}
             href={item.href}
+            blank={false}
             handleClick={item.handleClick}
           />
         ))}
+        {isMobile && !userInfo.name && (
+          <ItemDrawerFullTest
+            name="Log In"
+            handleClick={() => {
+              setOpenMenuDrawer(false);
+              dispatch(shouldOpenModalLogin(true));
+            }}
+            href="#"
+            blank={false}
+          />
+        )}
         <div className="flex p-3 flex-col gap-2">
           <p className="text-sm  font-normal">
             Available on Android and Apple devices

@@ -9,18 +9,33 @@ import GridTopicLeft from '@ui/components/gridTopics';
 import HeaderMobile from '@ui/components/headerMobile';
 import AnswerSheet from '@ui/components/listLeftQuestions';
 import SeoContent from '@ui/components/seoContent';
+import { TypeParam } from '@ui/constants';
 import RouterApp from '@ui/constants/router.constant';
 import DiagnosticContainer from '@ui/container/diagnostic';
+import WrapperAnimationLeft from '@ui/container/study/mainStudyView/wrapperAnimationLeft';
+import WrapperAnimation from '@ui/container/study/mainStudyView/wrapperAnimationRight';
 import { IGameMode } from '@ui/models/tests/tests';
 import { detectAgent } from '@ui/utils/device';
+import { replaceYear } from '@ui/utils/time';
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import Link from 'next/link';
 import { Fragment } from 'react';
-
+import dataHome from '@single/data/home/data.json';
 export const metadata: Metadata = {
-  title: data.titleSeo || appInfos.title,
-  description: data.descSeo || appInfos.descriptionSEO,
+  title: replaceYear(data?.titleSeo),
+  description: replaceYear(data?.descSeo),
+  openGraph: {
+    title: replaceYear(data?.titleSeo),
+    description: replaceYear(data?.descSeo),
+  },
+  twitter: {
+    title: replaceYear(data?.titleSeo),
+    description: replaceYear(data?.descSeo),
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_API_URL}diagnostic-test  `,
+  },
 };
 
 const Page = async ({
@@ -28,7 +43,7 @@ const Page = async ({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
-  const { type, id, turn } = await searchParams;
+  const { type, testId, turn } = await searchParams;
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
@@ -43,7 +58,7 @@ const Page = async ({
               xs: 12,
             }}
           >
-            <HeaderMobile />
+            <HeaderMobile type={type as IGameMode} />
           </Grid2>
         </Grid2>
       )}
@@ -57,7 +72,7 @@ const Page = async ({
             }}
           >
             <div className="hidden sm:block w-full">
-              <div className="flex p-3 bg-white rounded-xl flex-col gap-4">
+              <WrapperAnimationLeft className="flex p-3 bg-white rounded-xl flex-col gap-4">
                 <AnswerSheet
                   wrapperClassName="bg-[#2121210A]"
                   defaultQuestionCount={34}
@@ -65,11 +80,11 @@ const Page = async ({
                 <GridTestsLeft
                   appShortName={appInfos.appShortName}
                   type={type as IGameMode}
-                  id={id}
+                  testId={Number(testId)}
                   tests={topicsAndTests.tests.practiceTests.list.sort(
                     (a, b) => {
-                      if (String(a.id) === id) return -1;
-                      if (String(b.id) === id) return 1;
+                      if (String(a.id) === testId) return -1;
+                      if (String(b.id) === testId) return 1;
                       return 0;
                     }
                   )}
@@ -78,25 +93,26 @@ const Page = async ({
                 <GridTopicLeft
                   appShortName={appInfos.appShortName}
                   type={type as IGameMode}
-                  id={id}
                   topics={topicsAndTests.topics.sort((a, b) => {
-                    if (String(a.id) === id) return -1;
-                    if (String(b.id) === id) return 1;
+                    if (String(a.id) === testId) return -1;
+                    if (String(b.id) === testId) return 1;
                     return 0;
                   })}
                 />
                 <div className="w-full h-[1px] bg-[#21212129]"></div>
-                <Link href={`${RouterApp.Final_test}`}>
+                <Link
+                  href={`${RouterApp.Final_test}?type=${TypeParam.finalTests}&testId=${dataHome.tests.finalTests.id}`}
+                >
                   <div className="bg-primary w-full  text-center rounded-md p-2">
                     <p className="text-base capitalize font-semibold text-white">
                       <span className="text-base  font-semibold text-white uppercase">
-                        {appInfos.appShortName}
+                        {appInfos.appName}
                       </span>{' '}
                       Final Test
                     </p>
                   </div>
                 </Link>
-              </div>
+              </WrapperAnimationLeft>
             </div>
           </Grid2>
           <Grid2
@@ -105,11 +121,12 @@ const Page = async ({
               xs: 12,
             }}
           >
-            <div className="w-full min-h-full flex flex-1 flex-col gap-4 sm:gap-6 h-full pb-24 sm:pb-0">
+            <WrapperAnimation className="w-full min-h-full flex flex-1 flex-col gap-4 sm:gap-6 h-full pb-24 sm:pb-0">
               <DiagnosticContainer
                 isMobile={isMobile}
-                id={Number(id) || -1}
+                testId={Number(testId) || -1}
                 turn={Number(turn) || 1}
+                appInfo={appInfos}
               />
               <BannerDownloadApp appInfo={appInfos} isMobile={isMobile} />
               {data.content && (
@@ -117,7 +134,7 @@ const Page = async ({
                   <SeoContent content={data.content} />
                 </div>
               )}
-            </div>
+            </WrapperAnimation>
           </Grid2>
         </Grid2>
       </MyContainer>

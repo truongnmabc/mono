@@ -1,3 +1,5 @@
+import { IGameMode } from '@ui/models/tests/tests';
+
 export const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 export const RANDOM_COLORS = [
@@ -37,11 +39,11 @@ export const isProduction = process.env['NODE_ENV'] === 'production';
 
 export const listAppState = ['cdl'];
 
-export const TypeParam = {
+export const TypeParam: Record<IGameMode, IGameMode> = {
   diagnosticTest: 'diagnosticTest',
-  finalTest: 'finalTests',
-  customTest: 'customTests',
-  practiceTest: 'practiceTests',
+  finalTests: 'finalTests',
+  customTests: 'customTests',
+  practiceTests: 'practiceTests',
   review: 'review',
   branchTest: 'branchTest',
   learn: 'learn',

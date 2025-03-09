@@ -11,7 +11,16 @@ import { IGameMode } from '@ui/models/tests/tests';
 import clsx from 'clsx';
 import Link from 'next/link';
 import queryString from 'query-string';
-import React from 'react';
+import React, { Fragment, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import { db } from '@ui/db';
+
+const AnswerSheetTest = dynamic(
+  () => import('@ui/components/listLeftQuestions'),
+  {
+    ssr: false,
+  }
+);
 export interface IListTest extends ITestBase {
   index: number;
   title: string;
@@ -19,27 +28,43 @@ export interface IListTest extends ITestBase {
 const FN = ({
   appShortName,
   type,
-  id,
+  testId,
   tests,
 }: {
   appShortName: string;
   type?: IGameMode;
-  id?: string;
+  testId?: number;
   tests: IBranchHomeJson['list'];
 }) => {
   const [open, setOpen] = React.useState(
-    type === TypeParam.practiceTest || type === TypeParam.branchTest
+    type === TypeParam.practiceTests || type === TypeParam.branchTest
   );
+
+  const [currentTestId, setCurrentTestId] = React.useState<number>(
+    testId || -1
+  );
+
+  useEffect(() => {
+    if ((!testId || testId === -1) && type) {
+      const handleGetId = async () => {
+        const res = await db?.testQuestions
+          .where('gameMode')
+          .equals(type)
+          .toArray();
+        if (res) {
+          const testId = res.find((item) => item.status === 0);
+          if (testId) {
+            setCurrentTestId(testId.id);
+          }
+        }
+      };
+      handleGetId();
+    }
+  }, [testId, type]);
 
   const handleClick = () => {
     setOpen(!open);
   };
-
-  const sortedTests = tests.sort((a, b) => {
-    if (String(a.id) === id) return -1; // Đưa testId lên đầu
-    if (String(b.id) === id) return 1;
-    return 0;
-  });
 
   return (
     <div className="text-xl font-poppins capitalize font-semibold">
@@ -54,38 +79,46 @@ const FN = ({
       </div>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <div className="w-full flex mt-3 flex-col gap-2">
-          {sortedTests?.map((test, index) => {
+          {tests?.map((test, index) => {
             const query = queryString.stringify({
               testId: test.id,
-              type: type,
+              type: type === TypeParam.learn ? TypeParam.practiceTests : type,
             });
             const _href =
-              type === TypeParam.practiceTest
+              type === TypeParam.practiceTests || type === TypeParam.learn
                 ? `${RouterApp.Practice_Tests}?${query}`
                 : `${test.slug}?${query}`;
 
             return (
-              <Link href={_href} key={index}>
-                <div
-                  className={clsx(
-                    'bg-white cursor-pointer p-2 hover:border-primary rounded-md border border-solid w-full flex items-center',
-                    {
-                      'border-primary': id === test?.id?.toString(),
-                    }
-                  )}
-                >
-                  <div className=" bg-primary-16 rounded-md p-[6px] h-full aspect-square flex items-center justify-center">
-                    <IconGridTest />
-                  </div>
-                  <h3
+              <Fragment key={index}>
+                <Link href={_href}>
+                  <div
                     className={clsx(
-                      'text-xs  pl-3  pr-2 flex-1 truncate font-medium'
+                      'bg-white cursor-pointer p-2 hover:border-primary rounded-md border border-solid w-full flex items-center',
+                      {
+                        'border-primary': currentTestId === test?.id,
+                      }
                     )}
                   >
-                    {test.name}
-                  </h3>
-                </div>
-              </Link>
+                    <div className=" bg-primary-16 rounded-md p-[6px] h-full aspect-square flex items-center justify-center">
+                      <IconGridTest />
+                    </div>
+                    <h3
+                      className={clsx(
+                        'text-xs  pl-3  pr-2 flex-1 truncate font-medium'
+                      )}
+                    >
+                      {test.name}
+                    </h3>
+                  </div>
+                </Link>
+                {currentTestId === test?.id && type !== TypeParam.learn && (
+                  <AnswerSheetTest
+                    isPracticeTest
+                    wrapperClassName="bg-[#2121210A] rounded-lg"
+                  />
+                )}
+              </Fragment>
             );
           })}
         </div>

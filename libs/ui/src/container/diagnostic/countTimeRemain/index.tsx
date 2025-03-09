@@ -1,67 +1,57 @@
 import CountTime from '@ui/components/countTime';
-import { TypeParam } from '@ui/constants';
 import RouterApp from '@ui/constants/router.constant';
 import {
   selectCurrentGame,
-  selectCurrentQuestionIndex,
-  selectCurrentTopicId,
   selectIsGamePaused,
-  selectListQuestion,
   selectRemainingTime,
 } from '@ui/redux/features/game.reselect';
-import choiceAnswer from '@ui/redux/repository/game/choiceAnswer/choiceAnswer';
-import finishDiagnosticThunk from '@ui/redux/repository/game/finish/finishDiagnostic';
+import choiceUnAnswerDiagnostic from '@ui/redux/repository/game/choiceAnswer/choiceAnswerDiagnostic';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { useRouter } from 'next/navigation';
+import queryString from 'query-string';
 import React, { useCallback } from 'react';
 
-const CountTimeDiagnostic = () => {
+interface GameResult {
+  isCompleted?: boolean;
+  resultId?: number;
+  currentSubTopicIndex?: string;
+  attemptNumber?: number;
+}
+type InitDataGameReturn = {
+  payload: GameResult;
+  type: string;
+  meta: {
+    requestId: string;
+    requestStatus: 'fulfilled' | 'rejected';
+  };
+};
+
+const CountTimeDiagnostic = ({ testId }: { testId?: number }) => {
   const dispatch = useAppDispatch();
   const currentGame = useAppSelector(selectCurrentGame);
   const remainTime = useAppSelector(selectRemainingTime);
-  const listQuestion = useAppSelector(selectListQuestion);
-  const indexCurrentQuestion = useAppSelector(selectCurrentQuestionIndex);
-  const listLength = listQuestion?.length || 0;
   const router = useRouter();
   const isPause = useAppSelector(selectIsGamePaused);
-  const idTopics = useAppSelector(selectCurrentTopicId);
 
-  const handleEndTime = useCallback(() => {
-    if (indexCurrentQuestion + 1 === listLength) {
-      dispatch(finishDiagnosticThunk());
-      router.replace(RouterApp.ResultTest, { scroll: true });
-      const _href = `${RouterApp.ResultTest}?type=${TypeParam.diagnosticTest}&testId=${idTopics}`;
-      router.replace(_href);
-    } else {
-      if (!currentGame.selectedAnswer) {
-        dispatch(
-          choiceAnswer({
-            question: currentGame,
-            choice: {
-              correct: false,
-              explanation: '',
-              id: -1,
-              index: -1,
-              text: '',
-              turn: 1,
-              type: 'diagnosticTest',
-              parentId: -1,
-            },
-          })
-        );
-      }
+  const handleEndTime = useCallback(async () => {
+    const result = (await dispatch(
+      choiceUnAnswerDiagnostic()
+    )) as unknown as InitDataGameReturn;
+    if (result.payload?.isCompleted) {
+      const { resultId, currentSubTopicIndex, attemptNumber } = result.payload;
+      const param = queryString.stringify({
+        resultId: resultId,
+        index: currentSubTopicIndex,
+        turn: attemptNumber,
+        testId: testId,
+      });
+      setTimeout(() => {
+        router.replace(`${RouterApp.ResultTest}?${param}`);
+      }, 250);
     }
-  }, [
-    indexCurrentQuestion,
-    listLength,
-    dispatch,
-    currentGame,
-    router,
-    idTopics,
-  ]);
+  }, [testId]);
 
   const pause = isPause || (currentGame?.selectedAnswer ? true : false);
-  console.log('🚀 ~ CountTimeDiagnostic ~ pause:', pause);
 
   return (
     <div className="min-w-20">

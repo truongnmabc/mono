@@ -10,7 +10,13 @@ import React from 'react';
 import LazyLoadImage from '../images';
 import TopicLevelProgress from './topicLevelProgress';
 
-const TitleCollapse = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
+const TitleCollapse = ({
+  subTopic,
+  topicId,
+}: {
+  subTopic: ITopicHomeJson;
+  topicId?: number;
+}) => {
   const selectedSubTopics = useAppSelector(selectSubTopicsId);
   const isExpand = selectedSubTopics === subTopic.id;
   const dispatch = useAppDispatch();
@@ -69,7 +75,7 @@ const TitleCollapse = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
         </div>
       </div>
       <Collapse in={isExpand} unmountOnExit timeout="auto">
-        <TopicLevelProgress subTopic={subTopic} />
+        <TopicLevelProgress topicId={topicId} subTopic={subTopic} />
       </Collapse>
     </div>
   );

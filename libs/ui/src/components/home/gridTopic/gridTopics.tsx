@@ -106,7 +106,11 @@ const GridTopics = ({
                           topic?.topics?.length > 0 &&
                           topic?.topics?.map(
                             (subTopic: ITopicHomeProps, index: number) => (
-                              <TitleCollapse subTopic={subTopic} key={index} />
+                              <TitleCollapse
+                                subTopic={subTopic}
+                                key={index}
+                                topicId={topic.id}
+                              />
                             )
                           )}
                       </div>

@@ -22,14 +22,14 @@ const TitleFinishPage = ({
   const handleBack = () => router.push(RouterApp.Home);
   return (
     <div className="w-full flex flex-col gap-4 sm:gap-6">
-      <div className="text-center hidden sm:block mx-6 py-2 relative bg-white rounded-full">
+      <div className="text-center hidden sm:block mx-6 py-2 relative h-12 bg-white rounded-full">
         <div
           onClick={handleBack}
-          className="top-0  hover:bg-[#2121210A] cursor-pointer flex items-center justify-center h-full  w-12 rounded-full bg-white shadow-close absolute left-0"
+          className="top-0  hover:bg-[#2121210A] cursor-pointer flex items-center justify-center h-12  w-12 rounded-full bg-white shadow-close absolute left-0"
         >
           <CloseIcon />
         </div>
-        <h3 className="text-2xl font-semibold capitalize font-poppins">
+        <h3 className="text-2xl flex-1 font-semibold capitalize font-poppins">
           {topicName}
         </h3>
       </div>

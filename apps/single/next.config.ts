@@ -64,15 +64,16 @@ const nextConfig: NextConfig = {
   //   return config;
   // },
 
-  // async rewrites() {
-  //   const result = Object.keys(data.rewrite).map((key) => ({
-  //     source: key,
-  //     destination: ,
-  //   }));
+  async rewrites() {
+    const result = [
+      {
+        source: `/full-length-${process.env['NEXT_PUBLIC_APP_SHORT_NAME']}-practice-tests`,
+        destination: '/final-test',
+      },
+    ];
 
-  //     return result;
-
-  // },
+    return result;
+  },
   // async headers() {
   //   return [
   //     {

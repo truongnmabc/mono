@@ -28,12 +28,12 @@ const appInfoSlice = createSlice({
     setIsDataFetched: (state, action: PayloadAction<boolean>) => {
       state.isDataFetched = action.payload;
     },
-    shouldEnableAnimaton: (state) => {
-      state.isStartAnimationNext = !state.isStartAnimationNext;
-      state.isStartAnimationPrevious = !state.isStartAnimationPrevious;
+    shouldEnableAnimation: (state) => {
+      // state.isStartAnimationNext = !state.isStartAnimationNext;
+      // state.isStartAnimationPrevious = !state.isStartAnimationPrevious;
     },
     setIsStartAnimationNext: (state, action: PayloadAction<boolean>) => {
-      state.isStartAnimationNext = action.payload;
+      // state.isStartAnimationNext = action.payload;
     },
     setIsStartAnimationPrevious: (state, action: PayloadAction<boolean>) => {
       state.isStartAnimationPrevious = action.payload;
@@ -47,7 +47,7 @@ export default appInfoReducer;
 export const {
   setAppInfo,
   setIsDataFetched,
-  shouldEnableAnimaton,
+  shouldEnableAnimation,
   setIsStartAnimationNext,
   setIsStartAnimationPrevious,
 } = actions;

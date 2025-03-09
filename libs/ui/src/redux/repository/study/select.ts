@@ -26,6 +26,14 @@ const selectSubTopicThunk = createAsyncThunk(
           list,
           subTopicId: partId,
         };
+      } else {
+        return {
+          list: data.map((item) => ({
+            id: item.id,
+            status: 'completed',
+          })),
+          subTopicId: partId,
+        };
       }
     }
 

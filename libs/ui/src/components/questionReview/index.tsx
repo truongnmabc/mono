@@ -1,27 +1,41 @@
 'use client';
 
+import {
+  CancelRounded,
+  CheckCircleRounded,
+  ExpandMore,
+} from '@mui/icons-material';
+import GetIconPrefix from '@ui/components/choicesPanel/getIcon';
+import LazyLoadImage from '@ui/components/images';
+import Reaction from '@ui/components/reaction';
 import { baseImageUrl } from '@ui/constants/index';
-import { CancelRounded, CheckCircleRounded } from '@mui/icons-material';
+import RouterApp from '@ui/constants/router.constant';
 import { ICurrentGame } from '@ui/models/game';
 import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import { useAppSelector } from '@ui/redux/store';
-import GetIconPrefix from '@ui/components/choicesPanel/getIcon';
-import LazyLoadImage from '@ui/components/images';
-import Reaction from '@ui/components/reaction';
 import { decrypt } from '@ui/utils/crypto';
 import ctx from '@ui/utils/twClass';
 import { MathJax } from 'better-react-mathjax';
 import clsx from 'clsx';
-import React, { useCallback } from 'react';
-import { DialogDetailQuestionReview } from './dialogDetailQuestionReview';
+import { useRouter } from 'next/navigation';
+import IconGetProHover from '../home/gridTests/icon/iconGetProHover';
 const QuestionResult = ({
   item,
   type = 'default',
+  isMobile,
 }: {
   item: ICurrentGame;
   type?: 'default' | 'custom';
+  isMobile: boolean;
 }) => {
+  const statusShow = !item.selectedAnswer
+    ? 'unanswered'
+    : item.selectedAnswer.correct
+    ? 'correct'
+    : item.selectedAnswer.correct === false
+    ? 'incorrect'
+    : 'incorrect';
   if (type === 'custom') {
     return (
       <div className="p-1 w-full h-full">
@@ -43,22 +57,10 @@ const QuestionResult = ({
             </div>
           </div>
           <div className="flex px-4 pt-4 items-center justify-between">
-            <div className="flex items-center gap-1">
-              {item.selectedAnswer?.correct ? (
-                <>
-                  <CheckCircleRounded htmlColor="#00c17c" />
-                  <div className="text-[#00c17c]">CORRECT</div>
-                </>
-              ) : (
-                <>
-                  <CancelRounded htmlColor="#fb7072" />
-                  <div className="text-[#FF746D]">INCORRECT</div>
-                </>
-              )}
-            </div>
-            <Reaction item={item} />
+            <QuestionStatusReview status={statusShow} />
+            <Reaction item={item} isMobile={isMobile} />
           </div>
-          <ContentAnswer item={item} />
+          <ContentAnswer item={item} status={statusShow} isMobile={isMobile} />
         </div>
       </div>
     );
@@ -80,27 +82,32 @@ const QuestionResult = ({
             {item?.tag?.replaceAll('-', ' ')}
           </p>
         </div>
-        <Reaction item={item} />
+        <Reaction item={item} isMobile={isMobile} />
       </div>
-      <ContentAnswer item={item} />
+      <ContentAnswer item={item} status={statusShow} isMobile={isMobile} />
     </div>
   );
 };
 
-const ContentAnswer = ({ item }: { item: ICurrentGame }) => {
+const ContentAnswer = ({
+  item,
+  status,
+  isMobile,
+}: {
+  item: ICurrentGame;
+  status: 'incorrect' | 'correct' | 'unanswered';
+  isMobile: boolean;
+}) => {
   const appInfo = useAppSelector(selectAppInfo);
-  const [open, setOpen] = React.useState(false);
   const userInfos = useAppSelector(selectUserInfo);
-  const handleClickOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
 
-  const handleClickClose = useCallback(() => {
-    setOpen(false);
-  }, []);
+  const router = useRouter();
+  const handleClickGetPro = () => {
+    router.push(RouterApp.Get_pro);
+  };
 
   return (
-    <div className="rounded-b-lg  bg-white flex flex-1 overflow-hidden  flex-col gap-2 p-4">
+    <div className="rounded-b-lg  bg-white flex flex-1 overflow-hidden  flex-col gap-4 p-4">
       <div className="w-full flex justify-between gap-2 ">
         {item?.text && (
           <MathJax dynamic>
@@ -108,7 +115,7 @@ const ContentAnswer = ({ item }: { item: ICurrentGame }) => {
               dangerouslySetInnerHTML={{
                 __html: decrypt(item?.text) || '',
               }}
-              className="text-sm font-normal line-clamp-1 sm:text-base"
+              className="text-sm font-normal  sm:text-base"
             />
           </MathJax>
         )}
@@ -118,10 +125,11 @@ const ContentAnswer = ({ item }: { item: ICurrentGame }) => {
             isPreview
             src={`${baseImageUrl}${appInfo.appShortName}/images/${item.image}`}
             alt={item.image}
-            classNames="w-16 sm:w-24 cursor-pointer aspect-video min-h-16 max-h-24"
+            classNames="w-16 sm:w-[240px] cursor-pointer aspect-video min-h-16 max-h-24"
           />
         )}
       </div>
+      {!isMobile && <QuestionStatusReview status={status} />}
       <div className={'grid gap-2 grid-cols-1 sm:grid-cols-2'}>
         {item?.answers?.map((choice, index) => (
           <div
@@ -147,46 +155,89 @@ const ContentAnswer = ({ item }: { item: ICurrentGame }) => {
                   dangerouslySetInnerHTML={{
                     __html: choice?.text || '',
                   }}
-                  className="text-xs"
+                  className={clsx('text-xs', {})}
                 />
               </MathJax>
             )}
           </div>
         ))}
       </div>
-      <div className=" hidden sm:block">
-        {item?.explanation && (
-          <MathJax dynamic>
-            <span
-              dangerouslySetInnerHTML={{
-                __html: decrypt(item?.explanation) || '',
-              }}
-              className={clsx(
-                'text-sm font-normal  line-clamp-2 h-full  sm:text-base',
-                {
-                  'blur-content': !userInfos.isPro,
-                }
-              )}
-            />
-          </MathJax>
-        )}
-      </div>
-
-      <p
-        className="text-[#6BA6FF] text-sm font-medium cursor-pointer"
-        onClick={handleClickOpen}
-      >
-        View Detail
-      </p>
-      <DialogDetailQuestionReview
-        item={item}
-        appInfo={appInfo}
-        open={open}
-        onClose={handleClickClose}
-        isPro={userInfos.isPro}
-      />
+      {userInfos.isPro ? (
+        <div className=" hidden sm:block">
+          <p className="text-sm font-medium text-[#5497FF] pb-2">Explanation</p>
+          {item?.explanation && (
+            <MathJax dynamic>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: decrypt(item?.explanation) || '',
+                }}
+                className={clsx('text-sm font-normal   h-full  sm:text-base')}
+              />
+            </MathJax>
+          )}
+        </div>
+      ) : (
+        <div
+          className="flex mt-1 cursor-pointer items-center gap-2"
+          onClick={handleClickGetPro}
+        >
+          <p className="text-base text-[#5497FF] font-medium">
+            Show Explanation
+          </p>
+          <ExpandMore sx={{ color: '#5497FF' }} />
+          <IconGetProHover />
+        </div>
+      )}
     </div>
   );
 };
 
 export default QuestionResult;
+
+const QuestionStatusReview = ({
+  status,
+}: {
+  status: 'incorrect' | 'correct' | 'unanswered';
+}) => {
+  return (
+    <div>
+      {status === 'unanswered' && (
+        <div className="flex text-sm sm:text-base transition-all gap-2">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="11.5" fill="#BFBFBF" stroke="#BFBFBF" />
+            <path
+              d="M7.39844 12H16.3984"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+          </svg>
+
+          <div className=" flex-1 text-[#BFBFBF] uppercase">Unanswered</div>
+        </div>
+      )}
+      {status === 'correct' && (
+        <div className="flex text-sm sm:text-base transition-all gap-2">
+          <div className="w-6 h-6">
+            <CheckCircleRounded htmlColor="#00c17c" />
+          </div>
+          <div className="text-[#00c17c]">CORRECT</div>
+        </div>
+      )}
+      {status === 'incorrect' && (
+        <div className="flex text-sm sm:text-base transition-all gap-2">
+          <div className="w-6 h-6">
+            <CancelRounded htmlColor="#fb7072" />
+          </div>
+          <div className="text-[#FF746D]">INCORRECT</div>
+        </div>
+      )}
+    </div>
+  );
+};

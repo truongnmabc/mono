@@ -5,13 +5,13 @@ const FinishPage = async ({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
-  const { topic, resultId, turn, index } = await searchParams;
+  const { topic, resultId, attemptNumber, index } = await searchParams;
 
   return (
     <FinishLayout
       topic={topic}
       resultId={Number(resultId)}
-      turn={Number(turn)}
+      attemptNumber={Number(attemptNumber)}
       index={index}
     />
   );

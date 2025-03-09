@@ -1,5 +1,6 @@
 'use client';
 import { ITopicEndTest } from '@ui/container/result';
+import { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
 import { IQuestionOpt } from '@ui/models/question';
 import { createContext, ReactNode, useContext } from 'react';
 
@@ -11,7 +12,7 @@ export interface ITableData {
 }
 interface ResultContextType {
   result: {
-    listTopic: ITopicEndTest[];
+    listTopic: ITopicHomeJson[];
     all: number;
     correct: number;
     passing: number;
@@ -24,6 +25,9 @@ interface ResultContextType {
   isPass: boolean;
   passing: number;
   listTopic: ITopicEndTest[];
+  topics?: ITopicHomeJson[];
+  resultId?: number;
+  branchTest?: IBranchHomeJson['list'];
 }
 
 // Tạo Context

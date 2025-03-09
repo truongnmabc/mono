@@ -5,31 +5,43 @@ type IPropsPracticeTest = {
   testId?: number;
   type: IGameMode;
 };
+const getData = async (type: string) => {
+  const list = await db?.testQuestions
+    .where('gameMode')
+    .equals(type)
+    .sortBy('index');
+
+  const fistTest = list?.find((item) => item.status === 0);
+  if (!fistTest) return list?.[list?.length - 1];
+  return fistTest;
+};
 export const handleGetDataPracticeTest = async ({
   testId,
   type,
 }: IPropsPracticeTest) => {
-  let id = testId;
-  if (!testId) {
-    const list = await db?.testQuestions
-      .where('gameMode')
-      .equals(type)
-      .toArray();
-    const fistTest = list?.find((item) => item.status === 0);
-    if (fistTest) {
-      id = fistTest.id;
-    }
-  }
-  const practice = await db?.testQuestions.get(id);
+  const practice = !testId
+    ? await getData(type)
+    : await db?.testQuestions.get(testId);
 
+  if (!practice || practice.status === 1) {
+    return {
+      isCompleted: true,
+      id: practice?.id,
+      attemptNumber: practice?.attemptNumber || 1,
+    };
+  }
   const listIds =
     practice?.groupExamData?.flatMap((item) => item.questionIds) || [];
   const listQuestions =
     (await db?.questions.where('id').anyOf(listIds).toArray()) || [];
+  const remainingTime =
+    (practice?.totalDuration || 80) * 60 - (practice?.elapsedTime || 0);
+
   return {
-    attemptNumber: practice?.attemptNumber,
+    ...practice,
     listQuestions,
-    id: practice?.id,
-    isGamePaused: practice?.isGamePaused,
+    remainingTime,
+    currentSubTopicIndex: practice?.index,
+    index: practice?.index?.toString() || '1',
   };
 };

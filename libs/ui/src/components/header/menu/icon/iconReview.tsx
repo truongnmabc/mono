@@ -4,12 +4,13 @@ import clsx from 'clsx';
 import RouterApp from '@ui/constants/router.constant';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { TypeParam } from '@ui/constants';
 
 const IconReviewHeader = () => {
   const pathname = usePathname();
-  if (pathname?.includes('/study') || pathname?.includes('_test')) {
+  if (pathname?.includes('-test') || pathname?.includes('_test')) {
     return (
-      <Link href={RouterApp.Review}>
+      <Link href={`${RouterApp.Review}?mode=random&type=${TypeParam.review}`}>
         <div className="hidden sm:flex item-center hover:text-primary  capitalize gap-3">
           <IconReview />
           <div

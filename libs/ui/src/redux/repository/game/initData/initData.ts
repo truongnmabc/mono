@@ -6,14 +6,17 @@ import { setIsStartAnimationNext } from '@ui/redux/features/appInfo';
 import { selectTopics } from '@ui/redux/features/study';
 import { RootState } from '@ui/redux/store';
 import selectSubTopicThunk from '../../study/select';
-import {
-  getLocalUserProgress,
-  mapQuestionsWithProgress,
-} from './initPracticeTest';
+import { getNextQuestionState, getQuestionProgress } from './utils/calculate';
+import { handleGetDataCustom } from './utils/custom';
 import { handleGetDataDiagnosticTest } from './utils/diagnostic';
 import { handleGetDataFinalTest } from './utils/final';
 import { handleGetDataLean } from './utils/learn';
 import { handleGetDataPracticeTest } from './utils/practice';
+import { handleGetDataReview } from './utils/review';
+import { TypeParam } from '@ui/constants';
+import { db } from '@ui/db';
+import { shouldOpenSetting } from '@ui/redux/features/tests';
+import { IFeedBack } from '@ui/models/game';
 
 type IInitQuestion = {
   subTopicTag?: string;
@@ -26,11 +29,12 @@ type IInitQuestion = {
   slug?: string;
   testId?: number;
   topicId?: number;
+  isCreate?: boolean;
 };
 interface IResInitQuestion {
+  resultId?: number;
   progressData?: IUserQuestionProgress[];
   questions?: IQuestionOpt[];
-  id?: number;
   gameMode?: IGameMode;
   timeStart?: number;
   currentTopicId?: number;
@@ -38,64 +42,106 @@ interface IResInitQuestion {
   isGamePaused?: boolean;
   remainingTime?: number;
   attemptNumber?: number;
-  currentSubTopicIndex?: string;
+  currentSubTopicIndex?: number;
   isCompleted?: boolean;
-  resultId?: number;
+  currentQuestionIndex?: number;
+  currentGame?: IQuestionOpt;
+  isFirstAttempt?: boolean;
+  incorrectQuestionIds?: number[];
+  listQuestion?: IQuestionOpt[];
+  passingThreshold?: number;
+  index?: string;
+  gameDifficultyLevel?: IFeedBack;
 }
+
+type IResInitDataGame = {
+  listQuestions?: IQuestionBase[];
+  attemptNumber?: number;
+  index?: string;
+  parentId?: number;
+  isGamePaused?: boolean;
+  subTopicId?: number;
+  isCompleted?: boolean;
+  isFirstAttempt?: boolean;
+  id?: number;
+  passingThreshold?: number;
+  totalDuration?: number;
+  remainingTime?: number;
+  currentSubTopicIndex?: number;
+  shouldOpenSettingCustomTest?: boolean;
+  gameDifficultyLevel?: IFeedBack;
+};
 
 const initDataGame = createAsyncThunk(
   'initDataGame',
   async (params: IInitQuestion, thunkAPI): Promise<IResInitQuestion> => {
-    const { partId, type, slug, turn, topicId, testId } = params;
+    const { partId, type, slug, turn, topicId, testId, isCreate } = params;
     const state = thunkAPI.getState() as RootState;
-    let { isDataFetched } = state.appInfo;
 
+    let { isDataFetched } = state.appInfo;
     while (!isDataFetched) {
       await new Promise((resolve) => setTimeout(resolve, 100));
       isDataFetched = (thunkAPI.getState() as RootState).appInfo.isDataFetched;
     }
+    if (isCreate) {
+      thunkAPI.dispatch(
+        shouldOpenSetting({
+          openModalSetting: true,
+          isListEmpty: true,
+        })
+      );
+      return {};
+    }
 
-    const modeHandlers: Record<
-      IGameMode,
-      () => Promise<{
-        listQuestions?: IQuestionBase[];
-        id?: number;
-        attemptNumber?: number;
-        index?: string;
-        parentId?: number;
-        isGamePaused?: boolean;
-        subTopicId?: number;
-        isCompleted?: boolean;
-      }>
-    > = {
+    const modeHandlers: Record<IGameMode, () => Promise<IResInitDataGame>> = {
       learn: async () => await handleGetDataLean({ partId, slug }),
       diagnosticTest: async () => await handleGetDataDiagnosticTest({ testId }),
       finalTests: async () => await handleGetDataFinalTest({ testId }),
       branchTest: async () =>
         await handleGetDataPracticeTest({
           testId,
-          type: 'branchTest',
+          type: TypeParam.branchTest,
         }),
-      customTests: async () => ({
-        listQuestions: [],
-        id: -1,
-        subTopicId: -1,
-        attemptNumber: 1,
-        index: '',
-      }),
       practiceTests: async () =>
-        await handleGetDataPracticeTest({ testId, type: 'practiceTests' }),
-      review: async () => ({
-        listQuestions: [],
-        id: -1,
-        subTopicId: -1,
-        attemptNumber: 1,
-        index: '',
-      }),
+        await handleGetDataPracticeTest({
+          testId,
+          type: TypeParam.practiceTests,
+        }),
+      customTests: async () =>
+        await handleGetDataCustom({
+          testId,
+          type: TypeParam.customTests,
+        }),
+      review: async () => await handleGetDataReview({ testId, type: 'review' }),
     };
 
-    const { listQuestions, id, subTopicId, attemptNumber, index, isCompleted } =
-      await (modeHandlers[type] || modeHandlers.learn)();
+    const result = await (modeHandlers[type] || modeHandlers.learn)();
+
+    const {
+      listQuestions,
+      id,
+      subTopicId,
+      attemptNumber,
+      isCompleted,
+      passingThreshold,
+      isGamePaused,
+      totalDuration,
+      remainingTime,
+      currentSubTopicIndex,
+      index,
+      shouldOpenSettingCustomTest,
+      gameDifficultyLevel,
+    } = result;
+
+    if (shouldOpenSettingCustomTest) {
+      thunkAPI.dispatch(
+        shouldOpenSetting({
+          openModalSetting: true,
+          isListEmpty: true,
+        })
+      );
+      return {};
+    }
 
     if (isCompleted) {
       thunkAPI.dispatch(setIsStartAnimationNext(true));
@@ -103,50 +149,76 @@ const initDataGame = createAsyncThunk(
       return {
         isCompleted: true,
         resultId: id,
-        currentSubTopicIndex: index,
+        index: index,
         attemptNumber,
       };
     }
-    const questionIdsSet = listQuestions?.map((q) => q.id) || [];
 
-    const progressData =
-      (await getLocalUserProgress(
-        questionIdsSet,
-        type,
-        attemptNumber || 1,
-        id || -1
-      )) || [];
+    const { questions, progressData } = await getQuestionProgress(
+      type,
+      id,
+      listQuestions,
+      attemptNumber || turn || 1
+    );
 
-    const questions = mapQuestionsWithProgress(
-      listQuestions || [],
-      progressData
-    ) as IQuestionOpt[];
-
-    if (topicId) {
-      setTimeout(() => {
-        thunkAPI.dispatch(selectTopics(topicId));
-      }, 500);
+    if (
+      type === TypeParam.learn &&
+      questions.length === progressData.length &&
+      progressData.every((i) => i.selectedAnswers.some((i) => i.correct))
+    ) {
+      // Làm tới câu cuối nhưng không submit và reload lại page
+      thunkAPI.dispatch(setIsStartAnimationNext(true));
+      if (type !== TypeParam.learn) {
+        await db?.topics
+          .where('id')
+          .equals(id || -1)
+          .modify((item) => {
+            item.status = 1;
+          });
+      }
+      if (type === TypeParam.learn) {
+        await db?.testQuestions
+          .where('id')
+          .equals(id || -1)
+          .modify((item) => {
+            item.status = 1;
+          });
+      }
+      return {
+        isCompleted: true,
+        resultId: id,
+        index: index,
+        attemptNumber,
+      };
     }
 
-    if (subTopicId) {
-      setTimeout(() => {
-        thunkAPI.dispatch(selectSubTopicThunk(subTopicId));
-      }, 1000);
-    }
+    const {
+      currentGame,
+      currentQuestionIndex,
+      incorrectQuestionIds,
+      isFirstAttempt,
+    } = getNextQuestionState(questions, progressData);
 
+    if (topicId) thunkAPI.dispatch(selectTopics(topicId));
+    if (subTopicId) thunkAPI.dispatch(selectSubTopicThunk(subTopicId));
     return {
-      questions: questions,
-      progressData: progressData,
-      id: id || -1,
       timeStart: new Date().getTime(),
       gameMode: type,
       currentTopicId: id || -1,
-      totalDuration: 0,
-      isGamePaused: false,
-      remainingTime: 0,
-      currentSubTopicIndex: index,
+      totalDuration,
+      isGamePaused,
+      currentSubTopicIndex: currentSubTopicIndex,
       attemptNumber: attemptNumber,
+      listQuestion: questions,
+      currentGame,
+      currentQuestionIndex,
+      incorrectQuestionIds,
+      isFirstAttempt: isFirstAttempt || true,
+      passingThreshold,
+      remainingTime,
+      gameDifficultyLevel: gameDifficultyLevel,
     };
   }
 );
+
 export default initDataGame;

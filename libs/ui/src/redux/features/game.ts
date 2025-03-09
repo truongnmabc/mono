@@ -1,27 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICurrentGame } from '@ui/models/game';
-import { IGameMode } from '@ui/models/tests/tests';
 import choiceAnswer, {
   processChoiceAnswer,
 } from '../repository/game/choiceAnswer/choiceAnswer';
-import choiceStartCustomTestThunk from '../repository/game/choiceAnswer/choiceStartTest';
-import initCustomTestThunk from '../repository/game/initData/initCustomTest';
 import initDataGame from '../repository/game/initData/initData';
-import initDiagnosticTestQuestionThunk from '../repository/game/initData/initDiagnosticTest';
-import initFinalTestThunk from '../repository/game/initData/initFinalTest';
-import initLearnQuestionThunk, {
-  handleInitLearnQuestion,
-} from '../repository/game/initData/initLearningQuestion';
-import initPracticeThunk from '../repository/game/initData/initPracticeTest';
-import nextQuestionThunk from '../repository/game/nextQuestion/nextQuestion';
-import nextQuestionDiagnosticThunk from '../repository/game/nextQuestion/nextQuestionDiagnosticTest';
-import {
-  handleInitTestQuestion,
-  handleMigrateDataGame,
-} from '../repository/game/utils';
+
+import { handleMigrateDataGame } from '../repository/game/utils';
 import { reloadStateThunk } from '../repository/utils/reload';
 import { RootState } from '../store';
 import { initGameReducer, plateHolderCurrentGame } from './game.placeholder';
+import nextQuestionActionThunk from '../repository/game/nextQuestion/nextGame';
+import choiceUnAnswerDiagnostic from '../repository/game/choiceAnswer/choiceAnswerDiagnostic';
+import { shouldNextOrPreviousQuestion } from '../repository/game/nextQuestion/nextQuestions';
+import { TypeParam } from '@ui/constants';
 const gameSlice = createSlice({
   name: 'game',
   initialState: initGameReducer,
@@ -29,12 +20,7 @@ const gameSlice = createSlice({
     setCurrentGame: (state, action: PayloadAction<ICurrentGame>) => {
       state.currentGame = action.payload;
     },
-    setCurrentQuestion: (state, action) => {
-      const payload = action.payload;
-      const index = payload === state.listQuestion?.length ? 0 : payload;
-      state.currentQuestionIndex = index;
-      state.currentGame = state.listQuestion[index];
-    },
+
     setIndexSubTopic: (state, action) => {
       state.currentSubTopicIndex = action.payload;
     },
@@ -49,9 +35,7 @@ const gameSlice = createSlice({
     ) => {
       state.attemptNumber = action.payload.turn;
     },
-    setShouldListenKeyboard: (state, action) => {
-      state.enableKeyboardShortcuts = action.payload;
-    },
+
     startOverGame: (state) => {
       const list = [...state.listQuestion]?.map((item) => ({
         ...item,
@@ -81,15 +65,11 @@ const gameSlice = createSlice({
       state.isGamePaused = false;
       state.remainingTime = -1;
     },
-    shouldLoading: (state) => {
-      state.shouldLoading = !state.shouldLoading;
-    },
+
     setCurrentTopicId: (state, action) => {
       state.currentTopicId = action.payload;
     },
-    shouldCreateNewTest: (state, action) => {
-      state.isCreateNewTest = action.payload;
-    },
+
     startCustomTest: (state, action) => {
       const {
         listQuestion,
@@ -112,62 +92,48 @@ const gameSlice = createSlice({
       state.currentSubTopicIndex = currentSubTopicIndex;
     },
 
-    updateFeedbackCustomTest: (state, action) => {
-      const { gameDifficultyLevel } = action.payload;
-      state.gameDifficultyLevel = gameDifficultyLevel;
+    // DONE
+    setShouldListenKeyboard: (state, action) => {
+      state.enableKeyboardShortcuts = action.payload;
     },
-
     resetState: () => {
       return initGameReducer;
     },
     startRandomReview: (state, action) => {
-      const { listQuestion } = action.payload;
+      const { listQuestion, id } = action.payload;
       state.listQuestion = listQuestion;
       state.currentGame = listQuestion[0];
       state.currentQuestionIndex = 0;
       state.attemptNumber = 1;
       state.isFirstAttempt = true;
+      state.gameMode = 'review';
+      state.currentTopicId = id;
+    },
+    updateFeedbackCustomTest: (state, action) => {
+      const { gameDifficultyLevel } = action.payload;
+      state.gameDifficultyLevel = gameDifficultyLevel;
+    },
+
+    setCurrentQuestion: (state, action) => {
+      const payload = action.payload;
+      const index = payload === state.listQuestion?.length ? 0 : payload;
+      state.currentQuestionIndex = index;
+      state.currentGame = state.listQuestion[index];
     },
   },
   extraReducers(builder) {
-    builder.addCase(nextQuestionDiagnosticThunk.fulfilled, (state, action) => {
-      if (action.payload) {
-        const { nextLever, listQuestion, indexCurrentQuestion } =
-          action.payload;
-        state.listQuestion = listQuestion;
-        state.currentGame = nextLever;
-        state.currentQuestionIndex = indexCurrentQuestion;
-        state.remainingTime = 80;
-      }
-    });
     builder.addCase(reloadStateThunk.fulfilled, (state, action) => {
       const { attemptNumber } = action.payload;
       state.attemptNumber = attemptNumber;
     });
-    builder.addCase(nextQuestionThunk.fulfilled, (state, action) => {
-      const data = action.payload;
-      state.currentGame = data?.nextQuestion ?? state.listQuestion[0];
-      state.isFirstAttempt = data?.isFirst ?? true;
-      state.currentQuestionIndex = data?.nextLever ?? 0;
-      state.timeStart = data?.timeStart ?? new Date().getTime();
-    });
-    builder.addCase(choiceAnswer.fulfilled, (state, action) => {
+
+    // DONE
+
+    builder.addCase(shouldNextOrPreviousQuestion.fulfilled, (state, action) => {
       if (action.payload) {
-        processChoiceAnswer(state, action.payload);
-      }
-    });
-    builder.addCase(initPracticeThunk.fulfilled, (state, action) => {
-      state.gameMode = 'practiceTests';
-      if (action.payload) {
-        handleInitTestQuestion(state, {
-          ...action.payload,
-          questions: action.payload.questions || [],
-        });
-      }
-    });
-    builder.addCase(initLearnQuestionThunk.fulfilled, (state, action) => {
-      if (action.payload) {
-        handleInitLearnQuestion(state, action.payload);
+        const { index } = action.payload;
+        state.currentQuestionIndex = index;
+        state.currentGame = state.listQuestion[index];
       }
     });
 
@@ -176,72 +142,31 @@ const gameSlice = createSlice({
         handleMigrateDataGame(state, action.payload);
       }
     });
-    builder.addCase(initFinalTestThunk.fulfilled, (state, action) => {
-      state.gameMode = 'finalTests';
+
+    builder.addCase(nextQuestionActionThunk.fulfilled, (state, action) => {
       if (action.payload) {
-        handleInitTestQuestion(state, action.payload);
+        handleMigrateDataGame(state, action.payload);
       }
     });
-    builder.addCase(choiceStartCustomTestThunk.fulfilled, (state, action) => {
-      state.gameMode = 'customTests';
+
+    builder.addCase(choiceAnswer.fulfilled, (state, action) => {
       if (action.payload) {
-        state.currentSubTopicIndex = action.payload.currentSubTopicIndex;
-        handleInitTestQuestion(state, action.payload);
+        processChoiceAnswer(state, action.payload);
       }
     });
-    builder.addCase(initCustomTestThunk.fulfilled, (state, action) => {
-      if (action.payload) {
-        const data = {
-          ...action.payload,
-          remainingTime: action.payload.remainingTime || 0,
-          questions: action.payload.questions || [],
-          gameMode: action.payload.gameMode as IGameMode,
-        };
-        handleInitTestQuestion(state, {
-          ...data,
+
+    builder.addCase(choiceUnAnswerDiagnostic.fulfilled, (state, action) => {
+      if (
+        !action.payload?.isCompleted &&
+        action.payload?.choice &&
+        action.payload?.question
+      ) {
+        processChoiceAnswer(state, {
+          choice: action.payload.choice,
+          question: action.payload.question,
         });
-        const {
-          passingThreshold,
-          attemptNumber,
-          gameDifficultyLevel,
-          currentSubTopicIndex,
-        } = action.payload;
-        state.currentSubTopicIndex = currentSubTopicIndex;
-        state.passingThreshold = passingThreshold;
-        state.attemptNumber = attemptNumber;
-        state.gameDifficultyLevel = gameDifficultyLevel;
-      } else {
-        state.listQuestion = [];
-        state.currentGame = plateHolderCurrentGame;
-        state.isGamePaused = false;
-        state.gameMode = 'customTests';
       }
-      state.isDataLoaded = true;
     });
-    builder.addCase(
-      initDiagnosticTestQuestionThunk.fulfilled,
-      (state, action) => {
-        if (action.payload) {
-          const {
-            listQuestion,
-            isGamePaused,
-            currentTopicId,
-            progressData,
-            attemptNumber,
-          } = action.payload;
-          handleInitTestQuestion(state, {
-            gameMode: 'diagnosticTest',
-            progressData: progressData || [],
-            questions: listQuestion,
-            currentTopicId: currentTopicId,
-            totalDuration: 1,
-            isGamePaused: isGamePaused,
-            remainingTime: 80,
-            attemptNumber,
-          });
-        }
-      }
-    );
   },
 });
 
@@ -254,7 +179,6 @@ export const {
   setTurtGame,
   startOverGame,
   continueGame,
-  shouldCreateNewTest,
   endTest,
   startCustomTest,
   resetState,
@@ -264,7 +188,6 @@ export const {
   startTryAgainDiagnostic,
   shouldEndTimeTest,
   setCurrentTopicId,
-  shouldLoading,
   updateFeedbackCustomTest,
 } = actions;
 

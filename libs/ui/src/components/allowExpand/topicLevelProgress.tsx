@@ -50,7 +50,13 @@ function getCenterPosition(
   return { x: 0, y: 0 };
 }
 
-const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
+const TopicLevelProgress = ({
+  subTopic,
+  topicId,
+}: {
+  subTopic: ITopicHomeJson;
+  topicId?: number;
+}) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -115,7 +121,12 @@ const TopicLevelProgress = ({ subTopic }: { subTopic: ITopicHomeJson }) => {
             key={index}
           >
             {line.value.map((part, i) => (
-              <IconProgress part={part} index={index * 3 + i + 1} key={i} />
+              <IconProgress
+                topicId={topicId}
+                part={part}
+                index={index * 3 + i + 1}
+                key={i}
+              />
             ))}
           </div>
         ))}

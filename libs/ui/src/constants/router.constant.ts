@@ -1,3 +1,4 @@
+const appShortName = process.env['NEXT_PUBLIC_APP_SHORT_NAME'];
 const RouterApp = {
   Home: '/',
   Get_pro: '/get-pro',
@@ -13,13 +14,13 @@ const RouterApp = {
   Score_Calculator: 'score-calculator',
   Test: '/test',
   Review: '/review',
-  ResultTest: '/result_test',
+  ResultTest: '/result-test',
   Billing: '/billing',
   Edit_policy: 'editorial-policy',
   Diagnostic_test: '/diagnostic-test',
   Custom_test: '/custom-test',
-  Final_test: '/final-test',
-  Practice_Tests: '/practiceTest',
+  Final_test: `/full-length-${appShortName}-practice-tests`,
+  Practice_Tests: '/practice-test',
   Study: '/study',
 };
 export default RouterApp;

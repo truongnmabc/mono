@@ -1,5 +1,6 @@
 import { useMediaQuery } from '@mui/material';
-import { IAppInfo } from '@ui/models/app';
+import { IAppConfigData, IAppInfo } from '@ui/models/app';
+
 import { appConfigState } from '@ui/redux/features/appConfig';
 import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import { useAppSelector } from '@ui/redux/store';
@@ -19,12 +20,22 @@ import { getContactApp } from '@ui/utils';
 import { sendEmailSubscribeApiV4 } from '@ui/services/home';
 import { getImageSrc } from '@ui/utils/image';
 
-const FooterLandingV4 = () => {
+const FooterLandingV4 = ({
+  isMobile,
+  appInfo,
+  theme,
+  appConfig,
+}: {
+  isMobile: boolean;
+  appInfo: IAppInfo;
+  theme: 'light' | 'dark';
+  appConfig: IAppConfigData;
+}) => {
   const router = useRouter();
-  const isMobile = useMediaQuery('(max-width:768px)');
-  const emailSupport = 'support@abc-elearning.org';
+
+  const { email: emailSupport } = getContactApp(appInfo.appShortName);
+
   const pathname = usePathname();
-  const appInfo = useAppSelector(selectAppInfo);
   const _email = useRef<HTMLInputElement>(null);
   const _message = useRef<HTMLInputElement>(null);
   const error_email = useRef<HTMLParagraphElement>(null);
@@ -125,16 +136,8 @@ const FooterLandingV4 = () => {
     );
   };
 
-  if (
-    pathname?.includes('practiceTests') ||
-    pathname?.includes('study') ||
-    pathname?.includes('final_test') ||
-    pathname?.includes('review') ||
-    pathname?.includes('result_test') ||
-    pathname?.includes('diagnostic_test') ||
-    pathname?.includes('custom_test')
-  ) {
-    return <div className="w-full flex-1 min-h-20 "></div>;
+  if (isMobile && pathname?.includes('-test')) {
+    return null;
   }
 
   return (
@@ -146,7 +149,9 @@ const FooterLandingV4 = () => {
               <div className={'logo-footer-v4'}>
                 <LazyLoadImage
                   classNames="img-logo-footer w-[162px]"
-                  src={getImageSrc('logo-light.png')}
+                  src={getImageSrc(
+                    theme == 'dark' ? 'logo-dark.png' : 'logo-light.png'
+                  )}
                   alt={'logo-' + appInfo.appShortName}
                 />
               </div>
@@ -251,7 +256,7 @@ const FooterLandingV4 = () => {
       <div className="v4-footer-landing-container-1">
         <div className="footer-social max-w-component-desktop">
           <WrapperFooter appName={appInfo.appName} />
-          <PlatformContactsLogo appInfo={appInfo} />
+          <PlatformContactsLogo appInfo={appInfo} appConfig={appConfig} />
         </div>
       </div>
     </div>
@@ -259,12 +264,20 @@ const FooterLandingV4 = () => {
 };
 const WrapperFooter = ({ appName }: { appName: string }) => {
   return (
-    <span>©2024 {appName} Prep by ABC-Elearning. All rights reserved.</span>
+    <span>
+      ©{new Date().getFullYear()} {appName} Prep by ABC-Elearning. All rights
+      reserved.
+    </span>
   );
 };
-const PlatformContactsLogo = ({ appInfo }: { appInfo: IAppInfo }) => {
+const PlatformContactsLogo = ({
+  appInfo,
+  appConfig,
+}: {
+  appInfo: IAppInfo;
+  appConfig: IAppConfigData;
+}) => {
   const { facebook, twitter, youtube } = getContactApp(appInfo.appShortName);
-  const { appConfig } = useAppSelector(appConfigState);
   return (
     <div className="v4-platform-logo-contact-0">
       {facebook && (

@@ -30,9 +30,6 @@ export interface IGameReducer {
   // isFirst: boolean;
   isFirstAttempt: boolean; // Lần đầu tiên làm bài hay không
 
-  // subTopicProgressId: number;
-  currentSubTopicProgressId: number; // ID tiến trình của sub-topic hiện tại
-
   // turn: number;
   attemptNumber: number; // Lượt làm bài (lần 1, 2, 3,...)
 
@@ -45,7 +42,7 @@ export interface IGameReducer {
   isGamePaused: boolean; // Game đang bị tạm dừng hay không
 
   // indexSubTopic: number;
-  currentSubTopicIndex: string; // Vị trí của sub-topic hiện tại trong game
+  currentSubTopicIndex: number; // Vị trí của sub-topic hiện tại trong game
 
   // passing?: number;
   passingThreshold?: number; // Phần trăm đúng cần để qua bài test
@@ -68,10 +65,6 @@ export interface IGameReducer {
   isDataLoaded?: boolean;
 
   hasRetakenDiagnosticTest?: boolean;
-
-  shouldLoading?: boolean;
-
-  isCreateNewTest?: boolean;
 
   timeStart?: number; // Thời gian bắt đầu trả lời câu hỏi
 }

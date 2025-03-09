@@ -1,112 +1,96 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { db } from '@ui/db';
 import { ICurrentGame } from '@ui/models/game';
 import { RootState } from '@ui/redux/store';
+import { handleNextQuestionLearn } from './utils/learn';
+import { TypeParam } from '@ui/constants';
+import { db } from '@ui/db';
 
-type IRes = {
-  nextLever: number;
-  nextQuestion: ICurrentGame;
-  isFirst: boolean;
-  timeStart: number;
-  isDisabled: boolean;
-  isFinish: boolean;
+interface IRes extends ActionResponse {
+  timeStart?: number;
+  shouldUpdatePro?: boolean;
+}
+type ActionResponse = {
+  currentQuestionIndex?: number;
+  index?: string;
+  topic?: string;
+  currentGame?: ICurrentGame;
+  isFirstAttempt?: boolean;
+  attemptNumber?: number;
+  resultId?: number;
+  isFinish?: boolean;
 };
 const nextQuestionActionThunk = createAsyncThunk(
   'nextQuestionActionThunk',
   async (_, thunkAPI): Promise<IRes | undefined> => {
     const state = thunkAPI.getState() as RootState;
-    const { listQuestion, gameMode } = state.game;
-    const isFinish =
-      gameMode === 'learn' &&
-      listQuestion.every((item) => item.localStatus === 'correct');
-    const actions = {
-      learn: () => handleNextQuestionLearn(isFinish, state.game),
-      practiceTests: async () => await handleNextQuestionPracticeTests(),
-      diagnosticTest: () => handleNextQuestionDiagnosticTest(),
-      customTets: () => handleNextQuestionCustomTets(),
-      review: () => handleReview(),
-    };
+    const { gameMode, currentQuestionIndex: indexQuestion } = state.game;
+
+    if (gameMode === TypeParam.finalTests) {
+      const isPro = state.user.userInfo.isPro;
+      const maxView = indexQuestion >= 49;
+      if (!isPro && maxView) {
+        return {
+          shouldUpdatePro: true,
+        };
+      }
+    }
+    const actions: Record<string, () => Promise<ActionResponse>> = {
+      learn: async () => await handleNextQuestionLearn(state.game),
+      practiceTests: async () => await handleNextQuestion(state.game),
+      diagnosticTest: async () => await handleNextQuestion(state.game),
+      finalTests: async () => await handleNextQuestion(state.game),
+      branchTest: async () => await handleNextQuestion(state.game),
+      customTests: async () => await handleNextQuestion(state.game),
+      review: async () => await handleNextQuestion(state.game),
+    } as const;
     const action = actions[gameMode];
-    // isDisabled  trạng thái button next question
+    const {
+      attemptNumber,
+      currentQuestionIndex,
+      currentGame,
+      isFirstAttempt,
+      resultId,
+      isFinish,
+      index,
+      topic,
+    } = await action();
+
     return {
-      isDisabled: true,
-      isFinish: false,
+      isFinish: isFinish,
+      timeStart: new Date().getTime(),
+      currentQuestionIndex: currentQuestionIndex,
+      currentGame: currentGame,
+      isFirstAttempt: isFirstAttempt,
+      attemptNumber: attemptNumber,
+      resultId: resultId,
+      index: index,
+      topic: topic,
     };
   }
 );
 
 export default nextQuestionActionThunk;
 
-export const handleNextQuestionLearn = async (
-  isFinish: boolean,
-  gameState: RootState['game']
-) => {
-  const {
-    isFirstAttempt,
-    currentQuestionIndex,
-    listQuestion,
-    incorrectQuestionIds,
-    currentTopicId,
-  } = gameState;
+export const handleNextQuestion = async (gameState: RootState['game']) => {
+  const { listQuestion, currentQuestionIndex, currentTopicId, attemptNumber } =
+    gameState;
 
-  if (isFinish) {
-    const currentTopics = await db?.topics.get(currentTopicId);
-
-    if (currentTopics) {
-      await db?.topics
-        .where('id')
-        .equals(currentTopicId)
-        .modify((topic) => {
-          topic.status = 1;
-        });
-    }
+  if (currentQuestionIndex + 1 < listQuestion.length) {
     return {
-      isDisabled: false,
-      isFinish: true,
-      index: currentTopics?.index,
-      turn: currentTopics?.turn,
-    };
-  } else {
-    if (isFirstAttempt && currentQuestionIndex + 1 < listQuestion.length) {
-      return {
-        nextLever: currentQuestionIndex + 1,
-        nextQuestion: listQuestion[currentQuestionIndex + 1],
-        isFirst: true,
-        timeStart: new Date().getTime(),
-        isFinish: false,
-        isDisabled: false,
-      };
-    }
-
-    if (incorrectQuestionIds.length > 0) {
-      const idQuestionInCorrect = incorrectQuestionIds[0];
-
-      const indexQuestion = listQuestion.findIndex(
-        (item) => item.id === idQuestionInCorrect
-      );
-
-      return {
-        nextLever: indexQuestion,
-        nextQuestion: {
-          ...listQuestion[indexQuestion],
-          selectedAnswer: null,
-          localStatus: 'new',
-        },
-        isFirst: false,
-        timeStart: new Date().getTime(),
-      };
-    }
-    return {
-      isDisabled: false,
-      isFinish: false,
+      currentGame: listQuestion[currentQuestionIndex + 1],
+      currentQuestionIndex: currentQuestionIndex + 1,
+      isFirstAttempt: true,
     };
   }
+  await db?.testQuestions
+    .where('id')
+    .equals(currentTopicId || -1)
+    .modify((item) => {
+      item.status = 1;
+    });
+  return {
+    resultId: currentTopicId,
+    attemptNumber: attemptNumber,
+    isFinish: true,
+  };
 };
-
-export const handleNextQuestionPracticeTests = () => {};
-
-export const handleNextQuestionDiagnosticTest = () => {};
-
-export const handleNextQuestionCustomTets = () => {};
-
-export const handleReview = () => {};

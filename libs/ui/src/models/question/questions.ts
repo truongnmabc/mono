@@ -44,6 +44,7 @@ export interface IQuestionBase {
   subTopicId: number;
   subTopicTag: string;
   topicId: number;
+  index?: number;
 }
 
 export interface IQuestionOpt extends IQuestionBase {

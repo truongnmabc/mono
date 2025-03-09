@@ -1,5 +1,4 @@
 import { IAppInfo, IDevice } from '@ui/models/app';
-import { IContentSeo } from '@ui/models/seo';
 import React, { Fragment } from 'react';
 import IconGetPro from './icon/iconGetPro';
 import LoginHeader from './icon/iconLogin';
@@ -20,6 +19,7 @@ type IProps = {
   seoData: {
     topics: ITopicHomeJson[];
     branch: IBranchHomeJson;
+    finalTest: number;
   };
 };
 

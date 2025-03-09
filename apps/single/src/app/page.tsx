@@ -1,3 +1,5 @@
+import appInfos from '@single/data/appInfos.json';
+import data from '@single/data/home/data.json';
 import BannerHome from '@ui/components/banner';
 import MyContainer from '@ui/components/container';
 import GridTest from '@ui/components/home/gridTests/gridTestHome';
@@ -5,8 +7,6 @@ import GridTopics from '@ui/components/home/gridTopic/gridTopics';
 import TitleHomeApp from '@ui/components/home/title';
 import SeoContent from '@ui/components/seoContent';
 import { detectAgent } from '@ui/utils/device';
-import appInfos from '@single/data/appInfos.json';
-import data from '@single/data/home/data.json';
 import { headers } from 'next/headers';
 
 const Page = async ({
@@ -33,14 +33,14 @@ const Page = async ({
         tests={data.tests}
         showList={selectTest === 'true'}
       />
-      <div className="sm:my-[48px] sm:mb-[120px] my-[24px] mb-[48px]">
+      <div className="sm:my-12 sm:mb-[120px] my-6 mb-12">
         <BannerHome appInfo={appInfos} isHomePage={true} />
+        {data.seo.content && (
+          <div className="p-4 mb-28 sm:mb-0 sm:p-6 rounded-md mt-8  overflow-hidden bg-white dark:bg-black">
+            <SeoContent content={data.seo.content} />
+          </div>
+        )}
       </div>
-      {data.seo.content && (
-        <div className="p-4 mb-28 sm:mb-0 sm:p-6 rounded-md  overflow-hidden bg-white dark:bg-black">
-          <SeoContent content={data.seo.content} />
-        </div>
-      )}
     </MyContainer>
   );
 };

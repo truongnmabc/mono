@@ -14,6 +14,7 @@ type IProps = {
   seoData: {
     topics: ITopicHomeJson[];
     branch: IBranchHomeJson;
+    finalTest: number;
   };
 };
 const HeaderApp = ({ appInfo, type, device, theme, seoData }: IProps) => {

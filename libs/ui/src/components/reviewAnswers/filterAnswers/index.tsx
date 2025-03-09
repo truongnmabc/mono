@@ -1,82 +1,100 @@
-// import CardTopic, {
-//   IconCheck,
-// } from '@/app/[appShortName]/[state]/custom_test/_components/modalSetting/cardTopic';
-// import { ITopicEndTest } from '@/app/[appShortName]/[state]/result_test/_components';
-// import { ITableData } from '@/app/[appShortName]/[state]/result_test/_components/resultContext';
-import React from 'react';
-type IProps = {
-  // listTopic: ITopicEndTest[];
-  // correctIds: number[];
-  // setTabletData: (e: ITableData) => void;
-  // tableData: ITableData;
+import { MtUiButton } from '@ui/components/button';
+import DialogResponsive from '@ui/components/dialogResponsive';
+import CardTopic, {
+  IconCheck,
+} from '@ui/container/custom_test/modalSetting/cardTopic';
+import { ITableData } from '@ui/container/result/resultContext';
+import { ITopicHomeJson } from '@ui/models/other';
+
+import ctx from '@ui/utils/twClass';
+import React, { useCallback, useState } from 'react';
+
+import { useForm } from 'react-hook-form';
+type IFormState = {
+  selectListTopic: ITopicHomeJson[];
 };
-const FilterIcon: React.FC<IProps> = ({}) => {
-  // const [open, setOpen] = React.useState(false);
-  // const [topics, setTopics] = useState<ITopicBase[]>([]);
-  // const [selectListTopic, setSelectListTopic] = useState<ITopicBase[]>([]);
-  // const [tempSelectListTopic, setTempSelectListTopic] = useState<ITopicBase[]>(
-  //   []
-  // );
+type IProps = {
+  listTopic?: ITopicHomeJson[];
+  correctIds?: number[];
+  setTableData?: (e: ITableData) => void;
+  tableData: ITableData;
+  topics?: ITopicHomeJson[];
+};
+const FilterIcon: React.FC<IProps> = ({
+  setTableData,
+  listTopic,
+  correctIds,
+  tableData,
+  topics,
+}) => {
+  const [open, setOpen] = React.useState(false);
 
-  // const handleClose = useCallback(() => {
-  //   // Khi đóng, reset lại temp về giá trị trước đó
-  //   setTempSelectListTopic(selectListTopic);
-  //   setOpen(false);
-  // }, [selectListTopic]);
-  // const handleOpen = useCallback(() => setOpen(true), []);
+  const {
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<IFormState>({
+    defaultValues: {
+      selectListTopic: listTopic,
+    },
+  });
 
-  // const handleSelectAll = useCallback(() => {
-  //   if (listTopic?.length && tempSelectListTopic.length !== listTopic.length)
-  //     setTempSelectListTopic(listTopic);
-  //   else setTempSelectListTopic([]);
-  // }, [listTopic, tempSelectListTopic]);
+  const [tempSelectListTopic, setTempSelectListTopic] = useState<
+    ITopicHomeJson[]
+  >([]);
 
-  // const handleApply = useCallback(() => {
-  //   setSelectListTopic(tempSelectListTopic);
+  const handleClose = useCallback(() => {
+    setOpen(false);
+    if (tempSelectListTopic.length) {
+      setValue('selectListTopic', tempSelectListTopic);
+    } else {
+      setValue('selectListTopic', listTopic || []);
+    }
+  }, [tempSelectListTopic, listTopic]);
 
-  //   // Lọc danh sách câu hỏi thuộc các chủ đề đã chọn
-  //   const newList = tableData.defaultData?.filter((item) =>
-  //     tempSelectListTopic.some(
-  //       (selectedTopic) => item.topicId === selectedTopic.id
-  //     )
-  //   );
+  const selectListTopic = watch('selectListTopic');
 
-  //   // Xác định danh sách câu hỏi đúng và sai
-  //   const correctList = newList.filter((item) => correctIds.includes(item.id));
-  //   const incorrectList = newList.filter(
-  //     (item) => !correctIds.includes(item.id)
-  //   );
+  const handleSelectAll = useCallback(() => {
+    if (topics?.length && selectListTopic.length !== topics.length)
+      setValue('selectListTopic', topics);
+    else setValue('selectListTopic', []);
+  }, [topics, selectListTopic]);
 
-  //   // Cập nhật state
-  //   setTabletData?.({
-  //     all: newList,
-  //     correct: correctList,
-  //     incorrect: incorrectList,
-  //     defaultData: tableData.defaultData,
-  //   });
-  //   setOpen(false);
-  // }, [tempSelectListTopic, setTabletData, tableData, correctIds]);
+  const handleOpen = useCallback(() => setOpen(true), []);
 
-  // useEffect(() => {
-  //   const handleGetData = async () => {
-  //     const data = await db?.topics.toArray();
-  //     if (data) {
-  //       setTopics(data);
-  //     }
-  //   };
-  //   handleGetData();
-  // }, []);
+  const handleApply = useCallback(
+    (data: IFormState) => {
+      setTempSelectListTopic(data.selectListTopic);
 
-  // useEffect(() => {
-  //   if (listTopic?.length > 0) {
-  //     setSelectListTopic(listTopic);
-  //     setTempSelectListTopic(listTopic);
-  //   }
-  // }, [listTopic]);
+      const newList = tableData.defaultData?.filter((item) =>
+        data.selectListTopic.some(
+          (selectedTopic) => item.topicId === selectedTopic.id
+        )
+      );
+
+      const correctList = newList.filter((item) =>
+        correctIds?.includes(item.id)
+      );
+      const incorrectList = newList.filter(
+        (item) => !correctIds?.includes(item.id)
+      );
+
+      // // Cập nhật state
+      setTableData?.({
+        all: newList,
+        correct: correctList,
+        incorrect: incorrectList,
+        defaultData: tableData.defaultData,
+      });
+      setOpen(false);
+    },
+    [setTableData, tableData, correctIds]
+  );
 
   return (
     <div className=" rounded-lg px-2 sm:px-5 py-2 bg-[#5497FF1F]">
-      {/* <div
+      <div
         onClick={handleOpen}
         className="text-[#5497FF] cursor-pointer flex items-center text-base gap-1 font-medium"
       >
@@ -115,80 +133,84 @@ const FilterIcon: React.FC<IProps> = ({}) => {
           height: 600,
         }}
       >
-        <div className="p-6 h-full flex flex-col gap-2  w-full ">
-          <div className="flex-1 overflow-y-auto">
-            <div className="w-full flex items-center justify-center  sm:justify-between">
-              <div className="flex items-center justify-start flex-1 gap-3 ">
-                <p className="text-lg text-center sm:text-start w-full sm:w-fit font-semibold">
-                  Subjects
-                </p>
-                <span
-                  className="hidden sm:block underline cursor-pointer text-sm font-normal"
-                  onClick={handleSelectAll}
-                >
-                  {tempSelectListTopic.length === listTopic.length
+        <form onSubmit={handleSubmit(handleApply)}>
+          <div className="p-6 h-full flex flex-col gap-2  w-full ">
+            <div className="flex-1 overflow-y-auto">
+              <div className="w-full flex items-center justify-center  sm:justify-between">
+                <div className="flex items-center justify-start flex-1 gap-3 ">
+                  <p className="text-lg text-center sm:text-start w-full sm:w-fit font-semibold">
+                    Subjects
+                  </p>
+                  <span
+                    className="hidden sm:block underline cursor-pointer text-sm font-normal"
+                    onClick={handleSelectAll}
+                  >
+                    {selectListTopic.length === topics?.length
+                      ? 'Deselect All'
+                      : 'Select All'}
+                  </span>
+                </div>
+                <div className="hidden sm:flex">
+                  <MtUiButton
+                    type="primary"
+                    size="large"
+                    htmlType="submit"
+                    disabled={selectListTopic?.length === 0}
+                  >
+                    Apply Filter
+                  </MtUiButton>
+                </div>
+              </div>
+              <div
+                className="flex items-center justify-between sm:hidden"
+                onClick={handleSelectAll}
+              >
+                <span className=" underline cursor-pointer text-sm font-normal">
+                  {selectListTopic.length === topics?.length
                     ? 'Deselect All'
                     : 'Select All'}
                 </span>
-              </div>
-              <div className="hidden sm:flex">
-                <MtUiButton
-                  type="primary"
-                  size="large"
-                  onClick={handleApply}
-                  disabled={tempSelectListTopic.length === 0}
+                <div
+                  className={ctx(
+                    'w-5 h-5 rounded-md border border-solid flex items-center overflow-hidden  justify-center ',
+                    {
+                      'border-primary bg-primary ':
+                        selectListTopic.length === topics?.length,
+                      'border-[#21212152] ':
+                        selectListTopic.length !== topics?.length,
+                    }
+                  )}
                 >
-                  Apply Filter
-                </MtUiButton>
+                  <IconCheck />
+                </div>
+              </div>
+              <div className="grid mt-4 gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-3">
+                {topics?.map((item) => (
+                  <CardTopic
+                    item={item}
+                    key={item.id}
+                    selectListTopic={selectListTopic}
+                    setSelectListTopic={(newList) =>
+                      setValue('selectListTopic', newList)
+                    }
+                  />
+                ))}
               </div>
             </div>
-            <div
-              className="flex items-center justify-between sm:hidden"
-              onClick={handleSelectAll}
-            >
-              <span className=" underline cursor-pointer text-sm font-normal">
-                {tempSelectListTopic.length === listTopic.length
-                  ? 'Deselect All'
-                  : 'Select All'}
-              </span>
-              <div
-                className={ctx(
-                  'w-5 h-5 rounded-md border border-solid flex items-center overflow-hidden  justify-center ',
-                  {
-                    'border-primary bg-primary ':
-                      tempSelectListTopic.length === listTopic.length,
-                    'border-[#21212152] ':
-                      tempSelectListTopic.length !== listTopic.length,
-                  }
-                )}
+            <div className="flex mb-2 w-full sm:hidden">
+              <MtUiButton
+                type="primary"
+                size="large"
+                htmlType="submit"
+                block
+                disabled={selectListTopic?.length === 0}
               >
-                <IconCheck />
-              </div>
-            </div>
-            <div className="grid mt-4 gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-3">
-              {topics?.map((item) => (
-                <CardTopic
-                  item={item}
-                  key={item.id}
-                  selectListTopic={tempSelectListTopic}
-                  setSelectListTopic={setTempSelectListTopic}
-                />
-              ))}
+                Apply Filter
+              </MtUiButton>
             </div>
           </div>
-          <div className="flex mb-2 w-full sm:hidden">
-            <MtUiButton
-              type="primary"
-              size="large"
-              block
-              onClick={handleApply}
-              disabled={tempSelectListTopic.length === 0}
-            >
-              Apply Filter
-            </MtUiButton>
-          </div>
-        </div>
-      </DialogResponsive> */}
+        </form>
+      </DialogResponsive>
     </div>
   );
 };

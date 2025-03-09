@@ -36,7 +36,6 @@ export const initGameReducer: IGameReducer = {
   isFirstAttempt: true, // Lần đầu tiên làm bài hay không
   isGameCompleted: false, // Bài test đã hoàn thành hay chưa?
   currentSubTopicIndex: '1', // Vị trí của sub-topic hiện tại trong game
-  currentSubTopicProgressId: -1, // ID tiến trình của sub-topic hiện tại
   attemptNumber: 1, // Lượt làm bài (lần 1, 2, 3,...)
   totalDuration: -1, // Tổng thời gian của bài test
   gameMode: 'learn', // Chế độ của game: learn/test
@@ -47,7 +46,6 @@ export const initGameReducer: IGameReducer = {
   enableKeyboardShortcuts: true, // Có kích hoạt phím tắt không?
   isDataLoaded: false, // Xác định xem đã load data xong chưa
   hasRetakenDiagnosticTest: false, // Xác định rằng đã làm qua 1 lần diagnostic test, nhưng lần sau là làm lại
-  shouldLoading: false,
-  isCreateNewTest: false,
+
   timeStart: new Date().getTime(), // Thời gian bắt đầu trả lời câu hỏi
 };

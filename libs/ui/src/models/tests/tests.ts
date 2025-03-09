@@ -75,4 +75,5 @@ export interface ITestBase {
   topicIds: number[];
   groupExamData: IGroupExam[];
   createDate?: number;
+  index?: number;
 }

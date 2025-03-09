@@ -2,7 +2,6 @@ import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { throttle } from 'throttle-debounce';
-import MtUiLSpinningBubbles from '../loading';
 import { parseThreshold, ThresholdUnits } from './utils/threshold';
 
 interface IInfinityProps {
@@ -23,10 +22,6 @@ const Infinity: React.FC<IInfinityProps> = (props) => {
     fetchNextPage,
     isFetchingNextPage,
     children,
-    total,
-    dataLength,
-    isSuccess,
-    isLoading,
     classNames,
     styles,
     isScrollPage = false,
@@ -107,22 +102,7 @@ const Infinity: React.FC<IInfinityProps> = (props) => {
       ref={divRef}
       style={styles}
     >
-      {isLoading && dataLength === 0 && (
-        <div className="w-full h-full flex items-center justify-center">
-          <MtUiLSpinningBubbles />
-        </div>
-      )}
       {children}
-      {isSuccess && dataLength === 0 && (
-        <div className="w-full h-full flex items-center justify-center">
-          Empty
-        </div>
-      )}
-      {isFetching && dataLength !== total && (
-        <div className="w-full h-12 flex justify-center items-center">
-          <div className="w-8 h-8 border-4 border-t-transparent border-l-[#21212180] border-solid border-r-[#21212180] border-b-[#21212180] rounded-full animate-spin" />
-        </div>
-      )}
     </div>
   );
 };

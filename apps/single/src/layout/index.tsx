@@ -17,6 +17,8 @@ import appInfos from '../data/appInfos.json';
 import StoreProvider from './StoreProvider';
 import { useAppDispatch } from '@ui/redux/store';
 import { setIsDataFetched } from '@ui/redux/features/appInfo';
+import { useScreenResize } from './resize';
+import { SyncData } from '@ui/components/sync';
 export default function RootLayout({
   children,
   device = 'desktop',
@@ -29,13 +31,15 @@ export default function RootLayout({
   data: {
     topics: ITopicHomeJson[];
     branch: IBranchHomeJson;
+    finalTest: number;
   };
 }) {
+  useScreenResize();
   return (
     <StoreProvider appInfo={appInfos} appConfig={appConfig}>
       <AppThemeProvider appConfig={appConfig}>
         <WrapperScroll>
-          <ProgressBar className="fixed z-50 top-0 h-1 bg-sky-500">
+          <ProgressBar className="fixed z-50 w-full top-0 left-0 right-0 h-1 bg-sky-500">
             <NavigationEvents />
           </ProgressBar>
           <HeaderApp
@@ -47,19 +51,23 @@ export default function RootLayout({
           />
           <div className="flex-1 flex flex-col bg-theme-white dark:bg-theme-dark  justify-between">
             {children}
-            <FooterApp />
+            <FooterApp
+              theme={theme}
+              isMobile={device.includes('mobile')}
+              appInfo={appInfos}
+              appConfig={appConfig}
+            />
           </div>
           <AuthProvider />
         </WrapperScroll>
         <ToastContainer autoClose={2000} />
+        <SyncData />
 
         {/* <SheetApp />
-        <AuthProvider />
         <SyncData />
         <PopupSubscription />
         <AdsSense />
         <AdsBlockerDetect /> */}
-        {/* <AuthProvider /> */}
 
         <EventListener />
         <IniDexieIndexDb />

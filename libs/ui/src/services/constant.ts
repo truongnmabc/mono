@@ -16,6 +16,7 @@ export const API_PATH = {
   GET_LIST_BLOCK: '/api/getListBlock',
   REPORT_MISTAKE: '/api/question/update-report',
   SAVE_TO_DASHBOARD: '/pro-purchase-events',
+  UPDATE_LOGIN: '/api/app/flutter',
 };
 
 export const I_GAME_TYPE = {

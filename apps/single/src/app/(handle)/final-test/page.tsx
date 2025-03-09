@@ -1,19 +1,34 @@
 import Grid2 from '@mui/material/Grid2';
 import appInfos from '@single/data/appInfos.json';
-import data from '@single/data/server/dia.json';
 import BannerDownloadApp from '@ui/components/bannerDownload';
 import MyContainer from '@ui/components/container';
 import HeaderMobile from '@ui/components/headerMobile';
 import SeoContent from '@ui/components/seoContent';
 import FinalTestContainer, { HandleSelectAnswer } from '@ui/container/final';
+import WrapperAnimationLeft from '@ui/container/study/mainStudyView/wrapperAnimationLeft';
+import WrapperAnimation from '@ui/container/study/mainStudyView/wrapperAnimationRight';
 import { IGameMode } from '@ui/models/tests/tests';
 import { detectAgent } from '@ui/utils/device';
 import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { Fragment } from 'react';
+import { replaceYear } from '@ui/utils/time';
+import data from '@single/data/server/final.json';
+
 export const metadata: Metadata = {
-  title: data.titleSeo || appInfos.title,
-  description: data.descSeo || appInfos.descriptionSEO,
+  title: replaceYear(data?.titleSeo),
+  description: replaceYear(data?.descSeo),
+  openGraph: {
+    title: replaceYear(data?.titleSeo),
+    description: replaceYear(data?.descSeo),
+  },
+  twitter: {
+    title: replaceYear(data?.titleSeo),
+    description: replaceYear(data?.descSeo),
+  },
+  alternates: {
+    canonical: `${process.env['NEXT_PUBLIC_API_URL']}full-length-${appInfos.appShortName}-practice-test`,
+  },
 };
 
 const Page = async ({
@@ -21,7 +36,7 @@ const Page = async ({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
-  const { type, id, turn } = await searchParams;
+  const { type, testId, turn } = await searchParams;
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
@@ -37,7 +52,7 @@ const Page = async ({
               xs: 12,
             }}
           >
-            <HeaderMobile />
+            <HeaderMobile type={type as IGameMode} />
           </Grid2>
         </Grid2>
       )}
@@ -50,7 +65,9 @@ const Page = async ({
                 xs: 0,
               }}
             >
-              <HandleSelectAnswer />
+              <WrapperAnimationLeft>
+                <HandleSelectAnswer />
+              </WrapperAnimationLeft>
             </Grid2>
           )}
 
@@ -60,11 +77,11 @@ const Page = async ({
               xs: 12,
             }}
           >
-            <div className="w-full flex flex-1 flex-col gap-4 sm:gap-6 pb-24  sm:p-0  h-full">
+            <WrapperAnimation className="w-full flex flex-1 flex-col gap-4 sm:gap-6 pb-24  sm:p-0  h-full">
               <FinalTestContainer
                 isMobile={isMobile}
                 type={type as IGameMode}
-                id={Number(id) || -1}
+                testId={Number(testId) || -1}
                 turn={Number(turn) || 1}
                 appInfos={appInfos}
               />
@@ -74,7 +91,7 @@ const Page = async ({
                   <SeoContent content={data.content} />
                 </div>
               )}
-            </div>
+            </WrapperAnimation>
           </Grid2>
         </Grid2>
       </MyContainer>

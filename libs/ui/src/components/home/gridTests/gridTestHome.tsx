@@ -1,18 +1,17 @@
 import { Collapse, Grid2 } from '@mui/material';
-import ItemTestLeft from '@ui/components/gridTests/itemTest';
+import IconGridTest from '@ui/components/icon/iconGridTest';
+import { TypeParam } from '@ui/constants';
 import RouterApp from '@ui/constants/router.constant';
-import { IAppInfo, ITestBase } from '@ui/models';
+import { IAppInfo } from '@ui/models';
+import { ITestsHomeJson } from '@ui/models/other';
 import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import CustomTestSvg from './icon/iconCustomTest';
 import DiagnosticTestSvg from './icon/iconDiagnosticTest';
 import FinalTestSvg from './icon/iconFinalTest';
-import PracticeTestsSvg from './icon/iconPracticeTests';
-import IconGridTest from '@ui/components/icon/iconGridTest';
-import { TypeParam } from '@ui/constants';
-import { ITestsHomeJson } from '@ui/models/other';
 import IconGetProHover from './icon/iconGetProHover';
+import PracticeTestsSvg from './icon/iconPracticeTests';
 
 export const mockGirdTests = [
   {
@@ -91,14 +90,14 @@ const GridTest = ({
                 href={
                   isMobile && test.id === 'PT'
                     ? `?selectTest=${showList ? 'false' : 'true'}`
-                    : `${test.href}?id=${test.testId}&type=${
+                    : `${test.href}?testId=${test.testId || -1}&type=${
                         test.id === 'PT'
-                          ? TypeParam.practiceTest
+                          ? TypeParam.practiceTests
                           : test.id === 'DT'
                           ? TypeParam.diagnosticTest
                           : test.id === 'FT'
-                          ? TypeParam.finalTest
-                          : TypeParam.customTest
+                          ? TypeParam.finalTests
+                          : TypeParam.customTests
                       }`
                 }
                 scroll={isMobile ? false : true}

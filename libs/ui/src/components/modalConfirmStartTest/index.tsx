@@ -8,8 +8,7 @@ import {
   selectCurrentTopicId,
   selectIsGamePaused,
 } from '@ui/redux/features/game.reselect';
-import initDiagnosticTestQuestionThunk from '@ui/redux/repository/game/initData/initDiagnosticTest';
-import initTestQuestionThunk from '@ui/redux/repository/game/initData/initPracticeTest';
+
 import { updateTimeTest } from '@ui/redux/repository/game/pauseAndResumed/resumedTest';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { updateDbTestQuestions } from '@ui/utils/updateDb';
@@ -45,14 +44,8 @@ const ModalConfirm = () => {
         isUpAttemptNumber: true,
       });
     if (pathname?.includes('diagnostic_test')) {
-      dispatch(initDiagnosticTestQuestionThunk());
     }
     if (pathname?.includes('practice_test') && testId) {
-      dispatch(
-        initTestQuestionThunk({
-          testId: Number(testId),
-        })
-      );
     }
     dispatch(startOverGame());
     setOpen(false);

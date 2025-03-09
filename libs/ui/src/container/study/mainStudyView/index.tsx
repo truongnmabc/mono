@@ -4,6 +4,8 @@ import ChoicesPanel from '@ui/components/choicesPanel';
 import ExplanationDetail from '@ui/components/explanation';
 import ProgressQuestion from '@ui/components/progressQuestion';
 import QuestionContent from '@ui/components/question';
+import TitleQuestion from '@ui/components/titleQuestion';
+import { TypeParam } from '@ui/constants';
 import RouterApp from '@ui/constants/router.constant';
 import { IAppInfo } from '@ui/models';
 import { IGameMode } from '@ui/models/tests/tests';
@@ -11,14 +13,8 @@ import initDataGame from '@ui/redux/repository/game/initData/initData';
 import { useAppDispatch } from '@ui/redux/store';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
+import queryString from 'query-string';
 import React, { useEffect } from 'react';
-
-const TitleQuestion = dynamic(() => import('@ui/components/titleQuestion'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full flex bg-white rounded-md items-center justify-center h-8"></div>
-  ),
-});
 
 const CountTimeRemainPracticeTest = dynamic(
   () => import('@ui/container/study/countTimeTest'),
@@ -33,7 +29,7 @@ const ClockIcon = dynamic(() => import('@ui/components/icon/ClockIcon'), {
 interface GameResult {
   isCompleted?: boolean;
   resultId?: number;
-  currentSubTopicIndex?: string;
+  index?: string;
   attemptNumber?: number;
 }
 type InitDataGameReturn = {
@@ -70,14 +66,32 @@ const MainStudyView = ({
     const handleGetData = async () => {
       try {
         const result = (await dispatch(
-          initDataGame({ partId, type, slug, turn, testId, topicId })
+          initDataGame({
+            partId: partId === -1 ? undefined : partId,
+            type,
+            slug,
+            turn,
+            testId: testId === -1 ? undefined : testId,
+            topicId: topicId === -1 ? undefined : topicId,
+          })
         )) as unknown as InitDataGameReturn;
+
         if (result.payload?.isCompleted) {
-          const { resultId, currentSubTopicIndex, attemptNumber } =
-            result.payload;
+          const { resultId, index, attemptNumber } = result.payload;
+          const param = queryString.stringify({
+            resultId: resultId,
+            index: index,
+            attemptNumber: attemptNumber,
+            topic: type === TypeParam.learn ? slug : undefined,
+            gameMode: type === TypeParam.learn ? undefined : type,
+          });
           setTimeout(() => {
             router.replace(
-              `${RouterApp.Finish}?topic=${slug}&resultId=${resultId}&index=${currentSubTopicIndex}&turn=${attemptNumber}`
+              `${
+                type === TypeParam.learn
+                  ? RouterApp.Finish
+                  : RouterApp.ResultTest
+              }?${param}`
             );
           }, 250);
         }
@@ -94,17 +108,14 @@ const MainStudyView = ({
         <TitleQuestion
           type={type}
           title={
-            (type === 'practiceTests'
-              ? slug
-                  ?.replace('-practice-test', ' ')
-                  .replace(appInfo.appShortName, '')
-                  .replaceAll('-', ' ')
+            (type === TypeParam.practiceTests
+              ? 'Practice Test'
               : slug?.replaceAll('-', ' ')) || ''
           }
         />
 
         <ProgressQuestion />
-        {type !== 'learn' && (
+        {type !== TypeParam.learn && (
           <div className="w-full flex items-center justify-center">
             <div className="flex items-center justify-center w-fit gap-2">
               <ClockIcon />
@@ -112,9 +123,14 @@ const MainStudyView = ({
             </div>
           </div>
         )}
-        <QuestionContent showStatus={type === 'learn'} />
-        <ChoicesPanel />
-        <ExplanationDetail />
+        <QuestionContent
+          type={type}
+          showStatus={type === TypeParam.learn}
+          appInfo={appInfo}
+          isMobile={isMobile}
+        />
+        <ChoicesPanel type={type} />
+        <ExplanationDetail isMobile={isMobile} />
       </div>
 
       <BottomActions

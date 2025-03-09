@@ -28,7 +28,7 @@ export const updateDbTestQuestions = async ({
   id: number;
   data: IUpdateTestOptions;
   isUpAttemptNumber?: boolean;
-}): Promise<void> => {
+}) => {
   try {
     const existingRecord = await db?.testQuestions.get(id);
     if (!existingRecord) {
@@ -45,7 +45,9 @@ export const updateDbTestQuestions = async ({
 
     await db?.testQuestions.update(id, updatedData);
     console.log('Database updated successfully');
+    return existingRecord;
   } catch (error) {
     console.error('Error updating database:', error);
+    return null;
   }
 };

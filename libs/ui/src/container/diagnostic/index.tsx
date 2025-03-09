@@ -5,7 +5,6 @@ import Explanation from '@ui/components/explanation';
 import ProgressQuestion from '@ui/components/progressQuestion';
 import QuestionContent from '@ui/components/question';
 import TitleQuestion from '@ui/components/titleQuestion';
-import { initDiagnosticTestQuestionThunk } from '@ui/redux';
 import { useAppDispatch } from '@ui/redux/store';
 import dynamic from 'next/dynamic';
 
@@ -15,36 +14,70 @@ import EmotionComponent from './emotion/emotionComponent';
 import TimeTestGetLever from './timeTest';
 import initDataGame from '@ui/redux/repository/game/initData/initData';
 import { IGameMode } from '@ui/models/tests/tests';
+import { useRouter } from 'next/navigation';
+import RouterApp from '@ui/constants/router.constant';
+import queryString from 'query-string';
+import { IAppInfo } from '@ui/models/app';
+import { TypeParam } from '@ui/constants';
 const ClockIcon = dynamic(() => import('@ui/components/icon/ClockIcon'), {
   ssr: false,
 });
 const CountTimeDiagnostic = dynamic(() => import('./countTimeRemain'), {
   ssr: false,
 });
-
+interface GameResult {
+  isCompleted?: boolean;
+  resultId?: number;
+  currentSubTopicIndex?: string;
+  attemptNumber?: number;
+}
+type InitDataGameReturn = {
+  payload: GameResult;
+  type: string;
+  meta: {
+    requestId: string;
+    requestStatus: 'fulfilled' | 'rejected';
+  };
+};
 const DiagnosticContainer = ({
   isMobile,
   type,
-  id,
+  testId,
   turn,
+  appInfo,
 }: {
   isMobile: boolean;
   type?: IGameMode;
-  id?: number;
+  testId?: number;
   turn?: number;
+  appInfo: IAppInfo;
 }) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
   useEffect(() => {
     const handleGetData = async () => {
-      const testId = id;
       try {
-        dispatch(initDataGame({ type: 'diagnosticTest', turn, testId }));
+        const result = (await dispatch(
+          initDataGame({ type: 'diagnosticTest', turn, testId })
+        )) as unknown as InitDataGameReturn;
+        if (result.payload?.isCompleted) {
+          const { resultId, attemptNumber } = result.payload;
+          const param = queryString.stringify({
+            resultId: resultId,
+            attemptNumber: attemptNumber,
+            gameMode: TypeParam.diagnosticTest,
+          });
+          setTimeout(() => {
+            router.replace(`${RouterApp.ResultTest}?${param}`);
+          }, 250);
+        }
       } catch (err) {
         console.log('🚀 ~ handleGetData ~ err:', err);
       }
     };
     handleGetData();
-  }, [id, type, turn]);
+  }, [testId, type, turn]);
 
   return (
     <div className=" sm:shadow-custom bg-transparent min-h-[420px] sm:bg-white  rounded-2xl dark:bg-black">
@@ -54,7 +87,7 @@ const DiagnosticContainer = ({
         {isMobile && (
           <div className="flex items-center justify-center w-full gap-2">
             <ClockIcon />
-            <CountTimeDiagnostic />
+            <CountTimeDiagnostic testId={testId} />
           </div>
         )}
         <div
@@ -64,10 +97,16 @@ const DiagnosticContainer = ({
           }}
         >
           <TimeTestGetLever isMobile={isMobile} />
-          <QuestionContent showStatus={false} showShadow={false} />
+          <QuestionContent
+            showStatus={false}
+            showShadow={false}
+            appInfo={appInfo}
+            isMobile={isMobile}
+            type={type as IGameMode}
+          />
           <EmotionComponent />
         </div>
-        <ChoicesPanel />
+        <ChoicesPanel type={type as IGameMode} />
         <Explanation />
       </div>
 

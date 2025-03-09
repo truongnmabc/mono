@@ -4,7 +4,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const ClientLayout = ({ children }: { children: React.ReactNode }) => {
+const WrapperAnimationLeft = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   const isUnmount = useSelector(selectIsUnmount);
   return (
     <AnimatePresence initial={true}>
@@ -14,6 +20,7 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -60 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
+          className={className}
         >
           {children}
         </motion.div>
@@ -22,4 +29,4 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default ClientLayout;
+export default WrapperAnimationLeft;

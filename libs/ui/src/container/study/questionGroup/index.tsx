@@ -9,35 +9,39 @@ import {
 import { IGameMode } from '@ui/models/tests/tests';
 import Link from 'next/link';
 import React from 'react';
-import ClientLayout from '../mainStudyView/wrapperAnimationLeft';
+import WrapperAnimationLeft from '../mainStudyView/wrapperAnimationLeft';
+import { TypeParam } from '@ui/constants';
 const QuestionGroup = ({
   type,
   data,
   appShortName,
-  id,
+  topicId,
+  testId,
 }: {
   type: IGameMode;
   data: {
     topics: ITopicHomeJson[];
     tests: IPracticeTestsHomeJson;
     branch: IBranchHomeJson;
+    finalTests: number;
   };
   appShortName: string;
-  id?: string;
+  topicId?: number;
+  testId?: number;
 }) => {
   const tests = type === 'branchTest' ? data.branch.list : data.tests.list;
   return (
-    <ClientLayout>
+    <WrapperAnimationLeft>
       <div className="flex p-3 bg-white rounded-xl flex-col gap-4">
-        {type === 'practiceTests' || type === 'branchTest' ? (
+        {type !== TypeParam.learn ? (
           <>
             <GridTestsLeft
               appShortName={appShortName}
               type={type}
-              id={id}
+              testId={testId}
               tests={tests.sort((a, b) => {
-                if (String(a.id) === id) return -1;
-                if (String(b.id) === id) return 1;
+                if (a.id === testId) return -1;
+                if (b.id === testId) return 1;
                 return 0;
               })}
             />
@@ -45,10 +49,9 @@ const QuestionGroup = ({
             <GridTopicLeft
               appShortName={appShortName}
               type={type}
-              id={id}
               topics={data.topics.sort((a, b) => {
-                if (String(a.id) === id) return -1; // Đưa testId lên đầu
-                if (String(b.id) === id) return 1;
+                if (a.id === topicId) return -1; // Đưa testId lên đầu
+                if (b.id === topicId) return 1;
                 return 0;
               })}
             />
@@ -58,10 +61,9 @@ const QuestionGroup = ({
             <GridTopicLeft
               appShortName={appShortName}
               type={type}
-              id={id}
               topics={data.topics.sort((a, b) => {
-                if (String(a.id) === id) return -1; // Đưa testId lên đầu
-                if (String(b.id) === id) return 1;
+                if (a.id === topicId) return -1; // Đưa testId lên đầu
+                if (b.id === topicId) return 1;
                 return 0;
               })}
             />
@@ -69,17 +71,19 @@ const QuestionGroup = ({
             <GridTestsLeft
               appShortName={appShortName}
               type={type}
-              id={id}
+              testId={testId}
               tests={tests.sort((a, b) => {
-                if (String(a.id) === id) return -1;
-                if (String(b.id) === id) return 1;
+                if (a.id === testId) return -1;
+                if (b.id === testId) return 1;
                 return 0;
               })}
             />
           </>
         )}
         <div className="w-full h-[1px] bg-[#21212129]"></div>
-        <Link href={`${RouterApp.Final_test}`}>
+        <Link
+          href={`${RouterApp.Final_test}?type=${TypeParam.finalTests}&testId=${data.finalTests}`}
+        >
           <div className="bg-primary w-full  text-center rounded-md p-2">
             <p className="text-base capitalize font-semibold text-white">
               <span className="text-base  font-semibold text-white uppercase">
@@ -90,7 +94,7 @@ const QuestionGroup = ({
           </div>
         </Link>
       </div>
-    </ClientLayout>
+    </WrapperAnimationLeft>
   );
 };
 export default React.memo(QuestionGroup);

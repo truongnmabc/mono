@@ -45,3 +45,14 @@ export interface List2 {
   name: string;
   slug: string;
 }
+
+export type IThunkFunctionReturn<T> = {
+  payload: T;
+  type: string;
+  meta: {
+    requestId: string;
+    requestStatus: 'fulfilled' | 'rejected';
+  };
+};
+
+export type IModeReview = 'weak' | 'hard' | 'saved' | 'all' | 'random';

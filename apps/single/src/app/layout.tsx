@@ -2,6 +2,7 @@ import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import seoData from '@single/data/home/data.json';
 import { IDevice, ITheme } from '@ui/models/app';
 import '@ui/styles/index.css';
+import { getImageSrc } from '@ui/utils/image';
 import { replaceYear } from '@ui/utils/time';
 import type { Metadata } from 'next';
 import { Poppins, Vampiro_One } from 'next/font/google';
@@ -28,17 +29,25 @@ const poppins = Poppins({
   subsets: ['latin'],
 });
 const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/';
-
+const logoUrl = getImageSrc('logo.png');
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: replaceYear(appInfo.title),
-  description: replaceYear(appInfo.descriptionSEO),
+  title: replaceYear(seoData.seo.titleSeo),
+  description: replaceYear(seoData.seo.descSeo),
   keywords: appInfo.keywordSEO,
-  icons: `/infos/${appInfo?.appShortName}/logo60.png`,
+  icons: logoUrl,
   openGraph: {
-    description: replaceYear(appInfo.descriptionSEO),
-    title: replaceYear(appInfo.title),
-    images: `/infos/${appInfo?.appShortName}/logo60.png`,
+    description: replaceYear(seoData.seo.descSeo),
+    title: replaceYear(seoData.seo.titleSeo),
+    images: logoUrl,
+  },
+  twitter: {
+    title: replaceYear(seoData.seo.titleSeo),
+    description: replaceYear(seoData.seo.descSeo),
+    images: logoUrl,
+  },
+  alternates: {
+    canonical: baseUrl,
   },
 };
 export default async function ParentAppLayout({
@@ -49,6 +58,7 @@ export default async function ParentAppLayout({
   const cookieStore = await cookies();
   const theme = cookieStore.get('theme');
   const device = cookieStore.get('device');
+
   return (
     <html
       lang="en"
@@ -61,6 +71,7 @@ export default async function ParentAppLayout({
           data={{
             topics: seoData.topics,
             branch: seoData.tests.branchTest,
+            finalTest: seoData.tests.finalTests.testId,
           }}
         >
           {children}

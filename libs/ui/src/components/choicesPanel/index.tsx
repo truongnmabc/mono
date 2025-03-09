@@ -2,33 +2,23 @@
 import { TypeParam } from '@ui/constants/index';
 import RouterApp from '@ui/constants/router.constant';
 import { IGameMode } from '@ui/models/tests/tests';
-import { setCurrentQuestion } from '@ui/redux/features/game';
 import {
   selectCurrentGame,
-  selectCurrentQuestionIndex,
-  selectCurrentSubTopicProgressId,
-  selectCurrentTopicId,
   selectEnableKeyboardShortcuts,
-  selectGameDifficultyLevel,
-  selectListQuestion,
 } from '@ui/redux/features/game.reselect';
-import { shouldOpenSubmitTest } from '@ui/redux/features/tests';
-import finishDiagnosticThunk from '@ui/redux/repository/game/finish/finishDiagnostic';
-import finishPracticeThunk from '@ui/redux/repository/game/finish/finishPracticeTest';
-import finishQuestionThunk from '@ui/redux/repository/game/finish/finishQuestion';
-import nextQuestionThunk from '@ui/redux/repository/game/nextQuestion/nextQuestion';
-import nextQuestionDiagnosticThunk from '@ui/redux/repository/game/nextQuestion/nextQuestionDiagnosticTest';
+import { IThunkFunctionReturn } from '@ui/models/other';
+import nextQuestionActionThunk from '@ui/redux/repository/game/nextQuestion/nextGame';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from 'next/navigation';
-import { useCallback, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
+import queryString from 'query-string';
+import { useEffect, useMemo, useState } from 'react';
 import AnswerButton from '../answer';
 import { MOCK_TEMP_LIST_ANSWER } from './mock';
-
+import dynamic from 'next/dynamic';
+import { shouldOpenSubmitTest } from '@ui/redux/features/tests';
+const ModalUnlock = dynamic(() => import('../modalUnlock'), {
+  ssr: false,
+});
 function shuffleArray<T>(array: T[]): T[] {
   if (array && array.length) {
     const copy = [...array];
@@ -40,30 +30,32 @@ function shuffleArray<T>(array: T[]): T[] {
   }
   return [];
 }
+interface GameResult {
+  isDisabled?: boolean;
+  resultId?: number;
+  index?: string;
+  turn?: number;
+  isFinish?: boolean;
+  shouldUpdatePro?: boolean;
+  attemptNumber?: number;
+  topic?: string;
+}
 
 type IProps = {
   isActions?: boolean;
   isBlockEnter?: boolean;
+  type: IGameMode;
 };
 const ChoicesPanel: React.FC<IProps> = ({
   isActions = false,
   isBlockEnter = false,
+  type,
 }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const params = useParams();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const type = searchParams?.get('type') as IGameMode;
 
-  const idTopic = useAppSelector(selectCurrentTopicId);
   const currentGame = useAppSelector(selectCurrentGame);
-  const listQuestion = useAppSelector(selectListQuestion);
-  const feedBack = useAppSelector(selectGameDifficultyLevel);
-  const subTopicProgressId = useAppSelector(selectCurrentSubTopicProgressId);
-  const indexCurrentQuestion = useAppSelector(selectCurrentQuestionIndex);
   const isListen = useAppSelector(selectEnableKeyboardShortcuts);
-  const listLength = listQuestion.length;
 
   const listRandomQuestion = useMemo(
     () =>
@@ -72,88 +64,11 @@ const ChoicesPanel: React.FC<IProps> = ({
         : MOCK_TEMP_LIST_ANSWER,
     [currentGame?.answers]
   );
-
-  const handleEnter = useCallback(async () => {
-    if (type === 'learn') {
-      const isFinal = listQuestion.every(
-        (item) => item.localStatus === 'correct'
-      );
-      if (isFinal) {
-        dispatch(
-          finishQuestionThunk({
-            subTopicProgressId,
-            topicId: idTopic,
-          })
-        );
-        router.replace(
-          `/finish?subTopicId=${subTopicProgressId}&topic=${params?.['slug']}&partId=${idTopic}`,
-          { scroll: true }
-        );
-      } else {
-        dispatch(nextQuestionThunk());
-      }
-      return;
-    }
-    // xử lý với trường hợp làm bài practice test
-    if (type === 'practiceTests') {
-      if (indexCurrentQuestion + 1 === listLength) {
-        dispatch(finishPracticeThunk());
-
-        const _href = `${RouterApp.ResultTest}?type=${TypeParam.practiceTest}&testId=${idTopic}`;
-        router.replace(_href);
-      } else {
-        dispatch(nextQuestionThunk());
-      }
-      return;
-    }
-
-    if (pathname?.includes('diagnostic_test')) {
-      if (indexCurrentQuestion + 1 === listLength) {
-        dispatch(finishDiagnosticThunk());
-
-        const _href = `${RouterApp.ResultTest}?type=${TypeParam.diagnosticTest}&testId=${idTopic}`;
-        router.replace(_href);
-      } else {
-        dispatch(nextQuestionDiagnosticThunk());
-      }
-      return;
-    }
-
-    if (pathname?.includes('final_test')) {
-      if (indexCurrentQuestion + 1 < listLength) {
-        dispatch(setCurrentQuestion(indexCurrentQuestion + 1));
-      } else {
-        dispatch(shouldOpenSubmitTest(true));
-      }
-      return;
-    }
-
-    if (pathname?.includes('custom_test')) {
-      if (feedBack === 'newbie') dispatch(nextQuestionDiagnosticThunk());
-      else if (feedBack === 'exam')
-        dispatch(setCurrentQuestion(indexCurrentQuestion + 1));
-      else if (feedBack === 'expert') dispatch(nextQuestionThunk());
-    }
-  }, [
-    dispatch,
-    listQuestion,
-    idTopic,
-    subTopicProgressId,
-    indexCurrentQuestion,
-    listLength,
-    type,
-    pathname,
-    router,
-    params,
-    feedBack,
-  ]);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    const handleKeyboardEvent = (event: globalThis.KeyboardEvent) => {
-      if (
-        (currentGame?.answers && !currentGame.selectedAnswer) ||
-        pathname?.includes('final_test')
-      ) {
+    const handleKeyboardEvent = async (event: globalThis.KeyboardEvent) => {
+      if (currentGame?.answers && !currentGame.selectedAnswer) {
         const index = parseInt(event.key, 10);
         if (index >= 0 && index <= currentGame.answers.length) {
           document.getElementById(index.toString())?.click();
@@ -161,9 +76,41 @@ const ChoicesPanel: React.FC<IProps> = ({
       }
 
       if (event.key === 'Enter' || event.code === 'NumpadEnter') {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của phím Enter
+        event.preventDefault();
         if (currentGame.selectedAnswer) {
-          handleEnter(); // Gọi hàm xử lý khi có đáp án được chọn
+          const { meta, payload } = (await dispatch(
+            nextQuestionActionThunk()
+          )) as unknown as IThunkFunctionReturn<GameResult>;
+          if (meta.requestStatus === 'fulfilled') {
+            const {
+              isFinish,
+              shouldUpdatePro,
+              resultId,
+              index,
+              attemptNumber,
+              topic,
+            } = payload;
+
+            if (shouldUpdatePro) {
+              setOpenModal(true);
+              return;
+            }
+            if (isFinish && type !== TypeParam.learn) {
+              dispatch(shouldOpenSubmitTest(true));
+              return;
+            }
+            if (isFinish) {
+              const params = queryString.stringify({
+                resultId,
+                attemptNumber,
+                index: type === TypeParam.learn ? index : undefined,
+                topic: type === TypeParam.learn ? topic : undefined,
+                gameMode: type,
+              });
+
+              router.replace(`${RouterApp.Finish}?${params}`, { scroll: true });
+            }
+          }
         }
       }
     };
@@ -174,7 +121,7 @@ const ChoicesPanel: React.FC<IProps> = ({
     return () => {
       document.removeEventListener('keydown', handleKeyboardEvent);
     };
-  }, [isBlockEnter, currentGame, isListen, handleEnter, pathname]);
+  }, [isBlockEnter, currentGame, isListen, type]);
 
   return (
     <div className={'grid gap-2 grid-cols-1 sm:grid-cols-2'}>
@@ -187,6 +134,10 @@ const ChoicesPanel: React.FC<IProps> = ({
           currentGame={currentGame}
         />
       ))}
+
+      {type === TypeParam.finalTests && (
+        <ModalUnlock openModal={openModal} setOpenModal={setOpenModal} />
+      )}
     </div>
   );
 };

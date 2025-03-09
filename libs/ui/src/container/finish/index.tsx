@@ -55,17 +55,17 @@ const calculateProgress = (
 
 const calculateProgressPassing = async ({
   progress,
-  turn,
+  attemptNumber,
 }: {
   progress: IUserQuestionProgress[];
-  turn: number;
+  attemptNumber: number;
 }) => {
   const passingAppInfo = await db?.passingApp.get(-1);
 
   const passingPart = await totalPassingPart({
     progress,
     averageLevel: passingAppInfo?.averageLevel || 50,
-    turn,
+    turn: attemptNumber,
   });
 
   if (passingAppInfo) {
@@ -82,12 +82,12 @@ const FinishLayout = ({
   topic,
   resultId,
   index,
-  turn,
+  attemptNumber,
 }: {
   topic?: string;
   resultId?: number;
   index?: string;
-  turn?: number;
+  attemptNumber?: number;
 }) => {
   const [game, setGame] = useState<{
     currentPart: ITopicBase | null;
@@ -111,7 +111,7 @@ const FinishLayout = ({
   useEffect(() => {
     dispatch(setIsStartAnimationPrevious(true));
 
-    if (!topic || !resultId || !turn || !isDataFetched) return;
+    if (!topic || !resultId || !attemptNumber || !isDataFetched) return;
     const handleGetData = async () => {
       const { currentTopic, progress, questions } =
         await getCurrentProgressData({
@@ -121,11 +121,15 @@ const FinishLayout = ({
 
       if (!currentTopic || !progress || !questions) return;
 
-      const { correct, total } = calculateProgress(progress, questions, turn);
+      const { correct, total } = calculateProgress(
+        progress,
+        questions,
+        attemptNumber
+      );
 
       const { extraPoint } = await calculateProgressPassing({
         progress,
-        turn,
+        attemptNumber,
       });
 
       const currentIndex = currentTopic.findIndex((t) => t.id === resultId);
@@ -167,7 +171,7 @@ const FinishLayout = ({
     };
 
     handleGetData();
-  }, [resultId, turn, topic, isDataFetched]);
+  }, [resultId, attemptNumber, topic, isDataFetched]);
 
   return (
     <MyContainer>
@@ -177,7 +181,6 @@ const FinishLayout = ({
         <PassingFinishPage
           {...game}
           topic={topic}
-          currentTurn={turn || 1}
           index={index}
           topicId={listSubTopics[0]?.parentId}
         />

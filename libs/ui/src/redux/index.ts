@@ -13,9 +13,7 @@ import {
   setListQuestionGames,
   setShouldListenKeyboard,
   setTurtGame,
-  shouldCreateNewTest,
   shouldEndTimeTest,
-  shouldLoading,
   startCustomTest,
   startOverGame,
   startRandomReview,
@@ -28,13 +26,11 @@ import {
   selectCurrentGame,
   selectCurrentQuestionIndex,
   selectCurrentSubTopicIndex,
-  selectCurrentSubTopicProgressId,
   selectCurrentTopicId,
   selectEnableKeyboardShortcuts,
   selectGameDifficultyLevel,
   selectGameMode,
   selectHasRetakenDiagnosticTest,
-  selectIsCreateNewTest,
   selectIsDataLoaded,
   selectIsGameCompleted,
   selectIsGamePaused,
@@ -42,7 +38,6 @@ import {
   selectListQuestion,
   selectPassingThreshold,
   selectRemainingTime,
-  selectShouldLoading,
   selectTotalDuration,
 } from './features/game.reselect';
 import { paymentSuccessAction } from './features/payment';
@@ -71,20 +66,6 @@ import {
   selectUserInfo,
 } from './features/user.reselect';
 import choiceAnswer from './repository/game/choiceAnswer/choiceAnswer';
-import choiceStartCustomTestThunk from './repository/game/choiceAnswer/choiceStartTest';
-import finishCustomTestThunk from './repository/game/finish/finishCustomTest';
-import finishDiagnosticThunk from './repository/game/finish/finishDiagnostic';
-import finishFinalThunk from './repository/game/finish/finishFinal';
-import finishPracticeThunk from './repository/game/finish/finishPracticeTest';
-import finishQuestionThunk from './repository/game/finish/finishQuestion';
-import initCustomTestThunk from './repository/game/initData/initCustomTest';
-import initDiagnosticTestQuestionThunk from './repository/game/initData/initDiagnosticTest';
-import initFinalTestThunk from './repository/game/initData/initFinalTest';
-import initLearnQuestionThunk from './repository/game/initData/initLearningQuestion';
-import initPracticeThunk from './repository/game/initData/initPracticeTest';
-import nextQuestionThunk from './repository/game/nextQuestion/nextQuestion';
-import nextQuestionDiagnosticThunk from './repository/game/nextQuestion/nextQuestionDiagnosticTest';
-import nextQuestionFinalThunk from './repository/game/nextQuestion/nextQuestionFinalTest';
 import pauseTestThunk from './repository/game/pauseAndResumed/pauseTest';
 import resumedTestThunk from './repository/game/pauseAndResumed/resumedTest';
 import paymentSuccessThunk from './repository/payment/paymentSuccess';
@@ -102,25 +83,11 @@ export {
   baseStore,
   beforeUnLoadThunk,
   choiceAnswer,
-  choiceStartCustomTestThunk,
   continueGame,
   endTest,
-  finishCustomTestThunk,
-  finishDiagnosticThunk,
-  finishFinalThunk,
-  finishPracticeThunk,
-  finishQuestionThunk,
   getListActionThunk,
-  initCustomTestThunk,
-  initDiagnosticTestQuestionThunk,
-  initFinalTestThunk,
-  initLearnQuestionThunk,
-  initPracticeThunk,
   loginHybrid,
   logoutHybrid,
-  nextQuestionDiagnosticThunk,
-  nextQuestionFinalThunk,
-  nextQuestionThunk,
   pauseTestThunk,
   paymentSuccessAction,
   paymentSuccessThunk,
@@ -132,14 +99,12 @@ export {
   selectCurrentGame,
   selectCurrentQuestionIndex,
   selectCurrentSubTopicIndex,
-  selectCurrentSubTopicProgressId,
   selectCurrentTopicId,
   selectEnableKeyboardShortcuts,
   selectGameDifficultyLevel,
   selectGameMode,
   selectHasRetakenDiagnosticTest,
   selectInAppPurchasedInfo,
-  selectIsCreateNewTest,
   selectIsDataLoaded,
   selectIsGameCompleted,
   selectIsGamePaused,
@@ -150,7 +115,6 @@ export {
   selectPassingThreshold,
   selectPaymentInfo,
   selectRemainingTime,
-  selectShouldLoading,
   selectSubTopics,
   selectSubTopicsId,
   selectTopics,
@@ -168,10 +132,8 @@ export {
   setListReactions,
   setShouldListenKeyboard,
   setTurtGame,
-  shouldCreateNewTest,
   shouldEndTimeTest,
   shouldIsPro,
-  shouldLoading,
   shouldOpenModalLogin,
   shouldOpenSubmitTest,
   startCustomTest,

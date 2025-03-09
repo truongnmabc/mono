@@ -22,7 +22,6 @@ const GridTopicLeft = ({
 }: {
   appShortName: string;
   type?: IGameMode;
-  id?: string;
   topics: ITopicHomeJson[];
 }) => {
   const selectedTopics = useAppSelector(selectTopicsId);
@@ -51,6 +50,7 @@ const GridTopicLeft = ({
               subTopic={subTopic}
               selectedTopics={selectedTopics}
               index={index}
+              topicId={subTopic.id}
             />
           ))}
         </div>
@@ -65,10 +65,12 @@ const Wrapper = ({
   subTopic,
   selectedTopics,
   index,
+  topicId,
 }: {
   subTopic: ITopicHomeJson;
   selectedTopics: number;
   index: number;
+  topicId?: number;
 }) => {
   const isAllowExpand = selectedTopics === subTopic.id;
   const dispatch = useAppDispatch();
@@ -95,7 +97,10 @@ const Wrapper = ({
     <Fragment key={index}>
       <div
         className={ctx(
-          'flex items-center relative p-2 overflow-hidden rounded-md hover:border-primary bg-white h-[52px]  cursor-pointer w-full transition-all  border-solid border border-[#2121211F]'
+          'flex items-center relative p-2 overflow-hidden rounded-md hover:border-primary bg-white h-[52px]  cursor-pointer w-full transition-all  border-solid border border-[#2121211F]',
+          {
+            'border-primary': isAllowExpand,
+          }
         )}
         onClick={handleClick}
       >
@@ -134,7 +139,11 @@ const Wrapper = ({
             {subTopic?.topics &&
               subTopic?.topics?.length > 0 &&
               subTopic?.topics?.map((subTopic, index) => (
-                <TitleCollapse subTopic={subTopic} key={index} />
+                <TitleCollapse
+                  subTopic={subTopic}
+                  key={index}
+                  topicId={topicId}
+                />
               ))}
           </div>
         </div>

@@ -23,7 +23,7 @@ const IconLinkStoreApp = ({
             : '/images/download/download_android.webp'
         }
         classNames={ctx(
-          'icon-download-app  h-[20px] sm:w-[180px] cursor-pointer sm:h-[50px]',
+          'icon-download-app hover:translate-y-[-2px] transition-all duration-300  h-[20px] sm:w-[180px] cursor-pointer sm:h-[50px]',
           classNames
         )}
       />

@@ -26,6 +26,7 @@ type IProps = {
   isCenter?: boolean;
   wrapperClassName?: string;
   defaultQuestionCount?: number;
+  isPracticeTest?: boolean;
   shouldUnlocked?: string;
 };
 
@@ -35,6 +36,7 @@ const AnswerSheet: React.FC<IProps> = ({
   wrapperClassName = 'bg-white',
   defaultQuestionCount = 10,
   shouldUnlocked = 'true',
+  isPracticeTest = false,
 }) => {
   const listQuestion = useAppSelector(selectListQuestion);
 
@@ -59,7 +61,7 @@ const AnswerSheet: React.FC<IProps> = ({
 
   const getClassNames = (q: ICurrentGame, index: number) =>
     ctx(
-      'w-[30px] h-[30px] text-xs rounded transition-all bg-white flex items-center justify-center border border-solid',
+      'w-[30px] h-[30px] text-xs font-normal rounded transition-all bg-white flex items-center justify-center border border-solid',
       {
         'border-red-500': q.localStatus === 'skip',
         'border-[#07C58C] text-white bg-[#07C58C]':
@@ -83,7 +85,12 @@ const AnswerSheet: React.FC<IProps> = ({
         wrapperClassName
       )}
     >
-      <h3 className="font-semibold text-center text-xl truncate font-poppins">
+      <h3
+        className={clsx('font-semibold text-center truncate font-poppins', {
+          ' text-xl': !isPracticeTest,
+          'text-base': isPracticeTest,
+        })}
+      >
         Questions
       </h3>
       <div
@@ -105,7 +112,7 @@ const AnswerSheet: React.FC<IProps> = ({
             }}
             initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.05 }}
+            transition={{ duration: 0.5, delay: index * 0.005 }}
           >
             {index + 1}
           </motion.div>

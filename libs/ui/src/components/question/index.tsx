@@ -1,10 +1,8 @@
 'use client';
 import LazyLoadImage from '@ui/components/images';
-import MtUiSkeleton from '@ui/components/loading-skeleton';
 import { baseImageUrl } from '@ui/constants/index';
-import { useIsMobile } from '@ui/hooks/useIsMobile';
+import { IAppInfo } from '@ui/models/app';
 import { IGameMode } from '@ui/models/tests/tests';
-import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import {
   selectCurrentGame,
   selectCurrentQuestionIndex,
@@ -14,40 +12,31 @@ import { useAppSelector } from '@ui/redux/store';
 import { decrypt } from '@ui/utils/crypto';
 import { MathJax } from 'better-react-mathjax';
 import clsx from 'clsx';
-import { useSearchParams } from 'next/navigation';
 import React, { Fragment, useEffect, useState } from 'react';
 import StatusAnswer from '../statusAnswer';
+import { animate, motion, useMotionValue } from 'framer-motion';
 
+export interface IAnimTextProps {
+  texts: string;
+  className?: string;
+  delay?: number;
+}
 const QuestionContent = ({
   showStatus = true,
   showQuestionsCount = false,
   showShadow,
+  type,
+  appInfo,
+  isMobile,
 }: {
   showStatus?: boolean;
   showShadow?: boolean;
   showQuestionsCount?: boolean;
+  type: IGameMode;
+  appInfo: IAppInfo;
+  isMobile: boolean;
 }) => {
   const currentGame = useAppSelector(selectCurrentGame);
-  const appInfo = useAppSelector(selectAppInfo);
-  const indexGame = useAppSelector(selectCurrentQuestionIndex);
-  const list = useAppSelector(selectListQuestion);
-  const [text, setText] = useState<string>('');
-  const [loading, setLoading] = useState(true);
-  const isMobile = useIsMobile();
-  const type = useSearchParams()?.get('type') as IGameMode;
-
-  useEffect(() => {
-    if (currentGame?.text && currentGame?.id) {
-      try {
-        const content = decrypt(currentGame?.text);
-        setText(content);
-      } catch (err) {
-        console.log('🚀 ~ useEffect ~ err:', err);
-      } finally {
-        setLoading(false);
-      }
-    }
-  }, [currentGame?.id, currentGame?.text]);
 
   return (
     <div
@@ -58,59 +47,89 @@ const QuestionContent = ({
         }
       )}
     >
-      {showStatus && isMobile && <StatusAnswer />}
+      {showStatus && isMobile && (
+        <StatusAnswer localStatus={currentGame?.localStatus} />
+      )}
 
-      {loading && !text ? (
-        <MtUiSkeleton className="min-h-8" />
-      ) : (
-        <Fragment>
-          {(type === 'practiceTests' || showQuestionsCount) && (
-            <div className="flex sm:hidden text-sm font-semibold">
-              Question {indexGame + 1} / {list.length}
-            </div>
-          )}
+      <Fragment>
+        {(type === 'practiceTests' || showQuestionsCount) && <SttText />}
 
-          <div className="w-full flex items-center justify-between">
-            <div className="flex-1">
-              {text && (
-                <MathJax dynamic>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: text,
-                    }}
-                    className="text-sm font-normal sm:text-base math-content"
-                  />
-                </MathJax>
-              )}
-            </div>
-
-            {currentGame?.image && (
-              <div className="flex-shrink-0 ml-4">
-                <LazyLoadImage
-                  key={currentGame?.image}
-                  isPreview
-                  src={`${baseImageUrl}${appInfo.appShortName}/images/${currentGame?.image}`}
-                  alt={currentGame?.image}
-                  classNames="w-16 sm:w-24 cursor-pointer aspect-video min-h-16 max-h-24"
-                />
-              </div>
+        <div className="w-full flex items-center justify-between">
+          <div className="flex-1 min-h-8">
+            {currentGame?.text && (
+              <AnimText
+                key={currentGame?.text}
+                texts={decrypt(currentGame?.text)}
+                className="text-sm font-normal sm:text-base transition-all duration-300 math-content"
+              />
             )}
           </div>
-          {currentGame.parentId !== -1 && (
-            <MathJax dynamic>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: currentGame.paragraph?.text || '',
-                }}
-                className="text-sm font-normal sm:text-base math-content"
+
+          {currentGame?.image && (
+            <div className="flex-shrink-0 ml-4">
+              <LazyLoadImage
+                key={currentGame?.image}
+                isPreview
+                src={`${baseImageUrl}${appInfo.appShortName}/images/${currentGame?.image}`}
+                alt={currentGame?.image}
+                classNames="w-16 sm:w-24 cursor-pointer aspect-video min-h-16 max-h-24"
               />
-            </MathJax>
+            </div>
           )}
-        </Fragment>
+        </div>
+        {currentGame?.paragraph?.text && (
+          <AnimText
+            key={currentGame?.text}
+            texts={currentGame.paragraph?.text}
+            className="text-sm font-normal sm:text-base math-content"
+            delay={0.5}
+          />
+        )}
+      </Fragment>
+      {showStatus && !isMobile && (
+        <StatusAnswer localStatus={currentGame?.localStatus} />
       )}
-      {showStatus && !isMobile && <StatusAnswer />}
     </div>
   );
 };
 
 export default React.memo(QuestionContent);
+
+function AnimText({ texts, className, delay = 0 }: IAnimTextProps) {
+  const count = useMotionValue(0);
+  const [displayText, setDisplayText] = useState('');
+  useEffect(() => {
+    const controls = animate(count, texts.length, {
+      type: 'tween',
+      delay: delay,
+      duration: 1,
+      ease: 'easeInOut',
+
+      onUpdate: (latest) => {
+        setDisplayText(texts.slice(0, Math.round(latest)));
+      },
+    });
+    return controls.stop;
+  }, [texts]);
+
+  return (
+    <MathJax dynamic>
+      <motion.span
+        dangerouslySetInnerHTML={{
+          __html: displayText,
+        }}
+        className={className}
+      />
+    </MathJax>
+  );
+}
+
+const SttText = () => {
+  const indexGame = useAppSelector(selectCurrentQuestionIndex);
+  const list = useAppSelector(selectListQuestion);
+  return (
+    <div className="flex sm:hidden text-sm font-semibold">
+      Question {indexGame + 1} / {list.length}
+    </div>
+  );
+};

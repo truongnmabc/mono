@@ -11,7 +11,6 @@ const PassingProbability = () => {
     const handleGetData = async () => {
       try {
         const passing = await calculatePassingApp();
-        console.log('🚀 ~ handleGetData ~ passing:', passing);
         setPassingValue(passing ? Math.round(passing * 10) / 10 : 0);
       } catch (error) {
         console.error('Error in handleGetData:', error);

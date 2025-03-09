@@ -1,47 +1,57 @@
-// components/Modal/UnlockProModal.tsx
-
 import { TypeParam } from '@ui/constants';
 import RouterApp from '@ui/constants/router.constant';
 import { selectCurrentTopicId } from '@ui/redux/features/game.reselect';
-// import { shouldOpenUnlock } from '@ui/redux/features/tests';
-import finishFinalThunk from '@ui/redux/repository/game/finish/finishFinal';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { MtUiButton } from '../button';
 import DialogResponsive from '../dialogResponsive';
 import LazyLoadImage from '../images';
-// components/Modal/ModalContent.tsx
-const ModalContent = () => {
-  // const { openUnlock } = useAppSelector(testState);
-  const openUnlock = false;
+import { getImageSrc } from '@ui/utils/image';
+import submitTestThunk from '@ui/redux/repository/game/submit/submitTest';
+import { IThunkFunctionReturn } from '@ui/models/other';
+import queryString from 'query-string';
+
+interface GameResult {
+  resultId?: number;
+}
+const ModalContent = ({
+  openModal,
+  setOpenModal,
+}: {
+  openModal: boolean;
+  setOpenModal: (openModal: boolean) => void;
+}) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const testId = useSearchParams()?.get('testId');
-  const id = useAppSelector(selectCurrentTopicId);
 
+  const handleClose = () => {
+    setOpenModal(false);
+  };
   const handleGetPro = () => {
     router.push(RouterApp.Get_pro, {
       scroll: true,
     });
     handleClose();
   };
-  const handleSubmit = () => {
-    const _href = `${RouterApp.ResultTest}?type=${TypeParam.finalTest}&testId=${
-      testId || id
-    }`;
-    router.push(_href, {
-      scroll: true,
-    });
-    dispatch(finishFinalThunk());
-    handleClose();
+  const handleSubmit = async () => {
+    const { meta, payload } = (await dispatch(
+      submitTestThunk()
+    )) as IThunkFunctionReturn<GameResult>;
+    if (meta.requestStatus === 'fulfilled') {
+      const { resultId } = payload;
+      const params = queryString.stringify({
+        gameMode: TypeParam.finalTests,
+        resultId: resultId,
+      });
+      router.replace(`${RouterApp.ResultTest}?${params}`, {
+        scroll: true,
+      });
+    }
   };
 
-  const handleClose = () => {
-    // dispatch(shouldOpenUnlock(false));
-  };
   return (
     <DialogResponsive
-      open={openUnlock}
+      open={openModal}
       close={handleClose}
       dialogRest={{
         PaperProps: {
@@ -83,7 +93,7 @@ const ModalContent = () => {
             onClick={handleGetPro}
           >
             <div className="flex  items-center gap-2">
-              <CrownIconSubmid />
+              <CrownIconGetPro />
               <p className="text-base text-white font-semibold">Get PRO</p>
             </div>
           </MtUiButton>
@@ -106,8 +116,7 @@ const ModalContent = () => {
 };
 export default ModalContent;
 
-// components/Buttons/SubmitButton.tsx
-const CrownIconSubmid = () => {
+const CrownIconGetPro = () => {
   return (
     <svg
       width="18"
@@ -153,7 +162,6 @@ const CrownIconSubmid = () => {
   );
 };
 
-// components/Icons/index.tsx
 const CrownIcon = () => (
   <svg
     width="40"
@@ -204,9 +212,9 @@ const CheckIcon = () => (
     />
   </svg>
 );
-
+const imgSrc = getImageSrc('unlock_party_icon.png');
 const PartyIcon = ({ className }: { className?: string }) => (
-  <LazyLoadImage src="/asvab/happy.png" alt="Party" classNames={className} />
+  <LazyLoadImage src={imgSrc} alt="Party" classNames={className} />
 );
 
 const PaperAirplaneIcon = () => (

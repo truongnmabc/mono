@@ -1,30 +1,39 @@
 import CircleProgress from '@ui/components/circleProgress';
 import LazyLoadImage from '@ui/components/images';
-import { useIsMobile } from '@ui/hooks/useIsMobile';
-import { useAppDispatch } from '@ui/redux/store';
-import { handleNavigateStudy } from '@ui/utils/handleNavigateStudy';
+import { TypeParam } from '@ui/constants';
+import { db } from '@ui/db';
 import { useRouter } from 'next/navigation';
+import queryString from 'query-string';
 import React, { useCallback } from 'react';
+import { toast } from 'react-toastify';
 import { ITopicEndTest } from '../index';
-
 type IProps = {
   item: ITopicEndTest;
+  isMobile: boolean;
 };
 
-const ItemListTopicResult: React.FC<IProps> = ({ item }) => {
+const ItemListTopicResult: React.FC<IProps> = ({ item, isMobile }) => {
   const progress = Math.floor((item.correct / item.totalQuestion) * 100);
   const router = useRouter();
-  const isMobile = useIsMobile();
-  const dispatch = useAppDispatch();
-
-  const handleImprove = useCallback(() => {
-    handleNavigateStudy({
-      dispatch,
-      router,
-      topic: item,
-      isReplace: true,
-    });
-  }, [router, dispatch, item]);
+  const handleImprove = useCallback(async () => {
+    const listTopic = await db?.topics
+      .where('slug')
+      .equals(item.slug || '')
+      .toArray();
+    if (listTopic && listTopic.length) {
+      const currentTopic = listTopic.find((item) => item.status === 0);
+      if (currentTopic) {
+        const params = queryString.stringify({
+          type: TypeParam.learn,
+          topicId: item.id,
+          partId: currentTopic?.id,
+        });
+        router.push(`${item.slug}?${params}`);
+      } else {
+        toast.error('All parts have been studied');
+      }
+    }
+  }, [router, item]);
 
   return (
     <div className="w-full p-4 rounded-xl border border-solid bg-white gap-2 sm:gap-4 flex flex-col sm:flex-row items-center justify-between">

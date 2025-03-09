@@ -1,258 +1,208 @@
-"use client";
-import { IconDelete, IconEdit, IconPlus } from "@/components/icon/iconGridLeft";
-import { TypeParam } from "@/constants";
-import RouterApp from "@/constants/router.constant";
-import { db } from "@/db/db.model";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { ITestBase } from "@/models/tests";
+'use client';
+import { Tooltip } from '@mui/material';
 import {
-    resetState,
-    setCurrentTopicId,
-    setIndexSubTopic,
-} from "@/redux/features/game";
-import {
-    selectCurrentSubTopicIndex,
-    selectIsCreateNewTest,
-    selectIsDataLoaded,
-    selectListQuestion,
-    selectShouldLoading,
-} from "@/redux/features/game.reselect";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import choiceStartCustomTestThunk from "@/redux/repository/game/choiceAnswer/choiceStartTest";
-import { Tooltip } from "@mui/material";
-import clsx from "clsx";
-import { useRouter } from "next/navigation";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
-import ModalDelete from "../modalDelete";
-import ModalSettingCustomTest from "../modalSetting";
+  IconDelete,
+  IconEdit,
+  IconPlus,
+} from '@ui/components/icon/iconGridLeft';
+import { TypeParam } from '@ui/constants';
+import RouterApp from '@ui/constants/router.constant';
+import { db } from '@ui/db';
+import { ITestBase } from '@ui/models/tests';
+import { shouldOpenSetting } from '@ui/redux/features/tests';
+import { selectShouldOpenSetting } from '@ui/redux/features/tests.reselect';
+import { useAppDispatch, useAppSelector } from '@ui/redux/store';
+import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
+import queryString from 'query-string';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import ModalDelete from '../modalDelete';
+const GridLeftCustomTest = ({ testId: id }: { testId: number }) => {
+  const [listTest, setListTest] = useState<ITestBase[]>([]);
+  const [openDelete, setOpenDelete] = React.useState(false);
+  const [itemSelect, setItemSelect] = useState<number>(-1);
+  const [testId, setTestId] = useState(id);
+  const [isLoading, setIsLoading] = useState(0);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const setting = useAppSelector(selectShouldOpenSetting);
 
-const GridLeftCustomTest = () => {
-    const [listTest, setListTest] = useState<ITestBase[]>([]);
-    const [openModalSetting, setOpenModalSetting] = React.useState(false);
-    const [openDelete, setOpenDelete] = React.useState(false);
-    const [itemSelect, setItemSelect] = useState<ITestBase | null>(null);
-    const listQuestion = useAppSelector(selectListQuestion);
-    const dispatch = useAppDispatch();
-    const router = useRouter();
-    const indexSubTopic = useAppSelector(selectCurrentSubTopicIndex);
-    const isDataLoaded = useAppSelector(selectIsDataLoaded);
-    const isLoading = useAppSelector(selectShouldLoading);
-    const isCreateNewTest = useAppSelector(selectIsCreateNewTest);
-    const isMobile = useIsMobile();
+  useEffect(() => {
+    if (id === -1) {
+      const currentTest = listTest?.find((item) => item.status === 0);
+      if (currentTest) setTestId(currentTest.id);
+    }
+    if (id !== -1) setTestId(id);
+  }, [id, listTest]);
+  useEffect(() => {
+    const handleGetData = async () => {
+      const list = await db?.testQuestions
+        .where('gameMode')
+        .equals(TypeParam.customTests)
+        .sortBy('createDate');
 
-    useEffect(() => {
-        if (isCreateNewTest) setOpenModalSetting(true);
-    }, [isCreateNewTest]);
+      const listTest = list?.filter((item) => item.status !== -1);
+      if (listTest?.length) setListTest(listTest);
+    };
+    if (!setting.openModalSetting) handleGetData();
+  }, [isLoading, setting]);
 
-    useEffect(() => {
-        const handleGetData = async () => {
-            const list = await db?.testQuestions
-                .where("gameMode")
-                .equals("customTets")
-                .sortBy("createDate");
+  const handleDelete = useCallback(async () => {
+    if (itemSelect) {
+      await db?.testQuestions.update(itemSelect, {
+        status: -1,
+      });
+      setIsLoading((prev) => prev + 1);
+      setOpenDelete(false);
+    }
+  }, [itemSelect, dispatch]);
 
-            if (list?.length === 0) {
-                setOpenModalSetting(true);
-            }
-            if (list?.length) setListTest(list);
-        };
-        if (listQuestion?.length) {
-            handleGetData();
-            return;
-        }
+  const handleClickChoiceTest = useCallback(
+    async (item: ITestBase, index: number) => {
+      const tests = await db?.testQuestions.get(item.id);
+      if (tests?.status === 1) {
+        const param = queryString.stringify({
+          gameMode: TypeParam.customTests,
+          attemptNumber: tests?.attemptNumber,
+          resultId: item?.id,
+        });
 
-        if (listQuestion?.length === 0 && isDataLoaded)
-            setOpenModalSetting(true);
+        router.replace(`${RouterApp.ResultTest}?${param}`);
+        return;
+      }
 
-        return () => setOpenModalSetting(false);
-    }, [listQuestion, isDataLoaded, isLoading]);
+      const param = queryString.stringify({
+        type: TypeParam.customTests,
+        testId: item?.id,
+      });
 
-    const onClose = useCallback(() => {
-        setOpenModalSetting(false);
-        setItemSelect(null);
-    }, []);
+      router.replace(`${RouterApp.Custom_test}?${param}`);
+    },
+    [dispatch, router]
+  );
 
-    const handleClose = useCallback(() => {
-        setOpenDelete(false);
-    }, []);
-
-    const handleDelete = useCallback(async () => {
-        if (itemSelect) {
-            await db?.testQuestions.where("id").equals(itemSelect?.id).delete();
-
-            const startTest = await db?.testQuestions
-                .where("gameMode")
-                .equals("customTets")
-                .filter((item) => item.status === 0)
-                .first();
-
-            setListTest((prev) => {
-                const updatedList = prev.filter(
-                    (item) => item.id !== itemSelect.id
-                );
-                if (!updatedList.length) {
-                    dispatch(resetState());
-                    setItemSelect(null);
-                } else if (startTest) {
-                    const index = updatedList.findIndex(
-                        (i) => i.id === startTest.id
-                    );
-                    dispatch(setIndexSubTopic(index !== -1 ? index + 1 : 1));
-                }
-                return updatedList;
-            });
-
-            setOpenDelete(false);
-        }
-    }, [itemSelect, dispatch]);
-
-    const handleClickChoiceTest = useCallback(
-        async (item: ITestBase, index: number) => {
-            const tests = await db?.testQuestions.get(item.id);
-            if (tests?.status === 1) {
-                const _href = `${RouterApp.ResultTest}?type=${TypeParam.customTest}&testId=${item.id}`;
-                router.replace(_href);
-                return;
-            }
-
-            dispatch(
-                choiceStartCustomTestThunk({
-                    item: {
-                        ...item,
-                        indexSubTopic: index,
-                    },
-                })
-            );
-            dispatch(setCurrentTopicId(item.id));
-
-            router.replace(`${RouterApp.Custom_test}?testId=${item?.id}`);
-        },
-        [dispatch, router]
+  const handleAddCustomTest = useCallback(() => {
+    dispatch(
+      shouldOpenSetting({
+        openModalSetting: true,
+      })
     );
+  }, []);
 
-    return (
-        <Fragment>
-            {!isMobile && (
-                <Fragment>
-                    <div className="flex justify-between items-center">
-                        <p className="font-semibold text-xl">Custom Test</p>
-                        <Tooltip title="Add Custom Test">
-                            <div
-                                onClick={() => {
-                                    setOpenModalSetting(true);
-                                    setItemSelect(null);
-                                }}
-                                className="w-7 h-7 cursor-pointer rounded-full bg-[#21212114] flex items-center justify-center "
-                            >
-                                <IconPlus />
-                            </div>
-                        </Tooltip>
-                    </div>
-                    {listTest?.length ? (
-                        <div className="flex flex-col gap-3 bg-white p-4 rounded-md">
-                            {listTest?.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className={clsx(
-                                        "flex bg-[#2121210A]   border border-solid rounded-lg px-3 py-[10px] gap-2 justify-between items-center",
-                                        {
-                                            "border-primary":
-                                                indexSubTopic - 1 === index,
-                                        }
-                                    )}
-                                >
-                                    <Tooltip
-                                        title={
-                                            indexSubTopic - 1 !== index
-                                                ? `Start Custom Test ${
-                                                      index + 1
-                                                  }`
-                                                : ""
-                                        }
-                                    >
-                                        <p
-                                            className={clsx(
-                                                "text-sm hover:text-primary cursor-pointer font-medium",
-                                                {
-                                                    "pointer-events-none":
-                                                        indexSubTopic - 1 ===
-                                                        index,
-                                                }
-                                            )}
-                                            onClick={() => {
-                                                handleClickChoiceTest(
-                                                    item,
-                                                    index + 1
-                                                );
-                                            }}
-                                        >
-                                            Custom Test {index + 1}
-                                        </p>
-                                    </Tooltip>
+  const handleEditTest = useCallback(
+    (item: ITestBase) => {
+      dispatch(
+        shouldOpenSetting({
+          openModalSetting: true,
+          testId: item.id,
+          isCurrentTest: testId === item.id,
+          isEdit: true,
+        })
+      );
+    },
+    [testId]
+  );
+  const handleDeleteTest = useCallback((item: ITestBase) => {
+    setOpenDelete(true);
+    setItemSelect(item.id);
+  }, []);
 
-                                    <div className="flex items-center gap-2">
-                                        <Tooltip title="Edit">
-                                            <div
-                                                onClick={() => {
-                                                    setItemSelect(item);
-                                                    setOpenModalSetting(true);
-                                                }}
-                                                className={clsx(
-                                                    "w-6 h-6 rounded flex cursor-pointer hover:bg-primary items-center justify-center bg-[#2121210F]"
-                                                )}
-                                            >
-                                                <IconEdit />
-                                            </div>
-                                        </Tooltip>
-                                        <Tooltip title="Delete">
-                                            <div
-                                                onClick={() => {
-                                                    setItemSelect(item);
-                                                    setOpenDelete(true);
-                                                }}
-                                                className={clsx(
-                                                    "w-6 h-6 rounded flex items-center hover:bg-primary cursor-pointer justify-center bg-[#2121210F]",
-                                                    {
-                                                        "pointer-events-none":
-                                                            indexSubTopic -
-                                                                1 ===
-                                                            index,
-                                                    }
-                                                )}
-                                            >
-                                                <IconDelete />
-                                            </div>
-                                        </Tooltip>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <></>
+  const handleCloseModalDelete = useCallback(() => {
+    setOpenDelete(false);
+    setItemSelect(-1);
+  }, []);
+
+  return (
+    <Fragment>
+      <Fragment>
+        <div className="flex justify-between items-center">
+          <p className="font-semibold text-xl">Custom Test</p>
+          <Tooltip title="Add Custom Test">
+            <div
+              onClick={handleAddCustomTest}
+              className="w-7 h-7 cursor-pointer rounded-full bg-[#21212114] flex items-center justify-center "
+            >
+              <IconPlus />
+            </div>
+          </Tooltip>
+        </div>
+        {listTest?.length ? (
+          <div className="flex flex-col gap-3 bg-white p-4 rounded-md">
+            {listTest?.map((item, index) => (
+              <div
+                key={index}
+                className={clsx(
+                  'flex bg-[#2121210A]   border border-solid rounded-lg px-3 py-[10px] gap-2 justify-between items-center',
+                  {
+                    'border-primary': testId === item.id,
+                  }
+                )}
+              >
+                <Tooltip
+                  title={
+                    testId !== item.id ? `Start Custom Test ${index + 1}` : ''
+                  }
+                >
+                  <p
+                    className={clsx(
+                      'text-sm hover:text-primary cursor-pointer font-medium',
+                      {
+                        'pointer-events-none': testId === item.id,
+                      }
                     )}
-                </Fragment>
-            )}
-            {openDelete && (
-                <ModalDelete
-                    openDelete={openDelete}
-                    handleClose={handleClose}
-                    handleDelete={handleDelete}
-                />
-            )}
-            {openModalSetting ? (
-                <ModalSettingCustomTest
-                    item={itemSelect}
-                    isShowBtnCancel={
-                        !isCreateNewTest &&
-                        (listTest?.length > 0 || listQuestion?.length > 0)
-                    }
-                    open={openModalSetting}
-                    onClose={onClose}
-                    indexSubTopic={listTest?.length + 1}
-                />
-            ) : null}
-        </Fragment>
-    );
+                    onClick={() => {
+                      handleClickChoiceTest(item, index + 1);
+                    }}
+                  >
+                    Custom Test {(item?.index || 0) + 1}
+                  </p>
+                </Tooltip>
+
+                <div className="flex items-center gap-2">
+                  <Tooltip title="Edit">
+                    <div
+                      onClick={() => {
+                        handleEditTest(item);
+                      }}
+                      className={clsx(
+                        'w-6 h-6 rounded flex cursor-pointer hover:bg-primary items-center justify-center bg-[#2121210F]'
+                      )}
+                    >
+                      <IconEdit />
+                    </div>
+                  </Tooltip>
+                  <Tooltip title="Delete">
+                    <div
+                      onClick={() => {
+                        handleDeleteTest(item);
+                      }}
+                      className={clsx(
+                        'w-6 h-6 rounded flex items-center hover:bg-primary cursor-pointer justify-center bg-[#2121210F]',
+                        {
+                          'pointer-events-none': testId === item.id,
+                        }
+                      )}
+                    >
+                      <IconDelete />
+                    </div>
+                  </Tooltip>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
+      </Fragment>
+      {openDelete && (
+        <ModalDelete
+          openDelete={openDelete}
+          handleClose={handleCloseModalDelete}
+          handleDelete={handleDelete}
+        />
+      )}
+    </Fragment>
+  );
 };
 
 export default React.memo(GridLeftCustomTest);

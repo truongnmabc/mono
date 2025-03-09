@@ -12,7 +12,7 @@ const initDataTopics = async (topics, appShortName) =>
 const initDataTest = async (tests) => {
   const allTests = Object.values(tests).flat();
 
-  const list = allTests.map((test) => ({
+  const list = allTests.map((test, index) => ({
     id: test.id,
     totalDuration: test.duration,
     totalQuestion: test.totalQuestion,
@@ -26,6 +26,7 @@ const initDataTest = async (tests) => {
     groupExamData: test.groupExamData.flatMap((g) => g.examData),
     isGamePaused: false,
     createData: Date.now(),
+    index: index,
   }));
 
   return list;
@@ -416,8 +417,8 @@ const getRandomQuestion = (questions) => {
  */
 async function processTestData(topics, tests, appShortName) {
   const listTest = {
-    finalTests: tests.finalTests?.slice(0, 1),
     practiceTests: tests.practiceTests,
+    finalTests: tests.finalTests?.slice(0, 1),
   };
 
   const listTests = await initDataTest(listTest);

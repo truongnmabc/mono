@@ -20,12 +20,12 @@ const ListStudyDrawer = ({
   return (
     <div className="p-3">
       <div
-        className="flex justify-start cursor-pointer gap-4 items-center"
+        className="flex justify-between sm:justify-start cursor-pointer gap-4 items-center"
         onClick={() => {
           setIsExpand(!isExpand);
         }}
       >
-        <div className=" font-poppins text-2xl capitalize font-semibold">
+        <div className=" font-poppins text-xl sm:text-2xl capitalize font-semibold">
           {appShortName} Subtest
         </div>
 
@@ -53,7 +53,7 @@ const ListStudyDrawer = ({
               className="hover:bg-[#2121211f] relative overflow-hidden cursor-pointer"
               onClick={() => setOpenMenuDrawer(false)}
             >
-              <div className="p-2 text-lg capitalize">
+              <div className="p-2 text-sm sm:text-lg capitalize">
                 {item.slug
                   ?.replaceAll('-', ' ')
                   .replace(appShortName, '')
