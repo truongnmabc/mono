@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { IQuestionBase, ITopicBase } from '../type';
+import { IQuestionBase } from '../type';
 
 /**
  * Groups an array of topics into smaller arrays of specified size
@@ -64,7 +64,7 @@ export function generateRandomNegativeId(exclude: number = -1): number {
   let randomId: number;
   do {
     // Generate a UUID, hash it, and convert it to a negative number
-    randomId = -parseInt(uuidv4().replace(/-/g, '').slice(0, 6), 16);
+    randomId = parseInt(uuidv4().replace(/-/g, '').slice(0, 6), 16);
   } while (randomId === exclude);
   return randomId;
 }

@@ -7,23 +7,21 @@ import {
   sendEmailSubscribe,
   verifiedCodeApi,
 } from './home';
-import { saveToDashboardAPI, checkPaypalStatusAPI } from './paypal';
 import { getCountryAPI, getIpFromServer } from './location';
+import { checkPaypalStatusAPI, saveToDashboardAPI } from './paypal';
 import { reportMistakeApi } from './report';
 import { requestGetTitleSeoPage } from './seo';
-import { requestUpdateUserDataToServer } from './sync';
 export {
+  axiosRequest,
+  checkPaypalStatusAPI,
   getAppReviewApi,
+  getCountryAPI,
+  getIpFromServer,
   getSEOAndHeaderContentApi,
+  reportMistakeApi,
+  requestGetTitleSeoPage,
+  saveToDashboardAPI,
   sendEmailApi,
   sendEmailSubscribe,
   verifiedCodeApi,
-  axiosRequest,
-  saveToDashboardAPI,
-  checkPaypalStatusAPI,
-  getCountryAPI,
-  getIpFromServer,
-  reportMistakeApi,
-  requestGetTitleSeoPage,
-  requestUpdateUserDataToServer,
 };

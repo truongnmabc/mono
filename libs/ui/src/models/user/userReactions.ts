@@ -3,6 +3,7 @@ export interface IUserActions {
   userId: number;
   actions: IAction;
   questionId: number;
+  sync?: 0 | 1;
 }
 export class UserActions implements IUserActions {
   userId: number;

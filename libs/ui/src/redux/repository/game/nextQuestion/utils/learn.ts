@@ -1,7 +1,7 @@
 import { db } from '@ui/db';
-import { RootState } from '@ui/redux/store';
 import { IStatusAnswer } from '@ui/models/question';
-import { saveDataDbLearn } from '../../submit/submitTest';
+import { saveDataDbLearn } from '@ui/redux/repository/game/submit/submitTest';
+import { RootState } from '@ui/redux/store';
 
 export const handleNextQuestionLearn = async (gameState: RootState['game']) => {
   const {

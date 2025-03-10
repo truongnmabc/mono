@@ -11,11 +11,11 @@ export const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
   let index = '';
   let isCompleted = false;
   if (!partId) {
-    const list = await db?.topics
+    const core = await db?.topics
       .where('slug')
       .equals(slug || '')
       .sortBy('index');
-
+    const list = core?.filter((item) => item.type === 3);
     const currentPart = list?.find((item) => item.status === 0);
     if (currentPart) {
       id = currentPart.id;

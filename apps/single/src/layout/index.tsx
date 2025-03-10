@@ -6,19 +6,19 @@ import AuthProvider from '@ui/components/layout/authProvider';
 import WrapperScroll from '@ui/components/layout/wrapperScroll';
 import { NavigationEvents } from '@ui/components/progressBar/navigationEvents';
 import { ProgressBar } from '@ui/components/progressBar/progressBar';
+import { SyncData } from '@ui/components/sync';
 import AppThemeProvider from '@ui/components/theme';
 import { initializeDB } from '@ui/db';
 import { IDevice } from '@ui/models/app';
 import { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
+import { setIsDataFetched } from '@ui/redux/features/appInfo';
+import { useAppDispatch } from '@ui/redux/store';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import appConfig from '../data/appConfig.json';
 import appInfos from '../data/appInfos.json';
-import StoreProvider from './StoreProvider';
-import { useAppDispatch } from '@ui/redux/store';
-import { setIsDataFetched } from '@ui/redux/features/appInfo';
 import { useScreenResize } from './resize';
-import { SyncData } from '@ui/components/sync';
+import StoreProvider from './StoreProvider';
 export default function RootLayout({
   children,
   device = 'desktop',
@@ -61,7 +61,7 @@ export default function RootLayout({
           <AuthProvider />
         </WrapperScroll>
         <ToastContainer autoClose={2000} />
-        <SyncData />
+        <SyncData appInfos={appInfos} />
 
         {/* <SheetApp />
         <SyncData />

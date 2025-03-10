@@ -1,11 +1,8 @@
 'use client';
 import { db } from '@ui/db';
-import {
-  selectAppInfo,
-  selectIsDataFetched,
-} from '@ui/redux/features/appInfo.reselect';
+import { IAppInfo } from '@ui/models';
+import { selectIsDataFetched } from '@ui/redux/features/appInfo.reselect';
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
-import { clearDbLocalBeforeSync } from '@ui/redux/repository/sync/clearDbLocalBeforeSync';
 import { syncDown } from '@ui/redux/repository/sync/syncDown';
 import { syncUp } from '@ui/redux/repository/sync/syncUp';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
@@ -14,67 +11,102 @@ import { useCallback, useEffect, useState } from 'react';
 import { MtUiButton } from '../button';
 import DialogResponsive from '../dialogResponsive';
 import { IconArrowRight, SelectIconSync } from './icon';
-export interface IPropsUpdateLogin {
-  has_user_data: boolean;
-  sync_key: string;
-}
 
-const SyncData = () => {
-  const appInfos = useAppSelector(selectAppInfo);
+const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
   const userInfo = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
   const isFetched = useAppSelector(selectIsDataFetched);
   const [isShowPopup, setIsShowPopup] = useState(false);
   const [syncKey, setSyncKey] = useState('');
-  const handleSyncData = useCallback(async () => {
-    if (!userInfo?.id || !appInfos) return;
 
-    const syncData = (await updateLoginStatusAndCheckUserData({
-      appId: appInfos.appId,
-      email: userInfo.email,
-      name: userInfo.name,
-      photoUrl: userInfo.image,
-      phoneNumber: userInfo.phoneNumber,
-      platform: 'web',
-      providerId: 'google',
-      providerData: userInfo.id,
-    })) as unknown as IPropsUpdateLogin;
-    console.log('🚀 ~ handleSyncData ~ syncData:', syncData);
-
-    if (!syncData.has_user_data) return dispatch(syncUp());
-
-    const app = await db?.passingApp.get(-1);
-    if (!app) return dispatch(syncUp());
-
-    if (!app.syncKey || (app.syncKey && syncData.sync_key !== app.syncKey)) {
-      setSyncKey(syncData.sync_key);
-      setIsShowPopup(true);
-    } else {
-      dispatch(syncDown());
-    }
-    return;
-  }, [userInfo, appInfos, dispatch]);
-
-  const handleChoiceDb = async (name: string) => {
-    try {
-      if (name === 'local') {
-        dispatch(syncUp());
-      } else {
-        await dispatch(clearDbLocalBeforeSync());
-        await db?.passingApp.update(-1, {
-          syncKey: syncKey,
-        });
-        dispatch(syncDown());
+  const handleChoiceDb = useCallback(
+    async (name: string) => {
+      try {
+        if (name === 'local') {
+          dispatch(
+            syncUp({
+              syncKey: syncKey,
+            })
+          );
+        } else {
+          dispatch(
+            syncDown({
+              syncKey: syncKey,
+            })
+          );
+          // const result = await dispatch(clearDbLocalBeforeSync());
+          // console.log('🚀 ~ result:', result);
+          // if (result) {
+          //   dispatch(
+          //     syncDown({
+          //       syncKey: syncKey,
+          //     })
+          //   );
+          // }
+        }
+      } catch (err) {
+        console.log('🚀 ~ handleChoiceDb ~ err:', err);
+      } finally {
+        setIsShowPopup(false);
       }
-    } catch (err) {
-      console.log('🚀 ~ handleChoiceDb ~ err:', err);
-    } finally {
-      setIsShowPopup(false);
-    }
-  };
+    },
+    [syncKey]
+  );
   useEffect(() => {
-    if (isFetched) handleSyncData();
-  }, [isFetched, handleSyncData]);
+    const handleSyncData = async () => {
+      if (!userInfo?.id || !appInfos) return;
+
+      const payload = {
+        appId: appInfos.appId,
+        email: userInfo.email,
+        name: userInfo.name,
+        photoUrl: userInfo.image,
+        phoneNumber: userInfo.phoneNumber,
+        platform: 'web',
+        providerId: 'google',
+        providerData: userInfo.id,
+      };
+
+      const [user, app] = await Promise.all([
+        updateLoginStatusAndCheckUserData({
+          payload,
+        }),
+        db?.passingApp.get(-1),
+      ]);
+
+      if (app?.syncKey && user.sync_key !== app.syncKey) {
+        await db?.passingApp.update(-1, {
+          syncKey: user.sync_key,
+        });
+      }
+      // server chưa có thông tin. up lên
+      if (!user.has_user_data || !app)
+        return dispatch(
+          syncUp({
+            syncKey: user.sync_key,
+          })
+        );
+
+      // server có thông tin , local có thông tin, chọn db nào để sync
+      if (app.syncKey && user.sync_key !== app.syncKey) {
+        setSyncKey(user.sync_key);
+        setIsShowPopup(true);
+      } else {
+        // server có thông tin còn local thì không
+        dispatch(
+          syncDown({
+            syncKey: user.sync_key,
+          })
+        );
+      }
+      return;
+    };
+    if (isFetched) {
+      setTimeout(() => {
+        handleSyncData();
+      }, 1000);
+    }
+  }, [isFetched, userInfo, appInfos]);
   const handleClose = () => setIsShowPopup(false);
   return (
     <DialogResponsive

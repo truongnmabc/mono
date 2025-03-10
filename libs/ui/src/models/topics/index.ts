@@ -6,7 +6,8 @@ export interface ITopicBase {
   tag: string;
   // Nôị dung có phải do ai render ra không: 0 là không, 1 là có
   contentType: number;
-  topics: ITopicBase[];
+  // topics: ITopicBase[];
+  topics: [];
   slug?: string;
   //  Các phần của topic đã hoàn thành hết chưa
   status: number;
@@ -17,4 +18,6 @@ export interface ITopicBase {
   turn: number;
   partId: number;
   index: string;
+  sync?: 0 | 1;
+  type?: number;
 }

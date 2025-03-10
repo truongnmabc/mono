@@ -21,7 +21,18 @@ const initData = async () => {
     const txRead = db.transaction('passingApp', 'readonly');
     const passingStore = txRead.objectStore('passingApp');
     const countRequest = passingStore.count();
+    const generateSyncKey = () => {
+      const now = new Date();
 
+      // Lấy năm, tháng, ngày, phút hiện tại
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // Tháng từ 0-11, cần +1
+      const day = String(now.getDate()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+
+      // Format thành "WEB.YYYYMMDD-mm"
+      return `WEB-${year}${month}${day}-${minutes}`;
+    };
     countRequest.onsuccess = async () => {
       const count = countRequest.result;
       if (count > 0) {
@@ -54,7 +65,10 @@ const initData = async () => {
           );
 
           // Lưu dữ liệu vào bảng passingApp
-          txWrite.objectStore('passingApp').put(passingData);
+          txWrite.objectStore('passingApp').put({
+            ...passingData,
+            syncKey: generateSyncKey(),
+          });
 
           // Lưu dữ liệu vào bảng testQuestions
           const testsStore = txWrite.objectStore('testQuestions');

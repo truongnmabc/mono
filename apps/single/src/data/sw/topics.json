@@ -1,7 +1,39 @@
 [
   {
+    "id": 4643957105491968,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
+    "tag": "mechanical-comprehension",
+    "contentType": 0,
+    "name": "Mechanical Comprehension",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-mechanical-comprehension-practice-test",
+    "totalQuestion": 126,
+    "averageLevel": 58.111111111111114,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 5666897542512640,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
+    "tag": "machines",
+    "contentType": 0,
+    "name": "Machines",
+    "parentId": 4643957105491968,
+    "slug": "asvab-mechanical-comprehension-practice-test",
+    "topics": [],
+    "totalQuestion": 68,
+    "averageLevel": 56.470588235294116,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
+  },
+  {
     "id": 4596897775878144,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "machines-extended-3",
     "contentType": 1,
     "name": "Machines Extended 3",
@@ -12,11 +44,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 5080679536656384,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "machines-2",
     "contentType": 0,
     "name": "Machines 2",
@@ -27,11 +60,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 58.5,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 5643629490077696,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "machines-1",
     "contentType": 0,
     "name": "Machines 1",
@@ -42,11 +76,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 62.1,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
   },
   {
     "id": 6070407060783104,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "machines-extended-2",
     "contentType": 1,
     "name": "Machines Extended 2",
@@ -57,11 +92,12 @@
     "turn": 1,
     "totalQuestion": 9,
     "averageLevel": 50,
-    "index": "1.3"
+    "index": "1.3",
+    "type": 3
   },
   {
     "id": 6206579443499008,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "machines-3",
     "contentType": 0,
     "name": "Machines 3",
@@ -72,11 +108,12 @@
     "turn": 1,
     "totalQuestion": 18,
     "averageLevel": 63,
-    "index": "1.4"
+    "index": "1.4",
+    "type": 3
   },
   {
     "id": 6686581456896000,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "machines-extended-1",
     "contentType": 1,
     "name": "Machines Extended 1",
@@ -87,11 +124,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.5"
+    "index": "1.5",
+    "type": 3
+  },
+  {
+    "id": 5746080767541248,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
+    "tag": "fundamentals-of-mechanics",
+    "contentType": 0,
+    "name": "Fundamentals of Mechanics",
+    "parentId": 4643957105491968,
+    "slug": "asvab-mechanical-comprehension-practice-test",
+    "topics": [],
+    "totalQuestion": 58,
+    "averageLevel": 60.03448275862069,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 4799204559945728,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "fundamentals-of-mechanics-1",
     "contentType": 0,
     "name": "Fundamentals of Mechanics 1",
@@ -102,11 +156,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 65,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 5362154513367040,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "fundamentals-of-mechanics-3",
     "contentType": 0,
     "name": "Fundamentals of Mechanics 3",
@@ -117,11 +172,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 60.9,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
   },
   {
     "id": 5668232136491008,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "fundamentals-of-mechanics-extended-1",
     "contentType": 1,
     "name": "Fundamentals of Mechanics Extended 1",
@@ -132,11 +188,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "2.2"
+    "index": "2.2",
+    "type": 3
   },
   {
     "id": 5925104466788352,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "fundamentals-of-mechanics-2",
     "contentType": 0,
     "name": "Fundamentals of Mechanics 2",
@@ -147,11 +204,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 56.8,
-    "index": "2.3"
+    "index": "2.3",
+    "type": 3
   },
   {
     "id": 6488054420209664,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-comprehension.svg",
     "tag": "fundamentals-of-mechanics-4",
     "contentType": 0,
     "name": "Fundamentals of Mechanics 4",
@@ -162,11 +220,44 @@
     "turn": 1,
     "totalQuestion": 17,
     "averageLevel": 65,
-    "index": "2.4"
+    "index": "2.4",
+    "type": 3
+  },
+  {
+    "id": 4830925621821440,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
+    "tag": "assembling-objects",
+    "contentType": 0,
+    "name": "Assembling Objects",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-assembling-objects-practice-test",
+    "totalQuestion": 55,
+    "averageLevel": 82.0909090909091,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 5141998918959104,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
+    "tag": "connection-items",
+    "contentType": 0,
+    "name": "Connection Items",
+    "parentId": 4830925621821440,
+    "slug": "asvab-assembling-objects-practice-test",
+    "topics": [],
+    "totalQuestion": 31,
+    "averageLevel": 82.80645161290323,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
   },
   {
     "id": 5155304660533248,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
     "tag": "connection-items-2",
     "contentType": 0,
     "name": "Connection Items 2",
@@ -177,11 +268,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 85.1,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 5718254613954560,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
     "tag": "connection-items-1",
     "contentType": 0,
     "name": "Connection Items 1",
@@ -192,11 +284,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 84.1,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 6281204567375872,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
     "tag": "connection-items-3",
     "contentType": 0,
     "name": "Connection Items 3",
@@ -207,11 +300,28 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 79.54545454545455,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
+  },
+  {
+    "id": 5144478012669952,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
+    "tag": "puzzle-items",
+    "contentType": 0,
+    "name": "Puzzle Items",
+    "parentId": 4830925621821440,
+    "slug": "asvab-assembling-objects-practice-test",
+    "topics": [],
+    "totalQuestion": 24,
+    "averageLevel": 81.16666666666667,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 4873829683822592,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
     "tag": "puzzle-items-1",
     "contentType": 0,
     "name": "Puzzle Items 1",
@@ -222,11 +332,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 80.7,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 5999729590665216,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/assembling-objects.svg",
     "tag": "puzzle-items-2",
     "contentType": 0,
     "name": "Puzzle Items 2",
@@ -237,11 +348,44 @@
     "turn": 1,
     "totalQuestion": 14,
     "averageLevel": 81.5,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
+  },
+  {
+    "id": 5533861310103552,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+    "tag": "general-science",
+    "contentType": 0,
+    "name": "General Science",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-general-science-practice-test",
+    "totalQuestion": 283,
+    "averageLevel": 56.03180212014134,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 5749048187289600,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+    "tag": "earth-science",
+    "contentType": 0,
+    "name": "Earth Science",
+    "parentId": 5533861310103552,
+    "slug": "asvab-general-science-practice-test",
+    "topics": [],
+    "totalQuestion": 54,
+    "averageLevel": 58.351851851851855,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
   },
   {
     "id": 4583197996220416,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "earth-science-extended-2",
     "contentType": 1,
     "name": "Earth Science Extended 2",
@@ -252,11 +396,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 4678659726114816,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "earth-science-1",
     "contentType": 0,
     "name": "Earth Science 1",
@@ -267,11 +412,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 71.1,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 5804559632957440,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "earth-science-2",
     "contentType": 0,
     "name": "Earth Science 2",
@@ -282,11 +428,12 @@
     "turn": 1,
     "totalQuestion": 13,
     "averageLevel": 68.46153846153847,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
   },
   {
     "id": 5946170165690368,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "earth-science-extended-1",
     "contentType": 1,
     "name": "Earth Science Extended 1",
@@ -297,11 +444,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.3"
+    "index": "1.3",
+    "type": 3
   },
   {
     "id": 6483823432826880,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "earth-science-extended-3",
     "contentType": 1,
     "name": "Earth Science Extended 3",
@@ -312,11 +460,28 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "1.4"
+    "index": "1.4",
+    "type": 3
+  },
+  {
+    "id": 5913375045320704,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+    "tag": "ecology",
+    "contentType": 0,
+    "name": "Ecology",
+    "parentId": 5533861310103552,
+    "slug": "asvab-general-science-practice-test",
+    "topics": [],
+    "totalQuestion": 45,
+    "averageLevel": 54.977777777777774,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 5964665075007488,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "ecology-extended-3",
     "contentType": 1,
     "name": "Ecology Extended 3",
@@ -327,11 +492,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 6117465406832640,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "ecology-extended-1",
     "contentType": 1,
     "name": "Ecology Extended 1",
@@ -342,11 +508,12 @@
     "turn": 1,
     "totalQuestion": 15,
     "averageLevel": 50,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
   },
   {
     "id": 6367509586378752,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "ecology-1",
     "contentType": 0,
     "name": "Ecology 1",
@@ -357,11 +524,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 72.4,
-    "index": "2.2"
+    "index": "2.2",
+    "type": 3
   },
   {
     "id": 6558426519830528,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "ecology-extended-2",
     "contentType": 1,
     "name": "Ecology Extended 2",
@@ -372,11 +540,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.3"
+    "index": "2.3",
+    "type": 3
+  },
+  {
+    "id": 5978274081538048,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+    "tag": "nutrition--health",
+    "contentType": 0,
+    "name": "Nutrition & Health",
+    "parentId": 5533861310103552,
+    "slug": "asvab-general-science-practice-test",
+    "topics": [],
+    "totalQuestion": 39,
+    "averageLevel": 52.17948717948718,
+    "status": 0,
+    "turn": 1,
+    "index": "3.0",
+    "type": 2
   },
   {
     "id": 4972937287303168,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "nutrition--health-extended-3",
     "contentType": 1,
     "name": "Nutrition & Health Extended 3",
@@ -387,11 +572,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.0"
+    "index": "3.0",
+    "type": 3
   },
   {
     "id": 5023671991140352,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "nutrition--health-1",
     "contentType": 0,
     "name": "Nutrition & Health 1",
@@ -402,11 +588,12 @@
     "turn": 1,
     "totalQuestion": 9,
     "averageLevel": 59.44444444444444,
-    "index": "3.1"
+    "index": "3.1",
+    "type": 3
   },
   {
     "id": 5461107028262912,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "nutrition--health-extended-1",
     "contentType": 1,
     "name": "Nutrition & Health Extended 1",
@@ -417,11 +604,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.2"
+    "index": "3.2",
+    "type": 3
   },
   {
     "id": 6413265819140096,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "nutrition--health-extended-2",
     "contentType": 1,
     "name": "Nutrition & Health Extended 2",
@@ -432,11 +620,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.3"
+    "index": "3.3",
+    "type": 3
+  },
+  {
+    "id": 5998439892516864,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+    "tag": "cellular-biology",
+    "contentType": 0,
+    "name": "Cellular Biology",
+    "parentId": 5533861310103552,
+    "slug": "asvab-general-science-practice-test",
+    "topics": [],
+    "totalQuestion": 41,
+    "averageLevel": 54.53658536585366,
+    "status": 0,
+    "turn": 1,
+    "index": "4.0",
+    "type": 2
   },
   {
     "id": 5618955666325504,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "cellular-biology-extended-1",
     "contentType": 1,
     "name": "Cellular Biology Extended 1",
@@ -447,11 +652,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "4.0"
+    "index": "4.0",
+    "type": 3
   },
   {
     "id": 6316508795895808,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "cellular-biology-extended-2",
     "contentType": 1,
     "name": "Cellular Biology Extended 2",
@@ -462,11 +668,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "4.1"
+    "index": "4.1",
+    "type": 3
   },
   {
     "id": 6350790444711936,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "cellular-biology-extended-3",
     "contentType": 1,
     "name": "Cellular Biology Extended 3",
@@ -477,11 +684,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "4.2"
+    "index": "4.2",
+    "type": 3
   },
   {
     "id": 6508247074734080,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "cellular-biology-1",
     "contentType": 0,
     "name": "Cellular Biology 1",
@@ -492,11 +700,28 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 66.9090909090909,
-    "index": "4.3"
+    "index": "4.3",
+    "type": 3
+  },
+  {
+    "id": 6195848736145408,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+    "tag": "human-body-systems",
+    "contentType": 0,
+    "name": "Human Body Systems",
+    "parentId": 5533861310103552,
+    "slug": "asvab-general-science-practice-test",
+    "topics": [],
+    "totalQuestion": 44,
+    "averageLevel": 54.45454545454545,
+    "status": 0,
+    "turn": 1,
+    "index": "5.0",
+    "type": 2
   },
   {
     "id": 5160459317542912,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "human-body-systems-extended-3",
     "contentType": 1,
     "name": "Human Body Systems Extended 3",
@@ -507,11 +732,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "5.0"
+    "index": "5.0",
+    "type": 3
   },
   {
     "id": 5241609679536128,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "human-body-systems-1",
     "contentType": 0,
     "name": "Human Body Systems 1",
@@ -522,11 +748,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 67.81818181818181,
-    "index": "5.1"
+    "index": "5.1",
+    "type": 3
   },
   {
     "id": 5603096768020480,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "human-body-systems-extended-1",
     "contentType": 1,
     "name": "Human Body Systems Extended 1",
@@ -537,11 +764,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "5.2"
+    "index": "5.2",
+    "type": 3
   },
   {
     "id": 6588707205283840,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "human-body-systems-extended-2",
     "contentType": 1,
     "name": "Human Body Systems Extended 2",
@@ -552,11 +780,28 @@
     "turn": 1,
     "totalQuestion": 12,
     "averageLevel": 50,
-    "index": "5.3"
+    "index": "5.3",
+    "type": 3
+  },
+  {
+    "id": 6321939983368192,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
+    "tag": "physical-science",
+    "contentType": 0,
+    "name": "Physical Science",
+    "parentId": 5533861310103552,
+    "slug": "asvab-general-science-practice-test",
+    "topics": [],
+    "totalQuestion": 60,
+    "averageLevel": 59.416666666666664,
+    "status": 0,
+    "turn": 1,
+    "index": "6.0",
+    "type": 2
   },
   {
     "id": 4819397214470144,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "physical-science-1",
     "contentType": 0,
     "name": "Physical Science 1",
@@ -567,11 +812,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 62.2,
-    "index": "6.0"
+    "index": "6.0",
+    "type": 3
   },
   {
     "id": 5382347167891456,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "physical-science-3",
     "contentType": 0,
     "name": "Physical Science 3",
@@ -582,11 +828,12 @@
     "turn": 1,
     "totalQuestion": 17,
     "averageLevel": 65.17647058823529,
-    "index": "6.1"
+    "index": "6.1",
+    "type": 3
   },
   {
     "id": 5639004573663232,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "physical-science-extended-2",
     "contentType": 1,
     "name": "Physical Science Extended 2",
@@ -597,11 +844,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "6.2"
+    "index": "6.2",
+    "type": 3
   },
   {
     "id": 5945297121312768,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "physical-science-2",
     "contentType": 0,
     "name": "Physical Science 2",
@@ -612,11 +860,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 68.5,
-    "index": "6.3"
+    "index": "6.3",
+    "type": 3
   },
   {
     "id": 6572076420825088,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/general-science.svg",
     "tag": "physical-science-extended-1",
     "contentType": 1,
     "name": "Physical Science Extended 1",
@@ -627,11 +876,44 @@
     "turn": 1,
     "totalQuestion": 13,
     "averageLevel": 50,
-    "index": "6.4"
+    "index": "6.4",
+    "type": 3
+  },
+  {
+    "id": 5549399260266496,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
+    "tag": "electronics-information",
+    "contentType": 0,
+    "name": "Electronics Information",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-electronics-information-practice-test",
+    "totalQuestion": 118,
+    "averageLevel": 56.80508474576271,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 5710226380554240,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
+    "tag": "electricity",
+    "contentType": 0,
+    "name": "Electricity",
+    "parentId": 5549399260266496,
+    "slug": "asvab-electronics-information-practice-test",
+    "topics": [],
+    "totalQuestion": 64,
+    "averageLevel": 57.53125,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
   },
   {
     "id": 4784910975893504,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electricity-4",
     "contentType": 0,
     "name": "Electricity 4",
@@ -642,11 +924,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 56.5,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 5488598417670144,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electricity-2",
     "contentType": 0,
     "name": "Electricity 2",
@@ -657,11 +940,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 58.6,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 5910810882736128,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electricity-5",
     "contentType": 0,
     "name": "Electricity 5",
@@ -672,11 +956,12 @@
     "turn": 1,
     "totalQuestion": 13,
     "averageLevel": 59.30769230769231,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
   },
   {
     "id": 6051548371091456,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electricity-1",
     "contentType": 0,
     "name": "Electricity 1",
@@ -687,11 +972,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 60.8,
-    "index": "1.3"
+    "index": "1.3",
+    "type": 3
   },
   {
     "id": 6614498324512768,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electricity-3",
     "contentType": 0,
     "name": "Electricity 3",
@@ -702,11 +988,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 60.2,
-    "index": "1.4"
+    "index": "1.4",
+    "type": 3
   },
   {
     "id": 6638202945273856,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electricity-extended-1",
     "contentType": 1,
     "name": "Electricity Extended 1",
@@ -717,11 +1004,28 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "1.5"
+    "index": "1.5",
+    "type": 3
+  },
+  {
+    "id": 5737078717415424,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
+    "tag": "electrical-systems",
+    "contentType": 0,
+    "name": "Electrical Systems",
+    "parentId": 5549399260266496,
+    "slug": "asvab-electronics-information-practice-test",
+    "topics": [],
+    "totalQuestion": 54,
+    "averageLevel": 55.94444444444444,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 4925648464248832,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electrical-systems-4",
     "contentType": 0,
     "name": "Electrical Systems 4",
@@ -732,11 +1036,12 @@
     "turn": 1,
     "totalQuestion": 14,
     "averageLevel": 59.214285714285715,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 5207123440959488,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electrical-systems-2",
     "contentType": 0,
     "name": "Electrical Systems 2",
@@ -747,11 +1052,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 55.4,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
   },
   {
     "id": 5518281632907264,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electrical-systems-extended-1",
     "contentType": 1,
     "name": "Electrical Systems Extended 1",
@@ -762,11 +1068,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.2"
+    "index": "2.2",
+    "type": 3
   },
   {
     "id": 5770073394380800,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electrical-systems-1",
     "contentType": 0,
     "name": "Electrical Systems 1",
@@ -777,11 +1084,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 58.1,
-    "index": "2.3"
+    "index": "2.3",
+    "type": 3
   },
   {
     "id": 6333023347802112,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electronics-information.svg",
     "tag": "electrical-systems-3",
     "contentType": 0,
     "name": "Electrical Systems 3",
@@ -792,11 +1100,44 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 55.7,
-    "index": "2.4"
+    "index": "2.4",
+    "type": 3
+  },
+  {
+    "id": 5861375517655040,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
+    "tag": "auto-and-shop-information",
+    "contentType": 0,
+    "name": "Auto and Shop Information",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-auto-and-shop-information-practice-test",
+    "totalQuestion": 212,
+    "averageLevel": 59.471698113207545,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 5100952218501120,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
+    "tag": "mechanical-systems",
+    "contentType": 0,
+    "name": "Mechanical Systems",
+    "parentId": 5861375517655040,
+    "slug": "asvab-auto-and-shop-information-practice-test",
+    "topics": [],
+    "totalQuestion": 43,
+    "averageLevel": 55.44186046511628,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
   },
   {
     "id": 4690630965985280,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "mechanical-systems-extended-3",
     "contentType": 1,
     "name": "Mechanical Systems Extended 3",
@@ -807,11 +1148,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 4698664433876992,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "mechanical-systems-extended-1",
     "contentType": 1,
     "name": "Mechanical Systems Extended 1",
@@ -822,11 +1164,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 5582728330215424,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "mechanical-systems-extended-2",
     "contentType": 1,
     "name": "Mechanical Systems Extended 2",
@@ -837,11 +1180,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
   },
   {
     "id": 6226772098023424,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "mechanical-systems-1",
     "contentType": 0,
     "name": "Mechanical Systems 1",
@@ -852,11 +1196,28 @@
     "turn": 1,
     "totalQuestion": 12,
     "averageLevel": 69.5,
-    "index": "1.3"
+    "index": "1.3",
+    "type": 3
+  },
+  {
+    "id": 5734393758875648,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
+    "tag": "metal-shop",
+    "contentType": 0,
+    "name": "Metal Shop",
+    "parentId": 5861375517655040,
+    "slug": "asvab-auto-and-shop-information-practice-test",
+    "topics": [],
+    "totalQuestion": 48,
+    "averageLevel": 56.895833333333336,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 4888261377916928,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "metal-shop-extended-2",
     "contentType": 1,
     "name": "Metal Shop Extended 2",
@@ -867,11 +1228,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 5100872191180800,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "metal-shop-1",
     "contentType": 0,
     "name": "Metal Shop 1",
@@ -882,11 +1244,12 @@
     "turn": 1,
     "totalQuestion": 17,
     "averageLevel": 69.47058823529412,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
   },
   {
     "id": 5463924526809088,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "metal-shop-extended-1",
     "contentType": 1,
     "name": "Metal Shop Extended 1",
@@ -897,11 +1260,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "2.2"
+    "index": "2.2",
+    "type": 3
   },
   {
     "id": 6380715671289856,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "metal-shop-extended-3",
     "contentType": 1,
     "name": "Metal Shop Extended 3",
@@ -912,11 +1276,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.3"
+    "index": "2.3",
+    "type": 3
+  },
+  {
+    "id": 5749266223988736,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
+    "tag": "woodworking",
+    "contentType": 0,
+    "name": "Woodworking",
+    "parentId": 5861375517655040,
+    "slug": "asvab-auto-and-shop-information-practice-test",
+    "topics": [],
+    "totalQuestion": 50,
+    "averageLevel": 55.88,
+    "status": 0,
+    "turn": 1,
+    "index": "3.0",
+    "type": 2
   },
   {
     "id": 4537922237759488,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "woodworking-1",
     "contentType": 0,
     "name": "Woodworking 1",
@@ -927,11 +1308,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 63.9,
-    "index": "3.0"
+    "index": "3.0",
+    "type": 3
   },
   {
     "id": 4766215679508480,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "woodworking-extended-2",
     "contentType": 1,
     "name": "Woodworking Extended 2",
@@ -942,11 +1324,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.1"
+    "index": "3.1",
+    "type": 3
   },
   {
     "id": 5026661288378368,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "woodworking-extended-1",
     "contentType": 1,
     "name": "Woodworking Extended 1",
@@ -957,11 +1340,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.2"
+    "index": "3.2",
+    "type": 3
   },
   {
     "id": 5663822144602112,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "woodworking-2",
     "contentType": 0,
     "name": "Woodworking 2",
@@ -972,11 +1356,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 65.5,
-    "index": "3.3"
+    "index": "3.3",
+    "type": 3
   },
   {
     "id": 5691986191319040,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "woodworking-extended-3",
     "contentType": 1,
     "name": "Woodworking Extended 3",
@@ -987,11 +1372,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.4"
+    "index": "3.4",
+    "type": 3
+  },
+  {
+    "id": 6018553694126080,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
+    "tag": "automotive-knowledge",
+    "contentType": 0,
+    "name": "Automotive Knowledge",
+    "parentId": 5861375517655040,
+    "slug": "asvab-auto-and-shop-information-practice-test",
+    "topics": [],
+    "totalQuestion": 71,
+    "averageLevel": 66.1830985915493,
+    "status": 0,
+    "turn": 1,
+    "index": "4.0",
+    "type": 2
   },
   {
     "id": 5048095633047552,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "automotive-knowledge-3",
     "contentType": 0,
     "name": "Automotive Knowledge 3",
@@ -1002,11 +1404,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 64.3,
-    "index": "4.0"
+    "index": "4.0",
+    "type": 3
   },
   {
     "id": 5216035095445504,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "automotive-knowledge-extended-1",
     "contentType": 1,
     "name": "Automotive Knowledge Extended 1",
@@ -1017,11 +1420,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "4.1"
+    "index": "4.1",
+    "type": 3
   },
   {
     "id": 5329570609758208,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "automotive-knowledge-1",
     "contentType": 0,
     "name": "Automotive Knowledge 1",
@@ -1032,11 +1436,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 69.6,
-    "index": "4.2"
+    "index": "4.2",
+    "type": 3
   },
   {
     "id": 5611045586468864,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "automotive-knowledge-5",
     "contentType": 0,
     "name": "Automotive Knowledge 5",
@@ -1047,11 +1452,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 67.5,
-    "index": "4.3"
+    "index": "4.3",
+    "type": 3
   },
   {
     "id": 6173995539890176,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "automotive-knowledge-4",
     "contentType": 0,
     "name": "Automotive Knowledge 4",
@@ -1062,11 +1468,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 72.4,
-    "index": "4.4"
+    "index": "4.4",
+    "type": 3
   },
   {
     "id": 6455470516600832,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "automotive-knowledge-2",
     "contentType": 0,
     "name": "Automotive Knowledge 2",
@@ -1077,11 +1484,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 71.1,
-    "index": "4.5"
+    "index": "4.5",
+    "type": 3
   },
   {
     "id": 6736945493311488,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/auto-and-shop-information.svg",
     "tag": "automotive-knowledge-6",
     "contentType": 0,
     "name": "Automotive Knowledge 6",
@@ -1092,11 +1500,44 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 68.18181818181819,
-    "index": "4.6"
+    "index": "4.6",
+    "type": 3
+  },
+  {
+    "id": 5878262490202112,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "arithmetic-reasoning",
+    "contentType": 0,
+    "name": "Arithmetic Reasoning",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "totalQuestion": 601,
+    "averageLevel": 50.803660565723796,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 5078480647618560,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "fraction",
+    "contentType": 0,
+    "name": "Fraction",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 56,
+    "averageLevel": 49.482142857142854,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
   },
   {
     "id": 4726139650048000,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "fraction-extended-3",
     "contentType": 1,
     "name": "Fraction Extended 3",
@@ -1107,11 +1548,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 5119311651799040,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "fraction-extended-2",
     "contentType": 1,
     "name": "Fraction Extended 2",
@@ -1122,11 +1564,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 5486345732489216,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "fraction-extended-1",
     "contentType": 1,
     "name": "Fraction Extended 1",
@@ -1137,11 +1580,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
   },
   {
     "id": 5542332753510400,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "fraction-1",
     "contentType": 0,
     "name": "Fraction 1",
@@ -1152,11 +1596,12 @@
     "turn": 1,
     "totalQuestion": 9,
     "averageLevel": 49.77777777777778,
-    "index": "1.3"
+    "index": "1.3",
+    "type": 3
   },
   {
     "id": 6668232660353024,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "fraction-2",
     "contentType": 0,
     "name": "Fraction 2",
@@ -1167,11 +1612,28 @@
     "turn": 1,
     "totalQuestion": 14,
     "averageLevel": 48.07142857142857,
-    "index": "1.4"
+    "index": "1.4",
+    "type": 3
+  },
+  {
+    "id": 5093201379590144,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "statistics",
+    "contentType": 0,
+    "name": "Statistics",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 53,
+    "averageLevel": 50.39622641509434,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 4872818244190208,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "statistics-extended-2",
     "contentType": 1,
     "name": "Statistics Extended 2",
@@ -1182,11 +1644,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 4966711639932928,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "statistics-extended-3",
     "contentType": 1,
     "name": "Statistics Extended 3",
@@ -1197,11 +1660,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
   },
   {
     "id": 4979382800089088,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "statistics-1",
     "contentType": 0,
     "name": "Statistics 1",
@@ -1212,11 +1676,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 55.7,
-    "index": "2.2"
+    "index": "2.2",
+    "type": 3
   },
   {
     "id": 6083847531790336,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "statistics-extended-1",
     "contentType": 1,
     "name": "Statistics Extended 1",
@@ -1227,11 +1692,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "2.3"
+    "index": "2.3",
+    "type": 3
   },
   {
     "id": 6105282706931712,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "statistics-2",
     "contentType": 0,
     "name": "Statistics 2",
@@ -1242,11 +1708,28 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 46.72727272727273,
-    "index": "2.4"
+    "index": "2.4",
+    "type": 3
+  },
+  {
+    "id": 5366063965405184,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "distance-rate--time",
+    "contentType": 0,
+    "name": "Distance, Rate, & Time",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 57,
+    "averageLevel": 50.45614035087719,
+    "status": 0,
+    "turn": 1,
+    "index": "3.0",
+    "type": 2
   },
   {
     "id": 4627539079200768,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "distance,-rate,-&-time-1",
     "contentType": 0,
     "name": "Distance, Rate, & Time 1",
@@ -1257,11 +1740,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 49.8,
-    "index": "3.0"
+    "index": "3.0",
+    "type": 3
   },
   {
     "id": 5165552922263552,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "distance-rate--time-extended-1",
     "contentType": 1,
     "name": "Distance, Rate, & Time Extended 1",
@@ -1272,11 +1756,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "3.1"
+    "index": "3.1",
+    "type": 3
   },
   {
     "id": 5595905113718784,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "distance-rate--time-extended-3",
     "contentType": 1,
     "name": "Distance, Rate, & Time Extended 3",
@@ -1287,11 +1772,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "3.2"
+    "index": "3.2",
+    "type": 3
   },
   {
     "id": 5753438986043392,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "distance,-rate,-&-time-2",
     "contentType": 0,
     "name": "Distance, Rate, & Time 2",
@@ -1302,11 +1788,12 @@
     "turn": 1,
     "totalQuestion": 14,
     "averageLevel": 52,
-    "index": "3.3"
+    "index": "3.3",
+    "type": 3
   },
   {
     "id": 6515234273492992,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "distance-rate--time-extended-2",
     "contentType": 1,
     "name": "Distance, Rate, & Time Extended 2",
@@ -1317,11 +1804,28 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "3.4"
+    "index": "3.4",
+    "type": 3
+  },
+  {
+    "id": 5646081379532800,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "math-operations",
+    "contentType": 0,
+    "name": "Math Operations",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 89,
+    "averageLevel": 56,
+    "status": 0,
+    "turn": 1,
+    "index": "4.0",
+    "type": 2
   },
   {
     "id": 4768276567556096,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "math-operations-7",
     "contentType": 0,
     "name": "Math Operations 7",
@@ -1332,11 +1836,12 @@
     "turn": 1,
     "totalQuestion": 19,
     "averageLevel": 57.94736842105263,
-    "index": "4.0"
+    "index": "4.0",
+    "type": 3
   },
   {
     "id": 4909014055911424,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "math-operations-3",
     "contentType": 0,
     "name": "Math Operations 3",
@@ -1347,11 +1852,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 60.4,
-    "index": "4.1"
+    "index": "4.1",
+    "type": 3
   },
   {
     "id": 5190489032622080,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "math-operations-1",
     "contentType": 0,
     "name": "Math Operations 1",
@@ -1362,11 +1868,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 54.5,
-    "index": "4.2"
+    "index": "4.2",
+    "type": 3
   },
   {
     "id": 5471964009332736,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "math-operations-5",
     "contentType": 0,
     "name": "Math Operations 5",
@@ -1377,11 +1884,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 56.9,
-    "index": "4.3"
+    "index": "4.3",
+    "type": 3
   },
   {
     "id": 6034913962754048,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "math-operations-4",
     "contentType": 0,
     "name": "Math Operations 4",
@@ -1392,11 +1900,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 57,
-    "index": "4.4"
+    "index": "4.4",
+    "type": 3
   },
   {
     "id": 6316388939464704,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "math-operations-2",
     "contentType": 0,
     "name": "Math Operations 2",
@@ -1407,11 +1916,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 53.4,
-    "index": "4.5"
+    "index": "4.5",
+    "type": 3
   },
   {
     "id": 6451628357976064,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "math-operations-extended-1",
     "contentType": 1,
     "name": "Math Operations Extended 1",
@@ -1422,11 +1932,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "4.6"
+    "index": "4.6",
+    "type": 3
   },
   {
     "id": 6597863916175360,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "math-operations-6",
     "contentType": 0,
     "name": "Math Operations 6",
@@ -1437,11 +1948,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 56.1,
-    "index": "4.7"
+    "index": "4.7",
+    "type": 3
+  },
+  {
+    "id": 5656151333011456,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "percentage",
+    "contentType": 0,
+    "name": "Percentage",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 77,
+    "averageLevel": 49.4025974025974,
+    "status": 0,
+    "turn": 1,
+    "index": "5.0",
+    "type": 2
   },
   {
     "id": 4697907823378432,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "percentage-3",
     "contentType": 0,
     "name": "Percentage 3",
@@ -1452,11 +1980,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 48.2,
-    "index": "5.0"
+    "index": "5.0",
+    "type": 3
   },
   {
     "id": 5260857776799744,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "percentage-5",
     "contentType": 0,
     "name": "Percentage 5",
@@ -1467,11 +1996,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 52,
-    "index": "5.1"
+    "index": "5.1",
+    "type": 3
   },
   {
     "id": 5401595265155072,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "percentage-1",
     "contentType": 0,
     "name": "Percentage 1",
@@ -1482,11 +2012,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 47.7,
-    "index": "5.2"
+    "index": "5.2",
+    "type": 3
   },
   {
     "id": 5460007424360448,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "percentage-extended-1",
     "contentType": 1,
     "name": "Percentage Extended 1",
@@ -1497,11 +2028,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "5.3"
+    "index": "5.3",
+    "type": 3
   },
   {
     "id": 5823807730221056,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "percentage-4",
     "contentType": 0,
     "name": "Percentage 4",
@@ -1512,11 +2044,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 46.2,
-    "index": "5.4"
+    "index": "5.4",
+    "type": 3
   },
   {
     "id": 6386757683642368,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "percentage-6",
     "contentType": 0,
     "name": "Percentage 6",
@@ -1527,11 +2060,12 @@
     "turn": 1,
     "totalQuestion": 16,
     "averageLevel": 48.625,
-    "index": "5.5"
+    "index": "5.5",
+    "type": 3
   },
   {
     "id": 6527495171997696,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "percentage-2",
     "contentType": 0,
     "name": "Percentage 2",
@@ -1542,11 +2076,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 53.5,
-    "index": "5.6"
+    "index": "5.6",
+    "type": 3
+  },
+  {
+    "id": 5656998582419456,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "ratio--proportion",
+    "contentType": 0,
+    "name": "Ratio & Proportion",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 59,
+    "averageLevel": 52.94915254237288,
+    "status": 0,
+    "turn": 1,
+    "index": "6.0",
+    "type": 2
   },
   {
     "id": 4838645311733760,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "ratio-&-proportion-2",
     "contentType": 0,
     "name": "Ratio & Proportion 2",
@@ -1557,11 +2108,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 54.6,
-    "index": "6.0"
+    "index": "6.0",
+    "type": 3
   },
   {
     "id": 5184035106062336,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "ratio--proportion-extended-2",
     "contentType": 1,
     "name": "Ratio & Proportion Extended 2",
@@ -1572,11 +2124,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "6.1"
+    "index": "6.1",
+    "type": 3
   },
   {
     "id": 5964545218576384,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "ratio-&-proportion-3",
     "contentType": 0,
     "name": "Ratio & Proportion 3",
@@ -1587,11 +2140,12 @@
     "turn": 1,
     "totalQuestion": 17,
     "averageLevel": 53.05882352941177,
-    "index": "6.2"
+    "index": "6.2",
+    "type": 3
   },
   {
     "id": 6007742816845824,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "ratio--proportion-extended-1",
     "contentType": 1,
     "name": "Ratio & Proportion Extended 1",
@@ -1602,11 +2156,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "6.3"
+    "index": "6.3",
+    "type": 3
   },
   {
     "id": 6246020195287040,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "ratio-&-proportion-1",
     "contentType": 0,
     "name": "Ratio & Proportion 1",
@@ -1617,11 +2172,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 57.6,
-    "index": "6.4"
+    "index": "6.4",
+    "type": 3
+  },
+  {
+    "id": 5701466861862912,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "geometry",
+    "contentType": 0,
+    "name": "Geometry",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 59,
+    "averageLevel": 47,
+    "status": 0,
+    "turn": 1,
+    "index": "7.0",
+    "type": 2
   },
   {
     "id": 4761575906869248,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "geometry-extended-1",
     "contentType": 1,
     "name": "Geometry Extended 1",
@@ -1632,11 +2204,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "7.0"
+    "index": "7.0",
+    "type": 3
   },
   {
     "id": 5125704442183680,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "geometry-extended-3",
     "contentType": 1,
     "name": "Geometry Extended 3",
@@ -1647,11 +2220,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "7.1"
+    "index": "7.1",
+    "type": 3
   },
   {
     "id": 5577517125599232,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "geometry-2",
     "contentType": 0,
     "name": "Geometry 2",
@@ -1662,11 +2236,12 @@
     "turn": 1,
     "totalQuestion": 19,
     "averageLevel": 42.8421052631579,
-    "index": "7.2"
+    "index": "7.2",
+    "type": 3
   },
   {
     "id": 6140467079020544,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "geometry-1",
     "contentType": 0,
     "name": "Geometry 1",
@@ -1677,11 +2252,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 45.9,
-    "index": "7.3"
+    "index": "7.3",
+    "type": 3
   },
   {
     "id": 6394770909822976,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "geometry-extended-2",
     "contentType": 1,
     "name": "Geometry Extended 2",
@@ -1692,11 +2268,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "7.4"
+    "index": "7.4",
+    "type": 3
+  },
+  {
+    "id": 5767001150586880,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "unit-conversion",
+    "contentType": 0,
+    "name": "Unit Conversion ",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 56,
+    "averageLevel": 48.357142857142854,
+    "status": 0,
+    "turn": 1,
+    "index": "8.0",
+    "type": 2
   },
   {
     "id": 4557170335023104,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "unit-conversion-2",
     "contentType": 0,
     "name": "Unit Conversion  2",
@@ -1707,11 +2300,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 47.5,
-    "index": "8.0"
+    "index": "8.0",
+    "type": 3
   },
   {
     "id": 4849791984992256,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "unit-conversion--extended-1",
     "contentType": 1,
     "name": "Unit Conversion  Extended 1",
@@ -1722,11 +2316,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "8.1"
+    "index": "8.1",
+    "type": 3
   },
   {
     "id": 5120120288444416,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "unit-conversion-4",
     "contentType": 0,
     "name": "Unit Conversion  4",
@@ -1737,11 +2332,12 @@
     "turn": 1,
     "totalQuestion": 15,
     "averageLevel": 48.46666666666667,
-    "index": "8.2"
+    "index": "8.2",
+    "type": 3
   },
   {
     "id": 5683070241865728,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "unit-conversion-3",
     "contentType": 0,
     "name": "Unit Conversion  3",
@@ -1752,11 +2348,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 47.3,
-    "index": "8.3"
+    "index": "8.3",
+    "type": 3
   },
   {
     "id": 6703417032441856,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/unit-conversion-1.svg",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "unit-conversion-1",
     "contentType": 0,
     "name": "Unit Conversion  1",
@@ -1767,11 +2364,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 48.3,
-    "index": "8.4"
+    "index": "8.4",
+    "type": 3
+  },
+  {
+    "id": 5823429974425600,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "number-properties",
+    "contentType": 0,
+    "name": "Number Properties",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 44,
+    "averageLevel": 52.15909090909091,
+    "status": 0,
+    "turn": 1,
+    "index": "9.0",
+    "type": 2
   },
   {
     "id": 5161978528006144,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "number-properties-extended-1",
     "contentType": 1,
     "name": "Number Properties Extended 1",
@@ -1782,11 +2396,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "9.0"
+    "index": "9.0",
+    "type": 3
   },
   {
     "id": 5325854750015488,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "number-properties-extended-3",
     "contentType": 1,
     "name": "Number Properties Extended 3",
@@ -1797,11 +2412,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "9.1"
+    "index": "9.1",
+    "type": 3
   },
   {
     "id": 6457126427820032,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "number-properties-1",
     "contentType": 0,
     "name": "Number Properties 1",
@@ -1812,11 +2428,12 @@
     "turn": 1,
     "totalQuestion": 14,
     "averageLevel": 56.785714285714285,
-    "index": "9.2"
+    "index": "9.2",
+    "type": 3
   },
   {
     "id": 6666387997065216,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "number-properties-extended-2",
     "contentType": 1,
     "name": "Number Properties Extended 2",
@@ -1827,11 +2444,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "9.3"
+    "index": "9.3",
+    "type": 3
+  },
+  {
+    "id": 6604121750634496,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
+    "tag": "equations",
+    "contentType": 0,
+    "name": "Equations",
+    "parentId": 5878262490202112,
+    "slug": "asvab-arithmetic-reasoning-practice-test",
+    "topics": [],
+    "totalQuestion": 51,
+    "averageLevel": 49.549019607843135,
+    "status": 0,
+    "turn": 1,
+    "index": "10.0",
+    "type": 2
   },
   {
     "id": 5331226520977408,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "equations-2",
     "contentType": 0,
     "name": "Equations 2",
@@ -1842,11 +2476,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 49.6,
-    "index": "10.0"
+    "index": "10.0",
+    "type": 3
   },
   {
     "id": 5894176474398720,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "equations-1",
     "contentType": 0,
     "name": "Equations 1",
@@ -1857,11 +2492,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 48.1,
-    "index": "10.1"
+    "index": "10.1",
+    "type": 3
   },
   {
     "id": 6155878117933056,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "equations-extended-2",
     "contentType": 1,
     "name": "Equations Extended 2",
@@ -1872,11 +2508,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "10.2"
+    "index": "10.2",
+    "type": 3
   },
   {
     "id": 6401807945302016,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "equations-extended-1",
     "contentType": 1,
     "name": "Equations Extended 1",
@@ -1887,11 +2524,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "10.3"
+    "index": "10.3",
+    "type": 3
   },
   {
     "id": 6486168484970496,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/arithmetic-reasoning.svg",
     "tag": "equations-extended-3",
     "contentType": 1,
     "name": "Equations Extended 3",
@@ -1902,11 +2540,44 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "10.4"
+    "index": "10.4",
+    "type": 3
+  },
+  {
+    "id": 5945201837211648,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
+    "tag": "mathematics-knowledge",
+    "contentType": 0,
+    "name": "Mathematics Knowledge",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-mathematics-knowledge-practice-test",
+    "totalQuestion": 122,
+    "averageLevel": 56.34426229508197,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 5200229548687360,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
+    "tag": "algebra",
+    "contentType": 0,
+    "name": "Algebra",
+    "parentId": 5945201837211648,
+    "slug": "asvab-mathematics-knowledge-practice-test",
+    "topics": [],
+    "totalQuestion": 69,
+    "averageLevel": 57.85507246376812,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
   },
   {
     "id": 4676710951813120,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "algebra-4",
     "contentType": 0,
     "name": "Algebra 4",
@@ -1917,11 +2588,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 59.3,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 5380398393589760,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "algebra-2",
     "contentType": 0,
     "name": "Algebra 2",
@@ -1932,11 +2604,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 62.3,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 5705996265586688,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "algebra-extended-1",
     "contentType": 1,
     "name": "Algebra Extended 1",
@@ -1947,11 +2620,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
   },
   {
     "id": 5802610858655744,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "algebra-5",
     "contentType": 0,
     "name": "Algebra 5",
@@ -1962,11 +2636,12 @@
     "turn": 1,
     "totalQuestion": 18,
     "averageLevel": 61.22222222222222,
-    "index": "1.3"
+    "index": "1.3",
+    "type": 3
   },
   {
     "id": 5943348347011072,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "algebra-1",
     "contentType": 0,
     "name": "Algebra 1",
@@ -1977,11 +2652,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 58.1,
-    "index": "1.4"
+    "index": "1.4",
+    "type": 3
   },
   {
     "id": 6506298300432384,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "algebra-3",
     "contentType": 0,
     "name": "Algebra 3",
@@ -1992,11 +2668,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 54.3,
-    "index": "1.5"
+    "index": "1.5",
+    "type": 3
+  },
+  {
+    "id": 6588795092729856,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
+    "tag": "geometry",
+    "contentType": 0,
+    "name": "Geometry",
+    "parentId": 5945201837211648,
+    "slug": "asvab-mathematics-knowledge-practice-test",
+    "topics": [],
+    "totalQuestion": 53,
+    "averageLevel": 54.37735849056604,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 4817448440168448,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "geometry-4",
     "contentType": 0,
     "name": "Geometry 4",
@@ -2007,11 +2700,12 @@
     "turn": 1,
     "totalQuestion": 13,
     "averageLevel": 57.61538461538461,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 5098923416879104,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "geometry-2",
     "contentType": 0,
     "name": "Geometry 2",
@@ -2022,11 +2716,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 56.2,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
   },
   {
     "id": 5661873370300416,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "geometry-1",
     "contentType": 0,
     "name": "Geometry 1",
@@ -2037,11 +2732,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 48.5,
-    "index": "2.2"
+    "index": "2.2",
+    "type": 3
   },
   {
     "id": 5712882842992640,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "geometry-extended-1",
     "contentType": 1,
     "name": "Geometry Extended 1",
@@ -2052,11 +2748,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.3"
+    "index": "2.3",
+    "type": 3
   },
   {
     "id": 6224823323721728,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mathematics-knowledge.svg",
     "tag": "geometry-3",
     "contentType": 0,
     "name": "Geometry 3",
@@ -2067,11 +2764,44 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 58.6,
-    "index": "2.4"
+    "index": "2.4",
+    "type": 3
+  },
+  {
+    "id": 5984778887102464,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
+    "tag": "paragraph-comprehension",
+    "contentType": 0,
+    "name": "Paragraph Comprehension",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-paragraph-comprehension-practice-test",
+    "totalQuestion": 194,
+    "averageLevel": 57.52577319587629,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 4862919997128704,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
+    "tag": "main-idea",
+    "contentType": 0,
+    "name": "Main Idea",
+    "parentId": 5984778887102464,
+    "slug": "asvab-paragraph-comprehension-practice-test",
+    "topics": [],
+    "totalQuestion": 46,
+    "averageLevel": 55.56521739130435,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
   },
   {
     "id": 5544674919972864,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "main-idea-extended-1",
     "contentType": 1,
     "name": "Main Idea Extended 1",
@@ -2082,11 +2812,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 5679428805853184,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "main-idea-extended-3",
     "contentType": 1,
     "name": "Main Idea Extended 3",
@@ -2097,11 +2828,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 6503143135248384,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "main-idea-extended-2",
     "contentType": 1,
     "name": "Main Idea Extended 2",
@@ -2112,11 +2844,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
   },
   {
     "id": 6639201768439808,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/main-idea-1.svg",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "main-idea-1",
     "contentType": 0,
     "name": "Main Idea 1",
@@ -2127,11 +2860,28 @@
     "turn": 1,
     "totalQuestion": 16,
     "averageLevel": 66,
-    "index": "1.3"
+    "index": "1.3",
+    "type": 3
+  },
+  {
+    "id": 5383754038116352,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
+    "tag": "wider-implications",
+    "contentType": 0,
+    "name": "Wider Implications",
+    "parentId": 5984778887102464,
+    "slug": "asvab-paragraph-comprehension-practice-test",
+    "topics": [],
+    "totalQuestion": 50,
+    "averageLevel": 57.62,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 4598508187287552,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "wider-implications-1",
     "contentType": 0,
     "name": "Wider Implications 1",
@@ -2142,11 +2892,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 59.9,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 4815248745824256,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "wider-implications-extended-1",
     "contentType": 1,
     "name": "Wider Implications Extended 1",
@@ -2157,11 +2908,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
   },
   {
     "id": 5161458140708864,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "wider-implications-3",
     "contentType": 0,
     "name": "Wider Implications 3",
@@ -2172,11 +2924,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 55.9,
-    "index": "2.2"
+    "index": "2.2",
+    "type": 3
   },
   {
     "id": 5724408094130176,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "wider-implications-2",
     "contentType": 0,
     "name": "Wider Implications 2",
@@ -2187,11 +2940,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 64.5,
-    "index": "2.3"
+    "index": "2.3",
+    "type": 3
   },
   {
     "id": 6287358047551488,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "wider-implications-4",
     "contentType": 0,
     "name": "Wider Implications 4",
@@ -2202,11 +2956,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 57.8,
-    "index": "2.4"
+    "index": "2.4",
+    "type": 3
+  },
+  {
+    "id": 5946703991537664,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
+    "tag": "word-meaning-in-context",
+    "contentType": 0,
+    "name": "Word Meaning in Context",
+    "parentId": 5984778887102464,
+    "slug": "asvab-paragraph-comprehension-practice-test",
+    "topics": [],
+    "totalQuestion": 39,
+    "averageLevel": 51.07692307692308,
+    "status": 0,
+    "turn": 1,
+    "index": "3.0",
+    "type": 2
   },
   {
     "id": 5040172584402944,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "word-meaning-in-context-extended-3",
     "contentType": 1,
     "name": "Word Meaning in Context Extended 3",
@@ -2217,11 +2988,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.0"
+    "index": "3.0",
+    "type": 3
   },
   {
     "id": 6427577656803328,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "word-meaning-in-context-extended-1",
     "contentType": 1,
     "name": "Word Meaning in Context Extended 1",
@@ -2232,11 +3004,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.1"
+    "index": "3.1",
+    "type": 3
   },
   {
     "id": 6447547467956224,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "word-meaning-in-context-extended-2",
     "contentType": 1,
     "name": "Word Meaning in Context Extended 2",
@@ -2247,11 +3020,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "3.2"
+    "index": "3.2",
+    "type": 3
   },
   {
     "id": 6550008383930368,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "word-meaning-in-context-1",
     "contentType": 0,
     "name": "Word Meaning in Context 1",
@@ -2262,11 +3036,28 @@
     "turn": 1,
     "totalQuestion": 9,
     "averageLevel": 54.666666666666664,
-    "index": "3.3"
+    "index": "3.3",
+    "type": 3
+  },
+  {
+    "id": 6462653715185664,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
+    "tag": "finding-information",
+    "contentType": 0,
+    "name": "Finding Information",
+    "parentId": 5984778887102464,
+    "slug": "asvab-paragraph-comprehension-practice-test",
+    "topics": [],
+    "totalQuestion": 59,
+    "averageLevel": 63.23728813559322,
+    "status": 0,
+    "turn": 1,
+    "index": "4.0",
+    "type": 2
   },
   {
     "id": 4912312079089664,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "finding-information-extended-2",
     "contentType": 1,
     "name": "Finding Information Extended 2",
@@ -2277,11 +3068,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "4.0"
+    "index": "4.0",
+    "type": 3
   },
   {
     "id": 5513301861597184,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "finding-information-2",
     "contentType": 0,
     "name": "Finding Information 2",
@@ -2292,11 +3084,12 @@
     "turn": 1,
     "totalQuestion": 19,
     "averageLevel": 78.3157894736842,
-    "index": "4.1"
+    "index": "4.1",
+    "type": 3
   },
   {
     "id": 5654559737249792,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "finding-information-extended-3",
     "contentType": 1,
     "name": "Finding Information Extended 3",
@@ -2307,11 +3100,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "4.2"
+    "index": "4.2",
+    "type": 3
   },
   {
     "id": 6037264542990336,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "finding-information-extended-1",
     "contentType": 1,
     "name": "Finding Information Extended 1",
@@ -2322,11 +3116,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "4.3"
+    "index": "4.3",
+    "type": 3
   },
   {
     "id": 6076251815018496,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/paragraph-comprehension.svg",
     "tag": "finding-information-1",
     "contentType": 0,
     "name": "Finding Information 1",
@@ -2337,11 +3132,44 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 74.3,
-    "index": "4.4"
+    "index": "4.4",
+    "type": 3
+  },
+  {
+    "id": 6473544454111232,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
+    "tag": "word-knowledge",
+    "contentType": 0,
+    "name": "Word Knowledge",
+    "parentId": 5676496995745792,
+    "topics": [],
+    "slug": "asvab-word-knowledge-practice-test",
+    "totalQuestion": 137,
+    "averageLevel": 67.98540145985402,
+    "status": 0,
+    "turn": 1,
+    "type": 1,
+    "sync": 0
+  },
+  {
+    "id": 5068150714400768,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
+    "tag": "contextualised-questions",
+    "contentType": 0,
+    "name": "Contextualised Questions",
+    "parentId": 6473544454111232,
+    "slug": "asvab-word-knowledge-practice-test",
+    "topics": [],
+    "totalQuestion": 80,
+    "averageLevel": 72.8125,
+    "status": 0,
+    "turn": 1,
+    "index": "1.0",
+    "type": 2
   },
   {
     "id": 4673555786629120,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "contextualised-questions-extended-1",
     "contentType": 1,
     "name": "Contextualised Questions Extended 1",
@@ -2352,11 +3180,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "1.0"
+    "index": "1.0",
+    "type": 3
   },
   {
     "id": 4739245675642880,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "contextualised-questions-5",
     "contentType": 0,
     "name": "Contextualised Questions 5",
@@ -2367,11 +3196,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 83.6,
-    "index": "1.1"
+    "index": "1.1",
+    "type": 3
   },
   {
     "id": 4879983163998208,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "contextualised-questions-1",
     "contentType": 0,
     "name": "Contextualised Questions 1",
@@ -2382,11 +3212,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 70.6,
-    "index": "1.2"
+    "index": "1.2",
+    "type": 3
   },
   {
     "id": 5302195629064192,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "contextualised-questions-7",
     "contentType": 0,
     "name": "Contextualised Questions 7",
@@ -2397,11 +3228,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 77.4,
-    "index": "1.3"
+    "index": "1.3",
+    "type": 3
   },
   {
     "id": 5442933117419520,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "contextualised-questions-3",
     "contentType": 0,
     "name": "Contextualised Questions 3",
@@ -2412,11 +3244,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 74.8,
-    "index": "1.4"
+    "index": "1.4",
+    "type": 3
   },
   {
     "id": 5865145582485504,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "contextualised-questions-6",
     "contentType": 0,
     "name": "Contextualised Questions 6",
@@ -2427,11 +3260,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 72.8,
-    "index": "1.5"
+    "index": "1.5",
+    "type": 3
   },
   {
     "id": 6005883070840832,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "contextualised-questions-2",
     "contentType": 0,
     "name": "Contextualised Questions 2",
@@ -2442,11 +3276,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 74,
-    "index": "1.6"
+    "index": "1.6",
+    "type": 3
   },
   {
     "id": 6568833024262144,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "contextualised-questions-4",
     "contentType": 0,
     "name": "Contextualised Questions 4",
@@ -2457,11 +3292,28 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 79.3,
-    "index": "1.7"
+    "index": "1.7",
+    "type": 3
+  },
+  {
+    "id": 5720040716369920,
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
+    "tag": "synonymbased-questions",
+    "contentType": 0,
+    "name": "Synonym-based Questions",
+    "parentId": 6473544454111232,
+    "slug": "asvab-word-knowledge-practice-test",
+    "topics": [],
+    "totalQuestion": 57,
+    "averageLevel": 61.21052631578947,
+    "status": 0,
+    "turn": 1,
+    "index": "2.0",
+    "type": 2
   },
   {
     "id": 4524639741018112,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "synonymbased-questions-extended-1",
     "contentType": 1,
     "name": "Synonym-based Questions Extended 1",
@@ -2472,11 +3324,12 @@
     "turn": 1,
     "totalQuestion": 11,
     "averageLevel": 50,
-    "index": "2.0"
+    "index": "2.0",
+    "type": 3
   },
   {
     "id": 5020720652353536,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "synonym-based-questions-2",
     "contentType": 0,
     "name": "Synonym-based Questions 2",
@@ -2487,11 +3340,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 68.8,
-    "index": "2.1"
+    "index": "2.1",
+    "type": 3
   },
   {
     "id": 6146620559196160,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "synonym-based-questions-3",
     "contentType": 0,
     "name": "Synonym-based Questions 3",
@@ -2502,11 +3356,12 @@
     "turn": 1,
     "totalQuestion": 16,
     "averageLevel": 65.875,
-    "index": "2.2"
+    "index": "2.2",
+    "type": 3
   },
   {
     "id": 6428095535906816,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "synonym-based-questions-1",
     "contentType": 0,
     "name": "Synonym-based Questions 1",
@@ -2517,11 +3372,12 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 69.7,
-    "index": "2.3"
+    "index": "2.3",
+    "type": 3
   },
   {
     "id": 6731324547137536,
-    "icon": "",
+    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-knowledge.svg",
     "tag": "synonymbased-questions-extended-2",
     "contentType": 1,
     "name": "Synonym-based Questions Extended 2",
@@ -2532,516 +3388,7 @@
     "turn": 1,
     "totalQuestion": 10,
     "averageLevel": 50,
-    "index": "2.4"
-  },
-  {
-    "id": 5666897542512640,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/machines.svg",
-    "tag": "machines",
-    "contentType": 0,
-    "name": "Machines",
-    "parentId": 4643957105491968,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 68,
-    "averageLevel": 56.470588235294116,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 5746080767541248,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/fundamentals-of-mechanics.svg",
-    "tag": "fundamentals-of-mechanics",
-    "contentType": 0,
-    "name": "Fundamentals of Mechanics",
-    "parentId": 4643957105491968,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 58,
-    "averageLevel": 60.03448275862069,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
-  },
-  {
-    "id": 5141998918959104,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/connection-items.svg",
-    "tag": "connection-items",
-    "contentType": 0,
-    "name": "Connection Items",
-    "parentId": 4830925621821440,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 31,
-    "averageLevel": 82.80645161290323,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 5144478012669952,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/puzzle-items.svg",
-    "tag": "puzzle-items",
-    "contentType": 0,
-    "name": "Puzzle Items",
-    "parentId": 4830925621821440,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 24,
-    "averageLevel": 81.16666666666667,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
-  },
-  {
-    "id": 5749048187289600,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/earth-science.svg",
-    "tag": "earth-science",
-    "contentType": 0,
-    "name": "Earth Science",
-    "parentId": 5533861310103552,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 54,
-    "averageLevel": 58.351851851851855,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 5913375045320704,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/ecology.svg",
-    "tag": "ecology",
-    "contentType": 0,
-    "name": "Ecology",
-    "parentId": 5533861310103552,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 45,
-    "averageLevel": 54.977777777777774,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
-  },
-  {
-    "id": 5978274081538048,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/nutrition--health.svg",
-    "tag": "nutrition--health",
-    "contentType": 0,
-    "name": "Nutrition & Health",
-    "parentId": 5533861310103552,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 39,
-    "averageLevel": 52.17948717948718,
-    "status": 0,
-    "turn": 1,
-    "index": "3.0"
-  },
-  {
-    "id": 5998439892516864,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/cellular-biology.svg",
-    "tag": "cellular-biology",
-    "contentType": 0,
-    "name": "Cellular Biology",
-    "parentId": 5533861310103552,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 41,
-    "averageLevel": 54.53658536585366,
-    "status": 0,
-    "turn": 1,
-    "index": "4.0"
-  },
-  {
-    "id": 6195848736145408,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/human-body-systems.svg",
-    "tag": "human-body-systems",
-    "contentType": 0,
-    "name": "Human Body Systems",
-    "parentId": 5533861310103552,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 44,
-    "averageLevel": 54.45454545454545,
-    "status": 0,
-    "turn": 1,
-    "index": "5.0"
-  },
-  {
-    "id": 6321939983368192,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/physical-science.svg",
-    "tag": "physical-science",
-    "contentType": 0,
-    "name": "Physical Science",
-    "parentId": 5533861310103552,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 60,
-    "averageLevel": 59.416666666666664,
-    "status": 0,
-    "turn": 1,
-    "index": "6.0"
-  },
-  {
-    "id": 5710226380554240,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electricity.svg",
-    "tag": "electricity",
-    "contentType": 0,
-    "name": "Electricity",
-    "parentId": 5549399260266496,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 64,
-    "averageLevel": 57.53125,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 5737078717415424,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/electrical-systems.svg",
-    "tag": "electrical-systems",
-    "contentType": 0,
-    "name": "Electrical Systems",
-    "parentId": 5549399260266496,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 54,
-    "averageLevel": 55.94444444444444,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
-  },
-  {
-    "id": 5100952218501120,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/mechanical-systems.svg",
-    "tag": "mechanical-systems",
-    "contentType": 0,
-    "name": "Mechanical Systems",
-    "parentId": 5861375517655040,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 43,
-    "averageLevel": 55.44186046511628,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 5734393758875648,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/metal-shop.svg",
-    "tag": "metal-shop",
-    "contentType": 0,
-    "name": "Metal Shop",
-    "parentId": 5861375517655040,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 48,
-    "averageLevel": 56.895833333333336,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
-  },
-  {
-    "id": 5749266223988736,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/woodworking.svg",
-    "tag": "woodworking",
-    "contentType": 0,
-    "name": "Woodworking",
-    "parentId": 5861375517655040,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 50,
-    "averageLevel": 55.88,
-    "status": 0,
-    "turn": 1,
-    "index": "3.0"
-  },
-  {
-    "id": 6018553694126080,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/automotive-knowledge.svg",
-    "tag": "automotive-knowledge",
-    "contentType": 0,
-    "name": "Automotive Knowledge",
-    "parentId": 5861375517655040,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 71,
-    "averageLevel": 66.1830985915493,
-    "status": 0,
-    "turn": 1,
-    "index": "4.0"
-  },
-  {
-    "id": 5078480647618560,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/fraction.svg",
-    "tag": "fraction",
-    "contentType": 0,
-    "name": "Fraction",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 56,
-    "averageLevel": 49.482142857142854,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 5093201379590144,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/statistics.svg",
-    "tag": "statistics",
-    "contentType": 0,
-    "name": "Statistics",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 53,
-    "averageLevel": 50.39622641509434,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
-  },
-  {
-    "id": 5366063965405184,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/distance-rate--time.svg",
-    "tag": "distance-rate--time",
-    "contentType": 0,
-    "name": "Distance, Rate, & Time",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 57,
-    "averageLevel": 50.45614035087719,
-    "status": 0,
-    "turn": 1,
-    "index": "3.0"
-  },
-  {
-    "id": 5646081379532800,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/math-operations.svg",
-    "tag": "math-operations",
-    "contentType": 0,
-    "name": "Math Operations",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 89,
-    "averageLevel": 56,
-    "status": 0,
-    "turn": 1,
-    "index": "4.0"
-  },
-  {
-    "id": 5656151333011456,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/percentage.svg",
-    "tag": "percentage",
-    "contentType": 0,
-    "name": "Percentage",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 77,
-    "averageLevel": 49.4025974025974,
-    "status": 0,
-    "turn": 1,
-    "index": "5.0"
-  },
-  {
-    "id": 5656998582419456,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/ratio--proportion.svg",
-    "tag": "ratio--proportion",
-    "contentType": 0,
-    "name": "Ratio & Proportion",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 59,
-    "averageLevel": 52.94915254237288,
-    "status": 0,
-    "turn": 1,
-    "index": "6.0"
-  },
-  {
-    "id": 5701466861862912,
-    "icon": "https://storage.googleapis.com/app-data-center/asvab/icons/geometry.svg",
-    "tag": "geometry",
-    "contentType": 0,
-    "name": "Geometry",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 59,
-    "averageLevel": 47,
-    "status": 0,
-    "turn": 1,
-    "index": "7.0"
-  },
-  {
-    "id": 5767001150586880,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/unit-conversion.svg",
-    "tag": "unit-conversion",
-    "contentType": 0,
-    "name": "Unit Conversion ",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 56,
-    "averageLevel": 48.357142857142854,
-    "status": 0,
-    "turn": 1,
-    "index": "8.0"
-  },
-  {
-    "id": 5823429974425600,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/number-properties.svg",
-    "tag": "number-properties",
-    "contentType": 0,
-    "name": "Number Properties",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 44,
-    "averageLevel": 52.15909090909091,
-    "status": 0,
-    "turn": 1,
-    "index": "9.0"
-  },
-  {
-    "id": 6604121750634496,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/equations.svg",
-    "tag": "equations",
-    "contentType": 0,
-    "name": "Equations",
-    "parentId": 5878262490202112,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 51,
-    "averageLevel": 49.549019607843135,
-    "status": 0,
-    "turn": 1,
-    "index": "10.0"
-  },
-  {
-    "id": 5200229548687360,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/algebra.svg",
-    "tag": "algebra",
-    "contentType": 0,
-    "name": "Algebra",
-    "parentId": 5945201837211648,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 69,
-    "averageLevel": 57.85507246376812,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 6588795092729856,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/geometry.svg",
-    "tag": "geometry",
-    "contentType": 0,
-    "name": "Geometry",
-    "parentId": 5945201837211648,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 53,
-    "averageLevel": 54.37735849056604,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
-  },
-  {
-    "id": 4862919997128704,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/main-idea.svg",
-    "tag": "main-idea",
-    "contentType": 0,
-    "name": "Main Idea",
-    "parentId": 5984778887102464,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 46,
-    "averageLevel": 55.56521739130435,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 5383754038116352,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/wider-implications.svg",
-    "tag": "wider-implications",
-    "contentType": 0,
-    "name": "Wider Implications",
-    "parentId": 5984778887102464,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 50,
-    "averageLevel": 57.62,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
-  },
-  {
-    "id": 5946703991537664,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/word-meaning-in-context.svg",
-    "tag": "word-meaning-in-context",
-    "contentType": 0,
-    "name": "Word Meaning in Context",
-    "parentId": 5984778887102464,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 39,
-    "averageLevel": 51.07692307692308,
-    "status": 0,
-    "turn": 1,
-    "index": "3.0"
-  },
-  {
-    "id": 6462653715185664,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/finding-information.svg",
-    "tag": "finding-information",
-    "contentType": 0,
-    "name": "Finding Information",
-    "parentId": 5984778887102464,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 59,
-    "averageLevel": 63.23728813559322,
-    "status": 0,
-    "turn": 1,
-    "index": "4.0"
-  },
-  {
-    "id": 5068150714400768,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/contextualised-questions.svg",
-    "tag": "contextualised-questions",
-    "contentType": 0,
-    "name": "Contextualised Questions",
-    "parentId": 6473544454111232,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 80,
-    "averageLevel": 72.8125,
-    "status": 0,
-    "turn": 1,
-    "index": "1.0"
-  },
-  {
-    "id": 5720040716369920,
-    "icon": "https://storage.googleapis.com/micro-enigma-235001.appspot.com/asvab/icons/synonymbased-questions.svg",
-    "tag": "synonymbased-questions",
-    "contentType": 0,
-    "name": "Synonym-based Questions",
-    "parentId": 6473544454111232,
-    "slug": "",
-    "topics": [],
-    "totalQuestion": 57,
-    "averageLevel": 61.21052631578947,
-    "status": 0,
-    "turn": 1,
-    "index": "2.0"
+    "index": "2.4",
+    "type": 3
   }
 ]

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getUserDeviceLogin } from '../repository/sync/syncData';
 
 import { InAppSubscription, IPaymentInfos } from '@ui/models/payment';
 import { IUserActions } from '@ui/redux/repository/user/getActions';
@@ -27,17 +26,7 @@ const paymentSlice = createSlice({
       }
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(getUserDeviceLogin.fulfilled, (state, action) => {
-      if (action.payload) {
-        const { paymentInfo, inAppSubs } = action.payload;
-        if (action.payload) {
-          state.paymentInfo = paymentInfo;
-          state.inAppPurchasedInfo = inAppSubs;
-        }
-      }
-    });
-  },
+  extraReducers: (builder) => {},
 });
 
 const { actions, reducer: paymentReducer } = paymentSlice;

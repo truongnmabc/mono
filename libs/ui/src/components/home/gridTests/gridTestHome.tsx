@@ -90,7 +90,9 @@ const GridTest = ({
                 href={
                   isMobile && test.id === 'PT'
                     ? `?selectTest=${showList ? 'false' : 'true'}`
-                    : `${test.href}?testId=${test.testId || -1}&type=${
+                    : `${test.href}?testId=${
+                        test.id === 'DT' ? -1 : test.testId || -1
+                      }&type=${
                         test.id === 'PT'
                           ? TypeParam.practiceTests
                           : test.id === 'DT'

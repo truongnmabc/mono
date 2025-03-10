@@ -39,16 +39,6 @@ export const isProduction = process.env['NODE_ENV'] === 'production';
 
 export const listAppState = ['cdl'];
 
-export const TypeParam: Record<IGameMode, IGameMode> = {
-  diagnosticTest: 'diagnosticTest',
-  finalTests: 'finalTests',
-  customTests: 'customTests',
-  practiceTests: 'practiceTests',
-  review: 'review',
-  branchTest: 'branchTest',
-  learn: 'learn',
-};
-
 export const baseImageUrl =
   'https://storage.googleapis.com/micro-enigma-235001.appspot.com/';
 
@@ -95,29 +85,31 @@ export const BASE_IMAGE_URL =
 
 export const PATH_IMAGE = 'web/images';
 
-export const listBranchTest = [
-  {
-    id: 1,
-    title: 'marine',
-  },
-  {
-    id: 2,
-    title: 'navy',
-  },
-  {
-    id: 3,
-    title: 'army',
-  },
-  {
-    id: 4,
-    title: 'coast guard',
-  },
-  {
-    id: 5,
-    title: 'air force',
-  },
-  {
-    id: 6,
-    title: 'national guard',
-  },
-];
+export const GameTypeStatus: Record<IGameMode, number> = {
+  learn: 0,
+  practiceTests: 1,
+  finalTests: 9,
+  diagnosticTest: 10,
+  customTests: 3,
+  // Không dùng trên app
+  branchTest: 12,
+  review: 13,
+} as const;
+
+export const TypeParam: Record<IGameMode, IGameMode> = {
+  diagnosticTest: 'diagnosticTest',
+  finalTests: 'finalTests',
+  customTests: 'customTests',
+  practiceTests: 'practiceTests',
+  review: 'review',
+  branchTest: 'branchTest',
+  learn: 'learn',
+};
+
+export const TypeConstTest: Record<number, IGameMode> = {
+  1: TypeParam.practiceTests,
+  3: TypeParam.finalTests,
+  4: TypeParam.branchTest,
+  5: TypeParam.customTests,
+  6: TypeParam.diagnosticTest,
+};

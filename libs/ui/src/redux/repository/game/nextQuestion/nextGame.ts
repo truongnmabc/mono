@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ICurrentGame } from '@ui/models/game';
-import { RootState } from '@ui/redux/store';
-import { handleNextQuestionLearn } from './utils/learn';
 import { TypeParam } from '@ui/constants';
 import { db } from '@ui/db';
+import { ICurrentGame } from '@ui/models/game';
+import { handleNextQuestionLearn } from '@ui/redux/repository/game/nextQuestion/utils/learn';
+import { RootState } from '@ui/redux/store';
 
 interface IRes extends ActionResponse {
   timeStart?: number;

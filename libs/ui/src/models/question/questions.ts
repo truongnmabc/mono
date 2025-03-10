@@ -17,6 +17,8 @@ export interface IAnswer {
   turn: number;
   parentId: number;
   type: IGameMode;
+  startAt?: number;
+  endAt?: number;
 }
 export interface IParagraph {
   id: number;

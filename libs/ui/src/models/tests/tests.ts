@@ -76,4 +76,5 @@ export interface ITestBase {
   groupExamData: IGroupExam[];
   createDate?: number;
   index?: number;
+  sync?: 0 | 1;
 }
