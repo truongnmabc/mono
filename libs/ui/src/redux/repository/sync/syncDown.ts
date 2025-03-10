@@ -5,11 +5,12 @@ import { IResponseSyncDown } from '@ui/models/sync';
 import { RootState } from '@ui/redux/store';
 import { getAllUserDataFromServer } from '@ui/services/sync';
 import {
-  converTopicsFromServer,
+  convertTopicsFromServer,
   handleConvertQuestions,
   handleCreateNewTest,
   handleReaction,
 } from './utils';
+import { db } from '@ui/db';
 export const syncDown = createAsyncThunk(
   'syncDown',
   async (
@@ -27,10 +28,26 @@ export const syncDown = createAsyncThunk(
       const data = (await getAllUserDataFromServer({
         appId: appInfo.appId,
         userId: userInfo.email,
-        deleteOldData: false,
+        deleteOldData: true,
+        user_data: {
+          userId: userInfo.email,
+          syncKey: syncKey,
+          appId: appInfo.appId,
+          deviceId: userInfo.email,
+          probabilityOfPassing: 0.0,
+          mapUpdateData: {},
+          TopicProgress: [],
+          QuestionProgress: [],
+          UserQuestionProgress: [],
+          StudyPlan: [],
+          DailyGoal: [],
+          TestInfo: [],
+          UserTestData: [],
+        },
       })) as unknown as IResponseSyncDown;
 
       if (data) {
+        console.log('🚀 ~ data:', data);
         const {
           UserQuestionProgress,
           TestInfo,
@@ -40,11 +57,14 @@ export const syncDown = createAsyncThunk(
         } = data;
 
         await Promise.all([
-          converTopicsFromServer({
+          convertTopicsFromServer({
             topicsSync: TopicProgress || [],
           }),
           handleReaction(QuestionProgress),
-          handleCreateNewTest(TestInfo, UserTestData),
+          handleCreateNewTest({
+            TestInfo,
+            UserTestData,
+          }),
           handleConvertQuestions(UserQuestionProgress),
         ]);
       }

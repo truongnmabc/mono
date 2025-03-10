@@ -148,6 +148,7 @@ export interface UserQuestionProgress {
   stateId: number;
   userId: string;
   deviceId: string;
+  testIdOrTopicId: number;
 }
 
 export interface UserTestDaum {

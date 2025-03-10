@@ -1,4 +1,4 @@
-import { TypeConstTest } from '@ui/constants';
+import { GameTypeStatus, TypeConstTest, TypeParam } from '@ui/constants';
 import { db } from '@ui/db';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { IAnswer } from '@ui/models/question';
@@ -10,7 +10,7 @@ import {
 } from '@ui/models/sync';
 import { ITestBase } from '@ui/models/tests';
 import { IAction } from '@ui/models/user';
-export const converTopicsFromServer = async ({
+export const convertTopicsFromServer = async ({
   topicsSync,
 }: {
   topicsSync: ITopicProgress[];
@@ -58,12 +58,23 @@ interface ITestQuestion {
   testId: number;
 }
 
-export const handleCreateNewTest = async (
-  TestInfo: TestInfo[],
-  UserTestData: any[]
-) => {
-  if (!TestInfo?.length) return;
-
+export const handleCreateNewTest = async ({
+  TestInfo,
+  UserTestData,
+}: {
+  TestInfo: TestInfo[];
+  UserTestData: any[];
+}) => {
+  const listUpdate = TestInfo.length
+    ? UserTestData.filter((item) =>
+        TestInfo.some((test) => test.testId !== item.testId)
+      )
+    : UserTestData;
+  for (const list of listUpdate) {
+    await db?.testQuestions.update(list.testId, {
+      status: list.status === 3 ? 1 : 0,
+    });
+  }
   const testPromises = TestInfo.map(async (item) => {
     const {
       testId,
@@ -116,10 +127,12 @@ export const handleCreateNewTest = async (
   await Promise.all(testPromises);
 };
 
-export const handleConvertQuestions = async (
-  UserQuestionProgress: UserQuestionProgress[]
-) => {
+interface Ix extends UserQuestionProgress {
+  testIdOrTopicId: number;
+}
+export const handleConvertQuestions = async (UserQuestionProgress: Ix[]) => {
   const questionIds = UserQuestionProgress.map((item) => item.questionId);
+
   const questions = await db?.questions
     .where('id')
     .anyOf(questionIds)
@@ -141,7 +154,7 @@ export const handleConvertQuestions = async (
             return {
               ...answer,
               turn: 1,
-              parentId: item.parentId,
+              parentId: item?.testIdOrTopicId,
             };
           }
           return null;
@@ -165,6 +178,20 @@ export const handleConvertQuestions = async (
               ...answer,
               turn: 1,
               parentId: item?.testIdOrTopicId,
+              type:
+                item.type === GameTypeStatus.learn
+                  ? TypeParam.learn
+                  : item.type === GameTypeStatus.practiceTests
+                  ? TypeParam.practiceTests
+                  : item.type === GameTypeStatus.finalTests
+                  ? TypeParam.finalTests
+                  : item.type === GameTypeStatus.diagnosticTest
+                  ? TypeParam.diagnosticTest
+                  : item.type === GameTypeStatus.customTests
+                  ? TypeParam.customTests
+                  : item.type === GameTypeStatus.branchTest
+                  ? TypeParam.branchTest
+                  : TypeParam.review,
             };
           }
           return null;
@@ -186,4 +213,19 @@ export const handleConvertQuestions = async (
   const useQuestion = Object.values(listMap).flat();
 
   await db?.userProgress.bulkPut(useQuestion);
+};
+
+export const findDuplicates = <T>(array: T[]): T[] => {
+  const seen = new Set<T>();
+  const duplicates = new Set<T>();
+
+  for (const item of array) {
+    if (seen.has(item)) {
+      duplicates.add(item);
+    } else {
+      seen.add(item);
+    }
+  }
+
+  return Array.from(duplicates);
 };

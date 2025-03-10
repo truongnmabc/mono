@@ -14,6 +14,7 @@ export const handleGetDataDiagnosticTest = async ({
           .where('gameMode')
           .equals(TypeParam.diagnosticTest)
           .first();
+
   if (diagnostic?.status === 1) {
     return {
       isCompleted: true,

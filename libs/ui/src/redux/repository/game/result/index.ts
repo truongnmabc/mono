@@ -8,6 +8,7 @@ import {
 } from '../../utils/handle';
 import { IQuestionOpt } from '@ui/models/question';
 import { totalPassingPart } from '@ui/utils/calculate';
+import { TypeParam } from '@ui/constants';
 
 const getDataResultTestThunk = createAsyncThunk(
   'getDataResultTestThunk',
@@ -85,7 +86,10 @@ const getDataResultTestThunk = createAsyncThunk(
       questionsDb || [],
       progressData
     ) as IQuestionOpt[];
-    const questions = userInfo.isPro ? data : data.slice(0, 50);
+    const questions =
+      !userInfo.isPro && gameMode === TypeParam.finalTests
+        ? data.slice(0, 50)
+        : data;
     const incorrectQuestions = questions.filter(
       (q) => q.selectedAnswer?.correct === false || !q.selectedAnswer
     );

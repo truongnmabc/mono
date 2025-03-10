@@ -22,6 +22,7 @@ export const handleGetDataPracticeTest = async ({
   const practice = !testId
     ? await getData(type)
     : await db?.testQuestions.get(testId);
+  console.log('🚀 ~ practice:', practice);
 
   if (!practice || practice.status === 1) {
     return {

@@ -64,7 +64,6 @@ export default function RootLayout({
         <SyncData appInfos={appInfos} />
 
         {/* <SheetApp />
-        <SyncData />
         <PopupSubscription />
         <AdsSense />
         <AdsBlockerDetect /> */}

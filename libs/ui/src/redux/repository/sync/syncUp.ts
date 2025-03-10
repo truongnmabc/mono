@@ -25,15 +25,19 @@ export const syncUp = createAsyncThunk('syncUp', async ({}: {}, thunkAPI) => {
 
   const uniqueParentIdList = [...new Set(parentIdList)];
 
-  const TopicProgress = handleConverSyncTopic(topics);
-  const QuestionProgress = handleConverSyncReaction(reactions);
-  const UserTestData = handleConverSyncTest(
+  const TopicProgress = await handleConvertSyncTopic(topics);
+  const QuestionProgress = handleConvertSyncReaction(reactions);
+
+  const UserTestData = handleConvertSyncTest(tests, progress, questions);
+  const UserTestDataPlaying = currentTestPlaying(
     tests,
     progress,
     questions,
     uniqueParentIdList
   );
-  const UserQuestionProgress = handleConverSyncQuestion(progress);
+
+  const UserQuestionProgress = handleConvertSyncQuestion(progress);
+
   const result = await updateUserDataToServer({
     userId: userInfo.email,
     appId: appInfo.appId,
@@ -42,7 +46,8 @@ export const syncUp = createAsyncThunk('syncUp', async ({}: {}, thunkAPI) => {
     user_data: {
       NewDailyGoal: [],
       NewStudyPlan: [],
-      UserTestData: UserTestData,
+      TestInfo: UserTestData,
+      UserTestData: UserTestDataPlaying,
       QuestionProgress: QuestionProgress,
       TopicProgress: TopicProgress,
       UserQuestionProgress: UserQuestionProgress,
@@ -60,19 +65,34 @@ export interface ISyncTopics {
   id: number;
 }
 
-const handleConverSyncTopic = (topics?: ITopicBase[]) => {
-  const successTopics = topics?.filter((item) => item.status === 1);
-  const syncTopics = successTopics?.map((t) => ({
-    topicId: t.id,
-    passed: 1,
-    lock: 0,
-    progress: 1,
-    lastUpdate: new Date().getTime(),
-  }));
+const handleConvertSyncTopic = async (topics?: ITopicBase[]) => {
+  const successTopics = topics?.filter((item) => item.status === 1) || [];
+  const topicsIds = successTopics?.map((t) => t.parentId);
+  const subTopics =
+    (await db?.topics
+      .where('id')
+      .anyOf(topicsIds || [])
+      .toArray()) || [];
+  const subTopicsIds = subTopics?.map((t) => t.parentId);
+  const parentTopics =
+    (await db?.topics
+      .where('id')
+      .anyOf(subTopicsIds || [])
+      .toArray()) || [];
+
+  const syncTopics = [...successTopics, ...subTopics, ...parentTopics]?.map(
+    (t) => ({
+      topicId: t.id,
+      passed: 1,
+      lock: 0,
+      progress: 1,
+      lastUpdate: new Date().getTime(),
+    })
+  );
   return syncTopics;
 };
 
-const handleConverSyncReaction = (reaction?: IUserActions[]) => {
+const handleConvertSyncReaction = (reaction?: IUserActions[]) => {
   const syncReaction = reaction?.map((r) => ({
     bookmark: r.actions.includes('save'),
     questionId: r.questionId,
@@ -88,13 +108,36 @@ const handleConverSyncReaction = (reaction?: IUserActions[]) => {
   return syncReaction;
 };
 
-const handleConverSyncTest = (
-  test?: ITestBase[],
+const currentTestPlaying = (
+  tests?: ITestBase[],
   progress?: IUserQuestionProgress[],
   questions?: IQuestionBase[],
   uniqueParentIdList?: number[]
 ) => {
-  const testWithSync = test?.filter(
+  const syncTests = tests?.filter((t) =>
+    progress?.some((p) => p.selectedAnswers.some((i) => i.parentId === t.id))
+  );
+
+  return syncTests?.map((t) => ({
+    testId: t.id,
+    testSettingId: 1,
+    lock: 0,
+    lastUpdate: new Date().getTime(),
+    status: 1,
+    totalQuestion: t.totalQuestion,
+    correctNumber: progress?.filter((a) =>
+      a.selectedAnswers.some((i) => i.correct)
+    ).length,
+  }));
+};
+
+const handleConvertSyncTest = (
+  tests?: ITestBase[],
+  progress?: IUserQuestionProgress[],
+  questions?: IQuestionBase[],
+  uniqueParentIdList?: number[]
+) => {
+  const testWithSync = tests?.filter(
     (t) =>
       (t.gameMode === 'customTests' || t.gameMode === 'diagnosticTest') &&
       uniqueParentIdList?.includes(t.id)
@@ -150,7 +193,7 @@ const handleConverSyncTest = (
   return syncTests;
 };
 
-const handleConverSyncQuestion = (questions?: IUserQuestionProgress[]) => {
+const handleConvertSyncQuestion = (questions?: IUserQuestionProgress[]) => {
   if (!questions) return [];
 
   const groupedQuestions = questions.reduce((acc, q) => {
@@ -194,6 +237,5 @@ const handleConverSyncQuestion = (questions?: IUserQuestionProgress[]) => {
     playedTimes: JSON.stringify(q.playedTimes),
   }));
 
-  console.log('🚀 ~ handleConverSyncQuestion ~ syncQuestions:', syncQuestions);
   return syncQuestions;
 };

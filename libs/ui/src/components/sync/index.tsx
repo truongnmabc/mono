@@ -11,6 +11,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { MtUiButton } from '../button';
 import DialogResponsive from '../dialogResponsive';
 import { IconArrowRight, SelectIconSync } from './icon';
+import { clearDbLocalBeforeSync } from '@ui/redux/repository/sync/clearDbLocalBeforeSync';
 
 const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
   const userInfo = useAppSelector(selectUserInfo);
@@ -29,20 +30,14 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
             })
           );
         } else {
-          dispatch(
-            syncDown({
-              syncKey: syncKey,
-            })
-          );
-          // const result = await dispatch(clearDbLocalBeforeSync());
-          // console.log('🚀 ~ result:', result);
-          // if (result) {
-          //   dispatch(
-          //     syncDown({
-          //       syncKey: syncKey,
-          //     })
-          //   );
-          // }
+          const result = await dispatch(clearDbLocalBeforeSync());
+          if (result) {
+            dispatch(
+              syncDown({
+                syncKey: syncKey,
+              })
+            );
+          }
         }
       } catch (err) {
         console.log('🚀 ~ handleChoiceDb ~ err:', err);
