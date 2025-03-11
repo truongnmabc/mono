@@ -41,6 +41,19 @@ async function processSeoData(slugs) {
     titleSeo: dataSeoHome?.titleSeo[0],
     descSeo: dataSeoHome?.descSeo[0],
   };
+  const dataSeoContact = await getDataSeo('contact');
+  const defaultSeoContact = {
+    content: dataSeoContact?.content,
+    titleSeo: dataSeoContact?.titleSeo[0],
+    descSeo: dataSeoContact?.descSeo[0],
+  };
+
+  const dataSeoAbout = await getDataSeo('about-us');
+  const defaultSeoAbout = {
+    content: dataSeoAbout?.content,
+    titleSeo: dataSeoAbout?.titleSeo[0],
+    descSeo: dataSeoAbout?.descSeo[0],
+  };
   const seoNull = {
     content: '',
     titleSeo: '',
@@ -59,10 +72,16 @@ async function processSeoData(slugs) {
     default: {
       home: defaultSeo,
       practiceTest: seoNull,
-      diagnosticTest: seoNull,
-      customTest: seoNull,
-      review: seoNull,
     },
+    getPro: seoNull,
+    billing: seoNull,
+    diagnostic: seoNull,
+    custom: seoNull,
+    review: seoNull,
+    contact: defaultSeoContact,
+    about: defaultSeoAbout,
+    finish: seoNull,
+    result: seoNull,
   };
 }
 

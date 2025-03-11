@@ -1,7 +1,6 @@
 import appConfig from '@single/data/appConfig.json';
 import appInfos from '@single/data/appInfos.json';
-
-import data from '@single/data/server/review.json';
+import data from '@single/data/server/contact.json';
 import { detectAgent } from '@ui/utils';
 import { replaceYear } from '@ui/utils/time';
 import type { Metadata } from 'next';
@@ -9,6 +8,7 @@ import { headers } from 'next/headers';
 import FaqAsvab from './_components/asvab/faqAsvab';
 import TopContactAsvab from './_components/asvab/topContactAsvab';
 import './_components/index.scss';
+
 export const metadata: Metadata = {
   title: replaceYear(data?.titleSeo),
   description: replaceYear(data?.descSeo),
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     canonical: `${process.env['NEXT_PUBLIC_API_URL']}review`,
   },
 };
+
 const Page = async ({
   searchParams,
 }: {

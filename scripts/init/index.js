@@ -2,10 +2,10 @@ import { spinner } from '@clack/prompts';
 
 import minimist from 'minimist';
 import {
-  getDataSeo,
   getDataSingleApp,
   getDataTopicsAndTest,
   getSingleAppConfig,
+  getDataMember,
 } from '../utils/fetchData.js';
 import { processTestData } from './processData.js';
 import { processDataHome } from './processDataHome.js';
@@ -21,12 +21,13 @@ import { updateEnvAndSave } from './saveData.js';
  * Lấy thông tin app, config, topics & tests và SEO cùng lúc
  */
 async function fetchAppData(appShortName) {
-  const [appInfoCore, appConfig, topicsAndTest] = await Promise.all([
+  const [appInfoCore, appConfig, topicsAndTest, member] = await Promise.all([
     getDataSingleApp(appShortName),
     getSingleAppConfig(appShortName),
     getDataTopicsAndTest(appShortName),
+    getDataMember(),
   ]);
-  return { appInfoCore, appConfig, topicsAndTest };
+  return { appInfoCore, appConfig, topicsAndTest, member };
 }
 
 /**
@@ -56,13 +57,12 @@ function processAppInfo(appInfoCore) {
  * 8. Thực hiện lệnh xác thực
  */
 
-async function setupSingleApp(appShortName) {
+async function setupSingleApp(appShortName, isProp) {
   const s = spinner();
   try {
     s.start('Fetching data...');
-    const { appInfoCore, appConfig, topicsAndTest } = await fetchAppData(
-      appShortName
-    );
+    const { appInfoCore, appConfig, topicsAndTest, member } =
+      await fetchAppData(appShortName);
     s.stop('Fetching data completed!');
 
     s.start('Processing topics and tests...');
@@ -127,6 +127,8 @@ async function setupSingleApp(appShortName) {
         diagnosticTest: diagnosticTest,
       },
       appShortName,
+      member,
+      isProp,
     });
     s.stop('Updating env and saving data completed!');
 
@@ -145,6 +147,7 @@ const appShortName = args._[0]; // Ví dụ: 'asvab'
 const isStateFlag = args.s;
 const isDynamicFlag = args.d;
 const isHelperFlag = args.h;
+const isProp = args.p;
 
 const showHelper = () => {
   console.log(`
@@ -171,5 +174,5 @@ if (isDynamicFlag) {
 } else if (isStateFlag) {
   console.log('Khởi tạo state app với appShortName:', appShortName);
 } else {
-  setupSingleApp(appShortName);
+  setupSingleApp(appShortName, isProp);
 }

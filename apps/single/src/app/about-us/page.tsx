@@ -1,5 +1,5 @@
 import appInfos from '@single/data/appInfos.json';
-import data from '@single/data/server/aboutUs.json';
+import data from '@single/data/server/about.json';
 import LazyLoadImage from '@ui/components/images';
 import { IMember } from '@ui/models';
 import { detectAgent } from '@ui/utils';
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: replaceYear(data?.descSeo),
   },
   alternates: {
-    canonical: `${process.env['NEXT_PUBLIC_API_URL']}review`,
+    canonical: `${process.env['NEXT_PUBLIC_API_URL']}about-us`,
   },
 };
 
@@ -63,7 +63,7 @@ export default async function Page() {
   const listMember = handleMember(data.listMember, appInfos.appShortName);
   return (
     <div className="about-us-container">
-      <HeaderComponent appInfo={appInfos} isMobile={isMobile} />
+      <HeaderComponent isMobile={isMobile} />
 
       <div className="about-us-bottom">
         <ActivityComponent isMobile={isMobile} />

@@ -8,13 +8,7 @@ import RouterApp from '@ui/constants/router.constant';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const HeaderComponent = ({
-  appInfo,
-  isMobile,
-}: {
-  appInfo: IAppInfo;
-  isMobile: boolean;
-}) => {
+const HeaderComponent = ({ isMobile }: { isMobile: boolean }) => {
   if (!isMobile) {
     return (
       <div className="about-header-component">

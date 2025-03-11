@@ -3,16 +3,19 @@ import path from 'path';
 import { appendToEnvFile, saveJSONFile } from '../utils/index.js';
 
 const DATA_PATH = process.cwd();
-
+const SINGLE_APP_PATH = path.join(DATA_PATH, '/apps/single');
 /**
  * Hàm ghi các biến môi trường vào file .env
  * Nếu file đã tồn tại thì xóa và ghi mới
  */
-const appendEnv = (envFilePath, appInfo, isSingle, authSecret) => {
+const appendEnv = (envFilePath, appInfo, isSingle, authSecret, isProp) => {
   if (fs.existsSync(envFilePath)) fs.unlinkSync(envFilePath);
   if (isSingle) appendToEnvFile(envFilePath, 'APP_ID', appInfo.appId);
+
+  const url = isProp ? 'https://asvab-prep.com/' : 'http://localhost:3000/';
+
   appendToEnvFile(envFilePath, 'NEXT_PUBLIC_APPLE_ID', 'com.abc.asvabtestweb');
-  appendToEnvFile(envFilePath, 'DEV_BASE_API', 'http://localhost:3000/');
+  appendToEnvFile(envFilePath, 'DEV_BASE_API', url);
   appendToEnvFile(
     envFilePath,
     'NEXT_PUBLIC_SECRET_KEY',
@@ -28,11 +31,7 @@ const appendEnv = (envFilePath, appInfo, isSingle, authSecret) => {
     'NEXT_PUBLIC_GOOGLE_ID',
     '792314426707-gp1p1ml492uqehflmnm96r6in0jait6n.apps.googleusercontent.com'
   );
-  appendToEnvFile(
-    envFilePath,
-    'NEXT_PUBLIC_API_URL',
-    'https://asvab.cd.worksheetzone.org/'
-  );
+  appendToEnvFile(envFilePath, 'NEXT_PUBLIC_API_URL', url);
   if (isSingle) {
     appendToEnvFile(
       envFilePath,
@@ -41,6 +40,7 @@ const appendEnv = (envFilePath, appInfo, isSingle, authSecret) => {
     );
   }
   appendToEnvFile(envFilePath, 'AUTH_SECRET', authSecret);
+  appendToEnvFile(envFilePath, 'AUTH_TRUST_HOST', url);
 };
 
 /**
@@ -54,10 +54,25 @@ function updateEnvAndSave({
   authSecret,
   server: { diagnosticTest },
   appShortName,
+  member,
+  isProp,
 }) {
   // config
   const envFilePath = path.join(DATA_PATH, '/apps/single/.env.local');
-  appendEnv(envFilePath, appInfo, true, authSecret);
+  appendEnv(envFilePath, appInfo, true, authSecret, isProp);
+
+  const chunkSize = 200; // số topic mỗi file
+  for (let i = 0; i < questions.length; i += chunkSize) {
+    const chunk = questions.slice(i, i + chunkSize);
+    saveJSONFile(
+      path.join(
+        DATA_PATH,
+        `/apps/single/src/data/sw/questions_${i / chunkSize}.json`
+      ),
+      chunk
+    );
+  }
+
   saveJSONFile(
     path.join(DATA_PATH, '/apps/single/src/data/appInfos.json'),
     appInfo
@@ -72,18 +87,6 @@ function updateEnvAndSave({
     path.join(DATA_PATH, '/apps/single/src/data/sw/passing.json'),
     passing
   );
-
-  const chunkSize = 200; // số topic mỗi file
-  for (let i = 0; i < questions.length; i += chunkSize) {
-    const chunk = questions.slice(i, i + chunkSize);
-    saveJSONFile(
-      path.join(
-        DATA_PATH,
-        `/apps/single/src/data/sw/questions_${i / chunkSize}.json`
-      ),
-      chunk
-    );
-  }
 
   saveJSONFile(
     path.join(DATA_PATH, '/apps/single/src/data/sw/topics.json'),
@@ -103,11 +106,7 @@ function updateEnvAndSave({
     home
   );
   // server
-  saveJSONFile(path.join(DATA_PATH, '/apps/single/src/data/server/dia.json'), {
-    titleSeo: seo.default.diagnosticTest.titleSeo,
-    descSeo: seo.default.diagnosticTest.descSeo,
-    content: seo.default.diagnosticTest.content,
-  });
+
   saveJSONFile(
     path.join(DATA_PATH, '/apps/single/src/data/server/final.json'),
     {
@@ -117,18 +116,51 @@ function updateEnvAndSave({
       content: seo.rewrite[`full-length-${appShortName}-practice-test`].content,
     }
   );
-  saveJSONFile(path.join(DATA_PATH, '/apps/single/src/data/server/pra.json'), {
-    titleSeo: seo.default.practiceTest.titleSeo,
-    descSeo: seo.default.practiceTest.descSeo,
-    content: seo.default.practiceTest.content,
-  });
+
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/diagnostic.json'),
+    seo.diagnostic
+  );
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/custom.json'),
+    seo.custom
+  );
+
   saveJSONFile(
     path.join(DATA_PATH, '/apps/single/src/data/server/review.json'),
+    seo.review
+  );
+
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/contact.json'),
+    seo.contact
+  );
+
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/about.json'),
     {
-      titleSeo: seo.default.review.titleSeo,
-      descSeo: seo.default.review.descSeo,
-      content: seo.default.review.content,
+      ...seo.about,
+      listMember: member,
     }
+  );
+
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/billing.json'),
+    seo.billing
+  );
+
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/finish.json'),
+    seo.finish
+  );
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/getPro.json'),
+    seo.getPro
+  );
+
+  saveJSONFile(
+    path.join(DATA_PATH, '/apps/single/src/data/server/result.json'),
+    seo.result
   );
 }
 

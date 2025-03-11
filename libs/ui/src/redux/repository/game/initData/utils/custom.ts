@@ -1,7 +1,6 @@
 import { TypeParam } from '@ui/constants';
 import { db } from '@ui/db';
 import { IGameMode } from '@ui/models/tests/tests';
-import { c } from 'framer-motion/dist/types.d-6pKw1mTI';
 
 type IPropsCustom = {
   testId?: number;

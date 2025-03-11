@@ -35,7 +35,7 @@ export const initGameReducer: IGameReducer = {
   incorrectQuestionIds: [], // Danh sách ID câu hỏi làm sai
   isFirstAttempt: true, // Lần đầu tiên làm bài hay không
   isGameCompleted: false, // Bài test đã hoàn thành hay chưa?
-  currentSubTopicIndex: '1', // Vị trí của sub-topic hiện tại trong game
+  currentSubTopicIndex: 1, // Vị trí của sub-topic hiện tại trong game
   attemptNumber: 1, // Lượt làm bài (lần 1, 2, 3,...)
   totalDuration: -1, // Tổng thời gian của bài test
   gameMode: 'learn', // Chế độ của game: learn/test

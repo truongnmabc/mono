@@ -4,7 +4,12 @@ import { IStatusTopic } from '@ui/redux/features/study';
 
 const selectSubTopicThunk = createAsyncThunk(
   'selectSubTopicThunk',
-  async (partId: number) => {
+  async (
+    partId: number
+  ): Promise<{
+    list: { id: number; status: IStatusTopic }[];
+    subTopicId: number;
+  }> => {
     if (partId === -1)
       return {
         list: [],

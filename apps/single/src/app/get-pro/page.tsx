@@ -7,12 +7,17 @@ import StoreLogoPro from '@ui/container/get-pro/storeLogo';
 import { replaceYear } from '@ui/utils/time';
 import { Metadata } from 'next';
 import { cookies } from 'next/headers';
+
 export const metadata: Metadata = {
-  title: replaceYear(dataSeo.title),
-  description: replaceYear(dataSeo.description),
+  title: replaceYear(dataSeo.titleSeo),
+  description: replaceYear(dataSeo.descSeo),
   openGraph: {
-    title: replaceYear(dataSeo.title),
-    description: replaceYear(dataSeo.description),
+    title: replaceYear(dataSeo.titleSeo),
+    description: replaceYear(dataSeo.descSeo),
+  },
+  twitter: {
+    title: replaceYear(dataSeo?.titleSeo),
+    description: replaceYear(dataSeo?.descSeo),
   },
   alternates: {
     canonical: `${process.env['NEXT_PUBLIC_API_URL']}get-pro`,

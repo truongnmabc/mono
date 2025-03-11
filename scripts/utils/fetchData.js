@@ -14,6 +14,13 @@ export async function getDataTopicsAndTest(appName) {
   return response.data;
 }
 
+// Topics and tests
+export async function getDataMember() {
+  const url = `https://asvab-prep.com/wp-json/passemall/v1/get-all-members`;
+  const response = await axios.get(url);
+  return response.data;
+}
+
 // Seo content home page
 export async function getDataSeo(appName) {
   const url = `https://api.asvab-prep.com/wp-json/passemall/v1/get-info-state?stateSlug=${appName}`;

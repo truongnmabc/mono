@@ -57,7 +57,9 @@ export const fetchQuestionsForTopics = async ({
   const selectedQuestionIds = new Set<number>();
 
   const allPartIds = selectListTopic.flatMap((topic) =>
-    topic.topics.flatMap((subTopic) => subTopic.topics.map((part) => part.id))
+    topic.topics.flatMap((subTopic: ITopicBase) =>
+      subTopic.topics.map((part: ITopicBase) => part.id)
+    )
   );
 
   if (!allPartIds.length) return [];
@@ -85,7 +87,9 @@ export const fetchQuestionsForTopics = async ({
   });
 
   for (const [topicIndex, topic] of selectListTopic.entries()) {
-    const listPart = topic.topics.flatMap((subTopic) => subTopic.topics);
+    const listPart = topic.topics.flatMap(
+      (subTopic: ITopicBase) => subTopic.topics as ITopicBase[]
+    );
     if (!listPart.length) continue;
 
     const countQuestionPart = Math.floor(countQuestionTopic / listPart.length);
@@ -152,7 +156,9 @@ export const fetchQuestionsForTopics = async ({
       .slice(0, remainingCount)
       .map((item) => {
         const topic = selectListTopic.find((t) =>
-          t.topics.some((st) => st.topics.some((p) => p.id === item.partId))
+          t.topics.some((st: ITopicBase) =>
+            st.topics.some((p: ITopicBase) => p.id === item.partId)
+          )
         );
         return {
           ...item,
@@ -177,7 +183,7 @@ export const generateGroupExamData = async ({
 }) => {
   return topics.map((topic) => {
     // Lấy danh sách các subtopic thuộc topic hiện tại
-    const subtopicIds = topic.topics.map((subtopic) => subtopic.id);
+    const subtopicIds = topic.topics.map((subtopic: ITopicBase) => subtopic.id);
 
     // Lọc ra danh sách câu hỏi thuộc các subtopic này
     const questionIds = questions

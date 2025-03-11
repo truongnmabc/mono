@@ -1,0 +1,20 @@
+{
+  "gaId": "UA-167769768-2",
+  "tagManagerId": "GTM-WMWV374",
+  "appId": 4878338973761536,
+  "googleVerifyId": "kS0dwjBOA9pZaStotM-lbFAW2fP7vk6-usRhQcPogw0",
+  "mainColor": "#7C6F5B",
+  "mainColorBold": "#443C2F",
+  "mainBackgroundColor": "#F9F7EE",
+  "mainBackgroundColorContact": "#7c6f5b0a",
+  "linearGradientBanner": "linear-gradient(90deg, #FFEED5 0%, #FFFCD9 100%)",
+  "cookie": "#666444",
+  "GA4ID": "G-REG5WF8B8P",
+  "pageId": "104795498352899",
+  "wpDomain": "https://api.asvab-prep.com",
+  "bgColorStartTest": "#2F8966",
+  "bgColorCloseCookie": "#8A8862",
+  "mainColorUpgradePro": "#329678",
+  "colorClockDiscount": "#6e6c4a",
+  "appleClientId": "com.abc.asvabtestweb"
+}
