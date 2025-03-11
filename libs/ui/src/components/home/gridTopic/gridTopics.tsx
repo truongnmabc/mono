@@ -3,6 +3,7 @@ import TitleCollapse from '@ui/components/allowExpand/titleCollapse';
 import LazyLoadImage from '@ui/components/images';
 import { TypeParam } from '@ui/constants';
 import { IAppInfo } from '@ui/models/app';
+import { ITopicHomeJson } from '@ui/models/other';
 import ctx from '@ui/utils/twClass';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -10,13 +11,7 @@ import React from 'react';
 import PassingHome from '../passing';
 import TestTT from './test';
 // DONE:
-export interface ITopicHomeProps {
-  id: number;
-  icon: string;
-  name: string;
-  slug?: string;
-  topics: ITopicHomeProps[];
-}
+
 const GridTopics = ({
   topics,
   appInfo,
@@ -24,10 +19,12 @@ const GridTopics = ({
   selectTopic,
 }: {
   appInfo: IAppInfo;
-  topics: ITopicHomeProps[];
+  topics: ITopicHomeJson[];
   isMobile: boolean;
   selectTopic?: string;
 }) => {
+  const sortTopic = topics?.sort((a, b) => a.orderIndex - b.orderIndex);
+
   return (
     <div className="w-full  pt-6 sm:pt-14">
       <h3 className="sm:text-[40px] sm:leading-[60px] font-poppins text-center text-2xl font-bold">
@@ -47,7 +44,7 @@ const GridTopics = ({
           'grid  mt-6 sm:mt-10 sm:grid-cols-1 gap-4 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-4 md:gap-4'
         )}
       >
-        {topics?.map((topic, index) => {
+        {sortTopic?.map((topic, index) => {
           const isSelect = selectTopic === topic.id.toString();
           return (
             <div
@@ -104,17 +101,15 @@ const GridTopics = ({
                       })}
                     >
                       <div className="flex gap-2 flex-col ">
-                        {topic?.topics &&
-                          topic?.topics?.length > 0 &&
-                          topic?.topics?.map(
-                            (subTopic: ITopicHomeProps, index: number) => (
-                              <TitleCollapse
-                                subTopic={subTopic}
-                                key={index}
-                                topicId={topic.id}
-                              />
-                            )
-                          )}
+                        {topic?.topics
+                          ?.sort((a, b) => a.orderIndex - b.orderIndex)
+                          ?.map((subTopic: ITopicHomeJson, index: number) => (
+                            <TitleCollapse
+                              subTopic={subTopic}
+                              key={index}
+                              topicId={topic.id}
+                            />
+                          ))}
                       </div>
                     </div>
                   </Collapse>

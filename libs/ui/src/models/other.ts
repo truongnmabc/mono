@@ -3,6 +3,7 @@ type ITopicHomeJson = {
   name: string;
   icon: string;
   slug?: string;
+  orderIndex: number;
   topics?: ITopicHomeJson[];
 };
 type IBranchHomeJson = {
@@ -10,7 +11,7 @@ type IBranchHomeJson = {
   list: IList[];
 };
 
-export type { ITopicHomeJson, IBranchHomeJson };
+export type { IBranchHomeJson, ITopicHomeJson };
 
 export interface ITestsHomeJson {
   finalTests: FinalTests;

@@ -10,7 +10,10 @@ const selectSubTopicThunk = createAsyncThunk(
         list: [],
         subTopicId: partId,
       };
-    const data = await db?.topics.where('parentId').equals(partId).toArray();
+    const data = await db?.topics
+      .where('parentId')
+      .equals(partId)
+      .sortBy('orderIndex');
     if (data) {
       const current = data.find((item) => item.status === 0);
       if (current) {

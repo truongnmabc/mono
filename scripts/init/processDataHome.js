@@ -16,17 +16,21 @@ export function processDataHome({
         icon: item.icon,
         name: item.name,
         slug: slug,
+        orderIndex: item.orderIndex,
         topics: item.topics.map((t) => ({
           id: t.id,
           icon: t.icon,
           name: t.name,
           slug: slug,
+          orderIndex: t.orderIndex,
+
           topics: t.topics.map((tt) => ({
             id: tt.id,
             icon: tt.icon,
             name: tt.name,
             slug: slug,
             topics: [],
+            orderIndex: tt.orderIndex,
           })),
         })),
       };

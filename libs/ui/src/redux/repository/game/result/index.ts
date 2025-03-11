@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { TypeParam } from '@ui/constants';
 import { db } from '@ui/db';
+import { IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
 import { RootState } from '@ui/redux/store';
+import { totalPassingPart } from '@ui/utils/calculate';
 import {
   getLocalUserProgress,
   mapQuestionsWithProgress,
 } from '../../utils/handle';
-import { IQuestionOpt } from '@ui/models/question';
-import { totalPassingPart } from '@ui/utils/calculate';
-import { TypeParam } from '@ui/constants';
 
 const getDataResultTestThunk = createAsyncThunk(
   'getDataResultTestThunk',
@@ -90,9 +90,11 @@ const getDataResultTestThunk = createAsyncThunk(
       !userInfo.isPro && gameMode === TypeParam.finalTests
         ? data.slice(0, 50)
         : data;
+    console.log('🚀 ~ questions:', questions);
     const incorrectQuestions = questions.filter(
       (q) => q.selectedAnswer?.correct === false || !q.selectedAnswer
     );
+    console.log('🚀 ~ incorrectQuestions:', incorrectQuestions);
     const correctQuestions = questions.filter(
       (q) => q.selectedAnswer?.correct === true
     );

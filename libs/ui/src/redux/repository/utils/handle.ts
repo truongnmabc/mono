@@ -1,6 +1,6 @@
 import { db } from '@ui/db';
-import { IQuestionOpt } from '@ui/models/question';
 import { IUserQuestionProgress } from '@ui/models/progress';
+import { IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
 
 /**
@@ -23,6 +23,7 @@ export const getLocalUserProgress = async (
     .anyOf(listIds)
     .toArray();
 
+  console.log('🚀 ~ userProgress:', userProgress);
   if (!userProgress) return [];
 
   // Lọc selectedAnswers sau khi lấy dữ liệu

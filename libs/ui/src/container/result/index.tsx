@@ -1,5 +1,10 @@
 'use client';
 import { TypeParam } from '@ui/constants';
+import {
+  IBranchHomeJson,
+  IThunkFunctionReturn,
+  ITopicHomeJson,
+} from '@ui/models/other';
 import { IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
 import getDataResultTestThunk from '@ui/redux/repository/game/result';
@@ -7,11 +12,6 @@ import { useAppDispatch } from '@ui/redux/store';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { ResultProvider } from './resultContext';
-import {
-  IBranchHomeJson,
-  IThunkFunctionReturn,
-  ITopicHomeJson,
-} from '@ui/models/other';
 const DiagnosticTestResult = dynamic(() => import('./layout/diagnosticTest'), {
   ssr: false,
 });
@@ -106,6 +106,7 @@ const ResultTestLayout = ({
               name: topic?.name || '',
               slug: topic?.slug || '',
               topics: topic?.topics || [],
+              orderIndex: topic?.orderIndex || 0,
             };
           }),
           all: questions.length,

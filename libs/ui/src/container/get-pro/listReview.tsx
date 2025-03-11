@@ -69,7 +69,7 @@ const ListReview = () => {
     firstHalf: [],
     secondHalf: [],
   });
-  const slug = process.env.NEXT_PUBLIC_APP_SHORT_NAME;
+  const slug = process.env['NEXT_PUBLIC_APP_SHORT_NAME'];
 
   // Carousel trượt sang phải
   const [emblaRef1] = useEmblaCarousel(

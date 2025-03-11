@@ -11,7 +11,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { MtUiButton } from '../button';
 import DialogResponsive from '../dialogResponsive';
 import { IconArrowRight, SelectIconSync } from './icon';
-import { clearDbLocalBeforeSync } from '@ui/redux/repository/sync/clearDbLocalBeforeSync';
 
 const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
   const userInfo = useAppSelector(selectUserInfo);
@@ -21,24 +20,15 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
   const [syncKey, setSyncKey] = useState('');
 
   const handleChoiceDb = useCallback(
-    async (name: string) => {
+    async (name: 'server' | 'local') => {
       try {
-        if (name === 'local') {
-          dispatch(
-            syncUp({
-              syncKey: syncKey,
-            })
-          );
-        } else {
-          const result = await dispatch(clearDbLocalBeforeSync());
-          if (result) {
-            dispatch(
-              syncDown({
-                syncKey: syncKey,
-              })
-            );
-          }
-        }
+        dispatch(
+          syncDown({
+            syncKey: syncKey,
+            deleteOldData: true,
+            db: name,
+          })
+        );
       } catch (err) {
         console.log('🚀 ~ handleChoiceDb ~ err:', err);
       } finally {
@@ -48,9 +38,8 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
     [syncKey]
   );
   useEffect(() => {
+    if (!userInfo?.id || !appInfos) return;
     const handleSyncData = async () => {
-      if (!userInfo?.id || !appInfos) return;
-
       const payload = {
         appId: appInfos.appId,
         email: userInfo.email,
@@ -68,12 +57,9 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
         }),
         db?.passingApp.get(-1),
       ]);
+      console.log('🚀 ~ handleSyncData ~ app:', app);
+      console.log('🚀 ~ handleSyncData ~ user:', user);
 
-      if (app?.syncKey && user.sync_key !== app.syncKey) {
-        await db?.passingApp.update(-1, {
-          syncKey: user.sync_key,
-        });
-      }
       // server chưa có thông tin. up lên
       if (!user.has_user_data || !app)
         return dispatch(
@@ -84,6 +70,9 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
 
       // server có thông tin , local có thông tin, chọn db nào để sync
       if (app.syncKey && user.sync_key !== app.syncKey) {
+        await db?.passingApp.update(-1, {
+          syncKey: user.sync_key,
+        });
         setSyncKey(user.sync_key);
         setIsShowPopup(true);
       } else {
@@ -102,7 +91,9 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
       }, 1000);
     }
   }, [isFetched, userInfo, appInfos]);
+
   const handleClose = () => setIsShowPopup(false);
+
   return (
     <DialogResponsive
       open={isShowPopup}

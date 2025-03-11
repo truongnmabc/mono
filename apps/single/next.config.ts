@@ -35,6 +35,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'images.dmca.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'asvab-prep.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'secure.gravatar.com',
+      },
     ],
   },
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],

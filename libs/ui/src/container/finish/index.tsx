@@ -1,6 +1,7 @@
 'use client';
 import TitleCollapse from '@ui/components/allowExpand/titleCollapse';
 import MyContainer from '@ui/components/container';
+import { TypeParam } from '@ui/constants';
 import { db } from '@ui/db';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionBase } from '@ui/models/question';
@@ -22,13 +23,13 @@ const getCurrentProgressData = async ({
   partId: number;
   topic: string;
 }) => {
-  const [progress, questions, currentTopic] = await Promise.all([
+  const [progress, questions, topics] = await Promise.all([
     db?.userProgress.where('parentId').equals(partId).toArray(),
     db?.questions.where('partId').equals(partId).toArray(),
     db?.topics.where('slug').equals(topic).sortBy('index'),
   ]);
 
-  return { progress, questions, currentTopic };
+  return { progress, questions, topics };
 };
 
 const calculateProgress = (
@@ -40,7 +41,7 @@ const calculateProgress = (
     progress?.filter((item) => {
       // Lấy lần đầu tiên người dùng trả lời câu hỏi trong lần làm bài (turn)
       const firstAnswer = item.selectedAnswers.find(
-        (answer) => answer.turn === turn && answer.type === 'learn'
+        (answer) => answer.turn === turn && answer.type === TypeParam.learn
       );
 
       // Nếu lần đầu tiên trả lời đúng, tính vào số câu đúng
@@ -113,28 +114,31 @@ const FinishLayout = ({
 
     if (!topic || !resultId || !attemptNumber || !isDataFetched) return;
     const handleGetData = async () => {
-      const { currentTopic, progress, questions } =
-        await getCurrentProgressData({
-          partId: resultId,
-          topic,
-        });
-
-      if (!currentTopic || !progress || !questions) return;
+      const { topics, progress, questions } = await getCurrentProgressData({
+        partId: resultId,
+        topic,
+      });
+      console.log('🚀 ~ handleGetData ~ progress:', progress);
+      console.log('🚀 ~ handleGetData ~ questions:', questions);
+      if (!topics || !progress || !questions) return;
 
       const { correct, total } = calculateProgress(
         progress,
         questions,
         attemptNumber
       );
+      console.log('🚀 ~ handleGetData ~ correct:', correct);
 
       const { extraPoint } = await calculateProgressPassing({
         progress,
         attemptNumber,
       });
 
-      const currentIndex = currentTopic.findIndex((t) => t.id === resultId);
-      const currentPart = currentTopic[currentIndex];
-      const nextPart = currentTopic
+      const listCort = topics.filter((t) => t.type === 3);
+
+      const currentIndex = listCort.findIndex((t) => t.id === resultId);
+      const currentPart = listCort[currentIndex];
+      const nextPart = listCort
         .slice(currentIndex + 1) // Lấy các topic sau topic hiện tại
         .find((topic) => topic.status === 0);
 
@@ -147,7 +151,7 @@ const FinishLayout = ({
         isNextTopic: !!nextPart,
       });
 
-      const mainTopics = currentTopic.reduce((acc, topic) => {
+      const mainTopics = listCort.reduce((acc, topic) => {
         if (!acc.has(topic.parentId)) {
           acc.set(topic.parentId, []);
         }
@@ -158,9 +162,7 @@ const FinishLayout = ({
         return acc;
       }, new Map());
 
-      const parentTopicIds = Array.from(mainTopics.keys());
-      const subs =
-        (await db?.topics.where('id').anyOf(parentTopicIds).toArray()) || [];
+      const subs = topics.filter((t) => t.type === 2);
 
       const subsWithTopics = subs.map((sub) => ({
         ...sub,

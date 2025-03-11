@@ -78,10 +78,11 @@ export default function RootLayout({
 const IniDexieIndexDb = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (appInfos) {
-      initializeDB(appInfos.appShortName);
+    const handleInitDbDexie = async () => {
+      await initializeDB(appInfos.appShortName);
       dispatch(setIsDataFetched(true));
-    }
+    };
+    if (appInfos) handleInitDbDexie();
   }, [appInfos]);
 
   return null;

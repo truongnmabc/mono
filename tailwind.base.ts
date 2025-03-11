@@ -15,6 +15,7 @@ export default {
         'theme-white': 'var(--main-background-color)',
         'theme-dark': 'var(--main-background-color)',
         'primary-16': 'rgba(252,167,45, 0.16)',
+        main: 'var(--main-color)',
       },
       fontFamily: {
         poppins: ['var(--font-poppins)'],

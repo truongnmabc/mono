@@ -96,8 +96,10 @@ const TopicLevelProgress = ({
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
   }, []);
-
-  const arr = groupTopics(subTopic?.topics || [], 3);
+  const sortTopics = subTopic?.topics?.sort(
+    (a, b) => a.orderIndex - b.orderIndex
+  );
+  const arr = groupTopics(sortTopics || [], 3);
 
   return (
     <div

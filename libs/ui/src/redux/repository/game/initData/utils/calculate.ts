@@ -4,8 +4,8 @@ import {
   mapQuestionsWithProgress,
 } from '@ui/redux/repository/utils/handle';
 
-import { IQuestionOpt, IStatusAnswer } from '@ui/models/question';
 import { IUserQuestionProgress } from '@ui/models/progress';
+import { IQuestionOpt, IStatusAnswer } from '@ui/models/question';
 
 export const getQuestionProgress = async (
   type: IGameMode,
@@ -14,6 +14,7 @@ export const getQuestionProgress = async (
   attemptNumber: number
 ) => {
   const questionIdsSet = listQuestions?.map((q) => q.id) || [];
+
   const progressData =
     (await getLocalUserProgress(
       questionIdsSet,

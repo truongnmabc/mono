@@ -1,0 +1,179 @@
+.about-header-component-mobile {
+    position: relative;
+    padding-top: 24px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    .about-header-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        position: relative;
+        z-index: 1;
+        padding: 0 16px;
+
+        .title {
+            font-family: Poppins, sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 54px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .contact-button {
+            background: #e0a859;
+            border-radius: 8px;
+
+            width: 170px;
+            height: 48px;
+            margin-top: 4px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: Poppins, sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #ffffff;
+        }
+        .stats-container {
+            width: 100%;
+            margin: 12px 9px 0;
+
+            display: flex;
+            justify-content: space-between;
+
+            .stats-area {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                .stats {
+                    .number {
+                        font-family: Poppins, sans-serif;
+                        font-size: 24px;
+                        font-weight: 600;
+                        line-height: 36px;
+                        color: #ffc26c;
+                    }
+                    .label {
+                        font-family: Poppins, sans-serif;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 18px;
+                        color: #ffffff;
+                    }
+                }
+            }
+            .soldier {
+                min-width: 202px;
+                min-height: 231px;
+                max-width: 202px;
+                max-height: 231px;
+                position: relative;
+            }
+        }
+    }
+}
+
+.about-header-component {
+    position: relative;
+    padding-top: 36px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    background-image: url(/images/about/background-header.png);
+    .about-header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            z-index: 1;
+
+            .title {
+                font-family: Poppins, sans-serif;
+                font-size: 48px;
+                font-weight: 700;
+                line-height: 72px;
+                color: #ffffff;
+            }
+            .stats-container {
+                display: flex;
+                align-items: center;
+                gap: 36px;
+                margin: 8px 0 36px;
+
+                .contact-button {
+                    cursor: pointer;
+
+                    background: #e0a859;
+                    border-radius: 8px;
+
+                    width: 207px;
+                    height: 68px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    font-family: Poppins, sans-serif;
+                    font-size: 24px;
+                    font-weight: 500;
+                    line-height: 36px;
+                    color: #ffffff;
+
+                    &:hover {
+                        background: #e3a651e5;
+                        box-shadow: 0px 0px 0px 2px #e3a65152;
+                    }
+                }
+                .stats-area {
+                    display: flex;
+                    align-items: center;
+                    gap: 24px;
+
+                    .stats {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .number {
+                            font-family: Poppins, sans-serif;
+                            font-size: 30px;
+                            font-weight: 600;
+                            line-height: 45px;
+                            color: #ffc26c;
+                        }
+                        .label {
+                            font-family: Poppins, sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 21px;
+                            color: #ffffff;
+                        }
+                    }
+                    .line {
+                        width: 1px;
+                        height: 48px;
+                        background: #ffffff85;
+                    }
+                }
+            }
+        }
+        .soldier {
+            min-width: 481px;
+            min-height: 545px;
+            max-width: 481px;
+            max-height: 545px;
+            position: relative;
+        }
+    }
+}

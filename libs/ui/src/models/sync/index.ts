@@ -6,19 +6,19 @@ export interface IPropsGetAllUserDataFromServer {
   deleteOldData: boolean;
   // (true: xoá hết dữ liệu trên server đồng thời sync dữ liệu từ local lên, false: lấy dữ liệu từ server xuống),
   user_data?: {
-    userId: string;
-    syncKey: string;
-    appId: number;
+    userId?: string;
+    syncKey?: string;
+    appId?: number;
     deviceId?: string;
-    probabilityOfPassing: number;
-    mapUpdateData: Record<string, boolean>;
-    UserTestData: IUserTestData[];
-    QuestionProgress: IQuestionProgressSync[];
-    TopicProgress: ITopicProgress[];
-    UserQuestionProgress: IUserQuestionProgressSync[];
+    probabilityOfPassing?: number;
+    mapUpdateData?: Record<string, boolean>;
+    UserTestData?: IUserTestData[];
+    QuestionProgress?: IQuestionProgressSync[];
+    TopicProgress?: ITopicProgress[];
+    UserQuestionProgress?: IUserQuestionProgressSync[];
     DailyGoal?: [];
     StudyPlan?: [];
-    TestInfo: [];
+    TestInfo?: [];
   };
 }
 

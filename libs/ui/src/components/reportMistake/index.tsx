@@ -69,7 +69,6 @@ const ReportMistake = ({ onClose }: { onClose: () => void }) => {
           userActionsThunk({
             status: 'dislike',
             questionId: currentGame?.id,
-            partId: idTopic,
           })
         );
 

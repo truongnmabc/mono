@@ -89,6 +89,7 @@ export const handleCreateNewTest = async ({
     const currentTest = UserTestData.find(
       (test) => test.testId === item.testId
     );
+    console.log('🚀 ~ testPromises ~ currentTest:', currentTest);
     const topicIds = ques.map((q) => Number(q.topicId));
     const topics = await db?.topics.where('id').anyOf(topicIds).toArray();
 

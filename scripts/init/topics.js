@@ -32,48 +32,52 @@ const buildTopicData = (topic, data, appShortName) => {
     type: 1,
     // 0: Chưa sync, 1: Đã sync
     sync: 0,
+    orderIndex: topic.orderIndex,
   };
   return [mainTopic, ...subTopics.flat()];
 };
 
 const mapTopics = (topics = [], data, slug, icon) =>
-  topics.flatMap(({ id, tag, contentType, name, parentId, topics }, index) => {
-    const topicData = data.find((t) => Number(t.id) === id);
-    if (!topicData) return []; // Nếu không có dữ liệu, trả về mảng rỗng
+  topics.flatMap(
+    ({ id, tag, contentType, name, parentId, topics, orderIndex }, index) => {
+      const topicData = data.find((t) => Number(t.id) === id);
+      if (!topicData) return []; // Nếu không có dữ liệu, trả về mảng rỗng
 
-    const total = calculateSubTopicTotalQuestions(topicData.topics);
-    const averageLevel = calculateAverageLevel(topicData.topics);
-    const coreTopics = mapSubTopics(
-      topics,
-      topicData.topics,
-      slug,
-      index + 1,
-      icon
-    );
+      const total = calculateSubTopicTotalQuestions(topicData.topics);
+      const averageLevel = calculateAverageLevel(topicData.topics);
+      const coreTopics = mapSubTopics(
+        topics,
+        topicData.topics,
+        slug,
+        index + 1,
+        icon
+      );
 
-    const subTopic = {
-      id: Number(id),
-      icon,
-      tag,
-      contentType,
-      name,
-      parentId,
-      slug,
-      topics: [],
-      totalQuestion: total,
-      averageLevel: total > 0 ? averageLevel / total : 0,
-      status: 0,
-      turn: 1,
-      index: `${index + 1}.0`,
-      type: 2,
-    };
+      const subTopic = {
+        id: Number(id),
+        icon,
+        tag,
+        contentType,
+        name,
+        parentId,
+        slug,
+        topics: [],
+        totalQuestion: total,
+        averageLevel: total > 0 ? averageLevel / total : 0,
+        status: 0,
+        turn: 1,
+        index: `${index + 1}.0`,
+        type: 2,
+        orderIndex: orderIndex,
+      };
 
-    // Trả về cả subTopic và coreTopics
-    return [subTopic, ...coreTopics];
-  });
+      // Trả về cả subTopic và coreTopics
+      return [subTopic, ...coreTopics];
+    }
+  );
 
 const mapSubTopics = (topics = [], data, slug, startIndex, icon) =>
-  topics.map(({ id, tag, contentType, name, parentId }, index) => {
+  topics.map(({ id, tag, contentType, name, parentId, orderIndex }, index) => {
     const subTopicData = data.find((t) => Number(t.id) === id) || {};
     const total = subTopicData?.questions?.length || 0;
     const averageLevel =
@@ -99,6 +103,7 @@ const mapSubTopics = (topics = [], data, slug, startIndex, icon) =>
       averageLevel,
       index: `${startIndex}.${index}`,
       type: 3,
+      orderIndex,
     };
   });
 

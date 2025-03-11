@@ -113,3 +113,13 @@ export const TypeConstTest: Record<number, IGameMode> = {
   5: TypeParam.customTests,
   6: TypeParam.diagnosticTest,
 };
+
+export const TestConstType: Record<IGameMode, number> = {
+  practiceTests: 1,
+  finalTests: 2,
+  branchTest: 4,
+  customTests: 5,
+  diagnosticTest: 6,
+  review: 7,
+  learn: 8,
+};

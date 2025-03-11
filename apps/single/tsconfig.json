@@ -36,7 +36,8 @@
     "../../aa/get-pro",
     "../../aa/contact",
     "../../aa/billing",
-    "../../aa/about-us"
+    "../../aa/about-us",
+    "../../libs/ui/src/container/get-pro"
   ],
   "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

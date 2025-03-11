@@ -1,24 +1,20 @@
-import { useMediaQuery } from '@mui/material';
 import { IAppConfigData, IAppInfo } from '@ui/models/app';
 
-import { appConfigState } from '@ui/redux/features/appConfig';
-import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
-import { useAppSelector } from '@ui/redux/store';
 import FacebookIcon from '@ui/components/icon/FacebookIcon';
 import TwitterIcon from '@ui/components/icon/TwitterIcon';
 import YoutubeIcon from '@ui/components/icon/YoutubeIcon';
 import LazyLoadImage from '@ui/components/images';
 import ForwardedLinkBlank from '@ui/components/nextLink';
-import { validateEmail } from '@ui/utils/validate';
 import RouterApp from '@ui/constants/router.constant';
+import { sendEmailSubscribeApiV4 } from '@ui/services/home';
+import { getContactApp } from '@ui/utils';
+import { getImageSrc } from '@ui/utils/image';
+import { validateEmail } from '@ui/utils/validate';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { memo, useRef } from 'react';
 import './FooterLandingV4.scss';
 import { DmcaIcon } from './info/iconDmca';
-import { getContactApp } from '@ui/utils';
-import { sendEmailSubscribeApiV4 } from '@ui/services/home';
-import { getImageSrc } from '@ui/utils/image';
 
 const FooterLandingV4 = ({
   isMobile,
@@ -99,7 +95,7 @@ const FooterLandingV4 = ({
           <Link href={RouterApp.About} prefetch={false}>
             About Us
           </Link>
-          <Link href={RouterApp.Contacts} prefetch={false}>
+          <Link href={`${RouterApp.Contacts}?openBox=0`} prefetch={false}>
             Contact Us
           </Link>
         </div>

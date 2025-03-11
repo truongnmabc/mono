@@ -1,12 +1,12 @@
 import appInfos from '@single/data/appInfos.json';
 import dataSeo from '@single/data/server/getPro.json';
+import HeaderGetPro from '@ui/container/get-pro/header';
+import ListReview from '@ui/container/get-pro/listReview';
+import Pricing from '@ui/container/get-pro/pricingCard';
+import StoreLogoPro from '@ui/container/get-pro/storeLogo';
 import { replaceYear } from '@ui/utils/time';
 import { Metadata } from 'next';
 import { cookies } from 'next/headers';
-import HeaderGetPro from './components/get-pro/header';
-import ListReview from './components/get-pro/listReview';
-import Pricing from './components/get-pro/pricingCard';
-import StoreLogoPro from './components/get-pro/storeLogo';
 export const metadata: Metadata = {
   title: replaceYear(dataSeo.title),
   description: replaceYear(dataSeo.description),

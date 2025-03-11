@@ -1,9 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { TypeParam } from '@ui/constants';
+import { db } from '@ui/db';
+import { IFeedBack } from '@ui/models/game';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { IQuestionBase, IQuestionOpt } from '@ui/models/question';
 import { IGameMode } from '@ui/models/tests/tests';
 import { setIsStartAnimationNext } from '@ui/redux/features/appInfo';
 import { selectTopics } from '@ui/redux/features/study';
+import { shouldOpenSetting } from '@ui/redux/features/tests';
 import { RootState } from '@ui/redux/store';
 import selectSubTopicThunk from '../../study/select';
 import { getNextQuestionState, getQuestionProgress } from './utils/calculate';
@@ -13,10 +17,6 @@ import { handleGetDataFinalTest } from './utils/final';
 import { handleGetDataLean } from './utils/learn';
 import { handleGetDataPracticeTest } from './utils/practice';
 import { handleGetDataReview } from './utils/review';
-import { TypeParam } from '@ui/constants';
-import { db } from '@ui/db';
-import { shouldOpenSetting } from '@ui/redux/features/tests';
-import { IFeedBack } from '@ui/models/game';
 
 type IInitQuestion = {
   subTopicTag?: string;

@@ -20,4 +20,5 @@ export interface ITopicBase {
   index: string;
   sync?: 0 | 1;
   type?: number;
+  orderIndex: number;
 }

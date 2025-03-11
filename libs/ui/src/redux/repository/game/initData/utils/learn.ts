@@ -14,7 +14,7 @@ export const handleGetDataLean = async ({ partId, slug }: IPropsLearn) => {
     const core = await db?.topics
       .where('slug')
       .equals(slug || '')
-      .sortBy('index');
+      .sortBy('orderIndex');
     const list = core?.filter((item) => item.type === 3);
     const currentPart = list?.find((item) => item.status === 0);
     if (currentPart) {
