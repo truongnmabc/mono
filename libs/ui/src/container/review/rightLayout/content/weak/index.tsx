@@ -1,18 +1,17 @@
 'use client';
+import { Dialog } from '@mui/material';
 import { MtUiButton } from '@ui/components/button';
 import TabPanelReview from '@ui/container/result/tabPanelReview';
 import { db } from '@ui/db';
-import { IModeReview } from '@ui/models/other';
-import { ITopicHomeJson } from '@ui/models/other';
+import { IModeReview, ITopicHomeJson } from '@ui/models/other';
 import { IQuestionOpt } from '@ui/models/question';
-import { useAppDispatch } from '@ui/redux/store';
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
-import ChoiceQuestionBeforeStart from '../random/choiceQuestionBeforeStart';
-import { Dialog } from '@mui/material';
 import { resetState, startRandomReview } from '@ui/redux/features/game';
-import { AnimatePresence, motion } from 'framer-motion';
-import ReviewGameContent from '../game';
+import { useAppDispatch } from '@ui/redux/store';
 import { generateRandomNegativeId } from '@ui/utils/math';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import ReviewGameContent from '../game';
+import ChoiceQuestionBeforeStart from '../random/choiceQuestionBeforeStart';
 const emptyMessage =
   "It seems that you're doing well, there are no weaknesses to address.";
 const WeakQuestions = ({
@@ -85,7 +84,8 @@ const WeakQuestions = ({
 
   const handleStartTest = useCallback(
     async (e: number) => {
-      const ques = listData?.slice(0, e);
+      const maxQuestions = 100;
+      const ques = listData?.slice(0, Math.min(e, maxQuestions));
       const id = generateRandomNegativeId();
 
       dispatch(

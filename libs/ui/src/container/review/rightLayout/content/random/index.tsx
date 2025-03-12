@@ -1,11 +1,7 @@
 'use client';
 
 import { IModeReview, ITopicHomeJson } from '@ui/models/other';
-import {
-  resetState,
-  setCurrentTopicId,
-  startRandomReview,
-} from '@ui/redux/features/game';
+import { resetState, startRandomReview } from '@ui/redux/features/game';
 import { useAppDispatch } from '@ui/redux/store';
 import { genRandomQuestion } from '@ui/utils/data';
 import { generateRandomNegativeId } from '@ui/utils/math';
@@ -31,10 +27,12 @@ const RandomQuestions = ({
   }, []);
   const handleStartTest = useCallback(
     async (value: number) => {
-      const list = await genRandomQuestion({
+      const data = await genRandomQuestion({
         value: value,
         topics: topics,
       });
+      const maxQuestions = 100;
+      const list = data?.slice(0, Math.min(value, maxQuestions));
       const id = generateRandomNegativeId();
 
       dispatch(

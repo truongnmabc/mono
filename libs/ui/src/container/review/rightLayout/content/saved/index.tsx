@@ -9,11 +9,11 @@ import { IQuestionOpt } from '@ui/models/question';
 import { resetState, startRandomReview } from '@ui/redux/features/game';
 import { mapQuestionsWithProgress } from '@ui/redux/repository/utils/handle';
 import { useAppDispatch } from '@ui/redux/store';
+import { generateRandomNegativeId } from '@ui/utils/math';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import ReviewGameContent from '../game';
 import ChoiceQuestionBeforeStart from '../random/choiceQuestionBeforeStart';
-import { generateRandomNegativeId } from '@ui/utils/math';
 const SavedQuestions = ({
   isMobile,
   mode,
@@ -57,7 +57,9 @@ const SavedQuestions = ({
 
   const handleStartTest = useCallback(
     async (e: number) => {
-      const ques = listData?.slice(0, e).map((i) => ({
+      const maxQuestions = 100;
+      const list = listData?.slice(0, Math.min(e, maxQuestions));
+      const ques = list.map((i) => ({
         ...i,
         localStatus: 'new',
         selectedAnswer: null,

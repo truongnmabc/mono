@@ -1,17 +1,18 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
-import ChoiceQuestionBeforeStart from '../random/choiceQuestionBeforeStart';
-import { IModeReview } from '@ui/models/other';
-import { ITopicHomeJson } from '@ui/models/other';
+import { IModeReview, ITopicHomeJson } from '@ui/models/other';
+import {
+  resetState,
+  setCurrentTopicId,
+  startRandomReview,
+} from '@ui/redux/features/game';
 import { useAppDispatch } from '@ui/redux/store';
-import { AnimatePresence } from 'framer-motion';
-import { motion } from 'framer-motion';
-import ReviewGameContent from '../game';
-import { startRandomReview, resetState } from '@ui/redux/features/game';
-import { setCurrentTopicId } from '@ui/redux/features/game';
-import { generateRandomNegativeId } from '@ui/utils/math';
 import { genRandomQuestion } from '@ui/utils/data';
+import { generateRandomNegativeId } from '@ui/utils/math';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useCallback, useEffect, useState } from 'react';
+import ReviewGameContent from '../game';
+import ChoiceQuestionBeforeStart from '../random/choiceQuestionBeforeStart';
 
 const HardQuestions = ({
   isMobile,
@@ -30,11 +31,13 @@ const HardQuestions = ({
   const [isStart, setIsStart] = useState(false);
   const handleStartTest = useCallback(
     async (value: number) => {
-      const list = await genRandomQuestion({
+      const data = await genRandomQuestion({
         value: value,
         topics: topics,
         isHard: true,
       });
+      const list = data?.slice(0, Math.min(value, 100));
+
       const id = generateRandomNegativeId();
 
       dispatch(
