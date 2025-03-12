@@ -8,7 +8,7 @@
     "build": "npx nx run single:build && node scripts/postbuild.js"
   },
   "private": true,
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@babel/runtime": "^7.26.9",
     "@emotion/react": "^11.13.5",
@@ -27,6 +27,7 @@
     "axios": "^1.7.7",
     "better-react-mathjax": "^2.0.4-beta1",
     "chart.js": "^4.4.7",
+    "crypto": "^1.0.1",
     "crypto-js": "^4.2.0",
     "dexie": "^4.0.10",
     "embla-carousel": "^8.5.1",

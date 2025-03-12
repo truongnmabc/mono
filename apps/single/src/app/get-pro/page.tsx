@@ -40,7 +40,7 @@ export default async function Page() {
         <h2 className="text-center font-semibold leading-tight text-3xl px-4 sm:text-[48px]">
           What our users are saying
         </h2>
-        <h3 className="text-center mt-6 text-base font-medium text-[#705E57]">
+        <h3 className="text-center px-4 mt-6 text-base font-medium text-[#705E57]">
           Over 50,000 aspiring American candidates use {appName} monthly
         </h3>
         <ListReview />

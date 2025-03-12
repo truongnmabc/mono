@@ -4,6 +4,7 @@ import { db } from '@ui/db';
 import { ICurrentGame } from '@ui/models/game';
 import { handleNextQuestionLearn } from '@ui/redux/repository/game/nextQuestion/utils/learn';
 import { RootState } from '@ui/redux/store';
+import { syncUp } from '../../sync/syncUp';
 
 interface IRes extends ActionResponse {
   timeStart?: number;
@@ -54,7 +55,10 @@ const nextQuestionActionThunk = createAsyncThunk(
       index,
       topic,
     } = await action();
-
+    const { userInfo } = state.user;
+    if (userInfo.email && isFinish) {
+      thunkAPI.dispatch(syncUp({}));
+    }
     return {
       isFinish: isFinish,
       timeStart: new Date().getTime(),

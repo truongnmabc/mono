@@ -9,7 +9,6 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 import PassingHome from '../passing';
-import TestTT from './test';
 // DONE:
 
 const GridTopics = ({
@@ -30,7 +29,6 @@ const GridTopics = ({
       <h3 className="sm:text-[40px] sm:leading-[60px] font-poppins text-center text-2xl font-bold">
         Practice {appInfo.appName} Test By Topics
       </h3>
-      <TestTT />
       <h3 className="text-sm sm:text-base my-2 sm:my-8 text-[#212121CC] sm:text-[#212121] text-center">
         Our {appInfo?.appName} practice questions feature all 9 {''}
         {appInfo?.appName} test subjects. We recommend practicing questions from

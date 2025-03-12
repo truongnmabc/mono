@@ -2,13 +2,15 @@
 import { Modal } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import XIcon from '@ui/asset/icon/XIcon';
+import { setIsTester } from '@ui/redux/features/user';
+import { useAppDispatch } from '@ui/redux/store';
 import { Fragment, useEffect, useState } from 'react';
 import { MtUiButton } from '../button';
 
 const TestMode = ({ isScrollRef }: { isScrollRef: boolean }) => {
   const [clickCount, setClickCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
-
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (clickCount >= 3) {
       console.log('clickCount', clickCount);
@@ -24,6 +26,7 @@ const TestMode = ({ isScrollRef }: { isScrollRef: boolean }) => {
       setTimeout(() => setClickCount(0), 1000); // Reset nếu không click nhanh trong 1s
     } else {
       setShowModal(false);
+      dispatch(setIsTester(true));
     }
   };
 

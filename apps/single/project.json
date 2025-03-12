@@ -11,7 +11,6 @@
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/single",
-        "output": "standalone",
         "nextConfig": "apps/single/next.config.ts"
       },
       "configurations": {
@@ -19,22 +18,7 @@
           "outputPath": "dist/apps/single",
           "packageJson": "apps/single/package.json"
         },
-
         "production": {}
-      }
-    },
-    "postbuild": {
-      "executor": "nx:run-commands",
-      "dependsOn": ["build"],
-      "options": {
-        "command": "mkdir -p dist/apps/single/.next/standalone/.next/static && cp -r apps/single/public dist/apps/single/.next/standalone/ && cp -r dist/apps/single/.next/static dist/apps/single/.next/standalone/.next/"
-      }
-    },
-    "start": {
-      "executor": "nx:run-commands",
-      "dependsOn": ["build", "postbuild"],
-      "options": {
-        "command": "node dist/apps/single/.next/standalone/server.js"
       }
     },
     "serve": {
@@ -53,27 +37,6 @@
           "buildTarget": "single:build:production",
           "dev": false
         }
-      }
-    },
-    "export": {
-      "executor": "@nx/next:export",
-      "options": {
-        "buildTarget": "single:build:production"
-      }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/single"],
-      "options": {
-        "jestConfig": "apps/single/jest.config.ts",
-        "passWithNoTests": true
-      }
-    },
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/single/**/*.{ts,tsx,js,jsx}"]
       }
     }
   }

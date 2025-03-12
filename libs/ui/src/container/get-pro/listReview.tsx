@@ -47,7 +47,7 @@ const ReviewCard = ({ review }: { review: IReview }) => (
         {[...Array(5)].map((_, i) => (
           <svg
             key={i}
-            className={`w-4 h-4 ${
+            className={`w-6 h-6 ${
               i < review.rating ? 'text-primary' : 'text-gray-300'
             }`}
             fill="currentColor"

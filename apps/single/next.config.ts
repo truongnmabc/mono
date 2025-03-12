@@ -1,6 +1,5 @@
 import { composePlugins, withNx } from '@nx/next';
 import type { NextConfig } from 'next';
-import path from 'path';
 
 const nextConfig: NextConfig = {
   nx: {
@@ -13,37 +12,15 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-
   images: {
     remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-      },
-      {
-        protocol: 'https',
-        hostname: 'storage.googleapis.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdl-prep.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'lh3.googleusercontent.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.dmca.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'asvab-prep.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'secure.gravatar.com',
-      },
+      { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'https', hostname: 'storage.googleapis.com' },
+      { protocol: 'https', hostname: 'cdl-prep.com' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: 'images.dmca.com' },
+      { protocol: 'https', hostname: 'asvab-prep.com' },
+      { protocol: 'https', hostname: 'secure.gravatar.com' },
     ],
   },
   pageExtensions: ['jsx', 'js', 'tsx', 'ts'],
@@ -59,49 +36,16 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@mui/icons-material', '@mui/material'],
     optimizeCss: true,
   },
-  // webpack: (config, { isServer }) => {
-  //   config.optimization = {
-  //     ...config.optimization,
-  //     usedExports: true,
-  //     sideEffects: true,
-  //   };
-  //   config.resolve.alias = {
-  //     ...config.resolve.alias,
-  //     moment$: 'moment/moment.js',
-  //   };
-
-  //   return config;
-  // },
-
   async rewrites() {
-    const result = [
+    return [
       {
         source: `/full-length-${process.env['NEXT_PUBLIC_APP_SHORT_NAME']}-practice-tests`,
         destination: '/final-test',
       },
     ];
-
-    return result;
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/(.*)',
-  //       headers: [
-  //         {
-  //           key: 'Cross-Origin-Opener-Policy',
-  //           value: 'same-origin-allow-popups',
-  //         },
-  //         {
-  //           key: 'Cross-Origin-Embedder-Policy',
-  //           value: 'credentialless',
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
-  output: 'standalone',
-  outputFileTracingRoot: __dirname,
+  // output: 'standalone',
+  outputFileTracingRoot: __dirname, // Đảm bảo đúng root
 };
 
 const plugins = [withNx];

@@ -43,10 +43,10 @@ export default function HeaderGetPro({
       <div className="pt-6 sm:pb-6 pb-4 flex items-center justify-start sm:justify-center">
         <h1 className=" text-start px-6 sm:text-center font-poppins max-w-[327px] sm:max-w-none  text-2xl sm:text-[52px] leading-normal ">
           <span className="font-semibold">Pass for the first time With </span>
-          <span className="font-bold  text-2xl sm:text-[56px] text-primary">
+          <span className="font-bold  text-2xl sm:text-[52px] text-primary">
             {appName}
           </span>
-          <span className="font-bold relative text-2xl sm:text-[56px] text-primary">
+          <span className="font-bold relative text-2xl sm:text-[52px] text-primary">
             {' '}
             Pro
             <div

@@ -19,6 +19,7 @@
           "outputPath": "dist/apps/single",
           "packageJson": "apps/single/package.json"
         },
+
         "production": {}
       }
     },
@@ -26,14 +27,14 @@
       "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "options": {
-        "command": "mkdir -p output/.next/static && cp -r dist/apps/single/.next/standalone/* output && cp -r apps/single/public output && cp -r dist/apps/single/.next/static/* output/.next/static/"
+        "command": "mkdir -p dist/apps/single/.next/standalone/.next/static && cp -r apps/single/public dist/apps/single/.next/standalone/ && cp -r dist/apps/single/.next/static dist/apps/single/.next/standalone/.next/"
       }
     },
     "start": {
       "executor": "nx:run-commands",
       "dependsOn": ["build", "postbuild"],
       "options": {
-        "command": "node output/server.js"
+        "command": "node dist/apps/single/.next/standalone/server.js"
       }
     },
     "serve": {

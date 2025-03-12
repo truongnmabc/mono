@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@ui/db';
 import { IGameMode } from '@ui/models/tests/tests';
 import { RootState } from '@ui/redux/store';
+import { syncUp } from '../../sync/syncUp';
 type ActionResponse = {
   turn?: number;
   resultId?: number;
@@ -32,6 +33,10 @@ const submitTestThunk = createAsyncThunk(
     } as const;
     const action = actions[gameMode];
     const { turn: attemptNumber, resultId } = await action();
+    const { userInfo } = state.user;
+    if (userInfo.email) {
+      thunkAPI.dispatch(syncUp({}));
+    }
     return {
       attemptNumber,
       resultId,

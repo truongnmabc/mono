@@ -20,6 +20,7 @@ export const handleNextQuestionLearn = async (gameState: RootState['game']) => {
     if (currentTopics) {
       const { currentQuestionIndex, attemptNumber, resultId } =
         await saveDataDbLearn(currentTopicId);
+
       return {
         currentQuestionIndex,
         attemptNumber,
