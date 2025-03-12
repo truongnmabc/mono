@@ -23,7 +23,6 @@ export const getLocalUserProgress = async (
     .anyOf(listIds)
     .toArray();
 
-  console.log('🚀 ~ userProgress:', userProgress);
   if (!userProgress) return [];
 
   // Lọc selectedAnswers sau khi lấy dữ liệu

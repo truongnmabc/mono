@@ -10,9 +10,9 @@ export const sendEmailApi = async ({
   try {
     return await axiosRequest({
       url: `/api/auth`,
-      params: { type: 'send-email' },
-      data: { email, appName },
+      params: { type: 'send-email', email, appName },
       base: 'test',
+      method: 'get',
     });
   } catch (error) {
     throw new Error(`Failed to send email`);
@@ -29,12 +29,10 @@ export const verifiedCodeApi = async ({
   try {
     return await axiosRequest({
       url: `/api/auth?type=verify-code`,
-      data: {
-        email,
-        code,
-      },
       params: {
         type: 'verify-code',
+        email,
+        code,
       },
       base: 'test',
     });

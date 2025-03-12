@@ -1,13 +1,15 @@
 'use client';
 
-import './index.css';
-import ImagesRender from './imagesRender';
-import { useRouter } from 'next/navigation';
+import { useIsMobile } from '@ui/hooks';
 import { getImageSrc } from '@ui/utils/image';
+import { useRouter } from 'next/navigation';
+import ImagesRender from './imagesRender';
+import './index.css';
 
-const Page404Container = ({ isMobile }: { isMobile: boolean }) => {
+const Page404Container = () => {
   const router = useRouter();
   const onBack = () => router.back();
+  const isMobile = useIsMobile();
   const imgSrcNumber404 = getImageSrc('404_number404.png');
   const imgSrcNumber404Mobile = getImageSrc('404_number404_mobile.png');
   const imgSrcSoldier_mobile = getImageSrc('404_soldier_mobile.png');

@@ -1,0 +1,106 @@
+.pop-up-new-pro-pc {
+    .MuiPaper-root {
+        border-radius: 20px;
+        background: #ffffff;
+    }
+
+    .popup-new-pro {
+        padding: 24px 100px 40px;
+        text-align: center;
+        margin: auto;
+        border-radius: 20px;
+        color: #212121;
+
+        @media screen and (max-width: 768px) {
+            padding: 24px 0 40px;
+        }
+
+        .title-popup {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        .popup-text {
+            padding-top: 32px;
+            display: flex;
+            gap: 8px;
+            position: relative;
+
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 30px;
+
+            @media screen and (max-width: 768px) {
+                display: grid;
+            }
+
+            .price {
+                display: flex;
+                align-items: baseline;
+                gap: 6px;
+                font-size: 14px;
+                line-height: 21px;
+                color: rgba(33, 33, 33, 0.52) !important;
+            }
+
+            &:after {
+                position: absolute;
+                content: "";
+                height: 2px;
+                bottom: -16px;
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background: rgba(33, 33, 33, 0.12);
+                -o-transition: 0.5s;
+                -ms-transition: 0.5s;
+                -moz-transition: 0.5s;
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+            }
+
+            span {
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 30px;
+            }
+
+            span,
+            .title-popup {
+                color: #212121;
+            }
+        }
+
+        .main-paypal-button {
+            margin-top: 40px;
+            margin-bottom: 0;
+        }
+    }
+
+    .MuiDialog-container {
+        ::-webkit-scrollbar {
+            background: rgba(33, 33, 33, 0.04) !important;
+            border-radius: 4px !important;
+            width: 5px !important;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(33, 33, 33, 0.24) !important;
+            border-radius: 4px !important;
+            background-clip: padding-box;
+        }
+    }
+}

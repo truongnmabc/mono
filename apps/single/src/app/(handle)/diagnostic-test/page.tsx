@@ -1,6 +1,9 @@
 import Grid2 from '@mui/material/Grid2';
 import appInfos from '@single/data/appInfos.json';
-import topicsAndTests from '@single/data/home/data.json';
+import {
+  default as dataHome,
+  default as topicsAndTests,
+} from '@single/data/home/data.json';
 import data from '@single/data/server/diagnostic.json';
 import BannerDownloadApp from '@ui/components/bannerDownload';
 import MyContainer from '@ui/components/container';
@@ -21,7 +24,6 @@ import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import Link from 'next/link';
 import { Fragment } from 'react';
-import dataHome from '@single/data/home/data.json';
 export const metadata: Metadata = {
   title: replaceYear(data?.titleSeo),
   description: replaceYear(data?.descSeo),
@@ -101,7 +103,7 @@ const Page = async ({
                 />
                 <div className="w-full h-[1px] bg-[#21212129]"></div>
                 <Link
-                  href={`${RouterApp.Final_test}?type=${TypeParam.finalTests}&testId=${dataHome.tests.finalTests.id}`}
+                  href={`${RouterApp.Final_test}?type=${TypeParam.finalTests}&testId=${dataHome.tests.finalTests.testId}`}
                 >
                   <div className="bg-primary w-full  text-center rounded-md p-2">
                     <p className="text-base capitalize font-semibold text-white">

@@ -9,6 +9,7 @@ export type IContactInfo = {
 type ListContactApp = {
   [key: string]: IContactInfo;
 };
+
 export const listContactApp: ListContactApp = {
   cdl: {
     facebook: 'https://www.facebook.com/CDL-prep-101878645343877',
@@ -18,10 +19,9 @@ export const listContactApp: ListContactApp = {
     email: 'support@cdl-prep.com',
   },
   asvab: {
-    facebook:
-      'https://www.facebook.com/ASVAB-Test-Prep-by-ABC-Elearning-104795498352899',
-    twitter: 'https://twitter.com/PrepAsvab',
-    youtube: 'https://www.youtube.com/channel/UC9F-vTfB9PCbxvBT8zqMMJw',
+    facebook: 'https://www.facebook.com/profile.php?id=61564203283376',
+    twitter: 'https://x.com/AsvabPrep2024',
+    youtube: 'https://www.youtube.com/@ASVABPrep',
     email: 'support@asvab-prep.com',
   },
   dmv: {
@@ -78,7 +78,6 @@ export const listContactApp: ListContactApp = {
     email: 'support@teas-prep.com',
   },
 };
-
 export const ONE_WEEK_PRO = 'oneWeekPro';
 export const ONE_MONTH_PRO = 'oneMonthPro';
 export const ONE_YEAR_PRO = 'oneYearPro';

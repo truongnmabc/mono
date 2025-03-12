@@ -17,8 +17,7 @@
         "development": {
           "outputPath": "dist/apps/single",
           "packageJson": "apps/single/package.json"
-        },
-        "production": {}
+        }
       }
     },
     "serve": {

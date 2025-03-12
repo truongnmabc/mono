@@ -3,15 +3,23 @@ import MyContainer from '@ui/components/container';
 import { IAppInfo } from '@ui/models/app';
 import { getImageSrc } from '@ui/utils/image';
 import Image from 'next/image';
+import PopupGetProPayment from './popup/popupGetPro';
 
 import { MtUiButton } from '@ui/components/button';
+import { IPriceConfig } from '@ui/models/payment';
+import {
+  selectUserInfo,
+  shouldOpenModalLogin,
+  useAppDispatch,
+  useAppSelector,
+} from '@ui/redux';
 import {
   createPriceConfig,
   getAveragePrice,
   getInitPrice,
 } from '@ui/utils/paypal';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export type IPlan = {
   planId: string;
@@ -209,17 +217,30 @@ export default function Pricing({
       getInitPrice(appInfo?.oneYearPro?.price ?? 0, savePercents.year)
     ),
   };
+  const [openModalUpgrade, setOpenModalUpgrade] = useState(false);
 
   const plans = Object.values(listPlan);
   const icon = getImageSrc('get-pro-icon-select-plan.png');
   const [activePlan, setActivePlan] = useState<IPlan>(plans[1]);
+  const userInfo = useAppSelector(selectUserInfo);
+  const dispatch = useAppDispatch();
+  const handleClickGetPro = useCallback(() => {
+    if (!userInfo.id) {
+      dispatch(shouldOpenModalLogin(true));
+      return;
+    }
+
+    setOpenModalUpgrade(true);
+  }, [userInfo, dispatch]);
+  const handleClose = useCallback(() => setOpenModalUpgrade(false), []);
+
   return (
     <MyContainer>
       <div className="mt-12 flex items-center gap-4 sm:gap-14 justify-center">
         {plans.map((plan) => (
           <Item
             plan={plan as IPlan}
-            isActive={plan.planId === activePlan.planId}
+            isActive={plan.planId === activePlan?.planId}
             icon={icon}
             setActivePlan={setActivePlan}
             key={plan.planId}
@@ -234,11 +255,12 @@ export default function Pricing({
           size="large"
           block={isMobile ? true : false}
           className=" py-2 sm:py-4 px-28"
+          onClick={handleClickGetPro}
         >
           Upgrade Now
         </MtUiButton>
       </div>
-      <p className="text-sm font-nomal mt-4 sm:mt-6 text-center text-[#21212185]">
+      <p className="text-sm font-nomal mt-4 sm:mt-6 text-center text-[#21212152]">
         Subscriptions auto-renew at the cost of the chosen package, unless
         cancelled 24 hours in advance of the end of the current period. The
         subscription fee is charged to your PayPal account upon purchase. You
@@ -247,6 +269,14 @@ export default function Pricing({
         current subscription during the active subscription period. No refunds
         will be provided for any unused portion of the subscription term.
       </p>
+
+      {openModalUpgrade && userInfo && (
+        <PopupGetProPayment
+          appInfo={appInfo}
+          onClose={handleClose}
+          valueButton={activePlan as IPriceConfig}
+        />
+      )}
     </MyContainer>
   );
 }

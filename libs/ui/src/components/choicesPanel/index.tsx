@@ -1,21 +1,21 @@
 'use client';
 import { TypeParam } from '@ui/constants/index';
 import RouterApp from '@ui/constants/router.constant';
+import { IThunkFunctionReturn } from '@ui/models/other';
 import { IGameMode } from '@ui/models/tests/tests';
 import {
   selectCurrentGame,
   selectEnableKeyboardShortcuts,
 } from '@ui/redux/features/game.reselect';
-import { IThunkFunctionReturn } from '@ui/models/other';
+import { shouldOpenSubmitTest } from '@ui/redux/features/tests';
 import nextQuestionActionThunk from '@ui/redux/repository/game/nextQuestion/nextGame';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import queryString from 'query-string';
 import { useEffect, useMemo, useState } from 'react';
 import AnswerButton from '../answer';
 import { MOCK_TEMP_LIST_ANSWER } from './mock';
-import dynamic from 'next/dynamic';
-import { shouldOpenSubmitTest } from '@ui/redux/features/tests';
 const ModalUnlock = dynamic(() => import('../modalUnlock'), {
   ssr: false,
 });
@@ -68,7 +68,10 @@ const ChoicesPanel: React.FC<IProps> = ({
 
   useEffect(() => {
     const handleKeyboardEvent = async (event: globalThis.KeyboardEvent) => {
-      if (currentGame?.answers && !currentGame.selectedAnswer) {
+      if (
+        (currentGame?.answers && !currentGame.selectedAnswer) ||
+        type === TypeParam.finalTests
+      ) {
         const index = parseInt(event.key, 10);
         if (index >= 0 && index <= currentGame.answers.length) {
           document.getElementById(index.toString())?.click();

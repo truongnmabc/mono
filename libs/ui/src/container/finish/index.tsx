@@ -26,7 +26,7 @@ const getCurrentProgressData = async ({
   const [progress, questions, topics] = await Promise.all([
     db?.userProgress.where('parentId').equals(partId).toArray(),
     db?.questions.where('partId').equals(partId).toArray(),
-    db?.topics.where('slug').equals(topic).sortBy('index'),
+    db?.topics.where('slug').equals(topic).sortBy('orderIndex'),
   ]);
 
   return { progress, questions, topics };
@@ -97,6 +97,7 @@ const FinishLayout = ({
     total: number;
     correct: number;
     isNextTopic: boolean;
+    indexPart: number;
   }>({
     currentPart: null,
     nextPart: null,
@@ -104,11 +105,13 @@ const FinishLayout = ({
     total: 1,
     correct: 0,
     isNextTopic: false,
+    indexPart: 0,
   });
   const subIndex = Number(index?.split('.')[1] || 0);
   const [listSubTopics, setListSubTopics] = useState<ITopicBase[]>([]);
   const isDataFetched = useAppSelector(selectIsDataFetched);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(setIsStartAnimationPrevious(true));
 
@@ -118,8 +121,7 @@ const FinishLayout = ({
         partId: resultId,
         topic,
       });
-      console.log('🚀 ~ handleGetData ~ progress:', progress);
-      console.log('🚀 ~ handleGetData ~ questions:', questions);
+
       if (!topics || !progress || !questions) return;
 
       const { correct, total } = calculateProgress(
@@ -127,7 +129,6 @@ const FinishLayout = ({
         questions,
         attemptNumber
       );
-      console.log('🚀 ~ handleGetData ~ correct:', correct);
 
       const { extraPoint } = await calculateProgressPassing({
         progress,
@@ -135,12 +136,19 @@ const FinishLayout = ({
       });
 
       const listCort = topics.filter((t) => t.type === 3);
+      const currentPart = topics.find((t) => t.id === resultId);
+      const subTopics = topics.filter(
+        (t) => t.parentId === currentPart?.parentId
+      );
+      const indexPart = subTopics.findIndex((t) => t.id === resultId) + 1;
+      if (!currentPart) return;
+      const sub = listCort
+        .filter((t) => t.parentId === currentPart.parentId)
+        .sort((a, b) => a.orderIndex - b.orderIndex);
 
-      const currentIndex = listCort.findIndex((t) => t.id === resultId);
-      const currentPart = listCort[currentIndex];
-      const nextPart = listCort
-        .slice(currentIndex + 1) // Lấy các topic sau topic hiện tại
-        .find((topic) => topic.status === 0);
+      if (!sub) return;
+
+      const nextPart = sub.find((t) => t.status === 0);
 
       setGame({
         currentPart,
@@ -149,8 +157,9 @@ const FinishLayout = ({
         total,
         extraPoint,
         isNextTopic: !!nextPart,
+        indexPart: indexPart,
       });
-
+      const mainTopic = topics.find((i) => i.type === 1);
       const mainTopics = listCort.reduce((acc, topic) => {
         if (!acc.has(topic.parentId)) {
           acc.set(topic.parentId, []);
@@ -178,7 +187,7 @@ const FinishLayout = ({
   return (
     <MyContainer>
       <WrapperAnimation>
-        <TitleFinishPage topic={topic} index={subIndex + 1} />
+        <TitleFinishPage topic={topic} index={game.indexPart} />
         <ProgressFinishPage correct={game.correct} total={game.total} />
         <PassingFinishPage
           {...game}

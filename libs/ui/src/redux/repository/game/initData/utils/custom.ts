@@ -27,9 +27,10 @@ const getAllDataCustom = async () => {
 };
 
 export const handleGetDataCustom = async ({ testId, type }: IPropsCustom) => {
-  const custom = testId
-    ? await db?.testQuestions.get(testId)
-    : await getAllDataCustom();
+  const custom =
+    testId !== -1 && testId
+      ? await db?.testQuestions.get(testId)
+      : await getAllDataCustom();
 
   if (!custom) {
     return {
@@ -37,7 +38,7 @@ export const handleGetDataCustom = async ({ testId, type }: IPropsCustom) => {
     };
   }
 
-  if (custom?.status === 1) {
+  if (custom?.status === 1 || custom.status === -1) {
     return {
       isCompleted: true,
       id: custom?.id,
@@ -50,7 +51,7 @@ export const handleGetDataCustom = async ({ testId, type }: IPropsCustom) => {
     (await db?.questions.where('id').anyOf(listIds).toArray()) || [];
 
   const remainingTime =
-    (custom?.totalDuration || 80) * 60 - (custom?.elapsedTime || 0);
+    (custom?.totalDuration || 0) * 60 - (custom?.elapsedTime || 0);
 
   return {
     ...custom,

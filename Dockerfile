@@ -1,39 +1,27 @@
-# Base image
-FROM node:18-alpine AS builder
-
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Set working directory
-WORKDIR /app
-
-# Copy package.json, package-lock.json, và NX workspace.json để cài đặt dependencies
-COPY package.json pnpm-lock.yaml nx.json ./
-COPY apps/single/package.json ./apps/single/
-
-# Install dependencies (chỉ cài đặt dependencies cần thiết)
-RUN pnpm i --frozen-lockfile
-
-# Copy toàn bộ workspace nhưng bỏ qua node_modules và output
-COPY . .
-
-# Build Next.js ở chế độ standalone
-RUN npx nx build single --configuration=production
-
-# ---- Production Image ----
+# ---- Base Image ----
 FROM node:18-alpine AS runner
 
-# Set working directory
+# Bật Corepack để dùng pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Đặt thư mục làm việc
 WORKDIR /app
 
-# Copy standalone output từ giai đoạn build
-COPY --from=builder /app/dist/apps/single/.next/standalone ./
-COPY --from=builder /app/dist/apps/single/.next/static ./static
-COPY --from=builder /app/dist/apps/single/public ./public
-COPY --from=builder /app/apps/single/package.json ./package.json
-# Install only production dependencies
+# Sao chép package.json & lockfile để cài đặt dependencies
+COPY dist/apps/single/package.json /app
 
+# Chỉ cài dependencies cần thiết (production-only)
+RUN pnpm install  --prod
+
+# Sao chép output từ build local vào image
+COPY dist/apps/single ./
+
+# Sao chép thư mục chứa data (nếu có)
+COPY apps/single/src/data ./src/data
+
+ENV AUTH_SECRET="MPrwl23hdoo/TKD5l0Lb9n1Akexmq3iPkdEeH0J/Cjo="
 # Expose port 3000
 EXPOSE 3000
 
-# Start the Next.js server
-CMD ["node", "server.js"]
+# Chạy ứng dụng
+CMD ["pnpm", "next", "start", "-p", "3000"]

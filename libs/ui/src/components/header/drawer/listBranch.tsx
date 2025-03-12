@@ -45,26 +45,31 @@ const ListBranchDrawer = ({
           block: isExpand,
         })}
       >
-        {branch.map((key, index) => (
-          <Link
-            href={key.slug + `?type=${TypeParam.branchTest}&testId=${key.id}`}
-            key={key.id}
-          >
-            <div
-              className="hover:bg-[#2121211f] relative overflow-hidden cursor-pointer"
-              onClick={() => setOpenMenuDrawer(false)}
+        {branch.map((key, index) => {
+          const list = key.slug.replaceAll('-', ' ').split(' ');
+          console.log('🚀 ~ {branch.map ~ list:', list);
+          return (
+            <Link
+              href={key.slug + `?type=${TypeParam.branchTest}&testId=${key.id}`}
+              key={key.id}
             >
-              <div className="p-2 text-sm sm:text-lg capitalize">
-                {key.slug
-                  .replaceAll('-', ' ')
-                  .replace(appShortName, appShortName.toUpperCase())}
+              <div
+                className="hover:bg-[#2121211f] relative overflow-hidden cursor-pointer"
+                onClick={() => setOpenMenuDrawer(false)}
+              >
+                <div className="p-2 text-sm sm:text-lg capitalize">
+                  {key.slug
+                    .replaceAll('-', ' ')
+                    .replace(appShortName, appShortName.toUpperCase())}
+                  {/* {list} */}
+                </div>
+                {index + 1 < branch.length && (
+                  <div className="w-full h-[1px] bg-[#e4e4e4] "></div>
+                )}
               </div>
-              {index + 1 < branch.length && (
-                <div className="w-full h-[1px] bg-[#e4e4e4] "></div>
-              )}
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

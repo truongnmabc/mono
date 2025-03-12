@@ -11,9 +11,10 @@ export function middleware(request: NextRequest) {
         ? 'mobile-android'
         : 'mobile';
   }
-
+  const isPro = request.cookies.get('isPro')?.value || 'false';
   const response = NextResponse.next();
   response.cookies.set('device', deviceInfo);
+  response.cookies.set('isPro', isPro);
 
   return response;
 }

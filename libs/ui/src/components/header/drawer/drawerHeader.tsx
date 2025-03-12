@@ -1,19 +1,18 @@
 import { Drawer } from '@mui/material';
 import CloseIcon from '@ui/asset/icon/CloseIcon';
 import IconLinkStoreApp from '@ui/components/iconLinkStoreApp';
+import { TypeParam } from '@ui/constants';
 import RouterApp from '@ui/constants/router.constant';
 import { IAppInfo, IDevice } from '@ui/models/app';
+import { IBranchHomeJson, ITopicHomeJson } from '@ui/models/other';
+import { shouldOpenModalLogin } from '@ui/redux/features/user';
+import { selectUserInfo } from '@ui/redux/features/user.reselect';
+import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { trackingEventGa4 } from '@ui/utils/event';
 import React from 'react';
 import ItemDrawerFullTest from './itemDrawer';
 import ListBranchDrawer from './listBranch';
 import ListStudyDrawer from './listStudy';
-import { IBranchHomeJson } from '@ui/models/other';
-import { ITopicHomeJson } from '@ui/models/other';
-import { TypeParam } from '@ui/constants';
-import { useAppSelector, useAppDispatch } from '@ui/redux/store';
-import { selectUserInfo } from '@ui/redux/features/user.reselect';
-import { shouldOpenModalLogin } from '@ui/redux/features/user';
 type IList = {
   handleClick: () => void;
   name: string;
@@ -124,7 +123,8 @@ const DrawerHeader = ({
         <ListStudyDrawer
           topics={seoData.topics}
           setOpenMenuDrawer={setOpenMenuDrawer}
-          appShortName={appInfo.appName}
+          appShortName={appInfo.appShortName}
+          appName={appInfo.appName}
         />
         <ListBranchDrawer
           branch={seoData.branch.list}

@@ -48,11 +48,13 @@ const GridTest = ({
   isMobile,
   tests,
   showList,
+  isPro,
 }: {
   appInfo: IAppInfo;
   isMobile: boolean;
   tests: ITestsHomeJson;
   showList: boolean;
+  isPro: boolean;
 }) => {
   const listTest = mockGirdTests.map((item) => ({
     ...item,
@@ -88,7 +90,9 @@ const GridTest = ({
             >
               <Link
                 href={
-                  isMobile && test.id === 'PT'
+                  test.id === 'CT' && !isPro
+                    ? RouterApp.Get_pro
+                    : isMobile && test.id === 'PT'
                     ? `?selectTest=${showList ? 'false' : 'true'}`
                     : `${test.href}?testId=${
                         test.id === 'DT' ? -1 : test.testId || -1

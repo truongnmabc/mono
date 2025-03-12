@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
+import { NextResponse } from 'next/server';
 import path from 'path';
 
 export async function GET(
@@ -7,11 +7,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const slug = (await params).slug;
-  const filePath = path.join(
-    process.cwd(),
-    'src/data/sw',
-    `questions_${slug}.json`
-  );
+  const filePath = path.join('src/data/sw', `questions_${slug}.json`);
 
   try {
     const fileContents = await fs.readFile(filePath, 'utf8');

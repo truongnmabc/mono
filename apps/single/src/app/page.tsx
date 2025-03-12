@@ -7,7 +7,7 @@ import GridTopics from '@ui/components/home/gridTopic/gridTopics';
 import TitleHomeApp from '@ui/components/home/title';
 import SeoContent from '@ui/components/seoContent';
 import { detectAgent } from '@ui/utils/device';
-import { headers } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 
 const Page = async ({
   searchParams,
@@ -18,6 +18,10 @@ const Page = async ({
   const headersList = await headers();
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
+  const cookieStore = await cookies();
+  const device = cookieStore.get('device');
+  const isPro = cookieStore.get('isPro');
+
   return (
     <MyContainer>
       <TitleHomeApp appInfo={appInfos} />
@@ -29,9 +33,11 @@ const Page = async ({
       />
       <GridTest
         appInfo={appInfos}
-        isMobile={isMobile}
+        isMobile={device?.value?.includes('mobile') || false}
         tests={data.tests}
         showList={selectTest === 'true'}
+        // isPro={isPro?.value === 'true' || false}
+        isPro={true}
       />
       <div className="sm:my-12 sm:mb-[120px] my-6 mb-12">
         <BannerHome appInfo={appInfos} isHomePage={true} />

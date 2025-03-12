@@ -101,7 +101,7 @@ const ModalConfirm = () => {
           </MtUiButton>
 
           <MtUiButton
-            className="text-base text-primary border-primary font-medium py-[10px] "
+            className="text-base text-white border-primary font-medium py-[10px] "
             block
             type="primary"
             animated

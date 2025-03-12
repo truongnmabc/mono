@@ -9,11 +9,13 @@ import React, { useState } from 'react';
 const ListStudyDrawer = ({
   setOpenMenuDrawer,
   appShortName,
+  appName,
   topics,
 }: {
   setOpenMenuDrawer: (e: boolean) => void;
   topics: ITopicHomeJson[];
   appShortName: string;
+  appName: string;
 }) => {
   const [isExpand, setIsExpand] = useState(false);
 
@@ -26,7 +28,7 @@ const ListStudyDrawer = ({
         }}
       >
         <div className=" font-poppins text-xl sm:text-2xl capitalize font-semibold">
-          {appShortName} Subtest
+          {appName} Subtest
         </div>
 
         <div

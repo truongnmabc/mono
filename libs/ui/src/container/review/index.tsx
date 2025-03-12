@@ -1,8 +1,8 @@
-import LeftLayoutReview from './leftLayout';
-import { IModeReview, ITopicHomeJson } from '@ui/models/other';
-import RightLayout from './rightLayout';
 import { Grid2 } from '@mui/material';
 import { IAppInfo } from '@ui/models/app';
+import { IModeReview, ITopicHomeJson } from '@ui/models/other';
+import LeftLayoutReview from './leftLayout';
+import RightLayout from './rightLayout';
 
 const ReviewLayout = ({
   isMobile,
@@ -25,15 +25,19 @@ const ReviewLayout = ({
       spacing={{ xs: 0, sm: 2 }}
       className="w-full sm:py-4 h-full pb-4"
     >
-      <LeftLayoutReview isMobile={isMobile} mode={mode} isReady={isReady} />
-      <RightLayout
-        isMobile={isMobile}
-        mode={mode}
-        appInfo={appInfo}
-        content={content}
-        isReady={isReady}
-        topics={topics}
-      />
+      {(!isReady || isMobile) && (
+        <LeftLayoutReview isMobile={isMobile} mode={mode} isReady={isReady} />
+      )}
+      {(isReady || !isMobile) && (
+        <RightLayout
+          isMobile={isMobile}
+          mode={mode}
+          appInfo={appInfo}
+          content={content}
+          isReady={isMobile}
+          topics={topics}
+        />
+      )}
     </Grid2>
   );
 };

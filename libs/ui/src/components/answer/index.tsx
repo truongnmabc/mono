@@ -1,9 +1,9 @@
 'use client';
+import MtUiSkeleton from '@ui/components/loading-skeleton';
 import { ICurrentGame } from '@ui/models/game';
 import { IAnswer } from '@ui/models/question';
 import choiceAnswer from '@ui/redux/repository/game/choiceAnswer/choiceAnswer';
 import { useAppDispatch } from '@ui/redux/store';
-import MtUiSkeleton from '@ui/components/loading-skeleton';
 import ctx from '@ui/utils/twClass';
 import { MathJax } from 'better-react-mathjax';
 import React, { useCallback } from 'react';
@@ -27,7 +27,8 @@ const AnswerButton = ({
     ((currentGame?.selectedAnswer?.id === choice?.id && choice?.correct) ||
       choice.correct)
       ? 'pass'
-      : currentGame?.selectedAnswer?.id === choice?.id && !choice?.correct
+      : (currentGame?.selectedAnswer?.id === choice?.id && !choice?.correct) ||
+        currentGame.selectedAnswer?.id === -1
       ? 'miss'
       : 'other';
 
@@ -50,7 +51,7 @@ const AnswerButton = ({
     <div
       onClick={handleClick}
       className={ctx(
-        'flex gap-2 w-full h-full bg-white sm:bg-transparent cursor-pointer items-center rounded-md border border-solid px-4 py-3 hover:bg-[#2121210a]',
+        'flex gap-2 w-full h-full bg-white sm:bg-transparent cursor-pointer items-center rounded-md border border-solid px-4 py-2 hover:bg-[#2121210a]',
         {
           'border-[#21212185]':
             isActions && currentGame?.selectedAnswer?.id === choice?.id,
@@ -72,7 +73,10 @@ const AnswerButton = ({
       ) : (
         <MathJax
           style={{
-            fontSize: 12,
+            fontSize: 14,
+            lineHeight: 1.5,
+            color: '#212121',
+            padding: '8px 0',
           }}
           dynamic
           renderMode="post"

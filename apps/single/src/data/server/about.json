@@ -22,15 +22,6 @@
       "user_nicename": "cloudy-nguyen"
     },
     {
-      "ID": 34,
-      "username": "Nga Nguyen",
-      "email": "nguyentonga@abc-elearning.org",
-      "name": "Oceanites Nguyen",
-      "role": "author",
-      "avatar": "https://asvab-prep.com/wp-content/uploads/2024/11/Oceanites-Nguyen-150x150.png",
-      "user_nicename": "oceanites-nguyen"
-    },
-    {
       "ID": 35,
       "username": "Sarah Wilson",
       "email": "tamnguyen2k1@abc-elearning.org",
@@ -38,15 +29,6 @@
       "role": "editor",
       "avatar": "https://asvab-prep.com/wp-content/uploads/2024/11/sarah-wilson-150x150.png",
       "user_nicename": "sarah-wilson"
-    },
-    {
-      "ID": 36,
-      "username": "Suong Phung",
-      "email": "suongphung2k@abc-elearning.org",
-      "name": "Suzy Phung",
-      "role": "editor",
-      "avatar": "https://secure.gravatar.com/avatar/3b4e2c83fb95bf307eb4a419b509531d?s=96&d=mm&r=g",
-      "user_nicename": "suzy-phung"
     },
     {
       "ID": 39,

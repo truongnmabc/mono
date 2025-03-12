@@ -2,10 +2,10 @@ import { spinner } from '@clack/prompts';
 
 import minimist from 'minimist';
 import {
+  getDataMember,
   getDataSingleApp,
   getDataTopicsAndTest,
   getSingleAppConfig,
-  getDataMember,
 } from '../utils/fetchData.js';
 import { processTestData } from './processData.js';
 import { processDataHome } from './processDataHome.js';

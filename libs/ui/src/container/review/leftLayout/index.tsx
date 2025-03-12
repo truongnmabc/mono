@@ -4,6 +4,7 @@ import { IModeReview } from '@ui/models/other';
 import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
+import AnswerReview from './answer';
 import {
   IconAnsweredQuestion,
   IconHardQuestion,
@@ -11,7 +12,6 @@ import {
   IconSavedQuestion,
   IconWeakQuestion,
 } from './icon';
-import AnswerReview from './answer';
 const LeftLayoutReview = ({
   isMobile,
   mode,
@@ -21,6 +21,7 @@ const LeftLayoutReview = ({
   mode: IModeReview;
   isReady: boolean;
 }) => {
+  console.log('🚀 ~ isReady:', isReady);
   return (
     <Grid2
       size={{
@@ -44,6 +45,7 @@ const LeftLayoutReview = ({
             bg="#BAE8DB"
             type="random"
             selectType={mode}
+            isReady={isReady}
           />{' '}
           <ItemCard
             icon={<IconWeakQuestion />}
@@ -51,6 +53,7 @@ const LeftLayoutReview = ({
             des="Retake missed questions to improve your score."
             bg="#FFC7C7"
             selectType={mode}
+            isReady={isReady}
             type="weak"
           />{' '}
           <ItemCard
@@ -58,6 +61,7 @@ const LeftLayoutReview = ({
             title="Hard Questions"
             des="Practice commonly answered incorrectly questions."
             bg="#D3F7FF"
+            isReady={isReady}
             selectType={mode}
             type="hard"
           />{' '}
@@ -65,6 +69,7 @@ const LeftLayoutReview = ({
             icon={<IconSavedQuestion />}
             title="Saved Questions"
             des="Practice saved questions from lessons."
+            isReady={isReady}
             bg="#FEEDD5"
             selectType={mode}
             type="saved"
@@ -73,6 +78,7 @@ const LeftLayoutReview = ({
             icon={<IconAnsweredQuestion />}
             title="All Answered Questions"
             des="Revisit all questions you have previously attempted."
+            isReady={isReady}
             bg="#DEEBFF"
             type="all"
             selectType={mode}
@@ -92,6 +98,7 @@ type IItemCard = {
   bg: string;
   type: IModeReview;
   selectType: IModeReview;
+  isReady?: boolean;
 };
 const ItemCard: React.FC<IItemCard> = ({
   icon,
@@ -100,9 +107,10 @@ const ItemCard: React.FC<IItemCard> = ({
   bg,
   type,
   selectType,
+  isReady,
 }) => {
   return (
-    <Link href={`/review?mode=${type}`}>
+    <Link href={`/review?mode=${type}${isReady ? '&isReady=true' : ''}`}>
       <div
         className={clsx(
           'p-4 rounded-xl flex gap-3 cursor-pointer  bg-white border border-solid ',

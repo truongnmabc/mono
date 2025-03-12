@@ -1,9 +1,9 @@
-import clsx from 'clsx';
-import { motion } from 'framer-motion';
-import React from 'react';
-import dynamic from 'next/dynamic';
 import { TypeParam } from '@ui/constants';
 import { IGameMode } from '@ui/models/tests/tests';
+import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import React from 'react';
 const TitleIndex = dynamic(() => import('./titleIndex'), {
   ssr: false,
 });
@@ -24,7 +24,10 @@ const TitleQuestion = ({
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className="text-center hidden sm:block capitalize text-xl font-semibold overflow-hidden border-transparent whitespace-nowrap"
       >
-        {title} {type !== TypeParam.branchTest && <TitleIndex type={type} />}
+        {title}{' '}
+        {type &&
+          type !== TypeParam.branchTest &&
+          type !== TypeParam.finalTests && <TitleIndex type={type} />}
       </motion.h1>
     </div>
   );
