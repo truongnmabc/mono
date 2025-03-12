@@ -1,5 +1,6 @@
 import { composePlugins, withNx } from '@nx/next';
 import type { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
   nx: {

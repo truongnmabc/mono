@@ -4,41 +4,52 @@
   "sourceRoot": "apps/single",
   "projectType": "application",
   "tags": [],
-  "// targets": "to see all targets run: nx show project single --web",
   "targets": {
     "build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/single"
+        "outputPath": "dist/apps/single",
+        "output": "standalone",
+        "nextConfig": "apps/single/next.config.ts"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/web",
+          "outputPath": "dist/apps/single",
           "packageJson": "apps/single/package.json"
         },
         "production": {}
       }
     },
+    "postbuild": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "mkdir -p output/.next/static && cp -r dist/apps/single/.next/standalone/* output && cp -r apps/single/public output && cp -r dist/apps/single/.next/static/* output/.next/static/"
+      }
+    },
     "start": {
-      "executor": "@nx/next:start",
-      "dependsOn": ["build"]
+      "executor": "nx:run-commands",
+      "dependsOn": ["build", "postbuild"],
+      "options": {
+        "command": "node output/server.js"
+      }
     },
     "serve": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "web:build",
+        "buildTarget": "single:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "web:build:development",
+          "buildTarget": "single:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "web:build:production",
+          "buildTarget": "single:build:production",
           "dev": false
         }
       }
@@ -46,14 +57,14 @@
     "export": {
       "executor": "@nx/next:export",
       "options": {
-        "buildTarget": "web:build:production"
+        "buildTarget": "single:build:production"
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/web"],
+      "outputs": ["{workspaceRoot}/coverage/apps/single"],
       "options": {
-        "jestConfig": "apps/web/jest.config.ts",
+        "jestConfig": "apps/single/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -61,7 +72,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/web/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/single/**/*.{ts,tsx,js,jsx}"]
       }
     }
   }
