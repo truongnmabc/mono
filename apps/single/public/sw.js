@@ -6,6 +6,7 @@ self.addEventListener('activate', (event) => {
   console.log('Service Worker activated.', event);
 });
 
+let db;
 const initData = async () => {
   const dbName = 'asvab';
   const dbVersion = 1;
@@ -16,7 +17,7 @@ const initData = async () => {
   };
 
   openRequest.onsuccess = (event) => {
-    const db = event.target.result;
+    db = event.target.result;
     // Mở transaction chỉ đọc trên bảng passingApp để kiểm tra xem đã có dữ liệu hay chưa
     const txRead = db.transaction('passingApp', 'readonly');
     const passingStore = txRead.objectStore('passingApp');
@@ -125,33 +126,85 @@ const syncUp = async () => {
   console.log('SYNC_UP');
 };
 
-const syncDown = async ({ syncKey, appId, userId }) => {
-  console.log('syncDown');
-  console.log('🚀 ~ syncDown ~ syncKey:', syncKey);
+function getYesterdayMidnightTimestamp() {
+  const now = new Date();
+  const midnightToday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    0,
+    0,
+    0,
+    0
+  );
+  midnightToday.setDate(midnightToday.getDate() - 1);
+  return midnightToday.getTime();
+}
 
-  const result = await fetch(
-    'https://micro-enigma-235001.appspot.com/api/app/flutter?type=get-user-data',
-    {
-      appId: appId,
-      userId: userId,
+const syncDown = async ({ syncKey, appId, userId }) => {
+  try {
+    const timestamp = getYesterdayMidnightTimestamp();
+
+    const payload = {
+      appId,
+      userId,
       deleteOldData: false,
       user_data: {
-        userId: userId,
-        syncKey: syncKey,
-        appId: appId,
-        // mapUpdateData: {
-        //   DailyGoal: 1741860146277,
-        //   StudyPlan: 1741860146277,
-        //   QuestionProgress: 1741860146277,
-        //   UserQuestionProgress: 1741860146277,
-        //   TestInfo: 1741860146277,
-        //   UserTestData: 1741860146277,
-        //   TopicProgress: 1741860146277,
-        // },
+        userId,
+        syncKey,
+        appId,
+        mapUpdateData: {
+          QuestionProgress: timestamp,
+          UserQuestionProgress: timestamp,
+          TestInfo: timestamp,
+          UserTestData: timestamp,
+          TopicProgress: timestamp,
+        },
       },
+    };
+
+    const response = await fetch(
+      'https://micro-enigma-235001.appspot.com/api/app/flutter?type=get-user-data',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    // Kiểm tra status code
+    if (!response.ok) {
+      throw new Error(`Server trả về mã lỗi: ${response.status}`);
     }
-  );
-  console.log('🚀 ~ syncDown ~ result:', result);
+    // Lấy dữ liệu từ server (nếu server trả JSON)
+    const data = await response.json();
+    const {
+      UserQuestionProgress,
+      TestInfo,
+      QuestionProgress,
+      TopicProgress,
+      UserTestData,
+    } = data;
+    const tx = db.transaction('topics', 'readwrite');
+    const topicsStore = tx.objectStore('topics');
+    await Promise.all(
+      TopicProgress.map(async (topic) => {
+        const record = topicsStore.get(topic.topicId);
+        const data = {
+          ...record,
+          status: topic?.progress === 1 ? 1 : 0,
+        };
+        await topicsStore.put(data);
+      })
+    );
+
+    await topicsStore.done;
+  } catch (err) {
+    console.error('syncDown error:', err);
+    throw err;
+  }
 };
 
 self.addEventListener('message', async (event) => {
