@@ -29,7 +29,7 @@ async function reportMistakeApi({
         appId: appId,
         questionId: questionId,
         screenshot: '',
-        reasons: reasons,
+        reasons: otherReason && !reasons.length ? [7] : reasons,
         otherReason: otherReason,
         version: appVersion,
         dbVersion: dbVer,
@@ -38,8 +38,9 @@ async function reportMistakeApi({
         userId: userId,
         deviceId: deviceId,
       },
+      method: 'post',
     });
-    return response;
+    return response.data;
   } catch (error) {
     console.error('Error reporting mistake:', error);
     throw error;

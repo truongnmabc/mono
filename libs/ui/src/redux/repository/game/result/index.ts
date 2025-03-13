@@ -90,11 +90,9 @@ const getDataResultTestThunk = createAsyncThunk(
       !userInfo.isPro && gameMode === TypeParam.finalTests
         ? data.slice(0, 50)
         : data;
-    console.log('🚀 ~ questions:', questions);
     const incorrectQuestions = questions.filter(
       (q) => q.selectedAnswer?.correct === false || !q.selectedAnswer
     );
-    console.log('🚀 ~ incorrectQuestions:', incorrectQuestions);
     const correctQuestions = questions.filter(
       (q) => q.selectedAnswer?.correct === true
     );

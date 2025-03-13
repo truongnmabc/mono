@@ -19,9 +19,11 @@ const ItemListTopicResult: React.FC<IProps> = ({ item, isMobile }) => {
     const listTopic = await db?.topics
       .where('slug')
       .equals(item.slug || '')
-      .toArray();
+      .sortBy('orderIndex');
     if (listTopic && listTopic.length) {
-      const currentTopic = listTopic.find((item) => item.status === 0);
+      const currentTopic = listTopic.find(
+        (item) => item.status === 0 && item.type === 3
+      );
       if (currentTopic) {
         const params = queryString.stringify({
           type: TypeParam.learn,

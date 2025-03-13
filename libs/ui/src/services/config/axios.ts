@@ -1,9 +1,10 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import {
   BASE_URL,
   BASE_URL_DEV,
   BASE_URL_PROP,
   DASHBOARD_API,
+  TRACKING_API,
 } from '../constant';
 
 const defaultBaseURL =
@@ -20,7 +21,7 @@ export type AxiosRequestProps<
   data?: TData;
   params?: TParams;
   // Sử dụng các base đã định nghĩa
-  base?: 'default' | 'test' | 'prop' | 'dev' | 'dashboard';
+  base?: 'default' | 'test' | 'prop' | 'dev' | 'dashboard' | 'tracking';
   // Nếu truyền vào baseUrl thì sẽ ghi đè các base đã định nghĩa
   baseUrl?: string;
 };
@@ -88,6 +89,10 @@ export function axiosRequest<
         break;
       case 'dashboard':
         selectedBaseURL = DASHBOARD_API;
+        break;
+
+      case 'tracking':
+        selectedBaseURL = TRACKING_API;
         break;
       case 'default':
       default:

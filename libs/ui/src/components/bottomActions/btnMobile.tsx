@@ -1,8 +1,8 @@
 import { selectCurrentQuestionIndex } from '@ui/redux/features/game.reselect';
+import { shouldNextOrPreviousQuestion } from '@ui/redux/repository/game/nextQuestion/nextQuestions';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import React from 'react';
 import { MtUiButton } from '../button';
-import { shouldNextOrPreviousQuestion } from '@ui/redux/repository/game/nextQuestion/nextQuestions';
 
 const BtnMobile = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ const BtnMobile = () => {
       <BtnPrevious handleNavigate={handleNavigate} />
       <MtUiButton
         animated
-        className="py-3 px-8 border-primary text-primary"
+        className="py-3 px-8 border-primary text-white"
         block
         onClick={() => handleNavigate('next')}
         type="primary"

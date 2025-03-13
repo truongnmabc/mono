@@ -57,7 +57,6 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
         }),
         db?.passingApp.get(-1),
       ]);
-      console.log('🚀 ~ handleSyncData ~ app:', app);
       console.log('🚀 ~ handleSyncData ~ user:', user);
 
       // server chưa có thông tin. up lên

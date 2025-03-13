@@ -1,7 +1,7 @@
-import NextAuth from 'next-auth';
-import jwt from 'jsonwebtoken';
-import CredentialsProvider from 'next-auth/providers/credentials';
 import { verifiedCodeApi } from '@ui/services/home';
+import jwt from 'jsonwebtoken';
+import NextAuth from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 type IAccountInfo = {
   email: string;
@@ -12,7 +12,12 @@ type IAccountInfo = {
   given_name: string;
   family_name: string;
 };
-
+type AppUser = {
+  id: string;
+  email: string;
+  name: string;
+  image: string;
+};
 export const { auth, handlers, signOut } = NextAuth({
   providers: [
     CredentialsProvider({
@@ -50,7 +55,8 @@ export const { auth, handlers, signOut } = NextAuth({
         if (email && code) {
           try {
             const res = await verifiedCodeApi({ email, code });
-            if (res) {
+
+            if (res !== -1) {
               return {
                 email: email,
                 image: '/images/totoro.jpg',
@@ -65,7 +71,23 @@ export const { auth, handlers, signOut } = NextAuth({
             return null;
           }
         }
-        return {};
+        return null;
+      },
+    }),
+    CredentialsProvider({
+      id: 'test',
+      name: 'test',
+      credentials: {
+        name: { label: 'email', type: 'text' },
+      },
+      async authorize(credentials) {
+        const { email } = credentials as { email: string };
+        return {
+          email: email,
+          image: '/images/totoro.jpg',
+          id: email,
+          name: email,
+        } satisfies AppUser;
       },
     }),
   ],

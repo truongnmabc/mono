@@ -3,6 +3,7 @@ export const BASE_URL_PROP =
   'https://api-cms-v2-dot-micro-enigma-235001.appspot.com';
 export const BASE_URL_DEV = 'https://dev-dot-micro-enigma-235001.appspot.com';
 export const DASHBOARD_API = 'https://dashboard-api2.abc-elearning.org/';
+export const TRACKING_API = 'https://app-tracking.abc-elearning.org/';
 
 export const API_PATH = {
   APP_INFO: '/api/appInfos',

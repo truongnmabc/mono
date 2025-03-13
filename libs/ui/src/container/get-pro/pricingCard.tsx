@@ -260,7 +260,7 @@ export default function Pricing({
           Upgrade Now
         </MtUiButton>
       </div>
-      <p className="text-sm font-nomal mt-4 sm:mt-6 text-center text-[#21212152]">
+      <p className="text-sm font-nomal mt-4 sm:mt-6 text-center text-[#21212185]">
         Subscriptions auto-renew at the cost of the chosen package, unless
         cancelled 24 hours in advance of the end of the current period. The
         subscription fee is charged to your PayPal account upon purchase. You

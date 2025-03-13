@@ -77,7 +77,6 @@ const initDataGame = createAsyncThunk(
   async (params: IInitQuestion, thunkAPI): Promise<IResInitQuestion> => {
     const { partId, type, slug, turn, topicId, testId, isCreate } = params;
     const state = thunkAPI.getState() as RootState;
-    console.log('🚀 ~ isCreate:', isCreate);
 
     let { isDataFetched } = state.appInfo;
     while (!isDataFetched) {

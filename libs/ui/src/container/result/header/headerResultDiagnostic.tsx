@@ -80,7 +80,7 @@ const HeaderResultDiagnostic = ({
               })}
             >
               <MtUiButton
-                className="sm:py-4 sm:max-h-14 text-lg font-medium rounded-2xl text-primary border-primary"
+                className="sm:py-4 sm:max-h-14 text-lg font-medium rounded-2xl text-white border-primary"
                 block
                 type="primary"
                 size="large"

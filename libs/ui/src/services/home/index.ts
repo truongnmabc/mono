@@ -27,7 +27,7 @@ export const verifiedCodeApi = async ({
   code: string;
 }) => {
   try {
-    return await axiosRequest({
+    const result = await axiosRequest({
       url: `/api/auth?type=verify-code`,
       params: {
         type: 'verify-code',
@@ -36,6 +36,7 @@ export const verifiedCodeApi = async ({
       },
       base: 'test',
     });
+    return result.data;
   } catch (error) {
     throw new Error(`Failed to verify code`);
   }

@@ -2,14 +2,21 @@
 import { Modal } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import XIcon from '@ui/asset/icon/XIcon';
-import { setIsTester } from '@ui/redux/features/user';
-import { useAppDispatch } from '@ui/redux/store';
+import { db } from '@ui/db';
+import { selectUserInfo } from '@ui/redux';
+import { clearIsPro, setIsTester, shouldIsPro } from '@ui/redux/features/user';
+import { syncDown } from '@ui/redux/repository/sync/syncDown';
+import { syncUp } from '@ui/redux/repository/sync/syncUp';
+import { useAppDispatch, useAppSelector } from '@ui/redux/store';
+import { useClearIsProServer, useSetIsProServer } from '@ui/services/actions';
 import { Fragment, useEffect, useState } from 'react';
 import { MtUiButton } from '../button';
 
 const TestMode = ({ isScrollRef }: { isScrollRef: boolean }) => {
   const [clickCount, setClickCount] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(
+    process.env['NODE_ENV'] === 'development'
+  );
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (clickCount >= 3) {
@@ -58,7 +65,29 @@ const ModalTestMode = () => {
     { label: 'Random', value: 'random' },
     { label: 'Custom', value: 'custom' },
   ];
+  const user = useAppSelector(selectUserInfo);
+  const dispatch = useAppDispatch();
+  const handleGetPro = async () => {
+    dispatch(shouldIsPro());
+    useSetIsProServer();
+  };
 
+  const handleClearPro = async () => {
+    useClearIsProServer();
+    dispatch(clearIsPro());
+  };
+
+  const handleSyncUp = async () => {
+    dispatch(syncUp({}));
+  };
+  const handleSyncDown = async () => {
+    const app = await db?.passingApp.get(-1);
+    dispatch(
+      syncDown({
+        syncKey: app?.syncKey || '',
+      })
+    );
+  };
   return (
     <Fragment>
       {/* Button mở Modal */}
@@ -92,6 +121,23 @@ const ModalTestMode = () => {
               </label>
             ))}
           </div>
+          <MtUiButton onClick={handleSyncUp}>Sync Up</MtUiButton>
+          <MtUiButton onClick={handleSyncDown}>Sync Down</MtUiButton>
+          <MtUiButton
+            onClick={handleGetPro}
+            type={user.isPro ? 'primary' : 'default'}
+          >
+            {' '}
+            Is Pro
+          </MtUiButton>
+
+          <MtUiButton
+            onClick={handleClearPro}
+            type={!user.isPro ? 'primary' : 'default'}
+          >
+            {' '}
+            Clear Pro
+          </MtUiButton>
 
           {/* Buttons */}
           <div className="flex items-center w-full justify-center gap-3 mt-4">

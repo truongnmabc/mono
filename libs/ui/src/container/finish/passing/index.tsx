@@ -7,8 +7,8 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { TypeParam } from '@ui/constants';
 import { ITopicBase } from '@ui/models/topics';
 import { shouldEnableAnimation } from '@ui/redux/features/appInfo';
-import { calculatePassingApp } from '../calculate';
 import queryString from 'query-string';
+import { calculatePassingApp } from '../calculate';
 
 const updateTurnTopic = async (id: number) => {
   try {
@@ -32,7 +32,7 @@ type IProps = {
   nextPart: ITopicBase | null;
   extraPoint: number;
   topic?: string;
-  index?: string;
+  isNextSubTopic?: boolean;
   isNextTopic: boolean;
   topicId?: number;
 };
@@ -41,8 +41,8 @@ const PassingFinishPage = ({
   currentPart,
   extraPoint,
   topic,
-  index,
   isNextTopic,
+  isNextSubTopic,
   topicId,
 }: IProps) => {
   const router = useRouter();
@@ -53,9 +53,6 @@ const PassingFinishPage = ({
   }, []);
 
   const oldPassing = useMemo(() => passing - extraPoint, [passing, extraPoint]);
-  const subIndex = index?.split('.')[0];
-  const partIndex = nextPart?.index?.split('.')[0];
-  const isContinue = subIndex === partIndex;
   const dispatch = useAppDispatch();
 
   const handleNextPart = useCallback(() => {
@@ -140,7 +137,7 @@ const PassingFinishPage = ({
             type="primary"
             onClick={handleNextPart}
           >
-            {isContinue ? 'Continue' : 'Next Sub Topic'}
+            {isNextSubTopic ? 'Next Sub Topic' : 'Continue'}
           </MtUiButton>
         )}
       </div>

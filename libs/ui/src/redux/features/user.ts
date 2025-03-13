@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IUserActions, IUserInfo, UserInfo } from '@ui/models/user';
 import useActionsThunk from '../repository/user/actions';
 import getListActionThunk from '../repository/user/getActions';
 import { RootState } from '../store';
-import { IUserActions, IUserInfo, UserInfo } from '@ui/models/user';
 
 export interface IUserReducer {
   userInfo: IUserInfo;
@@ -39,6 +39,13 @@ const userSlice = createSlice({
       state.userInfo = {
         ...user,
         isPro: true,
+      };
+    },
+    clearIsPro: (state) => {
+      const user = state.userInfo;
+      state.userInfo = {
+        ...user,
+        isPro: false,
       };
     },
     setListReactions: (state, action) => {
@@ -86,6 +93,7 @@ export const {
   shouldIsPro,
   setListReactions,
   setIsTester,
+  clearIsPro,
 } = actions;
 
 export const userState = (state: RootState) => state.user;

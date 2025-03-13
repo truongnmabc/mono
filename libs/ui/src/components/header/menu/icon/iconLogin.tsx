@@ -3,15 +3,45 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
+import LazyLoadImage from '@ui/components/images';
+import { API_PATH } from '@ui/constants/api.constants';
+import RouterApp from '@ui/constants/router.constant';
+import { db } from '@ui/db';
 import { shouldOpenModalLogin } from '@ui/redux/features/user';
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import LazyLoadImage from '@ui/components/images';
+import { axiosRequest } from '@ui/services';
 import ctx from '@ui/utils/twClass';
-import RouterApp from '@ui/constants/router.constant';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { Fragment, useCallback } from 'react';
+
+const handleClearAccount = async () => {
+  try {
+    // Xóa tất cả dữ liệu trong IndexedDB cùng lúc để tránh blocking
+    await Promise.all([
+      db?.useActions.clear(),
+      db?.userProgress.clear(),
+      db?.paymentInfos.clear(),
+    ]);
+
+    // Gửi request lấy dữ liệu mới
+    const [initTopicResponse, testsResponse] = await Promise.all([
+      axiosRequest({ url: API_PATH.SW_TOPIC, method: 'get' }),
+      axiosRequest({ url: API_PATH.SW_TESTS, method: 'get' }),
+    ]);
+
+    // Lưu dữ liệu mới vào IndexedDB
+    if (initTopicResponse.data && testsResponse.data) {
+      await Promise.all([
+        db?.topics.bulkPut(initTopicResponse.data),
+        db?.testQuestions.bulkPut(testsResponse.data),
+      ]);
+    }
+  } catch (error) {
+    console.error('Error clearing account:', error);
+  }
+};
 
 const FN = ({ classNames }: { classNames?: string }) => {
   const router = useRouter();
@@ -31,6 +61,7 @@ const FN = ({ classNames }: { classNames?: string }) => {
     signOut({
       redirect: false,
     });
+    handleClearAccount();
   }, []);
 
   const handleClose = useCallback(() => setAnchorEl(null), []);

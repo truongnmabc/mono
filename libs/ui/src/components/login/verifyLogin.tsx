@@ -3,8 +3,8 @@
 import AppleIcon from '@mui/icons-material/Apple';
 import Divider from '@mui/material/Divider';
 import { useTheme } from '@ui/hooks';
-import { appConfigState } from '@ui/redux/features/appConfig';
-import { appInfoState } from '@ui/redux/features/appInfo';
+import { selectAppConfig, selectAppInfo } from '@ui/redux';
+import { selectIsTester } from '@ui/redux/features/user.reselect';
 import { useAppSelector } from '@ui/redux/store';
 import { sendEmailApi } from '@ui/services/home';
 import { getImageSrc } from '@ui/utils/image';
@@ -23,11 +23,11 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   const btnRef = useRef<HTMLDivElement | null>(null);
+  const appInfo = useAppSelector(selectAppInfo);
+  const appConfig = useAppSelector(selectAppConfig);
+  const isTest = useAppSelector(selectIsTester);
 
-  const { appInfo } = useAppSelector(appInfoState);
-  const { appConfig } = useAppSelector(appConfigState);
-
-  const verifyEmail = async () => {
+  const verifyEmail = useCallback(async () => {
     setProcess(true);
     try {
       if (email?.length) {
@@ -46,17 +46,23 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
     } finally {
       setProcess(false);
     }
-  };
+  }, [email, appInfo]);
 
-  const verifyCode = async () => {
-    signIn('email', {
+  const verifyCode = useCallback(async () => {
+    const result = await signIn('email', {
       redirect: false,
       email,
       code,
     });
-    setProcess(false);
-    setOpen(false);
-  };
+    if (result?.error || !result?.url) {
+      window.alert(
+        'Verification failed. Please check your code and try again.'
+      );
+    } else {
+      setProcess(false);
+      setOpen(false);
+    }
+  }, [email, code]);
 
   useLayoutEffect(() => {
     if (btnRef.current && window['google']) {
@@ -77,12 +83,24 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
     return undefined;
   }, []);
 
+  const loginTester = useCallback(() => {
+    signIn('test', {
+      redirect: false,
+      email,
+    });
+  }, [isTest, email]);
   const handleLoginApple = useCallback(() => {
     if (window && window['AppleID']) {
       window['AppleID'].auth.signIn();
     }
   }, []);
   const { theme } = useTheme();
+
+  const handleVerify = useCallback(() => {
+    if (isTest) return loginTester();
+    if (step == 1) return verifyEmail();
+    if (step == 2) return verifyCode();
+  }, [verifyEmail, verifyCode, step, loginTester, isTest]);
   return (
     <div className="w-full sm:w-1/2 sm:shadow-login flex-1 sm:bg-white rounded-xl flex flex-col justify-between sm:p-6 h-full">
       <div className="flex flex-col  sm:px-6 sm:pb-6 flex-1 gap-6">
@@ -126,7 +144,7 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
               <div>
                 <p className="pb-2">Email Address</p>
                 <InputEmailAddress
-                  onEnter={verifyEmail}
+                  onEnter={handleVerify}
                   onChangeValue={setEmail}
                 />
               </div>
@@ -142,7 +160,7 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
             </p>
             <div className="w-full">
               <p className="text-sm pb-4">Your code</p>
-              <InputCodeVerify onChangeValue={setCode} onEnter={verifyCode} />
+              <InputCodeVerify onChangeValue={setCode} onEnter={handleVerify} />
             </div>
           </div>
         )}
@@ -157,10 +175,7 @@ const FN = ({ setOpen }: { setOpen: (e: boolean) => void }) => {
       <MtUiButton
         loading={processing}
         disabled={step == 1 ? email?.length === 0 : code?.length === 0}
-        onClick={() => {
-          if (step == 1) verifyEmail();
-          if (step == 2) verifyCode();
-        }}
+        onClick={handleVerify}
         type="primary"
         size="large"
         className="mb-4 sm:h-12 text-base sm:mb-0 rounded-xl"

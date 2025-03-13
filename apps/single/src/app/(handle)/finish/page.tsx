@@ -1,8 +1,8 @@
 import FinishLayout from '@ui/container/finish';
 
-import type { Metadata } from 'next';
-import { replaceYear } from '@ui/utils/time';
 import data from '@single/data/server/finish.json';
+import { replaceYear } from '@ui/utils/time';
+import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: replaceYear(data?.titleSeo),
   description: replaceYear(data?.descSeo),
@@ -23,14 +23,13 @@ const FinishPage = async ({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
-  const { topic, resultId, attemptNumber, index } = await searchParams;
+  const { topic, resultId, attemptNumber } = await searchParams;
 
   return (
     <FinishLayout
       topic={topic}
       resultId={Number(resultId)}
       attemptNumber={Number(attemptNumber)}
-      index={index}
     />
   );
 };

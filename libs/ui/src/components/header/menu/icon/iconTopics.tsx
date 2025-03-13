@@ -1,24 +1,27 @@
 'use client';
 
+import { TypeParam } from '@ui/constants';
 import { db } from '@ui/db';
-import { useAppDispatch } from '@ui/redux/store';
-// import { handleNavigateStudy } from '@ui/utils/handleNavigateStudy';
 import clsx from 'clsx';
 import { usePathname, useRouter } from 'next/navigation';
+import queryString from 'query-string';
 import React from 'react';
 
 const FN = () => {
   const pathname = usePathname();
-  const dispatch = useAppDispatch();
   const router = useRouter();
   const handleNavigate = async () => {
     const topics = await db?.topics.toArray();
-    // if (topics)
-    //   return handleNavigateStudy({
-    //     dispatch,
-    //     router,
-    //     topic: topics[0],
-    //   });
+    if (topics) {
+      const fistTopic = topics.find((i) => i.status === 0 && i.type === 1);
+      if (fistTopic) {
+        const params = queryString.stringify({
+          type: TypeParam.learn,
+          topicId: fistTopic.id,
+        });
+        router.push(`${fistTopic.slug}?${params}`);
+      }
+    }
   };
   if (pathname?.includes('/review')) {
     return (

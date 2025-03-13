@@ -18,6 +18,7 @@ import {
   IResSubcription,
 } from '@ui/models/payment';
 import { checkPaypalStatusAPI, saveToDashboardAPI } from '@ui/services';
+import { useSetIsProServer } from '@ui/services/actions';
 import {
   cancelSubscriptionAPI,
   sendEmailSubscribeSuccessAPI,
@@ -102,7 +103,7 @@ const SubScriptionButton = ({
           })
         );
         paymentSuccess();
-
+        useSetIsProServer();
         await uploadPaymentInfoAPI(payment);
         await updateUserInfoDashboard({
           email: userInfo?.email,

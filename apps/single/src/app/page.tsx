@@ -36,8 +36,7 @@ const Page = async ({
         isMobile={device?.value?.includes('mobile') || false}
         tests={data.tests}
         showList={selectTest === 'true'}
-        // isPro={isPro?.value === 'true' || false}
-        isPro={true}
+        isPro={isPro?.value === 'true' || false}
       />
       <div className="sm:my-12 sm:mb-[120px] my-6 mb-12">
         <BannerHome appInfo={appInfos} isHomePage={true} />

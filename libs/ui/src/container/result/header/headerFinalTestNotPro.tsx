@@ -1,14 +1,13 @@
 import CloseIcon from '@ui/asset/icon/CloseIcon';
-import { MtUiButton } from '@ui/components/button';
 import IconBack from '@ui/components/icon/iconBack';
 import LazyLoadImage from '@ui/components/images';
 import RouterApp from '@ui/constants/router.constant';
 import { useAppDispatch } from '@ui/redux/store';
+import { getImageSrc } from '@ui/utils/image';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useResultContext } from '../resultContext';
 import DashboardCard from './chartHeader';
-import { getImageSrc } from '@ui/utils/image';
 
 const HeaderFinalTestNotPro = ({ isMobile }: { isMobile: boolean }) => {
   const { correct, total, passing } = useResultContext();
@@ -64,7 +63,7 @@ const HeaderFinalTestNotPro = ({ isMobile }: { isMobile: boolean }) => {
             />
           </div>
         </div>
-        <div className="fixed bottom-0 pb-8 py-4 px-4 left-0 right-0 z-50 bg-theme-dark ">
+        {/* <div className="fixed bottom-0 pb-8 py-4 px-4 left-0 right-0 z-50 bg-theme-dark ">
           <MtUiButton
             className="sm:py-4 sm:max-h-14 text-lg  font-medium rounded-2xl  border-primary"
             block
@@ -74,7 +73,7 @@ const HeaderFinalTestNotPro = ({ isMobile }: { isMobile: boolean }) => {
           >
             Try Again
           </MtUiButton>
-        </div>
+        </div> */}
       </div>
     );
   }

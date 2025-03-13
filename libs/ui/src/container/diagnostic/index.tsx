@@ -5,20 +5,21 @@ import Explanation from '@ui/components/explanation';
 import ProgressQuestion from '@ui/components/progressQuestion';
 import QuestionContent from '@ui/components/question';
 import TitleQuestion from '@ui/components/titleQuestion';
-import { useAppDispatch } from '@ui/redux/store';
+import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import dynamic from 'next/dynamic';
 
 import BottomActions from '@ui/components/bottomActions';
+import { TypeParam } from '@ui/constants';
+import RouterApp from '@ui/constants/router.constant';
+import { IAppInfo } from '@ui/models/app';
+import { IGameMode } from '@ui/models/tests/tests';
+import { selectHasRetakenDiagnosticTest } from '@ui/redux';
+import initDataGame from '@ui/redux/repository/game/initData/initData';
+import { useRouter } from 'next/navigation';
+import queryString from 'query-string';
 import { useEffect } from 'react';
 import EmotionComponent from './emotion/emotionComponent';
 import TimeTestGetLever from './timeTest';
-import initDataGame from '@ui/redux/repository/game/initData/initData';
-import { IGameMode } from '@ui/models/tests/tests';
-import { useRouter } from 'next/navigation';
-import RouterApp from '@ui/constants/router.constant';
-import queryString from 'query-string';
-import { IAppInfo } from '@ui/models/app';
-import { TypeParam } from '@ui/constants';
 const ClockIcon = dynamic(() => import('@ui/components/icon/ClockIcon'), {
   ssr: false,
 });
@@ -107,7 +108,7 @@ const DiagnosticContainer = ({
           <EmotionComponent />
         </div>
         <ChoicesPanel type={type as IGameMode} />
-        <Explanation />
+        <ExplanationWrapper />
       </div>
 
       <BottomActions isMobile={isMobile} type="diagnosticTest" />
@@ -115,3 +116,8 @@ const DiagnosticContainer = ({
   );
 };
 export default DiagnosticContainer;
+
+const ExplanationWrapper = () => {
+  const hasRetaken = useAppSelector(selectHasRetakenDiagnosticTest);
+  return <Explanation unLock={!hasRetaken} />;
+};

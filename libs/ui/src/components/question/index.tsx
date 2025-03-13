@@ -12,14 +12,15 @@ import { useAppSelector } from '@ui/redux/store';
 import { decrypt } from '@ui/utils/crypto';
 import { MathJax } from 'better-react-mathjax';
 import clsx from 'clsx';
+import { animate, motion, useMotionValue } from 'framer-motion';
 import React, { Fragment, useEffect, useState } from 'react';
 import StatusAnswer from '../statusAnswer';
-import { animate, motion, useMotionValue } from 'framer-motion';
 
 export interface IAnimTextProps {
   texts: string;
   className?: string;
   delay?: number;
+  animation?: boolean;
 }
 const QuestionContent = ({
   showStatus = true,
@@ -59,6 +60,7 @@ const QuestionContent = ({
             {currentGame?.text && (
               <AnimText
                 key={currentGame?.text}
+                animation={false}
                 texts={decrypt(currentGame?.text)}
                 className="text-sm font-normal sm:text-base transition-all duration-300 math-content"
               />
@@ -80,6 +82,7 @@ const QuestionContent = ({
         {currentGame?.paragraph?.text && (
           <AnimText
             key={currentGame?.text}
+            animation={false}
             texts={currentGame.paragraph?.text}
             className="text-sm font-normal sm:text-base math-content"
             delay={0.5}
@@ -95,21 +98,26 @@ const QuestionContent = ({
 
 export default React.memo(QuestionContent);
 
-function AnimText({ texts, className, delay = 0 }: IAnimTextProps) {
+function AnimText({ texts, className, delay = 0, animation }: IAnimTextProps) {
   const count = useMotionValue(0);
   const [displayText, setDisplayText] = useState('');
   useEffect(() => {
-    const controls = animate(count, texts.length, {
-      type: 'tween',
-      delay: delay,
-      duration: 1,
-      ease: 'easeInOut',
+    if (animation) {
+      const controls = animate(count, texts.length, {
+        type: 'tween',
+        delay: delay,
+        duration: 1,
+        ease: 'easeInOut',
 
-      onUpdate: (latest) => {
-        setDisplayText(texts.slice(0, Math.round(latest)));
-      },
-    });
-    return controls.stop;
+        onUpdate: (latest) => {
+          setDisplayText(texts.slice(0, Math.round(latest)));
+        },
+      });
+      return controls.stop;
+    } else {
+      setDisplayText(texts);
+      return;
+    }
   }, [texts]);
 
   return (

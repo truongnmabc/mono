@@ -141,7 +141,7 @@ const GridTest = ({
                   <div className="w-full flex  flex-col gap-2">
                     {tests?.practiceTests?.list?.map((test, index) => (
                       <Link
-                        href={`${RouterApp.Practice_Tests}?testId=${test.id}`}
+                        href={`${RouterApp.Practice_Tests}?testId=${test.id}&type=${TypeParam.practiceTests}`}
                         key={index}
                       >
                         <div

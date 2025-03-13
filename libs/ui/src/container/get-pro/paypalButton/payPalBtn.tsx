@@ -13,6 +13,7 @@ import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import paymentSuccessThunk from '@ui/redux/repository/payment/paymentSuccess';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
+import { useSetIsProServer } from '@ui/services/actions';
 import {
   saveToDashboardAPI,
   updateUserInfoDashboard,
@@ -74,6 +75,7 @@ const PayPalBtn = ({
             })
           );
           paymentSuccess();
+          useSetIsProServer();
         }
       } catch (error) {
         console.log('🚀 ~ error:', error);

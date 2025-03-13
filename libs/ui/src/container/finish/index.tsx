@@ -82,7 +82,6 @@ const calculateProgressPassing = async ({
 const FinishLayout = ({
   topic,
   resultId,
-  index,
   attemptNumber,
 }: {
   topic?: string;
@@ -97,6 +96,7 @@ const FinishLayout = ({
     total: number;
     correct: number;
     isNextTopic: boolean;
+    isNextSubTopic: boolean;
     indexPart: number;
   }>({
     currentPart: null,
@@ -105,9 +105,9 @@ const FinishLayout = ({
     total: 1,
     correct: 0,
     isNextTopic: false,
+    isNextSubTopic: false,
     indexPart: 0,
   });
-  const subIndex = Number(index?.split('.')[1] || 0);
   const [listSubTopics, setListSubTopics] = useState<ITopicBase[]>([]);
   const isDataFetched = useAppSelector(selectIsDataFetched);
   const dispatch = useAppDispatch();
@@ -117,68 +117,118 @@ const FinishLayout = ({
 
     if (!topic || !resultId || !attemptNumber || !isDataFetched) return;
     const handleGetData = async () => {
-      const { topics, progress, questions } = await getCurrentProgressData({
-        partId: resultId,
-        topic,
-      });
+      try {
+        const { topics, progress, questions } = await getCurrentProgressData({
+          partId: resultId,
+          topic,
+        });
 
-      if (!topics || !progress || !questions) return;
+        if (!topics || !progress || !questions) return;
 
-      const { correct, total } = calculateProgress(
-        progress,
-        questions,
-        attemptNumber
-      );
+        const { correct, total } = calculateProgress(
+          progress,
+          questions,
+          attemptNumber
+        );
 
-      const { extraPoint } = await calculateProgressPassing({
-        progress,
-        attemptNumber,
-      });
+        const { extraPoint } = await calculateProgressPassing({
+          progress,
+          attemptNumber,
+        });
 
-      const listCort = topics.filter((t) => t.type === 3);
-      const currentPart = topics.find((t) => t.id === resultId);
-      const subTopics = topics.filter(
-        (t) => t.parentId === currentPart?.parentId
-      );
-      const indexPart = subTopics.findIndex((t) => t.id === resultId) + 1;
-      if (!currentPart) return;
-      const sub = listCort
-        .filter((t) => t.parentId === currentPart.parentId)
-        .sort((a, b) => a.orderIndex - b.orderIndex);
+        const listCore = topics.filter((t) => t.type === 3);
+        const currentPart = topics.find((t) => t.id === resultId);
+        if (!currentPart) return;
 
-      if (!sub) return;
+        // 🔹 Tìm danh sách các part cùng `parentId` với `currentPart`
+        const subTopics = topics.filter(
+          (t) => t.parentId === currentPart.parentId
+        );
+        const indexPart = subTopics.findIndex((t) => t.id === resultId) + 1;
 
-      const nextPart = sub.find((t) => t.status === 0);
+        // 🔹 Tìm nextPart trong cùng parentId (thằng tiếp theo chưa hoàn thành)
+        let nextPart = subTopics.find(
+          (t) => t.status === 0 && t.id !== resultId
+        );
 
-      setGame({
-        currentPart,
-        nextPart: nextPart || null,
-        correct,
-        total,
-        extraPoint,
-        isNextTopic: !!nextPart,
-        indexPart: indexPart,
-      });
-      const mainTopic = topics.find((i) => i.type === 1);
-      const mainTopics = listCort.reduce((acc, topic) => {
-        if (!acc.has(topic.parentId)) {
-          acc.set(topic.parentId, []);
+        // 🔹 Nếu tất cả part trong `subTopics` đã hoàn thành, tìm part trong `sub` tiếp theo
+        if (!nextPart) {
+          const subs = topics
+            .filter((t) => t.type === 2)
+            .sort((a, b) => a.orderIndex - b.orderIndex);
+          const currentSubIndex = subs.findIndex(
+            (s) => s.id === currentPart.parentId
+          );
+
+          if (currentSubIndex !== -1) {
+            // 🔹 Tìm `sub` tiếp theo
+            const nextSub = subs[currentSubIndex + 1] || subs[0];
+
+            // 🔹 Tìm `part` đầu tiên chưa hoàn thành trong `sub` tiếp theo
+            nextPart = listCore.find(
+              (t) => t.parentId === nextSub.id && t.status === 0
+            );
+          }
         }
-        const group = acc.get(topic.parentId);
-        if (group) {
-          group.push(topic);
-        }
-        return acc;
-      }, new Map());
 
-      const subs = topics.filter((t) => t.type === 2);
+        setGame({
+          currentPart,
+          nextPart: nextPart || null,
+          correct,
+          total,
+          extraPoint,
+          isNextTopic: !!nextPart,
+          isNextSubTopic: !topics.find(
+            (t) =>
+              t.type === 3 &&
+              t.status === 0 &&
+              t.parentId === currentPart.parentId
+          ),
+          indexPart: indexPart,
+        });
 
-      const subsWithTopics = subs.map((sub) => ({
-        ...sub,
-        topics: mainTopics.get(sub.id) || [],
-      }));
+        // 🔹 Tạo danh sách sub-topic với các part tương ứng
+        const subsWithTopics = topics
+          .filter((t) => t.type === 2)
+          .map((sub) => ({
+            ...sub,
+            topics: listCore.filter((item) => item.parentId === sub.id) || [],
+          })) as ITopicBase[];
 
-      setListSubTopics(subsWithTopics || []);
+        setListSubTopics(subsWithTopics);
+
+        // const subTopics = topics.filter(
+        //   (t) => t.parentId === currentPart?.parentId
+        // );
+        // const indexPart = subTopics.findIndex((t) => t.id === resultId) + 1;
+        // if (!currentPart) return;
+        // const sub = listCore
+        //   .filter((t) => t.parentId === currentPart.parentId)
+        //   .sort((a, b) => a.orderIndex - b.orderIndex);
+
+        // if (!sub) return;
+
+        // const nextPart = sub.find((t) => t.status === 0);
+
+        // const subs = topics.filter((t) => t.type === 2) || [];
+
+        // const subsWithTopics = subs.map((sub) => ({
+        //   ...sub,
+        //   topics: listCore.filter((item) => item.parentId === sub.id) || [],
+        // })) as ITopicBase[];
+
+        // setGame({
+        //   currentPart,
+        //   nextPart: nextPart || null,
+        //   correct,
+        //   total,
+        //   extraPoint,
+        //   isNextTopic: !!nextPart,
+        //   isNextSubTopic: false,
+        //   indexPart: indexPart,
+        // });
+        // setListSubTopics(subsWithTopics);
+      } catch (err) {}
     };
 
     handleGetData();
@@ -192,7 +242,6 @@ const FinishLayout = ({
         <PassingFinishPage
           {...game}
           topic={topic}
-          index={index}
           topicId={listSubTopics[0]?.parentId}
         />
         <div className="flex gap-2 flex-col ">

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '@ui/db';
+import { ITopicBase } from '@ui/models';
 import { IGameMode } from '@ui/models/tests/tests';
 import { RootState } from '@ui/redux/store';
 import { syncUp } from '../../sync/syncUp';
@@ -18,7 +19,7 @@ const submitTestThunk = createAsyncThunk(
       isGamePaused: false,
     };
     const actions: Record<string, () => Promise<ActionResponse>> = {
-      learn: async () => await saveDataDbLearn(currentTopicId),
+      learn: async () => await saveDataDbLearn({ currentTopicId }),
       practiceTests: async () => await saveDataDb(currentTopicId, data),
       diagnosticTest: async () => await saveDataDb(currentTopicId, data),
       finalTests: async () => await saveDataDb(currentTopicId, data),
@@ -58,19 +59,49 @@ const saveDataDb = async (id: number, data: IData) => {
   };
 };
 
-export const saveDataDbLearn = async (id: number) => {
-  const currentTopics = await db?.topics.get(id);
-  if (currentTopics) {
-    await db?.topics
-      .where('id')
-      .equals(id)
-      .modify((topic) => {
-        topic.status = 1;
+export const saveDataDbLearn = async ({
+  currentTopics,
+  currentTopicId,
+}: {
+  currentTopics?: ITopicBase;
+  currentTopicId?: number;
+}) => {
+  let topic = currentTopics;
+
+  if (!currentTopics && currentTopicId) {
+    topic = await db?.topics.get(currentTopicId);
+  }
+  await db?.topics.update(topic?.id, {
+    status: 1,
+  });
+
+  const listTopic = await db?.topics
+    .where('parentId')
+    .equals(topic?.parentId || -1)
+    .toArray();
+
+  const isNot = listTopic?.find((i) => i.status === 0);
+  console.log('🚀 ~ saveDataDbLearn ~ isNot:', isNot);
+  if (!isNot) {
+    const sub = await db?.topics.get(topic?.parentId);
+    await db?.topics.update(topic?.parentId, {
+      status: 1,
+    });
+
+    const listSub = await db?.topics
+      .where('parentId')
+      .equals(sub?.parentId || -1)
+      .toArray();
+    const isNot = listSub?.find((i) => i.status === 0);
+    if (!isNot) {
+      await db?.topics.update(sub?.parentId, {
+        status: 1,
       });
+    }
   }
   return {
-    currentQuestionIndex: Number(currentTopics?.index),
-    attemptNumber: currentTopics?.turn,
-    resultId: currentTopics?.id,
+    currentQuestionIndex: Number(topic?.index),
+    attemptNumber: topic?.turn,
+    resultId: topic?.id,
   };
 };

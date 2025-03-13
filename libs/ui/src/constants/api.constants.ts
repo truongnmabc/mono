@@ -13,4 +13,6 @@ export const API_PATH = {
   SW_PASSING: '/api/sw/passing',
   SW_TESTS: '/api/sw/tests',
   SW_QUESTION: '/api/sw/question',
+  TRACKING_PROGRESS: 'api/tracking/question-progress',
+  TRACKING_REPORT: 'api/tracking/question-report',
 };

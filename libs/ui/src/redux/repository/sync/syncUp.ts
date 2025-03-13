@@ -5,59 +5,70 @@ import { IQuestionBase, ITestBase, ITopicBase, IUserActions } from '@ui/models';
 import { IUserQuestionProgress } from '@ui/models/progress';
 import { RootState } from '@ui/redux/store';
 import { updateUserDataToServer } from '@ui/services/sync';
-export const syncUp = createAsyncThunk('syncUp', async ({}: {}, thunkAPI) => {
-  const state = thunkAPI.getState() as RootState;
-  const { appInfo } = state.appInfo;
-  const { userInfo } = state.user;
-  try {
-    const [tests, reactions, progress, topics, app] = await Promise.all([
-      db?.testQuestions.toArray(),
-      db?.useActions.toArray(),
-      db?.userProgress.toArray(),
-      db?.topics.toArray(),
-      db?.passingApp.get(-1),
-    ]);
+export const syncUp = createAsyncThunk(
+  'syncUp',
+  async (
+    {
+      syncKey,
+    }: {
+      syncKey?: string;
+    },
+    thunkAPI
+  ) => {
+    const state = thunkAPI.getState() as RootState;
+    const { appInfo } = state.appInfo;
+    const { userInfo } = state.user;
+    if (!userInfo.email) return;
+    try {
+      const [tests, reactions, progress, topics, app] = await Promise.all([
+        db?.testQuestions.toArray(),
+        db?.useActions.toArray(),
+        db?.userProgress.toArray(),
+        db?.topics.toArray(),
+        db?.passingApp.get(-1),
+      ]);
 
-    const ids = progress?.map((item) => item.id) || [];
-    const questions = await db?.questions.where('id').anyOf(ids).toArray();
+      const ids = progress?.map((item) => item.id) || [];
+      const questions = await db?.questions.where('id').anyOf(ids).toArray();
 
-    const parentIdList = [...(progress || [])]
-      .map((item) => item.selectedAnswers.map((ans) => ans.parentId))
-      .flat(); // Dùng flat() để loại bỏ mảng lồng nhau
+      const parentIdList = [...(progress || [])]
+        .map((item) => item.selectedAnswers.map((ans) => ans.parentId))
+        .flat(); // Dùng flat() để loại bỏ mảng lồng nhau
 
-    const uniqueParentIdList = [...new Set(parentIdList)];
+      const uniqueParentIdList = [...new Set(parentIdList)];
 
-    const TopicProgress = handleConvertSyncTopic(topics);
-    const QuestionProgress = handleConvertSyncReaction(reactions);
-    const TestInfo = handleConvertSyncTest(
-      tests,
-      progress,
-      questions,
-      uniqueParentIdList
-    );
-    const UserTestData = currentTestPlaying(tests, progress);
-    const UserQuestionProgress = handleConvertSyncQuestion(progress);
+      const TopicProgress = handleConvertSyncTopic(topics);
+      const QuestionProgress = handleConvertSyncReaction(reactions);
+      const TestInfo = handleConvertSyncTest(
+        tests,
+        progress,
+        questions,
+        uniqueParentIdList
+      );
+      const UserTestData = currentTestPlaying(tests, progress);
+      const UserQuestionProgress = handleConvertSyncQuestion(progress);
 
-    const result = await updateUserDataToServer({
-      userId: userInfo.email,
-      appId: appInfo.appId,
-      platform: 'web',
-      fixed: true,
-      user_data: {
-        NewDailyGoal: [],
-        NewStudyPlan: [],
-        TestInfo: TestInfo,
-        UserTestData: UserTestData,
-        QuestionProgress: QuestionProgress,
-        TopicProgress: TopicProgress,
-        UserQuestionProgress: UserQuestionProgress,
-        SyncKey: [app?.syncKey],
-      },
-    });
-  } catch (err) {
-    console.log(err);
+      const result = await updateUserDataToServer({
+        userId: userInfo.email,
+        appId: appInfo.appId,
+        platform: 'web',
+        fixed: true,
+        user_data: {
+          NewDailyGoal: [],
+          NewStudyPlan: [],
+          TestInfo: TestInfo,
+          UserTestData: UserTestData,
+          QuestionProgress: QuestionProgress,
+          TopicProgress: TopicProgress,
+          UserQuestionProgress: UserQuestionProgress,
+          SyncKey: [syncKey || app?.syncKey],
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
-});
+);
 export interface ISyncTopics {
   progress: number;
   lastUpdate: number;

@@ -1,13 +1,15 @@
 'use client';
 
+import { db } from '@ui/db';
 import { resetState } from '@ui/redux/features/game';
 import pauseTestThunk from '@ui/redux/repository/game/pauseAndResumed/pauseTest';
+import { syncDown } from '@ui/redux/repository/sync/syncDown';
+import { syncUp } from '@ui/redux/repository/sync/syncUp';
 import beforeUnLoadThunk, {
   reloadStateThunk,
 } from '@ui/redux/repository/utils/reload';
-import { AppDispatch } from '@ui/redux/store';
-import { useCallback, useEffect } from 'react';
 import { useAppDispatch } from '@ui/redux/store';
+import { useCallback, useEffect } from 'react';
 
 const EventListener = () => {
   const dispatch = useAppDispatch();
@@ -44,6 +46,69 @@ const EventListener = () => {
   const handleBackPage = useCallback(async () => {
     await dispatch(pauseTestThunk({}));
     dispatch(resetState());
+  }, [dispatch]);
+
+  useEffect(() => {
+    let syncInterval: NodeJS.Timeout | null = null;
+
+    const handleFocus = () => {
+      // if (process.env['NODE_ENV'] === 'development') return;
+      console.log('🟢 Cửa sổ được focus');
+
+      // Đảm bảo không có interval nào trước đó đang chạy
+      if (!syncInterval) {
+        syncInterval = setInterval(() => {
+          dispatch(syncUp({}));
+        }, 5 * 60 * 1000); // 5 phút
+      }
+    };
+
+    const handleBlur = () => {
+      // if (process.env['NODE_ENV'] === 'development') return;
+
+      console.log('🔴 Cửa sổ bị mất focus');
+
+      // Xóa interval khi cửa sổ mất focus để tiết kiệm tài nguyên
+      if (syncInterval) {
+        clearInterval(syncInterval);
+        syncInterval = null;
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('blur', handleBlur);
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
+      if (syncInterval) {
+        clearInterval(syncInterval);
+      }
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    const handleVisibilityChange = async () => {
+      // if (process.env['NODE_ENV'] === 'development') return;
+
+      if (document.visibilityState === 'hidden') {
+        console.log('🔴 Người dùng rời khỏi màn hình');
+        dispatch(syncUp({}));
+      } else {
+        console.log('🟢 Người dùng quay lại màn hình');
+        const app = await db?.passingApp.get(-1);
+        dispatch(
+          syncDown({
+            syncKey: app?.syncKey ?? '',
+          })
+        );
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, [dispatch]);
 
   useEffect(() => {

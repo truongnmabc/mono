@@ -20,6 +20,16 @@
         }
       }
     },
+    "dev": {
+      "options": {
+        "cwd": "apps/single",
+        "command": "next dev "
+      },
+      "executor": "nx:run-commands",
+      "configurations": {},
+      "parallelism": true
+    },
+
     "serve": {
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",

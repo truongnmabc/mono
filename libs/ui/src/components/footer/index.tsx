@@ -133,7 +133,7 @@ const FooterLandingV4 = ({
   };
 
   if (isMobile && pathname?.includes('-test')) {
-    return null;
+    return <div className="pb-24"></div>;
   }
 
   return (

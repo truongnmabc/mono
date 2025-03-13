@@ -28,6 +28,8 @@ export const syncDown = createAsyncThunk(
     const state = thunkAPI.getState() as RootState;
     const { appInfo } = state.appInfo;
     const { userInfo } = state.user;
+    if (!userInfo.email) return;
+
     if (db === 'local') {
       // sync len
     } else {
