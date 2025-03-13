@@ -1,13 +1,13 @@
+import { MtUiButton } from '@ui/components/button';
 import MyContainer from '@ui/components/container';
 import { IGameMode } from '@ui/models/tests/tests';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { Fragment, useState } from 'react';
 import HeaderResultTest from '../header';
 import ItemListTopicResult from '../listTopicResult/item';
-import { motion } from 'framer-motion';
 import { useResultContext } from '../resultContext';
-import dynamic from 'next/dynamic';
-import { MtUiButton } from '@ui/components/button';
 
 import DrawerAnswers from '../drawer';
 
@@ -67,7 +67,13 @@ const PracticeTestsResult = ({
             </div>
           </Fragment>
         )}
-        <div className="text-lg my-2 font-medium sm:hidden">Test Subjects</div>
+        {listTopic.length ? (
+          <div className="text-lg my-2 font-medium  sm:hidden">
+            Test Subjects
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="w-full flex gap-10 justify-between  sm:mt-9">
           <motion.div
             initial={{ opacity: 0, x: 60 }}

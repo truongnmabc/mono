@@ -25,7 +25,7 @@ const HeaderStudy = ({ type }: { type: IGameMode }) => {
         </Link>
 
         <div className=" text-center flex-1 capitalize text-lg font-medium">
-          {type === 'learn' ? `Core ${indexSubTopic}` : ''}
+          {type === 'learn' ? `Core ${indexSubTopic + 1}` : ''}
         </div>
         {type !== 'learn' && (
           <div onClick={handleSubmit}>

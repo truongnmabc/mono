@@ -68,9 +68,9 @@ const HardQuestions = ({
               y: -60,
             }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="w-full rounded-lg bg-white "
+            className="w-full rounded-lg bg-transparent sm:bg-white "
             style={{
-              boxShadow: '0px 2px 4px 0px #2121211F',
+              boxShadow: isMobile ? 'none' : '0px 2px 4px 0px #2121211F',
             }}
           >
             <ReviewGameContent mode={mode} isMobile={isMobile} />

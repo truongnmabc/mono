@@ -1,12 +1,13 @@
 'use client';
 
+import { calculatePassingApp } from '@ui/db/calculate';
+import { selectUserInfo, useAppSelector } from '@ui/redux';
 import React, { useEffect, useState } from 'react';
 import './passing.css';
-import { calculatePassingApp } from '@ui/db/calculate';
 
 const PassingProbability = () => {
   const [passingValue, setPassingValue] = useState(0);
-
+  const useInfo = useAppSelector(selectUserInfo);
   useEffect(() => {
     const handleGetData = async () => {
       try {
@@ -18,7 +19,7 @@ const PassingProbability = () => {
       }
     };
     handleGetData();
-  }, []);
+  }, [useInfo]);
 
   return (
     <div className="p-4 rounded-md bg-[#2121210A] dark:bg-black sm:hidden">

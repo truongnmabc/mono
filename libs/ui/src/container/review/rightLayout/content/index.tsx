@@ -1,10 +1,10 @@
 import { IModeReview, ITopicHomeJson } from '@ui/models/other';
 import { Fragment } from 'react';
-import TitleReview from './title';
-import RandomQuestions from './random';
 import AllQuestions from './all';
-import SavedQuestions from './saved';
 import HardQuestions from './hard';
+import RandomQuestions from './random';
+import SavedQuestions from './saved';
+import TitleReview from './title';
 import WeakQuestions from './weak';
 
 const ContentReviewLayoutRight = ({
@@ -56,7 +56,7 @@ const ContentReviewLayoutRight = ({
 
   return (
     <Fragment>
-      <TitleReview mode={mode} isReady={isReady} />
+      {!isMobile && <TitleReview mode={mode} isReady={isReady} />}
       {componentMapping[mode]}
     </Fragment>
   );

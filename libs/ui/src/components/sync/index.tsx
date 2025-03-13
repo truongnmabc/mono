@@ -96,7 +96,6 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
   return (
     <DialogResponsive
       open={isShowPopup}
-      close={handleClose}
       dialogRest={{
         sx: {
           '& .MuiDialog-paper': {

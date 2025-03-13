@@ -9,7 +9,7 @@ const Sheet = dynamic(() => import('@ui/components/sheet'), {
 
 export interface IDialogResponsive {
   open: boolean;
-  close: () => void;
+  close?: () => void;
   sheetRest?: Omit<SheetProps & React.RefAttributes<HTMLDivElement>, 'visible'>;
   dialogRest?: Omit<DialogProps, 'open'>;
   children: React.ReactNode;

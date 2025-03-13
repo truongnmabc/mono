@@ -1,18 +1,18 @@
-import { useAppDispatch } from '@ui/redux/store';
-import { IModeReview } from '@ui/models/other';
-import { useRouter } from 'next/navigation';
-import React, { useCallback, useContext } from 'react';
 import BottomActions from '@ui/components/bottomActions';
-import ProgressQuestion from '@ui/components/progressQuestion';
-import QuestionContent from '@ui/components/question';
 import ChoicesPanel from '@ui/components/choicesPanel';
 import ExplanationDetail from '@ui/components/explanation';
-import { IconSubmit } from '@ui/components/icon/iconSubmit';
-import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
-import { useAppSelector } from '@ui/redux';
 import IconBack from '@ui/components/icon/iconBack';
+import { IconSubmit } from '@ui/components/icon/iconSubmit';
+import ProgressQuestion from '@ui/components/progressQuestion';
+import QuestionContent from '@ui/components/question';
 import RouterApp from '@ui/constants/router.constant';
+import { IModeReview } from '@ui/models/other';
+import { useAppSelector } from '@ui/redux';
+import { selectAppInfo } from '@ui/redux/features/appInfo.reselect';
 import { shouldOpenSubmitTest } from '@ui/redux/features/tests';
+import { useAppDispatch } from '@ui/redux/store';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 const ReviewGameContent = ({
   mode,

@@ -19,9 +19,8 @@ const LeftLayoutReview = ({
 }: {
   isMobile: boolean;
   mode: IModeReview;
-  isReady: boolean;
+  isReady?: string;
 }) => {
-  console.log('🚀 ~ isReady:', isReady);
   return (
     <Grid2
       size={{
@@ -33,7 +32,7 @@ const LeftLayoutReview = ({
       }}
     >
       <WrapperAnimationLeft className="flex mt-4 flex-col gap-3">
-        {<AnswerReview />}
+        {!isMobile && <AnswerReview />}
         <p className="text-xl pt-2 sm:pt-0 text-center sm:text-start font-semibold">
           Review
         </p>
@@ -45,6 +44,7 @@ const LeftLayoutReview = ({
             bg="#BAE8DB"
             type="random"
             selectType={mode}
+            isMobile={isMobile}
             isReady={isReady}
           />{' '}
           <ItemCard
@@ -54,6 +54,7 @@ const LeftLayoutReview = ({
             bg="#FFC7C7"
             selectType={mode}
             isReady={isReady}
+            isMobile={isMobile}
             type="weak"
           />{' '}
           <ItemCard
@@ -62,6 +63,7 @@ const LeftLayoutReview = ({
             des="Practice commonly answered incorrectly questions."
             bg="#D3F7FF"
             isReady={isReady}
+            isMobile={isMobile}
             selectType={mode}
             type="hard"
           />{' '}
@@ -72,6 +74,7 @@ const LeftLayoutReview = ({
             isReady={isReady}
             bg="#FEEDD5"
             selectType={mode}
+            isMobile={isMobile}
             type="saved"
           />{' '}
           <ItemCard
@@ -82,6 +85,7 @@ const LeftLayoutReview = ({
             bg="#DEEBFF"
             type="all"
             selectType={mode}
+            isMobile={isMobile}
           />
         </div>
       </WrapperAnimationLeft>
@@ -98,7 +102,8 @@ type IItemCard = {
   bg: string;
   type: IModeReview;
   selectType: IModeReview;
-  isReady?: boolean;
+  isReady?: string;
+  isMobile: boolean;
 };
 const ItemCard: React.FC<IItemCard> = ({
   icon,
@@ -108,14 +113,17 @@ const ItemCard: React.FC<IItemCard> = ({
   type,
   selectType,
   isReady,
+  isMobile,
 }) => {
   return (
-    <Link href={`/review?mode=${type}${isReady ? '&isReady=true' : ''}`}>
+    <Link href={`/review?mode=${type}${isMobile ? `&isReady=true` : ''}`}>
       <div
         className={clsx(
           'p-4 rounded-xl flex gap-3 cursor-pointer  bg-white border border-solid ',
           {
-            'border-[#FC5656]': selectType === type,
+            'border-[#FC5656]': isMobile
+              ? isReady && selectType === type
+              : selectType === type,
           }
         )}
         style={{

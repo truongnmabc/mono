@@ -1,12 +1,12 @@
-import MyContainer from '@ui/components/container';
-import { detectAgent } from '@ui/utils/device';
-import { headers } from 'next/headers';
-import { Metadata } from 'next';
-import { replaceYear } from '@ui/utils/time';
-import data from '@single/data/server/review.json';
-import ReviewLayout from '@ui/container/review';
 import appInfo from '@single/data/appInfos.json';
 import topics from '@single/data/home/data.json';
+import data from '@single/data/server/review.json';
+import MyContainer from '@ui/components/container';
+import ReviewLayout from '@ui/container/review';
+import { detectAgent } from '@ui/utils/device';
+import { replaceYear } from '@ui/utils/time';
+import { Metadata } from 'next';
+import { headers } from 'next/headers';
 
 export const metadata: Metadata = {
   title: replaceYear(data?.titleSeo),
@@ -35,13 +35,13 @@ const ReviewPage = async ({
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
   return (
-    <MyContainer className="h-full sm:py-0">
+    <MyContainer className="sm:h-full h-screen  sm:py-0">
       <ReviewLayout
         isMobile={isMobile}
         mode={mode as IMode}
         appInfo={appInfo}
         content={data?.content}
-        isReady={isReady === 'true'}
+        isReady={isReady}
         topics={topics.topics}
       />
     </MyContainer>

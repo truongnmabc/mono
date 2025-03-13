@@ -121,7 +121,7 @@ const PassingFinishPage = ({
         </div>
       </div>
 
-      <div className="flex fixed sm:static bottom-0 left-0 z-20 bg-theme-white sm:bg-transparent pb-8 sm:pb-2 px-4 pt-6 gap-4 max-w-[480px] w-full items-center">
+      <div className="flex fixed sm:static bottom-0 left-0 z-50 bg-theme-white sm:bg-transparent pb-8 sm:pb-2 px-4 pt-6 gap-4 max-w-[480px] w-full items-center">
         <MtUiButton
           block
           size="large"

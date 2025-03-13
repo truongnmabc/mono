@@ -46,8 +46,6 @@ const ListBranchDrawer = ({
         })}
       >
         {branch.map((key, index) => {
-          const list = key.slug.replaceAll('-', ' ').split(' ');
-          console.log('🚀 ~ {branch.map ~ list:', list);
           return (
             <Link
               href={key.slug + `?type=${TypeParam.branchTest}&testId=${key.id}`}

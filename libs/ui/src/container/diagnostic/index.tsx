@@ -119,5 +119,6 @@ export default DiagnosticContainer;
 
 const ExplanationWrapper = () => {
   const hasRetaken = useAppSelector(selectHasRetakenDiagnosticTest);
+  console.log('🚀 ~ ExplanationWrapper ~ hasRetaken:', hasRetaken);
   return <Explanation unLock={!hasRetaken} />;
 };

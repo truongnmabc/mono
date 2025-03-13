@@ -23,10 +23,10 @@ const TitleReview = ({ mode }: { mode: IModeReview; isReady: boolean }) => {
     }),
   };
   return (
-    <div className="w-full h-full min-h-8 flex items-center justify-center">
+    <div className="w-full h-full  sm:min-h-8 flex items-center justify-center">
       <AnimatePresence initial={true} mode="wait">
         {listQuestion.length === 0 && (
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full px-4 pt-4 sm:pt-0 h-full flex items-center justify-center">
             <motion.h1
               initial="hidden"
               animate="visible"
@@ -38,7 +38,12 @@ const TitleReview = ({ mode }: { mode: IModeReview; isReady: boolean }) => {
               className="text-2xl text-nowrap font-semibold"
             >
               {titles[mode].split('').map((char, i) => (
-                <motion.span key={i} custom={i} variants={titleVariants}>
+                <motion.span
+                  key={i}
+                  className="text-base sm:text-2xl"
+                  custom={i}
+                  variants={titleVariants}
+                >
                   {char}
                 </motion.span>
               ))}

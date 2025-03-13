@@ -53,7 +53,6 @@ const EventListener = () => {
 
     const handleFocus = () => {
       // if (process.env['NODE_ENV'] === 'development') return;
-      console.log('🟢 Cửa sổ được focus');
 
       // Đảm bảo không có interval nào trước đó đang chạy
       if (!syncInterval) {
@@ -65,8 +64,6 @@ const EventListener = () => {
 
     const handleBlur = () => {
       // if (process.env['NODE_ENV'] === 'development') return;
-
-      console.log('🔴 Cửa sổ bị mất focus');
 
       // Xóa interval khi cửa sổ mất focus để tiết kiệm tài nguyên
       if (syncInterval) {
@@ -92,10 +89,8 @@ const EventListener = () => {
       // if (process.env['NODE_ENV'] === 'development') return;
 
       if (document.visibilityState === 'hidden') {
-        console.log('🔴 Người dùng rời khỏi màn hình');
         dispatch(syncUp({}));
       } else {
-        console.log('🟢 Người dùng quay lại màn hình');
         const app = await db?.passingApp.get(-1);
         dispatch(
           syncDown({

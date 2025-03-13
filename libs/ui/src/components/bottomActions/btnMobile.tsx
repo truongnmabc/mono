@@ -1,14 +1,30 @@
+import { TypeParam } from '@ui/constants';
+import { IThunkFunctionReturn } from '@ui/models/other';
+import { IGameMode } from '@ui/models/tests/tests';
 import { selectCurrentQuestionIndex } from '@ui/redux/features/game.reselect';
 import { shouldNextOrPreviousQuestion } from '@ui/redux/repository/game/nextQuestion/nextQuestions';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import React from 'react';
+import dynamic from 'next/dynamic';
+import React, { useState } from 'react';
 import { MtUiButton } from '../button';
+const ModalUnlock = dynamic(() => import('../modalUnlock'), {
+  ssr: false,
+});
+type GameResult = {
+  isUnLock: boolean;
+};
 
-const BtnMobile = () => {
+const BtnMobile = ({ type = 'learn' }: { type: IGameMode }) => {
   const dispatch = useAppDispatch();
+  const [openModal, setOpenModal] = useState(false);
 
-  const handleNavigate = (direction: 'prev' | 'next') => {
-    dispatch(shouldNextOrPreviousQuestion(direction));
+  const handleNavigate = async (direction: 'prev' | 'next') => {
+    const { meta, payload } = (await dispatch(
+      shouldNextOrPreviousQuestion(direction)
+    )) as IThunkFunctionReturn<GameResult>;
+    if (meta.requestStatus === 'fulfilled' && payload.isUnLock) {
+      setOpenModal(true);
+    }
   };
 
   return (
@@ -23,6 +39,9 @@ const BtnMobile = () => {
       >
         Next
       </MtUiButton>
+      {type === TypeParam.finalTests && (
+        <ModalUnlock openModal={openModal} setOpenModal={setOpenModal} />
+      )}
     </div>
   );
 };

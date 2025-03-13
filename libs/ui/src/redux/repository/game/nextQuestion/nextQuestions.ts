@@ -7,7 +7,15 @@ export const shouldNextOrPreviousQuestion = createAsyncThunk(
   async (payload: 'prev' | 'next', thunkAPI) => {
     const state = thunkAPI.getState() as RootState;
     const { currentQuestionIndex, listQuestion, currentGame } = state.game;
+    const { userInfo } = state.user;
     const listLength = listQuestion.length;
+
+    if (!userInfo.isPro && currentQuestionIndex > 48) {
+      return {
+        isUnLock: true,
+        index: 48,
+      };
+    }
     if (currentQuestionIndex + 1 >= listLength) {
       thunkAPI.dispatch(shouldOpenSubmitTest(true));
       return;

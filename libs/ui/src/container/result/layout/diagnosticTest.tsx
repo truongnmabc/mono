@@ -1,16 +1,18 @@
 import MyContainer from '@ui/components/container';
+import { TypeParam } from '@ui/constants';
+import RouterApp from '@ui/constants/router.constant';
 import { IGameMode } from '@ui/models/tests/tests';
+import { startTryAgainDiagnostic } from '@ui/redux';
+import { useAppDispatch } from '@ui/redux/store';
+import { updateDbTestQuestions } from '@ui/utils/updateDb';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import queryString from 'query-string';
 import { Fragment } from 'react';
+import HeaderResultDiagnostic from '../header/headerResultDiagnostic';
 import ItemListTopicResult from '../listTopicResult/item';
 import { useResultContext } from '../resultContext';
-import HeaderResultDiagnostic from '../header/headerResultDiagnostic';
-import RouterApp from '@ui/constants/router.constant';
-import { useRouter } from 'next/navigation';
-import { updateDbTestQuestions } from '@ui/utils/updateDb';
-import { TypeParam } from '@ui/constants';
-import queryString from 'query-string';
 const DiagnosticTestResult = ({
   isMobile,
 }: {
@@ -19,6 +21,7 @@ const DiagnosticTestResult = ({
 }) => {
   const { listTopic, isPass, correct, total, resultId } = useResultContext();
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const handleTryAgain = async () => {
     await updateDbTestQuestions({
       id: resultId || -1,
@@ -33,6 +36,7 @@ const DiagnosticTestResult = ({
       type: TypeParam.diagnosticTest,
       testId: resultId,
     });
+    dispatch(startTryAgainDiagnostic());
     router.push(`${RouterApp.Diagnostic_test}?${param}`);
   };
   return (

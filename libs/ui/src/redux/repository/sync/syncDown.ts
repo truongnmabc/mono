@@ -65,7 +65,15 @@ const handleSyncDown = async ({
         syncKey: syncKey,
         appId: appInfo.appId,
         deviceId: userInfo.email,
-        mapUpdateData: {},
+        mapUpdateData: {
+          DailyGoal: 1741860146277,
+          StudyPlan: 1741860146277,
+          QuestionProgress: 1741860146277,
+          UserQuestionProgress: 1741860146277,
+          TestInfo: 1741860146277,
+          UserTestData: 1741860146277,
+          TopicProgress: 1741860146277,
+        },
       },
     })) as unknown as IResponseSyncDown;
 

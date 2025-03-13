@@ -50,7 +50,7 @@ const DrawerHeader = ({
             handleClick: () => {
               setOpenMenuDrawer(false);
             },
-            href: RouterApp.Review,
+            href: `${RouterApp.Review}?mode=random&type=review`,
           },
         ]
       : []),

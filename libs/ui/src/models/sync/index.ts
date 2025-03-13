@@ -11,7 +11,7 @@ export interface IPropsGetAllUserDataFromServer {
     appId?: number;
     deviceId?: string;
     probabilityOfPassing?: number;
-    mapUpdateData?: Record<string, boolean>;
+    mapUpdateData?: Record<string, number>;
     UserTestData?: IUserTestData[];
     QuestionProgress?: IQuestionProgressSync[];
     TopicProgress?: ITopicProgress[];

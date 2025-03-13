@@ -16,7 +16,7 @@ const ReviewLayout = ({
   mode: IModeReview;
   appInfo: IAppInfo;
   content: string;
-  isReady: boolean;
+  isReady?: string;
   topics: ITopicHomeJson[];
 }) => {
   return (
@@ -25,10 +25,10 @@ const ReviewLayout = ({
       spacing={{ xs: 0, sm: 2 }}
       className="w-full sm:py-4 h-full pb-4"
     >
-      {(!isReady || isMobile) && (
+      {(isReady === 'false' || !isReady) && (
         <LeftLayoutReview isMobile={isMobile} mode={mode} isReady={isReady} />
       )}
-      {(isReady || !isMobile) && (
+      {(isReady === 'true' || !isMobile) && (
         <RightLayout
           isMobile={isMobile}
           mode={mode}
