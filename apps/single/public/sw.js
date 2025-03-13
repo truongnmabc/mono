@@ -121,6 +121,39 @@ const initData = async () => {
   };
 };
 
+const syncUp = async () => {
+  console.log('SYNC_UP');
+};
+
+const syncDown = async ({ syncKey, appId, userId }) => {
+  console.log('syncDown');
+  console.log('🚀 ~ syncDown ~ syncKey:', syncKey);
+
+  const result = await fetch(
+    'https://micro-enigma-235001.appspot.com/api/app/flutter?type=get-user-data',
+    {
+      appId: appId,
+      userId: userId,
+      deleteOldData: false,
+      user_data: {
+        userId: userId,
+        syncKey: syncKey,
+        appId: appId,
+        // mapUpdateData: {
+        //   DailyGoal: 1741860146277,
+        //   StudyPlan: 1741860146277,
+        //   QuestionProgress: 1741860146277,
+        //   UserQuestionProgress: 1741860146277,
+        //   TestInfo: 1741860146277,
+        //   UserTestData: 1741860146277,
+        //   TopicProgress: 1741860146277,
+        // },
+      },
+    }
+  );
+  console.log('🚀 ~ syncDown ~ result:', result);
+};
+
 self.addEventListener('message', async (event) => {
   if (event.data.type === 'INIT_DB') {
     await initData();
@@ -128,5 +161,13 @@ self.addEventListener('message', async (event) => {
       status: 'success',
       message: 'DB initialized and data fetched (if not already present).',
     });
+  }
+  if (event.data.type === 'SYNC_UP') {
+    await syncUp();
+  }
+  if (event.data.type === 'SYNC_DOWN') {
+    const { syncKey, appId, userId } = event.data.payload;
+
+    await syncDown({ syncKey, appId, userId });
   }
 });

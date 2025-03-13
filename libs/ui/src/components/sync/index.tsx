@@ -12,13 +12,23 @@ import { MtUiButton } from '../button';
 import DialogResponsive from '../dialogResponsive';
 import { IconArrowRight, SelectIconSync } from './icon';
 
+const handleSendMess = async () => {
+  navigator.serviceWorker.ready.then((registration) => {
+    if (registration.active) {
+      registration.active.postMessage({
+        type: 'SYNC_UP',
+        payload: { foo: 'bar' },
+      });
+    }
+  });
+};
+
 const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
   const userInfo = useAppSelector(selectUserInfo);
   const dispatch = useAppDispatch();
   const isFetched = useAppSelector(selectIsDataFetched);
   const [isShowPopup, setIsShowPopup] = useState(false);
   const [syncKey, setSyncKey] = useState('');
-
   const handleChoiceDb = useCallback(
     async (name: 'server' | 'local') => {
       try {
@@ -26,7 +36,7 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
           syncDown({
             syncKey: syncKey,
             deleteOldData: true,
-            db: name,
+            dbDir: name,
           })
         );
       } catch (err) {
@@ -57,31 +67,53 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
         }),
         db?.passingApp.get(-1),
       ]);
-      console.log('🚀 ~ handleSyncData ~ user:', user);
-
-      // server chưa có thông tin. up lên
-      if (!user.has_user_data || !app)
-        return dispatch(
-          syncUp({
-            syncKey: user.sync_key,
-          })
-        );
-
-      // server có thông tin , local có thông tin, chọn db nào để sync
-      if (app.syncKey && user.sync_key !== app.syncKey) {
+      if (app?.syncKey && user.sync_key !== app.syncKey) {
         await db?.passingApp.update(-1, {
           syncKey: user.sync_key,
         });
         setSyncKey(user.sync_key);
         setIsShowPopup(true);
-      } else {
-        // server có thông tin còn local thì không
-        dispatch(
-          syncDown({
-            syncKey: user.sync_key,
-          })
-        );
       }
+      if ('serviceWorker' in navigator) {
+        try {
+          const registration = await navigator.serviceWorker.register('/sw.js');
+          if (app?.syncKey && user.sync_key === app.syncKey) {
+            registration?.active?.postMessage({
+              type: !user.has_user_data ? 'SYNC_UP' : 'SYNC_DOWN',
+              payload: {
+                syncKey: user.sync_key,
+                appId: appInfos.appId,
+                userId: userInfo.email,
+              },
+            });
+          }
+        } catch (err) {
+          console.error('Service Worker registration failed:', err);
+        }
+      }
+      // // server chưa có thông tin. up lên
+      // if (!user.has_user_data || !app)
+      //   return dispatch(
+      //     syncUp({
+      //       syncKey: user.sync_key,
+      //     })
+      //   );
+
+      // // server có thông tin , local có thông tin, chọn db nào để sync
+      // if (app.syncKey && user.sync_key !== app.syncKey) {
+      //   await db?.passingApp.update(-1, {
+      //     syncKey: user.sync_key,
+      //   });
+      //   setSyncKey(user.sync_key);
+      //   setIsShowPopup(true);
+      // } else {
+      //   // server có thông tin còn local thì không
+      //   dispatch(
+      //     syncDown({
+      //       syncKey: user.sync_key,
+      //     })
+      //   );
+      // }
       return;
     };
     if (isFetched) {

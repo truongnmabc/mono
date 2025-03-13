@@ -19,6 +19,10 @@ import appConfig from '../data/appConfig.json';
 import appInfos from '../data/appInfos.json';
 import { useScreenResize } from './resize';
 import StoreProvider from './StoreProvider';
+import AdsBlockerDetect from '@ui/components/ads/detectAdsBlocker';
+import AdsSense from '@ui/components/ads/adsSense';
+import PopupSubscription from '@ui/components/checkSubscription';
+import SheetApp from '@ui/components/sheetApp';
 export default function RootLayout({
   children,
   device = 'desktop',
@@ -63,10 +67,10 @@ export default function RootLayout({
         <ToastContainer autoClose={2000} />
         <SyncData appInfos={appInfos} />
 
-        {/* <SheetApp />
+        <SheetApp />
         <PopupSubscription />
         <AdsSense />
-        <AdsBlockerDetect /> */}
+        <AdsBlockerDetect />
 
         <EventListener />
         <IniDexieIndexDb />

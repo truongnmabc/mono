@@ -16,9 +16,9 @@ export interface IPropsGetAllUserDataFromServer {
     QuestionProgress?: IQuestionProgressSync[];
     TopicProgress?: ITopicProgress[];
     UserQuestionProgress?: IUserQuestionProgressSync[];
-    DailyGoal?: [];
-    StudyPlan?: [];
-    TestInfo?: [];
+    DailyGoal?: any[];
+    StudyPlan?: any[];
+    TestInfo?: any[];
   };
 }
 

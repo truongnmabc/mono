@@ -31,7 +31,7 @@ const buildTopicData = (topic, data, appShortName) => {
     // 1:topics, 2: sub topic, 3 core
     type: 1,
     // 0: Chưa sync, 1: Đã sync
-    sync: 0,
+    isSynced: false,
     orderIndex: topic.orderIndex,
   };
   return [mainTopic, ...subTopics.flat()];
@@ -69,6 +69,7 @@ const mapTopics = (topics = [], data, slug, icon) =>
         index: `${index + 1}.0`,
         type: 2,
         orderIndex: orderIndex,
+        isSynced: false,
       };
 
       // Trả về cả subTopic và coreTopics
@@ -104,6 +105,7 @@ const mapSubTopics = (topics = [], data, slug, startIndex, icon) =>
       index: `${startIndex}.${index}`,
       type: 3,
       orderIndex,
+      isSynced: false,
     };
   });
 

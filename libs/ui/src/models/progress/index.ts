@@ -5,4 +5,5 @@ export interface IUserQuestionProgress {
   id: number;
   parentId: number;
   level: number;
+  isSynced?: boolean;
 }

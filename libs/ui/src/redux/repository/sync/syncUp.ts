@@ -37,8 +37,8 @@ export const syncUp = createAsyncThunk(
 
       const uniqueParentIdList = [...new Set(parentIdList)];
 
-      const TopicProgress = handleConvertSyncTopic(topics);
-      const QuestionProgress = handleConvertSyncReaction(reactions);
+      const TopicProgress = await handleConvertSyncTopic(topics);
+      const QuestionProgress = await handleConvertSyncReaction(reactions);
       const TestInfo = handleConvertSyncTest(
         tests,
         progress,
@@ -46,7 +46,10 @@ export const syncUp = createAsyncThunk(
         uniqueParentIdList
       );
       const UserTestData = currentTestPlaying(tests, progress);
-      const UserQuestionProgress = handleConvertSyncQuestion(progress);
+
+      const listNotSync = progress?.filter((item) => !item.isSynced);
+
+      const UserQuestionProgress = await handleConvertSyncQuestion(listNotSync);
 
       const result = await updateUserDataToServer({
         userId: userInfo.email,
@@ -69,6 +72,7 @@ export const syncUp = createAsyncThunk(
     }
   }
 );
+
 export interface ISyncTopics {
   progress: number;
   lastUpdate: number;
@@ -79,15 +83,23 @@ export interface ISyncTopics {
   id: number;
 }
 
-const handleConvertSyncTopic = (topics?: ITopicBase[]) => {
+const handleConvertSyncTopic = async (topics?: ITopicBase[]) => {
   if (!topics) return [];
 
   const parentTopics = topics.filter((item) => item.type === 1);
   const subTopics = topics.filter((item) => item.type === 2);
   const parts = topics.filter(
-    (item) => item.status === 1 && item.type === 3 && item.sync !== 1
+    (item) => item.status === 1 && item.type === 3 && !item.isSynced
   );
 
+  const partIds = parts.map((item) => ({
+    key: item.id,
+    changes: {
+      isSynced: true,
+    },
+  }));
+
+  await db?.topics.bulkUpdate(partIds);
   const partSync = parts.map((t) => ({
     topicId: t.id,
     passed: 1,
@@ -147,8 +159,9 @@ const handleConvertSyncTopic = (topics?: ITopicBase[]) => {
   return [...partSync, ...subSync, ...parentSync];
 };
 
-const handleConvertSyncReaction = (reaction?: IUserActions[]) => {
-  const syncReaction = reaction?.map((r) => ({
+const handleConvertSyncReaction = async (reaction?: IUserActions[]) => {
+  const listNotSync = reaction?.filter((item) => !item.isSynced);
+  const syncReaction = listNotSync?.map((r) => ({
     bookmark: r.actions.includes('save'),
     questionId: r.questionId,
     like: r.actions.includes('dislike')
@@ -159,6 +172,16 @@ const handleConvertSyncReaction = (reaction?: IUserActions[]) => {
     lastUpdate: new Date().getTime(),
     status: 1,
   }));
+  if (listNotSync?.length) {
+    const dataUpdate = listNotSync?.map((item) => ({
+      key: item.questionId,
+      changes: {
+        isSynced: true,
+      },
+    }));
+
+    await db?.useActions.bulkUpdate(dataUpdate);
+  }
 
   return syncReaction;
 };
@@ -256,7 +279,9 @@ const handleConvertSyncTest = (
   return syncTests;
 };
 
-const handleConvertSyncQuestion = (questions?: IUserQuestionProgress[]) => {
+const handleConvertSyncQuestion = async (
+  questions?: IUserQuestionProgress[]
+) => {
   if (!questions) return [];
 
   const groupedQuestions = questions.reduce((acc, q) => {
@@ -301,5 +326,12 @@ const handleConvertSyncQuestion = (questions?: IUserQuestionProgress[]) => {
     playedTimes: JSON.stringify(q.playedTimes),
   }));
 
+  const data = await questions.map((item) => ({
+    key: item.id,
+    changes: {
+      isSynced: true,
+    },
+  }));
+  await db?.userProgress.bulkUpdate(data);
   return syncQuestions;
 };

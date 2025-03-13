@@ -18,7 +18,7 @@ export interface ITopicBase {
   turn: number;
   partId: number;
   index: string;
-  sync?: 0 | 1;
   type?: number;
   orderIndex: number;
+  isSynced?: boolean;
 }

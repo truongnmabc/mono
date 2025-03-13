@@ -1787,38 +1787,38 @@
     },
     "diagnosticTest": {
       "id": "DT",
-      "testId": 14277316
+      "testId": 15148238
     },
     "branchTest": {
       "id": "BT",
       "list": [
         {
-          "id": 11290119,
+          "id": 14733951,
           "name": "marine",
           "slug": "marine-asvab-practice-test"
         },
         {
-          "id": 9697428,
+          "id": 12706286,
           "name": "navy",
           "slug": "navy-asvab-practice-test"
         },
         {
-          "id": 4903807,
+          "id": 7025963,
           "name": "army",
           "slug": "army-asvab-practice-test"
         },
         {
-          "id": 2087306,
+          "id": 16657291,
           "name": "coast-guard",
           "slug": "coast-guard-asvab-practice-test"
         },
         {
-          "id": 1979313,
+          "id": 14424184,
           "name": "air-force",
           "slug": "air-force-asvab-practice-test"
         },
         {
-          "id": 1044488,
+          "id": 1708269,
           "name": "national-guard",
           "slug": "national-guard-asvab-practice-test"
         }

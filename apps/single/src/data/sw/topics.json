@@ -13,7 +13,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 7
   },
   {
@@ -31,7 +31,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4596897775878144,
@@ -48,7 +49,8 @@
     "averageLevel": 50,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 5
+    "orderIndex": 5,
+    "isSynced": false
   },
   {
     "id": 5080679536656384,
@@ -65,7 +67,8 @@
     "averageLevel": 58.5,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5643629490077696,
@@ -82,7 +85,8 @@
     "averageLevel": 62.1,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6070407060783104,
@@ -99,7 +103,8 @@
     "averageLevel": 50,
     "index": "1.3",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 6206579443499008,
@@ -116,7 +121,8 @@
     "averageLevel": 63,
     "index": "1.4",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6686581456896000,
@@ -133,7 +139,8 @@
     "averageLevel": 50,
     "index": "1.5",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5746080767541248,
@@ -150,7 +157,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4799204559945728,
@@ -167,7 +175,8 @@
     "averageLevel": 65,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5362154513367040,
@@ -184,7 +193,8 @@
     "averageLevel": 60.9,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5668232136491008,
@@ -201,7 +211,8 @@
     "averageLevel": 50,
     "index": "2.2",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5925104466788352,
@@ -218,7 +229,8 @@
     "averageLevel": 56.8,
     "index": "2.3",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6488054420209664,
@@ -235,7 +247,8 @@
     "averageLevel": 65,
     "index": "2.4",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 4830925621821440,
@@ -251,7 +264,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 2
   },
   {
@@ -269,7 +282,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5155304660533248,
@@ -286,7 +300,8 @@
     "averageLevel": 85.1,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5718254613954560,
@@ -303,7 +318,8 @@
     "averageLevel": 84.1,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6281204567375872,
@@ -320,7 +336,8 @@
     "averageLevel": 79.54545454545455,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5144478012669952,
@@ -337,7 +354,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4873829683822592,
@@ -354,7 +372,8 @@
     "averageLevel": 80.7,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5999729590665216,
@@ -371,7 +390,8 @@
     "averageLevel": 81.5,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5533861310103552,
@@ -387,7 +407,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 5
   },
   {
@@ -405,7 +425,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4583197996220416,
@@ -422,7 +443,8 @@
     "averageLevel": 50,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 4678659726114816,
@@ -439,7 +461,8 @@
     "averageLevel": 71.1,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5804559632957440,
@@ -456,7 +479,8 @@
     "averageLevel": 68.46153846153847,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5946170165690368,
@@ -473,7 +497,8 @@
     "averageLevel": 50,
     "index": "1.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6483823432826880,
@@ -490,7 +515,8 @@
     "averageLevel": 50,
     "index": "1.4",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5913375045320704,
@@ -507,7 +533,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5964665075007488,
@@ -524,7 +551,8 @@
     "averageLevel": 50,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6117465406832640,
@@ -541,7 +569,8 @@
     "averageLevel": 50,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6367509586378752,
@@ -558,7 +587,8 @@
     "averageLevel": 72.4,
     "index": "2.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6558426519830528,
@@ -575,7 +605,8 @@
     "averageLevel": 50,
     "index": "2.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5978274081538048,
@@ -592,7 +623,8 @@
     "turn": 1,
     "index": "3.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4972937287303168,
@@ -609,7 +641,8 @@
     "averageLevel": 50,
     "index": "3.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5023671991140352,
@@ -626,7 +659,8 @@
     "averageLevel": 59.44444444444444,
     "index": "3.1",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5461107028262912,
@@ -643,7 +677,8 @@
     "averageLevel": 50,
     "index": "3.2",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6413265819140096,
@@ -660,7 +695,8 @@
     "averageLevel": 50,
     "index": "3.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5998439892516864,
@@ -677,7 +713,8 @@
     "turn": 1,
     "index": "4.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5618955666325504,
@@ -694,7 +731,8 @@
     "averageLevel": 50,
     "index": "4.0",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6316508795895808,
@@ -711,7 +749,8 @@
     "averageLevel": 50,
     "index": "4.1",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6350790444711936,
@@ -728,7 +767,8 @@
     "averageLevel": 50,
     "index": "4.2",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6508247074734080,
@@ -745,7 +785,8 @@
     "averageLevel": 66.9090909090909,
     "index": "4.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6195848736145408,
@@ -762,7 +803,8 @@
     "turn": 1,
     "index": "5.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5160459317542912,
@@ -779,7 +821,8 @@
     "averageLevel": 50,
     "index": "5.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5241609679536128,
@@ -796,7 +839,8 @@
     "averageLevel": 67.81818181818181,
     "index": "5.1",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5603096768020480,
@@ -813,7 +857,8 @@
     "averageLevel": 50,
     "index": "5.2",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6588707205283840,
@@ -830,7 +875,8 @@
     "averageLevel": 50,
     "index": "5.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6321939983368192,
@@ -847,7 +893,8 @@
     "turn": 1,
     "index": "6.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4819397214470144,
@@ -864,7 +911,8 @@
     "averageLevel": 62.2,
     "index": "6.0",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5382347167891456,
@@ -881,7 +929,8 @@
     "averageLevel": 65.17647058823529,
     "index": "6.1",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5639004573663232,
@@ -898,7 +947,8 @@
     "averageLevel": 50,
     "index": "6.2",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5945297121312768,
@@ -915,7 +965,8 @@
     "averageLevel": 68.5,
     "index": "6.3",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6572076420825088,
@@ -932,7 +983,8 @@
     "averageLevel": 50,
     "index": "6.4",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5549399260266496,
@@ -948,7 +1000,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 4
   },
   {
@@ -966,7 +1018,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4784910975893504,
@@ -983,7 +1036,8 @@
     "averageLevel": 56.5,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5488598417670144,
@@ -1000,7 +1054,8 @@
     "averageLevel": 58.6,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5910810882736128,
@@ -1017,7 +1072,8 @@
     "averageLevel": 59.30769230769231,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 6051548371091456,
@@ -1034,7 +1090,8 @@
     "averageLevel": 60.8,
     "index": "1.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6614498324512768,
@@ -1051,7 +1108,8 @@
     "averageLevel": 60.2,
     "index": "1.4",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6638202945273856,
@@ -1068,7 +1126,8 @@
     "averageLevel": 50,
     "index": "1.5",
     "type": 3,
-    "orderIndex": 5
+    "orderIndex": 5,
+    "isSynced": false
   },
   {
     "id": 5737078717415424,
@@ -1085,7 +1144,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4925648464248832,
@@ -1102,7 +1162,8 @@
     "averageLevel": 59.214285714285715,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5207123440959488,
@@ -1119,7 +1180,8 @@
     "averageLevel": 55.4,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5518281632907264,
@@ -1136,7 +1198,8 @@
     "averageLevel": 50,
     "index": "2.2",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5770073394380800,
@@ -1153,7 +1216,8 @@
     "averageLevel": 58.1,
     "index": "2.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6333023347802112,
@@ -1170,7 +1234,8 @@
     "averageLevel": 55.7,
     "index": "2.4",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5861375517655040,
@@ -1186,7 +1251,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 3
   },
   {
@@ -1204,7 +1269,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4690630965985280,
@@ -1221,7 +1287,8 @@
     "averageLevel": 50,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 4698664433876992,
@@ -1238,7 +1305,8 @@
     "averageLevel": 50,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5582728330215424,
@@ -1255,7 +1323,8 @@
     "averageLevel": 50,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6226772098023424,
@@ -1272,7 +1341,8 @@
     "averageLevel": 69.5,
     "index": "1.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5734393758875648,
@@ -1289,7 +1359,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4888261377916928,
@@ -1306,7 +1377,8 @@
     "averageLevel": 50,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5100872191180800,
@@ -1323,7 +1395,8 @@
     "averageLevel": 69.47058823529412,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5463924526809088,
@@ -1340,7 +1413,8 @@
     "averageLevel": 50,
     "index": "2.2",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6380715671289856,
@@ -1357,7 +1431,8 @@
     "averageLevel": 50,
     "index": "2.3",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5749266223988736,
@@ -1374,7 +1449,8 @@
     "turn": 1,
     "index": "3.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4537922237759488,
@@ -1391,7 +1467,8 @@
     "averageLevel": 63.9,
     "index": "3.0",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 4766215679508480,
@@ -1408,7 +1485,8 @@
     "averageLevel": 50,
     "index": "3.1",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5026661288378368,
@@ -1425,7 +1503,8 @@
     "averageLevel": 50,
     "index": "3.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5663822144602112,
@@ -1442,7 +1521,8 @@
     "averageLevel": 65.5,
     "index": "3.3",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5691986191319040,
@@ -1459,7 +1539,8 @@
     "averageLevel": 50,
     "index": "3.4",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 6018553694126080,
@@ -1476,7 +1557,8 @@
     "turn": 1,
     "index": "4.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5048095633047552,
@@ -1493,7 +1575,8 @@
     "averageLevel": 64.3,
     "index": "4.0",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5216035095445504,
@@ -1510,7 +1593,8 @@
     "averageLevel": 50,
     "index": "4.1",
     "type": 3,
-    "orderIndex": 6
+    "orderIndex": 6,
+    "isSynced": false
   },
   {
     "id": 5329570609758208,
@@ -1527,7 +1611,8 @@
     "averageLevel": 69.6,
     "index": "4.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5611045586468864,
@@ -1544,7 +1629,8 @@
     "averageLevel": 67.5,
     "index": "4.3",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 6173995539890176,
@@ -1561,7 +1647,8 @@
     "averageLevel": 72.4,
     "index": "4.4",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6455470516600832,
@@ -1578,7 +1665,8 @@
     "averageLevel": 71.1,
     "index": "4.5",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6736945493311488,
@@ -1595,7 +1683,8 @@
     "averageLevel": 68.18181818181819,
     "index": "4.6",
     "type": 3,
-    "orderIndex": 5
+    "orderIndex": 5,
+    "isSynced": false
   },
   {
     "id": 5878262490202112,
@@ -1611,7 +1700,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 1
   },
   {
@@ -1629,7 +1718,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4726139650048000,
@@ -1646,7 +1736,8 @@
     "averageLevel": 50,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5119311651799040,
@@ -1663,7 +1754,8 @@
     "averageLevel": 50,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5486345732489216,
@@ -1680,7 +1772,8 @@
     "averageLevel": 50,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5542332753510400,
@@ -1697,7 +1790,8 @@
     "averageLevel": 49.77777777777778,
     "index": "1.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6668232660353024,
@@ -1714,7 +1808,8 @@
     "averageLevel": 48.07142857142857,
     "index": "1.4",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5093201379590144,
@@ -1731,7 +1826,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4872818244190208,
@@ -1748,7 +1844,8 @@
     "averageLevel": 50,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 4966711639932928,
@@ -1765,7 +1862,8 @@
     "averageLevel": 50,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 4979382800089088,
@@ -1782,7 +1880,8 @@
     "averageLevel": 55.7,
     "index": "2.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6083847531790336,
@@ -1799,7 +1898,8 @@
     "averageLevel": 50,
     "index": "2.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6105282706931712,
@@ -1816,7 +1916,8 @@
     "averageLevel": 46.72727272727273,
     "index": "2.4",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5366063965405184,
@@ -1833,7 +1934,8 @@
     "turn": 1,
     "index": "3.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4627539079200768,
@@ -1850,7 +1952,8 @@
     "averageLevel": 49.8,
     "index": "3.0",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5165552922263552,
@@ -1867,7 +1970,8 @@
     "averageLevel": 50,
     "index": "3.1",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5595905113718784,
@@ -1884,7 +1988,8 @@
     "averageLevel": 50,
     "index": "3.2",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5753438986043392,
@@ -1901,7 +2006,8 @@
     "averageLevel": 52,
     "index": "3.3",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6515234273492992,
@@ -1918,7 +2024,8 @@
     "averageLevel": 50,
     "index": "3.4",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5646081379532800,
@@ -1935,7 +2042,8 @@
     "turn": 1,
     "index": "4.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4768276567556096,
@@ -1952,7 +2060,8 @@
     "averageLevel": 57.94736842105263,
     "index": "4.0",
     "type": 3,
-    "orderIndex": 6
+    "orderIndex": 6,
+    "isSynced": false
   },
   {
     "id": 4909014055911424,
@@ -1969,7 +2078,8 @@
     "averageLevel": 60.4,
     "index": "4.1",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5190489032622080,
@@ -1986,7 +2096,8 @@
     "averageLevel": 54.5,
     "index": "4.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5471964009332736,
@@ -2003,7 +2114,8 @@
     "averageLevel": 56.9,
     "index": "4.3",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 6034913962754048,
@@ -2020,7 +2132,8 @@
     "averageLevel": 57,
     "index": "4.4",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6316388939464704,
@@ -2037,7 +2150,8 @@
     "averageLevel": 53.4,
     "index": "4.5",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6451628357976064,
@@ -2054,7 +2168,8 @@
     "averageLevel": 50,
     "index": "4.6",
     "type": 3,
-    "orderIndex": 7
+    "orderIndex": 7,
+    "isSynced": false
   },
   {
     "id": 6597863916175360,
@@ -2071,7 +2186,8 @@
     "averageLevel": 56.1,
     "index": "4.7",
     "type": 3,
-    "orderIndex": 5
+    "orderIndex": 5,
+    "isSynced": false
   },
   {
     "id": 5656151333011456,
@@ -2088,7 +2204,8 @@
     "turn": 1,
     "index": "5.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4697907823378432,
@@ -2105,7 +2222,8 @@
     "averageLevel": 48.2,
     "index": "5.0",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5260857776799744,
@@ -2122,7 +2240,8 @@
     "averageLevel": 52,
     "index": "5.1",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5401595265155072,
@@ -2139,7 +2258,8 @@
     "averageLevel": 47.7,
     "index": "5.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5460007424360448,
@@ -2156,7 +2276,8 @@
     "averageLevel": 50,
     "index": "5.3",
     "type": 3,
-    "orderIndex": 6
+    "orderIndex": 6,
+    "isSynced": false
   },
   {
     "id": 5823807730221056,
@@ -2173,7 +2294,8 @@
     "averageLevel": 46.2,
     "index": "5.4",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6386757683642368,
@@ -2190,7 +2312,8 @@
     "averageLevel": 48.625,
     "index": "5.5",
     "type": 3,
-    "orderIndex": 5
+    "orderIndex": 5,
+    "isSynced": false
   },
   {
     "id": 6527495171997696,
@@ -2207,7 +2330,8 @@
     "averageLevel": 53.5,
     "index": "5.6",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5656998582419456,
@@ -2224,7 +2348,8 @@
     "turn": 1,
     "index": "6.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4838645311733760,
@@ -2241,7 +2366,8 @@
     "averageLevel": 54.6,
     "index": "6.0",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5184035106062336,
@@ -2258,7 +2384,8 @@
     "averageLevel": 50,
     "index": "6.1",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5964545218576384,
@@ -2275,7 +2402,8 @@
     "averageLevel": 53.05882352941177,
     "index": "6.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6007742816845824,
@@ -2292,7 +2420,8 @@
     "averageLevel": 50,
     "index": "6.3",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6246020195287040,
@@ -2309,7 +2438,8 @@
     "averageLevel": 57.6,
     "index": "6.4",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5701466861862912,
@@ -2326,7 +2456,8 @@
     "turn": 1,
     "index": "7.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4761575906869248,
@@ -2343,7 +2474,8 @@
     "averageLevel": 50,
     "index": "7.0",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5125704442183680,
@@ -2360,7 +2492,8 @@
     "averageLevel": 50,
     "index": "7.1",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5577517125599232,
@@ -2377,7 +2510,8 @@
     "averageLevel": 42.8421052631579,
     "index": "7.2",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6140467079020544,
@@ -2394,7 +2528,8 @@
     "averageLevel": 45.9,
     "index": "7.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6394770909822976,
@@ -2411,7 +2546,8 @@
     "averageLevel": 50,
     "index": "7.4",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5767001150586880,
@@ -2428,7 +2564,8 @@
     "turn": 1,
     "index": "8.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4557170335023104,
@@ -2445,7 +2582,8 @@
     "averageLevel": 47.5,
     "index": "8.0",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 4849791984992256,
@@ -2462,7 +2600,8 @@
     "averageLevel": 50,
     "index": "8.1",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5120120288444416,
@@ -2479,7 +2618,8 @@
     "averageLevel": 48.46666666666667,
     "index": "8.2",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5683070241865728,
@@ -2496,7 +2636,8 @@
     "averageLevel": 47.3,
     "index": "8.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6703417032441856,
@@ -2513,7 +2654,8 @@
     "averageLevel": 48.3,
     "index": "8.4",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5823429974425600,
@@ -2530,7 +2672,8 @@
     "turn": 1,
     "index": "9.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5161978528006144,
@@ -2547,7 +2690,8 @@
     "averageLevel": 50,
     "index": "9.0",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5325854750015488,
@@ -2564,7 +2708,8 @@
     "averageLevel": 50,
     "index": "9.1",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6457126427820032,
@@ -2581,7 +2726,8 @@
     "averageLevel": 56.785714285714285,
     "index": "9.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6666387997065216,
@@ -2598,7 +2744,8 @@
     "averageLevel": 50,
     "index": "9.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6604121750634496,
@@ -2615,7 +2762,8 @@
     "turn": 1,
     "index": "10.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5331226520977408,
@@ -2632,7 +2780,8 @@
     "averageLevel": 49.6,
     "index": "10.0",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5894176474398720,
@@ -2649,7 +2798,8 @@
     "averageLevel": 48.1,
     "index": "10.1",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6155878117933056,
@@ -2666,7 +2816,8 @@
     "averageLevel": 50,
     "index": "10.2",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6401807945302016,
@@ -2683,7 +2834,8 @@
     "averageLevel": 50,
     "index": "10.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6486168484970496,
@@ -2700,7 +2852,8 @@
     "averageLevel": 50,
     "index": "10.4",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5945201837211648,
@@ -2716,7 +2869,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 6
   },
   {
@@ -2734,7 +2887,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4676710951813120,
@@ -2751,7 +2905,8 @@
     "averageLevel": 59.3,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5380398393589760,
@@ -2768,7 +2923,8 @@
     "averageLevel": 62.3,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5705996265586688,
@@ -2785,7 +2941,8 @@
     "averageLevel": 50,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 5
+    "orderIndex": 5,
+    "isSynced": false
   },
   {
     "id": 5802610858655744,
@@ -2802,7 +2959,8 @@
     "averageLevel": 61.22222222222222,
     "index": "1.3",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5943348347011072,
@@ -2819,7 +2977,8 @@
     "averageLevel": 58.1,
     "index": "1.4",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6506298300432384,
@@ -2836,7 +2995,8 @@
     "averageLevel": 54.3,
     "index": "1.5",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6588795092729856,
@@ -2853,7 +3013,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4817448440168448,
@@ -2870,7 +3031,8 @@
     "averageLevel": 57.61538461538461,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5098923416879104,
@@ -2887,7 +3049,8 @@
     "averageLevel": 56.2,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5661873370300416,
@@ -2904,7 +3067,8 @@
     "averageLevel": 48.5,
     "index": "2.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5712882842992640,
@@ -2921,7 +3085,8 @@
     "averageLevel": 50,
     "index": "2.3",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 6224823323721728,
@@ -2938,7 +3103,8 @@
     "averageLevel": 58.6,
     "index": "2.4",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5984778887102464,
@@ -2954,7 +3120,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 8
   },
   {
@@ -2972,7 +3138,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5544674919972864,
@@ -2989,7 +3156,8 @@
     "averageLevel": 50,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5679428805853184,
@@ -3006,7 +3174,8 @@
     "averageLevel": 50,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6503143135248384,
@@ -3023,7 +3192,8 @@
     "averageLevel": 50,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6639201768439808,
@@ -3040,7 +3210,8 @@
     "averageLevel": 66,
     "index": "1.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5383754038116352,
@@ -3057,7 +3228,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4598508187287552,
@@ -3074,7 +3246,8 @@
     "averageLevel": 59.9,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 4815248745824256,
@@ -3091,7 +3264,8 @@
     "averageLevel": 50,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 5161458140708864,
@@ -3108,7 +3282,8 @@
     "averageLevel": 55.9,
     "index": "2.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5724408094130176,
@@ -3125,7 +3300,8 @@
     "averageLevel": 64.5,
     "index": "2.3",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6287358047551488,
@@ -3142,7 +3318,8 @@
     "averageLevel": 57.8,
     "index": "2.4",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5946703991537664,
@@ -3159,7 +3336,8 @@
     "turn": 1,
     "index": "3.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 5040172584402944,
@@ -3176,7 +3354,8 @@
     "averageLevel": 50,
     "index": "3.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 6427577656803328,
@@ -3193,7 +3372,8 @@
     "averageLevel": 50,
     "index": "3.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6447547467956224,
@@ -3210,7 +3390,8 @@
     "averageLevel": 50,
     "index": "3.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6550008383930368,
@@ -3227,7 +3408,8 @@
     "averageLevel": 54.666666666666664,
     "index": "3.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6462653715185664,
@@ -3244,7 +3426,8 @@
     "turn": 1,
     "index": "4.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4912312079089664,
@@ -3261,7 +3444,8 @@
     "averageLevel": 50,
     "index": "4.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5513301861597184,
@@ -3278,7 +3462,8 @@
     "averageLevel": 78.3157894736842,
     "index": "4.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 5654559737249792,
@@ -3295,7 +3480,8 @@
     "averageLevel": 50,
     "index": "4.2",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 6037264542990336,
@@ -3312,7 +3498,8 @@
     "averageLevel": 50,
     "index": "4.3",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6076251815018496,
@@ -3329,7 +3516,8 @@
     "averageLevel": 74.3,
     "index": "4.4",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6473544454111232,
@@ -3345,7 +3533,7 @@
     "status": 0,
     "turn": 1,
     "type": 1,
-    "sync": 0,
+    "isSynced": false,
     "orderIndex": 9
   },
   {
@@ -3363,7 +3551,8 @@
     "turn": 1,
     "index": "1.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4673555786629120,
@@ -3380,7 +3569,8 @@
     "averageLevel": 50,
     "index": "1.0",
     "type": 3,
-    "orderIndex": 7
+    "orderIndex": 7,
+    "isSynced": false
   },
   {
     "id": 4739245675642880,
@@ -3397,7 +3587,8 @@
     "averageLevel": 83.6,
     "index": "1.1",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   },
   {
     "id": 4879983163998208,
@@ -3414,7 +3605,8 @@
     "averageLevel": 70.6,
     "index": "1.2",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 5302195629064192,
@@ -3431,7 +3623,8 @@
     "averageLevel": 77.4,
     "index": "1.3",
     "type": 3,
-    "orderIndex": 6
+    "orderIndex": 6,
+    "isSynced": false
   },
   {
     "id": 5442933117419520,
@@ -3448,7 +3641,8 @@
     "averageLevel": 74.8,
     "index": "1.4",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 5865145582485504,
@@ -3465,7 +3659,8 @@
     "averageLevel": 72.8,
     "index": "1.5",
     "type": 3,
-    "orderIndex": 5
+    "orderIndex": 5,
+    "isSynced": false
   },
   {
     "id": 6005883070840832,
@@ -3482,7 +3677,8 @@
     "averageLevel": 74,
     "index": "1.6",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6568833024262144,
@@ -3499,7 +3695,8 @@
     "averageLevel": 79.3,
     "index": "1.7",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5720040716369920,
@@ -3516,7 +3713,8 @@
     "turn": 1,
     "index": "2.0",
     "type": 2,
-    "orderIndex": -1
+    "orderIndex": -1,
+    "isSynced": false
   },
   {
     "id": 4524639741018112,
@@ -3533,7 +3731,8 @@
     "averageLevel": 50,
     "index": "2.0",
     "type": 3,
-    "orderIndex": 3
+    "orderIndex": 3,
+    "isSynced": false
   },
   {
     "id": 5020720652353536,
@@ -3550,7 +3749,8 @@
     "averageLevel": 68.8,
     "index": "2.1",
     "type": 3,
-    "orderIndex": 1
+    "orderIndex": 1,
+    "isSynced": false
   },
   {
     "id": 6146620559196160,
@@ -3567,7 +3767,8 @@
     "averageLevel": 65.875,
     "index": "2.2",
     "type": 3,
-    "orderIndex": 2
+    "orderIndex": 2,
+    "isSynced": false
   },
   {
     "id": 6428095535906816,
@@ -3584,7 +3785,8 @@
     "averageLevel": 69.7,
     "index": "2.3",
     "type": 3,
-    "orderIndex": 0
+    "orderIndex": 0,
+    "isSynced": false
   },
   {
     "id": 6731324547137536,
@@ -3601,6 +3803,7 @@
     "averageLevel": 50,
     "index": "2.4",
     "type": 3,
-    "orderIndex": 4
+    "orderIndex": 4,
+    "isSynced": false
   }
 ]
