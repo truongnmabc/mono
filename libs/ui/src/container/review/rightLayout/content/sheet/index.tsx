@@ -2,7 +2,6 @@ import { MtUiButton } from '@ui/components/button';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 const Sheet = dynamic(() => import('@ui/components/sheet'), {
   ssr: false,
@@ -10,12 +9,13 @@ const Sheet = dynamic(() => import('@ui/components/sheet'), {
 const list = [10, 20, 30, 40, 50, 60];
 const SheetSelectQuestions = ({
   handleStartTest,
+  handleBack,
 }: {
   handleStartTest: (e: number) => void;
+  handleBack: () => void;
 }) => {
   const [value, setValue] = useState(40);
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
       setIsOpen(true);
@@ -26,12 +26,13 @@ const SheetSelectQuestions = ({
   }, []);
 
   const handleCancel = useCallback(() => {
-    router.back();
+    handleBack();
     setIsOpen(false);
   }, []);
 
   const handleStart = useCallback(async () => {
     setIsOpen(false);
+
     handleStartTest(value);
   }, [value]);
 

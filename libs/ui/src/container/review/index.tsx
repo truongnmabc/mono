@@ -23,7 +23,7 @@ const ReviewLayout = ({
     <Grid2
       container
       spacing={{ xs: 0, sm: 2 }}
-      className="w-full sm:py-4 h-full pb-4"
+      className="w-full sm:py-4 pt-4 sm:pt-0 h-full pb-4"
     >
       {(isReady === 'false' || !isReady) && (
         <LeftLayoutReview isMobile={isMobile} mode={mode} isReady={isReady} />

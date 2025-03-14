@@ -35,7 +35,7 @@ const ReviewPage = async ({
   const userAgent = headersList.get('user-agent');
   const { isMobile } = detectAgent(userAgent || '');
   return (
-    <MyContainer className="sm:h-full h-screen  sm:py-0">
+    <MyContainer className="h-full   sm:py-0">
       <ReviewLayout
         isMobile={isMobile}
         mode={mode as IMode}

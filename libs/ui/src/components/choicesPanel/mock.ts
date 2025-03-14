@@ -10,10 +10,12 @@ export const MOCK_TEMP_LIST_ANSWER: IAnswer[] = [
     type: 'learn',
     parentId: -1,
     turn: 1,
+    isSynced: false,
   },
   {
     id: -2,
     text: '',
+    isSynced: false,
     index: 0,
     correct: false,
     explanation: '',
@@ -23,6 +25,7 @@ export const MOCK_TEMP_LIST_ANSWER: IAnswer[] = [
   },
   {
     id: -3,
+    isSynced: false,
     text: '',
     index: 0,
     correct: false,
@@ -33,6 +36,7 @@ export const MOCK_TEMP_LIST_ANSWER: IAnswer[] = [
   },
   {
     id: -4,
+    isSynced: false,
     text: '',
     index: 0,
     correct: false,

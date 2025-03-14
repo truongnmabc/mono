@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { GameTypeStatus } from '@ui/constants';
+import { GameTypeStatus, TestConstType } from '@ui/constants';
 import { db } from '@ui/db';
 import { IQuestionBase, ITestBase, ITopicBase, IUserActions } from '@ui/models';
 import { IUserQuestionProgress } from '@ui/models/progress';
@@ -43,9 +43,13 @@ export const syncUp = createAsyncThunk(
         tests,
         progress,
         questions,
-        uniqueParentIdList
+        uniqueParentIdList,
+        userInfo.email || '',
+        appInfo.appId
       );
+      console.log('🚀 ~ TestInfo:', TestInfo);
       const UserTestData = currentTestPlaying(tests, progress);
+      console.log('🚀 ~ UserTestData:', UserTestData);
 
       const listNotSync = progress?.filter((item) => !item.isSynced);
 
@@ -88,11 +92,12 @@ const handleConvertSyncTopic = async (topics?: ITopicBase[]) => {
 
   const parentTopics = topics.filter((item) => item.type === 1);
   const subTopics = topics.filter((item) => item.type === 2);
-  const parts = topics.filter(
-    (item) => item.status === 1 && item.type === 3 && !item.isSynced
-  );
 
-  const partIds = parts.map((item) => ({
+  const parts = topics.filter((item) => item.status === 1 && item.type === 3);
+
+  const listPartSynced = parts.filter((i) => !i.isSynced);
+
+  const partIds = listPartSynced.map((item) => ({
     key: item.id,
     changes: {
       isSynced: true,
@@ -100,7 +105,8 @@ const handleConvertSyncTopic = async (topics?: ITopicBase[]) => {
   }));
 
   await db?.topics.bulkUpdate(partIds);
-  const partSync = parts.map((t) => ({
+
+  const partSync = listPartSynced.map((t) => ({
     topicId: t.id,
     passed: 1,
     lock: 0,
@@ -137,15 +143,13 @@ const handleConvertSyncTopic = async (topics?: ITopicBase[]) => {
   );
 
   const parentSync = parentSubTopics.map((parent) => {
-    const parentSubs = subSync.filter((sub) =>
-      subTopics.some((t) => t.id === sub.topicId && t.parentId === parent.id)
-    );
+    const topic = topics.find((t) => t.id === parent.id);
+    const sub = topics.filter((i) => i.parentId === topic?.id);
+    const subIds = sub.map((item) => item.id);
+    const listPart = topics.filter((i) => subIds.includes(i.id));
+    const success = listPart.filter((i) => i.status === 1);
 
-    const sub = topics.filter((t) => t.parentId === parent.id && t.type === 2);
-
-    const core = topics.filter((t) => sub.some((s) => s.id === t.parentId));
-
-    const progress = parentSubs.length / core.length;
+    const progress = success.length / listPart.length;
 
     return {
       topicId: parent.id,
@@ -196,8 +200,10 @@ const currentTestPlaying = (
 
   return syncTests?.map((t) => {
     const correct =
-      progress?.filter((a) => a.selectedAnswers.some((i) => i.correct))
-        .length || 0;
+      progress?.filter((a) =>
+        a.selectedAnswers.some((i) => i.correct && i.parentId === t.id)
+      ).length || 0;
+
     return {
       testId: t.id,
       testSettingId:
@@ -219,13 +225,16 @@ const handleConvertSyncTest = (
   tests?: ITestBase[],
   progress?: IUserQuestionProgress[],
   questions?: IQuestionBase[],
-  uniqueParentIdList?: number[]
+  uniqueParentIdList?: number[],
+  userId?: string,
+  appId?: number
 ) => {
   const testWithSync = tests?.filter(
     (t) =>
       (t.gameMode === 'customTests' || t.gameMode === 'diagnosticTest') &&
       uniqueParentIdList?.includes(t.id)
   );
+
   if (testWithSync?.length === 0) return [];
   const syncTests = testWithSync?.map((t) => {
     const answ = progress
@@ -237,25 +246,32 @@ const handleConvertSyncTest = (
         ),
       }));
 
-    const aa = answ?.reduce((acc, pre) => {
-      const key = pre.id;
-      if (!acc[key]) {
-        acc[key] = [];
-      }
-      acc[key].push(
-        ...pre.selectedAnswers.map((i) => {
-          const question = questions?.find((q) => q.id === pre.id);
-          return {
-            isCorrect: i.correct,
-            id: i.id,
-            text: question?.answers.find((a) => a.id === i.id)?.text,
-            explanation: question?.answers.find((a) => a.id === i.id)
-              ?.explanation,
-          };
-        })
-      );
-      return acc;
-    }, {} as Record<string, any[]>);
+    //  const groupExamData = await generateGroupExamData({
+    //           questions: listQuestion,
+    //           topics: selectListTopic as ITopicBase[],
+    //         });
+    // console.log('🚀 ~ syncTests ~ answ:', answ);
+
+    // const aa = answ?.reduce((acc, pre) => {
+    //   const key = pre.id;
+    //   if (!acc[key]) {
+    //     acc[key] = [];
+    //   }
+    //   acc[key].push(
+    //     ...pre.selectedAnswers.map((i) => {
+    //       const question = questions?.find((q) => q.id === pre.id);
+    //       return {
+    //         isCorrect: i.correct,
+    //         id: i.id,
+    //         topicId: question?.topicId,
+    //         text: question?.answers.find((a) => a.id === i.id)?.text,
+    //         explanation: question?.answers.find((a) => a.id === i.id)
+    //           ?.explanation,
+    //       };
+    //     })
+    //   );
+    //   return acc;
+    // }, {} as Record<string, any[]>);
 
     return {
       testId: t.id,
@@ -271,11 +287,14 @@ const handleConvertSyncTest = (
       correctNumber: answ?.filter((a) =>
         a.selectedAnswers.some((i) => i.correct)
       ).length,
-      type: 10,
-      testQuestionData: JSON.stringify(aa),
+      type: TestConstType[t.gameMode],
+      testQuestionData: JSON.stringify(t.groupExamData),
       lastUpdate: new Date().getTime(),
+      userId,
+      appId,
     };
   });
+  console.log('🚀 ~ syncTests:', syncTests);
   return syncTests;
 };
 

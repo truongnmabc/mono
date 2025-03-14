@@ -6,11 +6,15 @@ export const shouldNextOrPreviousQuestion = createAsyncThunk(
   'shouldNextOrPreviousQuestion',
   async (payload: 'prev' | 'next', thunkAPI) => {
     const state = thunkAPI.getState() as RootState;
-    const { currentQuestionIndex, listQuestion, currentGame } = state.game;
+    const { currentQuestionIndex, listQuestion, gameMode } = state.game;
     const { userInfo } = state.user;
     const listLength = listQuestion.length;
 
-    if (!userInfo.isPro && currentQuestionIndex > 48) {
+    if (
+      !userInfo.isPro &&
+      currentQuestionIndex > 48 &&
+      gameMode === 'finalTests'
+    ) {
       return {
         isUnLock: true,
         index: 48,

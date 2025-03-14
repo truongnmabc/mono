@@ -14,6 +14,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import ReviewGameContent from '../game';
 import ChoiceQuestionBeforeStart from '../random/choiceQuestionBeforeStart';
+import SheetSelectQuestions from '../sheet';
 const SavedQuestions = ({
   isMobile,
   mode,
@@ -94,9 +95,9 @@ const SavedQuestions = ({
               y: -60,
             }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="w-full rounded-lg bg-white "
+            className="w-full rounded-lg bg-transparent sm:bg-white "
             style={{
-              boxShadow: '0px 2px 4px 0px #2121211F',
+              boxShadow: isMobile ? 'none' : '0px 2px 4px 0px #2121211F',
             }}
           >
             <ReviewGameContent mode={mode} isMobile={isMobile} />
@@ -158,31 +159,41 @@ const SavedQuestions = ({
           </Fragment>
         )}
       </AnimatePresence>
-
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        sx={{
-          '& .MuiDialog-paper': {
-            width: '100%',
-            maxWidth: '900px',
-            maxHeight: '240px',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            borderRadius: '12px',
-          },
-        }}
-      >
-        <p className="text-2xl pt-6 font-semibold text-center">
-          How many questions do you want?
-        </p>
-        <ChoiceQuestionBeforeStart
-          defaultValue={listData.length}
-          handleStartTest={handleStartTest}
-        />
-      </Dialog>
+      {isMobile ? (
+        <Fragment>
+          {open && (
+            <SheetSelectQuestions
+              handleBack={() => setOpen(false)}
+              handleStartTest={handleStartTest}
+            />
+          )}
+        </Fragment>
+      ) : (
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          sx={{
+            '& .MuiDialog-paper': {
+              width: '100%',
+              maxWidth: '900px',
+              maxHeight: '240px',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              borderRadius: '12px',
+            },
+          }}
+        >
+          <p className="text-2xl pt-6 font-semibold text-center">
+            How many questions do you want?
+          </p>
+          <ChoiceQuestionBeforeStart
+            defaultValue={listData.length}
+            handleStartTest={handleStartTest}
+          />
+        </Dialog>
+      )}
     </Fragment>
   );
 };

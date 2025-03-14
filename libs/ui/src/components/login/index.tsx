@@ -22,7 +22,7 @@ export const FN = ({
       className="v4-login-dialog"
     >
       <div className="flex flex-col p-4 sm:p-6 sm:flex-row w-full h-full overflow-auto  bg-[#E9F2FF] dark:bg-black">
-        <BannerModalLogin />
+        <BannerModalLogin setOpen={setOpen} />
         <VerifyLogin setOpen={setOpen} />
       </div>
     </Dialog>

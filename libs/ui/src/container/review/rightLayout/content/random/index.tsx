@@ -6,6 +6,7 @@ import { useAppDispatch } from '@ui/redux/store';
 import { genRandomQuestion } from '@ui/utils/data';
 import { generateRandomNegativeId } from '@ui/utils/math';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import ReviewGameContent from '../game';
 import SheetSelectQuestions from '../sheet';
@@ -46,6 +47,11 @@ const RandomQuestions = ({
     [dispatch]
   );
 
+  const router = useRouter();
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <div className="w-full h-full min-h-16">
       <AnimatePresence initial={true} mode="wait">
@@ -72,7 +78,10 @@ const RandomQuestions = ({
         ) : (
           <Fragment>
             {isMobile ? (
-              <SheetSelectQuestions handleStartTest={handleStartTest} />
+              <SheetSelectQuestions
+                handleBack={handleBack}
+                handleStartTest={handleStartTest}
+              />
             ) : (
               <motion.div
                 key="test-not-ready"

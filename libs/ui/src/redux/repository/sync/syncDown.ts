@@ -1,8 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { TestConstType } from '@ui/constants';
-import { IAppInfo, IUserInfo } from '@ui/models';
+import { GameTypeStatus, TestConstType } from '@ui/constants';
+import { db } from '@ui/db';
+import {
+  IAppInfo,
+  IQuestionBase,
+  ITestBase,
+  ITopicBase,
+  IUserActions,
+  IUserInfo,
+} from '@ui/models';
+import { IUserQuestionProgress } from '@ui/models/progress';
 import { IResponseSyncDown } from '@ui/models/sync';
+import { RootState } from '@ui/redux/store';
 import { getAllUserDataFromServer } from '@ui/services/sync';
 import { clearDbLocalBeforeSync } from './clearDbLocalBeforeSync';
 import {
@@ -11,12 +21,6 @@ import {
   handleCreateNewTest,
   handleReaction,
 } from './utils';
-import { db } from '@ui/db';
-import { GameTypeStatus } from '@ui/constants';
-import { IQuestionBase, ITestBase, ITopicBase, IUserActions } from '@ui/models';
-import { IUserQuestionProgress } from '@ui/models/progress';
-import { RootState } from '@ui/redux/store';
-import { updateUserDataToServer } from '@ui/services/sync';
 interface IProps {
   syncKey: string;
   deleteOldData?: boolean;
@@ -71,6 +75,7 @@ export const syncDown = createAsyncThunk(
         appId: appInfo.appId,
         userId: userInfo.email,
         deleteOldData: true,
+        fixed: true,
         user_data: {
           userId: userInfo.email,
           syncKey: syncKey,
@@ -97,7 +102,20 @@ export const syncDown = createAsyncThunk(
     }
   }
 );
-
+function getYesterdayMidnightTimestamp() {
+  const now = new Date();
+  const midnightToday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    0,
+    0,
+    0,
+    0
+  );
+  midnightToday.setDate(midnightToday.getDate() - 1);
+  return midnightToday.getTime();
+}
 interface IPropsSyncDown extends IProps {
   appInfo: IAppInfo;
   userInfo: IUserInfo;
@@ -109,29 +127,28 @@ const handleSyncDown = async ({
   deleteOldData = false,
 }: IPropsSyncDown) => {
   try {
+    const timestamp = getYesterdayMidnightTimestamp();
     const data = (await getAllUserDataFromServer({
       appId: appInfo.appId,
       userId: userInfo.email,
       deleteOldData: false,
+      fixed: true,
       user_data: {
         userId: userInfo.email,
         syncKey: syncKey,
         appId: appInfo.appId,
         deviceId: userInfo.email,
         mapUpdateData: {
-          DailyGoal: 1741860146277,
-          StudyPlan: 1741860146277,
-          QuestionProgress: 1741860146277,
-          UserQuestionProgress: 1741860146277,
-          TestInfo: 1741860146277,
-          UserTestData: 1741860146277,
-          TopicProgress: 1741860146277,
+          QuestionProgress: timestamp,
+          UserQuestionProgress: timestamp,
+          TestInfo: timestamp,
+          UserTestData: timestamp,
+          TopicProgress: timestamp,
         },
       },
     })) as unknown as IResponseSyncDown;
 
     if (data) {
-      console.log('🚀 ~ data:', data);
       const {
         UserQuestionProgress,
         TestInfo,
@@ -139,6 +156,7 @@ const handleSyncDown = async ({
         TopicProgress,
         UserTestData,
       } = data;
+      console.log('🚀 ~ data:', data);
       if (deleteOldData) {
         const isTest = TestInfo.find(
           (item) => item.type === TestConstType.diagnosticTest
@@ -318,7 +336,7 @@ const handleConvertSyncTest = (
       uniqueParentIdList?.includes(t.id)
   );
   if (testWithSync?.length === 0) return [];
-  const syncTests = testWithSync?.map((t) => {
+  const syncTests = testWithSync?.map((t, index) => {
     const answ = progress
       ?.filter((item) => item.selectedAnswers.some((i) => i.parentId === t.id))
       .map((item) => ({
@@ -362,7 +380,8 @@ const handleConvertSyncTest = (
       correctNumber: answ?.filter((a) =>
         a.selectedAnswers.some((i) => i.correct)
       ).length,
-      type: 10,
+      type: TestConstType[t.gameMode],
+      index: index,
       testQuestionData: JSON.stringify(aa),
       lastUpdate: new Date().getTime(),
     };

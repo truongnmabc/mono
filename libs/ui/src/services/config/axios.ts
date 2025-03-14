@@ -95,6 +95,9 @@ export function axiosRequest<
         selectedBaseURL = TRACKING_API;
         break;
       case 'default':
+        selectedBaseURL = defaultBaseURL;
+        break;
+
       default:
         selectedBaseURL = defaultBaseURL;
         break;

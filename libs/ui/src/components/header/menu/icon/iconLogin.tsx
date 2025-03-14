@@ -27,8 +27,8 @@ const handleClearAccount = async () => {
 
     // Gửi request lấy dữ liệu mới
     const [initTopicResponse, testsResponse] = await Promise.all([
-      axiosRequest({ url: API_PATH.SW_TOPIC, method: 'get' }),
-      axiosRequest({ url: API_PATH.SW_TESTS, method: 'get' }),
+      axiosRequest({ url: API_PATH.SW_TOPIC, method: 'get', base: 'default' }),
+      axiosRequest({ url: API_PATH.SW_TESTS, method: 'get', base: 'default' }),
     ]);
 
     // Lưu dữ liệu mới vào IndexedDB

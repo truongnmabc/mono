@@ -11,7 +11,7 @@ const getAllDataCustom = async () => {
   const list = await db?.testQuestions
     .where('gameMode')
     .equals(TypeParam.customTests)
-    .toArray();
+    .sortBy('createDate');
 
   if (!list || list.length === 0) return null;
   const fistTest = list?.findIndex((item) => item.status === 0);

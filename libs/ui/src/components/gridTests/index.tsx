@@ -5,15 +5,15 @@ import Collapse from '@mui/material/Collapse';
 import IconGridTest from '@ui/components/icon/iconGridTest';
 import { TypeParam } from '@ui/constants';
 import RouterApp from '@ui/constants/router.constant';
+import { db } from '@ui/db';
 import { IBranchHomeJson } from '@ui/models/other';
 import { ITestBase } from '@ui/models/tests';
 import { IGameMode } from '@ui/models/tests/tests';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import queryString from 'query-string';
 import React, { Fragment, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import { db } from '@ui/db';
 
 const AnswerSheetTest = dynamic(
   () => import('@ui/components/listLeftQuestions'),
@@ -82,12 +82,15 @@ const FN = ({
           {tests?.map((test, index) => {
             const query = queryString.stringify({
               testId: test.id,
-              type: type === TypeParam.learn ? TypeParam.practiceTests : type,
+              type:
+                type === TypeParam.branchTest
+                  ? TypeParam.branchTest
+                  : TypeParam.practiceTests,
             });
             const _href =
-              type === TypeParam.practiceTests || type === TypeParam.learn
-                ? `${RouterApp.Practice_Tests}?${query}`
-                : `${test.slug}?${query}`;
+              type === TypeParam.branchTest
+                ? `${test.slug}?${query}`
+                : `${RouterApp.Practice_Tests}?${query}`;
 
             return (
               <Fragment key={index}>

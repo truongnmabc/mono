@@ -19,6 +19,7 @@ export interface IAnswer {
   type: IGameMode;
   startAt?: number;
   endAt?: number;
+  isSynced: boolean;
 }
 export interface IParagraph {
   id: number;

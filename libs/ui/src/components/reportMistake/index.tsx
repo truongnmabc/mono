@@ -17,7 +17,8 @@ import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import userActionsThunk from '@ui/redux/repository/user/actions';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
 import { reportMistakeApi } from '@ui/services/report';
-import React, { useCallback, useEffect, useState } from 'react';
+import { domToPng } from 'modern-screenshot';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 const listReport = [
   { label: 'Incorrect Answer', value: 0 },
@@ -90,7 +91,27 @@ const ReportMistake = ({ onClose }: { onClose: () => void }) => {
       userInfos,
     ]
   );
+  const contentRef = useRef(null);
+  const handleScreen = async () => {
+    if (!contentRef.current) return;
+    try {
+      domToPng(contentRef.current).then((dataUrl) => {
+        const link = document.createElement('a');
+        link.download = 'screenshot.png';
+        link.href = dataUrl;
+        link.click();
+      });
+      // dataURL là ảnh base64
 
+      // Tùy ý: tải file, hoặc gửi dataURL lên server
+      // const link = document.createElement('a');
+      // link.download = 'screenshot.png';
+      // link.href = dataURL;
+      // link.click();
+    } catch (error) {
+      console.error('Lỗi chụp màn hình:', error);
+    }
+  };
   return (
     <form
       className="h-full py-4 px-6 bg-theme-white sm:bg-white sm:w-[600px] rounded-md flex flex-col gap-4"

@@ -27,6 +27,7 @@ const choiceAnswer = createAsyncThunk(
             type: gameMode,
             startAt: timeStart,
             endAt: new Date().getTime(),
+            isSynced: false,
           },
         ]
       : [
@@ -39,6 +40,7 @@ const choiceAnswer = createAsyncThunk(
             type: gameMode,
             startAt: timeStart,
             endAt: new Date().getTime(),
+            isSynced: false,
           },
         ];
 
@@ -47,6 +49,7 @@ const choiceAnswer = createAsyncThunk(
       id: question.id,
       parentId: question.partId,
       level: question.level === -1 ? 50 : question.level,
+      isSynced: false,
     };
 
     if (isEx) {

@@ -61,18 +61,23 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
         providerData: userInfo.id,
       };
 
-      const [user, app] = await Promise.all([
+      const [user, app, progress] = await Promise.all([
         updateLoginStatusAndCheckUserData({
           payload,
         }),
         db?.passingApp.get(-1),
+        db?.userProgress.toArray(),
       ]);
-      if (app?.syncKey && user.sync_key !== app.syncKey) {
+      if (app?.syncKey && user.sync_key !== app.syncKey && progress?.length) {
         await db?.passingApp.update(-1, {
           syncKey: user.sync_key,
         });
         setSyncKey(user.sync_key);
         setIsShowPopup(true);
+      } else if (!progress?.length) {
+        await db?.passingApp.update(-1, {
+          syncKey: user.sync_key,
+        });
       }
       if ('serviceWorker' in navigator) {
         try {
@@ -92,28 +97,28 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
         }
       }
       // // server chưa có thông tin. up lên
-      // if (!user.has_user_data || !app)
-      //   return dispatch(
-      //     syncUp({
-      //       syncKey: user.sync_key,
-      //     })
-      //   );
+      if (!user.has_user_data || !app)
+        return dispatch(
+          syncUp({
+            syncKey: user.sync_key,
+          })
+        );
 
-      // // server có thông tin , local có thông tin, chọn db nào để sync
-      // if (app.syncKey && user.sync_key !== app.syncKey) {
-      //   await db?.passingApp.update(-1, {
-      //     syncKey: user.sync_key,
-      //   });
-      //   setSyncKey(user.sync_key);
-      //   setIsShowPopup(true);
-      // } else {
-      //   // server có thông tin còn local thì không
-      //   dispatch(
-      //     syncDown({
-      //       syncKey: user.sync_key,
-      //     })
-      //   );
-      // }
+      // server có thông tin , local có thông tin, chọn db nào để sync
+      if (app.syncKey && user.sync_key !== app.syncKey) {
+        await db?.passingApp.update(-1, {
+          syncKey: user.sync_key,
+        });
+        setSyncKey(user.sync_key);
+        setIsShowPopup(true);
+      } else {
+        // server có thông tin còn local thì không
+        dispatch(
+          syncDown({
+            syncKey: user.sync_key,
+          })
+        );
+      }
       return;
     };
     if (isFetched) {

@@ -10,9 +10,11 @@ import { useAppDispatch } from '@ui/redux/store';
 import { genRandomQuestion } from '@ui/utils/data';
 import { generateRandomNegativeId } from '@ui/utils/math';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import ReviewGameContent from '../game';
 import ChoiceQuestionBeforeStart from '../random/choiceQuestionBeforeStart';
+import SheetSelectQuestions from '../sheet';
 
 const HardQuestions = ({
   isMobile,
@@ -51,6 +53,10 @@ const HardQuestions = ({
     },
     [dispatch]
   );
+  const router = useRouter();
+  const handleBack = () => {
+    router.back();
+  };
 
   return (
     <div className="w-full min-h-16">
@@ -76,22 +82,31 @@ const HardQuestions = ({
             <ReviewGameContent mode={mode} isMobile={isMobile} />
           </motion.div>
         ) : (
-          <motion.div
-            key="test-not-ready"
-            exit={{ opacity: 0, x: 60 }}
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="w-full rounded-lg bg-white "
-            style={{
-              boxShadow: '0px 2px 4px 0px #2121211F',
-            }}
-          >
-            <ChoiceQuestionBeforeStart
-              defaultValue={34}
-              handleStartTest={handleStartTest}
-            />
-          </motion.div>
+          <Fragment>
+            {isMobile ? (
+              <SheetSelectQuestions
+                handleBack={handleBack}
+                handleStartTest={handleStartTest}
+              />
+            ) : (
+              <motion.div
+                key="test-not-ready"
+                exit={{ opacity: 0, x: 60 }}
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="w-full rounded-lg bg-white "
+                style={{
+                  boxShadow: '0px 2px 4px 0px #2121211F',
+                }}
+              >
+                <ChoiceQuestionBeforeStart
+                  defaultValue={34}
+                  handleStartTest={handleStartTest}
+                />
+              </motion.div>
+            )}
+          </Fragment>
         )}
       </AnimatePresence>
     </div>

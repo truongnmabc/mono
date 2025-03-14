@@ -12,6 +12,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import ReviewGameContent from '../game';
 import ChoiceQuestionBeforeStart from '../random/choiceQuestionBeforeStart';
+import SheetSelectQuestions from '../sheet';
 const emptyMessage =
   "It seems that you're doing well, there are no weaknesses to address.";
 const WeakQuestions = ({
@@ -182,31 +183,43 @@ const WeakQuestions = ({
           </Fragment>
         )}
       </AnimatePresence>
-
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        sx={{
-          '& .MuiDialog-paper': {
-            width: '100%',
-            maxWidth: '900px',
-            maxHeight: '240px',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            borderRadius: '12px',
-          },
-        }}
-      >
-        <p className="text-2xl pt-6 font-semibold text-center">
-          How many questions do you want?
-        </p>
-        <ChoiceQuestionBeforeStart
-          defaultValue={listData.length}
-          handleStartTest={handleStartTest}
-        />
-      </Dialog>
+      <Fragment>
+        {isMobile ? (
+          <Fragment>
+            {open && (
+              <SheetSelectQuestions
+                handleBack={() => setOpen(false)}
+                handleStartTest={handleStartTest}
+              />
+            )}
+          </Fragment>
+        ) : (
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            sx={{
+              '& .MuiDialog-paper': {
+                width: '100%',
+                maxWidth: '900px',
+                maxHeight: '240px',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                borderRadius: '12px',
+              },
+            }}
+          >
+            <p className="text-2xl pt-6 font-semibold text-center">
+              How many questions do you want?
+            </p>
+            <ChoiceQuestionBeforeStart
+              defaultValue={listData.length}
+              handleStartTest={handleStartTest}
+            />
+          </Dialog>
+        )}
+      </Fragment>
     </Fragment>
   );
 };

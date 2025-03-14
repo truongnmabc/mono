@@ -15,6 +15,8 @@ export const convertTopicsFromServer = async ({
 }: {
   topicsSync: ITopicProgress[];
 }) => {
+  if (!topicsSync?.length) return;
+
   await Promise.all(
     topicsSync.map(
       async (topic) =>
@@ -75,7 +77,7 @@ export const handleCreateNewTest = async ({
       status: list.status === 3 ? 1 : 0,
     });
   }
-  const testPromises = TestInfo.map(async (item) => {
+  const testPromises = TestInfo.map(async (item, index) => {
     const {
       testId,
       testQuestionNum,
@@ -85,23 +87,25 @@ export const handleCreateNewTest = async ({
       timeTest,
       testSettingId,
     } = item;
-    const ques = JSON.parse(testQuestionData) as ITestQuestion[];
+    const ques = (JSON.parse(testQuestionData) as ITestQuestion[]) || [];
     const currentTest = UserTestData.find(
       (test) => test.testId === item.testId
     );
-    console.log('🚀 ~ testPromises ~ currentTest:', currentTest);
     const topicIds = ques.map((q) => Number(q.topicId));
     const topics = await db?.topics.where('id').anyOf(topicIds).toArray();
 
-    const groupExamData = ques.map((q) => ({
-      topicId: Number(q.topicId),
-      questionIds: q.questionIds.map((id) => Number(id)),
-      totalQuestion: q.questionIds.length,
-      topicName: topics?.find((t) => t.id === q.topicId)?.name,
-    }));
+    const groupExamData = ques?.map((q) => {
+      return {
+        topicId: Number(q.topicId),
+        questionIds: q.questionIds.map((id) => Number(id)),
+        totalQuestion: q.questionIds.length,
+        topicName: topics?.find((t) => t.id === q.topicId)?.name,
+      };
+    });
 
     const data = {
       id: testId,
+      index,
       totalDuration: timeTest / 60,
       isGamePaused: false,
       startTime: 0,
@@ -123,6 +127,7 @@ export const handleCreateNewTest = async ({
       sync: 1,
     } as ITestBase;
     await db?.testQuestions.put(data);
+    return;
   });
 
   await Promise.all(testPromises);
@@ -133,11 +138,10 @@ interface Ix extends UserQuestionProgress {
 }
 export const handleConvertQuestions = async (UserQuestionProgress: Ix[]) => {
   const questionIds = UserQuestionProgress.map((item) => item.questionId);
-
-  const questions = await db?.questions
-    .where('id')
-    .anyOf(questionIds)
-    .toArray();
+  const [questions, progress] = await Promise.all([
+    db?.questions.where('id').anyOf(questionIds).toArray(),
+    db?.userProgress.where('id').anyOf(questionIds).toArray() || [],
+  ]);
 
   const listMap = UserQuestionProgress.reduce((acc, item) => {
     const key = item.questionId;
@@ -148,13 +152,27 @@ export const handleConvertQuestions = async (UserQuestionProgress: Ix[]) => {
     if (acc[key].length > 0) {
       const currentQuestion = acc[key][0];
       const questionInfo = questions?.find((q) => item.questionId === q.id);
-      const aa = item.choicesSelected
-        .map((c) => {
+      const aa = item?.choicesSelected
+        ?.map((c) => {
           const answer = questionInfo?.answers.find((a) => a.id === c);
           if (answer) {
             return {
               ...answer,
               turn: 1,
+              type:
+                item.type === GameTypeStatus.learn
+                  ? TypeParam.learn
+                  : item.type === GameTypeStatus.practiceTests
+                  ? TypeParam.practiceTests
+                  : item.type === GameTypeStatus.finalTests
+                  ? TypeParam.finalTests
+                  : item.type === GameTypeStatus.diagnosticTest
+                  ? TypeParam.diagnosticTest
+                  : item.type === GameTypeStatus.customTests
+                  ? TypeParam.customTests
+                  : item.type === GameTypeStatus.branchTest
+                  ? TypeParam.branchTest
+                  : TypeParam.learn,
               parentId: item?.testIdOrTopicId,
             };
           }
@@ -171,8 +189,9 @@ export const handleConvertQuestions = async (UserQuestionProgress: Ix[]) => {
       acc[key] = [question];
     } else {
       const questionInfo = questions?.find((q) => item.questionId === q.id);
+
       const selectedAnswers = item.choicesSelected
-        .map((c) => {
+        ?.map((c) => {
           const answer = questionInfo?.answers.find((a) => a.id === c);
           if (answer) {
             return {
@@ -193,6 +212,7 @@ export const handleConvertQuestions = async (UserQuestionProgress: Ix[]) => {
                   : item.type === GameTypeStatus.branchTest
                   ? TypeParam.branchTest
                   : TypeParam.review,
+              isSynced: true,
             };
           }
           return null;
@@ -204,6 +224,7 @@ export const handleConvertQuestions = async (UserQuestionProgress: Ix[]) => {
         parentId: questionInfo?.partId || -1,
         level: questionInfo?.level || -1,
         selectedAnswers: selectedAnswers || [],
+        isSynced: true,
       };
 
       acc[key].push(question);
@@ -213,7 +234,36 @@ export const handleConvertQuestions = async (UserQuestionProgress: Ix[]) => {
 
   const useQuestion = Object.values(listMap).flat();
 
-  await db?.userProgress.bulkPut(useQuestion);
+  const progressMap = new Map<number, IUserQuestionProgress>(
+    progress.map((item) => [item.id, item])
+  );
+
+  // Mảng kết quả cuối cùng
+  const finalData: IUserQuestionProgress[] = [];
+
+  // 1. Duyệt "useQuestion" để MERGE
+  for (const newRecord of useQuestion) {
+    const existing = progressMap.get(newRecord.id);
+    if (existing) {
+      // Nếu đã có => gộp selectedAnswers
+      existing.selectedAnswers = mergeAnswers({
+        oldAnswers: existing.selectedAnswers,
+        newAnswers: newRecord.selectedAnswers,
+      });
+      progressMap.set(newRecord.id, existing); // ghi đè lại
+    } else {
+      // Nếu chưa có, thêm mới
+      progressMap.set(newRecord.id, newRecord);
+    }
+  }
+
+  // 2. Chuyển progressMap => finalData
+  for (const record of progressMap.values()) {
+    finalData.push(record);
+  }
+
+  // 3. Lưu finalData vào userProgress
+  await db?.userProgress.bulkPut(finalData);
 };
 
 export const findDuplicates = <T>(array: T[]): T[] => {
@@ -229,4 +279,35 @@ export const findDuplicates = <T>(array: T[]): T[] => {
   }
 
   return Array.from(duplicates);
+};
+
+const mergeAnswers = ({
+  oldAnswers = [],
+  newAnswers = [],
+}: {
+  oldAnswers: any[];
+  newAnswers: any[];
+}): IAnswer[] => {
+  // Tạo mảng kết quả (shallow copy để tránh mutate)
+  const merged: IAnswer[] = [...oldAnswers];
+
+  for (const newAns of newAnswers) {
+    // Tìm xem trong merged đã có answer trùng ID chưa
+    const idx = merged.findIndex((oldAns) => oldAns.id === newAns.id);
+    if (idx >= 0) {
+      // Nếu đã có -> tùy ý cập nhật:
+      // Ví dụ: update toàn bộ field (ghi đè),
+      // hoặc chỉ update turn/parentId
+      merged[idx] = {
+        ...merged[idx],
+        ...newAns,
+        // Giữ lại oldAns.someField nếu muốn
+      };
+    } else {
+      // Nếu chưa có -> thêm mới
+      merged.push(newAns);
+    }
+  }
+
+  return merged;
 };

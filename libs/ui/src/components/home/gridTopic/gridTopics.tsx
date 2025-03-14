@@ -106,6 +106,7 @@ const GridTopics = ({
                               subTopic={subTopic}
                               key={index}
                               topicId={topic.id}
+                              isSelect={isSelect}
                             />
                           ))}
                       </div>

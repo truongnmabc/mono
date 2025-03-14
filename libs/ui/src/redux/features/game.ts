@@ -5,14 +5,13 @@ import choiceAnswer, {
 } from '../repository/game/choiceAnswer/choiceAnswer';
 import initDataGame from '../repository/game/initData/initData';
 
+import choiceUnAnswerDiagnostic from '../repository/game/choiceAnswer/choiceAnswerDiagnostic';
+import nextQuestionActionThunk from '../repository/game/nextQuestion/nextGame';
+import { shouldNextOrPreviousQuestion } from '../repository/game/nextQuestion/nextQuestions';
 import { handleMigrateDataGame } from '../repository/game/utils';
 import { reloadStateThunk } from '../repository/utils/reload';
 import { RootState } from '../store';
-import { initGameReducer, plateHolderCurrentGame } from './game.placeholder';
-import nextQuestionActionThunk from '../repository/game/nextQuestion/nextGame';
-import choiceUnAnswerDiagnostic from '../repository/game/choiceAnswer/choiceAnswerDiagnostic';
-import { shouldNextOrPreviousQuestion } from '../repository/game/nextQuestion/nextQuestions';
-import { TypeParam } from '@ui/constants';
+import { initGameReducer } from './game.placeholder';
 const gameSlice = createSlice({
   name: 'game',
   initialState: initGameReducer,
@@ -161,8 +160,12 @@ const gameSlice = createSlice({
         action.payload?.choice &&
         action.payload?.question
       ) {
+        const choice = action.payload.choice;
         processChoiceAnswer(state, {
-          choice: action.payload.choice,
+          choice: {
+            ...choice,
+            isSynced: false,
+          },
           question: action.payload.question,
         });
       }

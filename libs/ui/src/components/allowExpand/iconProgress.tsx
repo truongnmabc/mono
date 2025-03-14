@@ -1,4 +1,5 @@
 'use client';
+import { TypeParam } from '@ui/constants';
 import { db } from '@ui/db';
 import { ITopicHomeJson } from '@ui/models/other';
 import {
@@ -10,10 +11,9 @@ import { selectListStatus } from '@ui/redux/features/study.reselect';
 import { useAppSelector } from '@ui/redux/store';
 import clsx from 'clsx';
 import Link from 'next/link';
+import queryString from 'query-string';
 import { Fragment, useEffect, useState } from 'react';
 import { IconSubTopic } from './iconTopic';
-import queryString from 'query-string';
-import { TypeParam } from '@ui/constants';
 
 type IProps = {
   part: ITopicHomeJson;

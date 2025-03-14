@@ -13,9 +13,11 @@ import TopicLevelProgress from './topicLevelProgress';
 const TitleCollapse = ({
   subTopic,
   topicId,
+  isSelect,
 }: {
   subTopic: ITopicHomeJson;
   topicId?: number;
+  isSelect?: boolean;
 }) => {
   const selectedSubTopics = useAppSelector(selectSubTopicsId);
   const isExpand = selectedSubTopics === subTopic.id;

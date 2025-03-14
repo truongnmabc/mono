@@ -1,8 +1,4 @@
-import {
-  IPropsGetAllUserDataFromServer,
-  IPropsUpdateDataToServer,
-  IPropsUpdateLogin,
-} from '@ui/models/sync';
+import { IPropsUpdateDataToServer, IPropsUpdateLogin } from '@ui/models/sync';
 import { axiosRequest } from '../config/axios';
 import { API_PATH } from '../constant';
 
@@ -38,9 +34,7 @@ export const updateUserDataToServer = async (
   return result.data;
 };
 
-export const getAllUserDataFromServer = async (
-  data: IPropsGetAllUserDataFromServer
-) => {
+export const getAllUserDataFromServer = async (data: {}) => {
   const result = await axiosRequest({
     url: `${API_PATH.UPDATE_LOGIN}`,
     params: {
