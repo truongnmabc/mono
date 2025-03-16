@@ -30,9 +30,10 @@ export const checkPaypalStatusAPI = async (orderId: string) => {
       params: {
         type: 'check-status-subcription',
         orderId,
+        dev: process.env['NODE_ENV'] === 'development',
       },
     });
-    return response;
+    return response.data;
   } catch (error) {
     throw new Error(`Failed to check PayPal status`);
   }

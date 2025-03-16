@@ -4,6 +4,7 @@ export const BASE_URL_PROP =
 export const BASE_URL_DEV = 'https://dev-dot-micro-enigma-235001.appspot.com';
 export const DASHBOARD_API = 'https://dashboard-api2.abc-elearning.org/';
 export const TRACKING_API = 'https://app-tracking.abc-elearning.org/';
+export const BASE_GET_PRO = 'https://micro-enigma-235001.appspot.com/';
 
 export const API_PATH = {
   APP_INFO: '/api/appInfos',
@@ -18,6 +19,7 @@ export const API_PATH = {
   REPORT_MISTAKE: '/api/question/update-report',
   SAVE_TO_DASHBOARD: '/pro-purchase-events',
   UPDATE_LOGIN: '/api/app/flutter',
+  GET_PRO_SYNC: '/api/auth',
 };
 
 export const I_GAME_TYPE = {

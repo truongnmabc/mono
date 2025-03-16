@@ -39,7 +39,7 @@ export class DB extends Dexie {
       topics: '++id,parentId,slug',
 
       // lưu thông tin bookmark, like của người dùng
-      useActions: '++id,partId,questionId',
+      useActions: '++questionId',
 
       passingApp: '++id',
     });

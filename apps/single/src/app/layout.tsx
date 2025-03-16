@@ -82,8 +82,8 @@ export default async function ParentAppLayout({
         {process.env.NEXT_PUBLIC_GTM_ID && (
           <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         )}
-        <Script src="/init-db.js" strategy="beforeInteractive" />
-        <Script src="/sw-register.js" strategy="beforeInteractive" />
+        <Script src="/initDb.iife.js" strategy="beforeInteractive" />
+        <Script src="/swRegister.iife.js" strategy="beforeInteractive" />
       </body>
     </html>
   );

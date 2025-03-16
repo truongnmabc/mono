@@ -34,10 +34,13 @@ import { useCallback } from 'react';
 // ];
 
 const initialOptions = {
-  clientId: PAYPAL_SUBSCRIPTION_CLIENT_ID,
+  // clientId: PAYPAL_SUBSCRIPTION_CLIENT_ID,
+  clientId:
+    'AVyimUfmrrnWOGW7GFSXlYm77H4O-JvvRBSBMqBDNj1_ATxF-hRsccOmXxx8lenoD1SND5UjC-MlY9Jm',
   intent: 'subscription',
   vault: true,
 };
+console.log('🚀 ~ initialOptions:', initialOptions);
 
 const SubScriptionButton = ({
   paymentSuccess,
@@ -104,24 +107,26 @@ const SubScriptionButton = ({
         );
         paymentSuccess();
         useSetIsProServer();
-        await uploadPaymentInfoAPI(payment);
-        await updateUserInfoDashboard({
-          email: userInfo?.email,
-          appShortName: appInfo.appShortName,
-          appId: appInfo.appId + '',
-          isBuy: true,
-        });
-        await saveToDashboardAPI({
-          app: appInfo.appShortName,
-          price: Number(price),
-          email: userInfo.email,
-        });
-        await sendEmailSubscribeSuccessAPI({
-          appName: appInfo.appShortName,
-          price: '$' + price.toString(),
-          learnPageSlug: '',
-          timeExpiration: new Date(expiryDate),
-        });
+        await Promise.all([
+          uploadPaymentInfoAPI(payment),
+          updateUserInfoDashboard({
+            email: userInfo?.email,
+            appShortName: appInfo.appShortName,
+            appId: appInfo.appId + '',
+            isBuy: true,
+          }),
+          saveToDashboardAPI({
+            app: appInfo.appShortName,
+            price: Number(price),
+            email: userInfo.email,
+          }),
+          sendEmailSubscribeSuccessAPI({
+            appName: appInfo.appShortName,
+            price: '$' + price.toString(),
+            learnPageSlug: '',
+            timeExpiration: new Date(expiryDate),
+          }),
+        ]);
       } catch (err) {
         console.log('🚀 ~ err:', err);
       }
@@ -141,12 +146,11 @@ const SubScriptionButton = ({
   const handleCreateSubscription = useCallback(
     (data: Record<string, unknown>, actions: CreateSubscriptionActions) => {
       return actions.subscription.create({
-        plan_id: valueButton.planId,
+        plan_id: 'P-5GE18939GM962423UMQVLK5Y',
       });
     },
     [valueButton.planId]
   );
-  console.log('🚀 ~ valueButton:', valueButton);
 
   const onApproveOrder = useCallback(
     async (data: OnApproveData, actions: OnApproveActions): Promise<void> => {

@@ -156,7 +156,6 @@ const handleSyncDown = async ({
         TopicProgress,
         UserTestData,
       } = data;
-      console.log('🚀 ~ data:', data);
       if (deleteOldData) {
         const isTest = TestInfo.find(
           (item) => item.type === TestConstType.diagnosticTest

@@ -1,6 +1,6 @@
 import { axiosRequest } from '../config/axios';
 
-export const updateUserInfoDashboard = (args: {
+export const updateUserInfoDashboard = async (args: {
   email: string;
   appShortName: string;
   appId: string;
@@ -8,33 +8,52 @@ export const updateUserInfoDashboard = (args: {
   isSetupStudyPlan?: boolean;
   testDate?: string;
 }) => {
-  return axiosRequest({
-    url: 'buy-pro',
-    data: args,
-    method: 'post',
-    base: 'dashboard',
-  });
+  try {
+    const result = await axiosRequest({
+      url: 'buy-pro',
+      data: args,
+      method: 'post',
+      base: 'dashboard',
+    });
+    return result.data;
+  } catch (err) {
+    console.log('🚀 ~ err:', err);
+  }
 };
 
-export const uploadPaymentInfoAPI = (object: Record<string, unknown>) => {
-  return axiosRequest({
-    url: '/api/auth?type=save-payment-info',
-    data: object,
-    method: 'post',
-  });
+export const uploadPaymentInfoAPI = async (object: Record<string, unknown>) => {
+  try {
+    const result = await axiosRequest({
+      url: '/api/auth',
+      params: {
+        type: 'save-payment-info',
+      },
+      data: object,
+      method: 'post',
+      baseUrl: 'https://dev-dot-micro-enigma-235001.appspot.com',
+    });
+    return result.data;
+  } catch (err) {
+    console.log('🚀 ~ uploadPaymentInfoAPI ~ err:', err);
+  }
 };
 
-export const saveToDashboardAPI = (object: {
+export const saveToDashboardAPI = async (object: {
   app: string;
   price: number;
   email: string;
 }) => {
-  return axiosRequest({
-    url: 'pro-purchase-events/',
-    data: object,
-    method: 'post',
-    base: 'dashboard',
-  });
+  try {
+    const result = await axiosRequest({
+      url: 'pro-purchase-events',
+      data: object,
+      method: 'post',
+      base: 'dashboard',
+    });
+    return result.data;
+  } catch (err) {
+    console.log('🚀 ~ err:', err);
+  }
 };
 
 export const cancelSubscriptionAPI = async (orderId: string) => {

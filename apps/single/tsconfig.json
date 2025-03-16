@@ -10,11 +10,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -24,36 +20,18 @@
         "name": "next"
       }
     ],
-    "types": [
-      "jest",
-      "node"
-    ]
+    "types": ["jest", "node"]
   },
   "include": [
     "**/*.js",
     "**/*.jsx",
     "**/*.ts",
     "**/*.tsx",
-    "../../aa/about-us",
-    "../../aa/billing",
-    "../../aa/contact",
-    "../../aa/get-pro",
-    "../../dist/.next/types/**/*.ts",
-    "../../dist/apps/.next/types/**/*.ts",
-    "../../dist/apps/single/.next/types/**/*.ts",
-    "../../dist/apps/single/Users/manhtruong/Workspace/Ex/mono/apps/single/types/**/*.ts",
-    "../../dist/apps/single/dist/apps/single/types/**/*.ts",
-    "../../libs/ui/src/container/get-pro",
-    ".next/types/**/*.ts",
     "next-env.d.ts",
+    "env.d.ts",
     "postcss.config.mjs",
     "src/**/*",
     "../../dist/dist/apps/single/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "jest.config.ts",
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

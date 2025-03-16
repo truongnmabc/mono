@@ -46,3 +46,23 @@ export const getAllUserDataFromServer = async (data: {}) => {
   });
   return result.data;
 };
+
+export const getProAfterLogin = async ({
+  email,
+  appId,
+}: {
+  email: string;
+  appId: number;
+}) => {
+  const result = await axiosRequest({
+    method: 'post',
+    url: '/api/auth',
+    params: {
+      type: 'sync-data-to-web-after-login',
+      email,
+      appId,
+    },
+    base: 'getPro',
+  });
+  return result.data;
+};

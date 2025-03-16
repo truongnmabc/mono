@@ -6,22 +6,14 @@ import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import { syncDown } from '@ui/redux/repository/sync/syncDown';
 import { syncUp } from '@ui/redux/repository/sync/syncUp';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
-import { updateLoginStatusAndCheckUserData } from '@ui/services/sync';
+import {
+  getProAfterLogin,
+  updateLoginStatusAndCheckUserData,
+} from '@ui/services/sync';
 import { useCallback, useEffect, useState } from 'react';
 import { MtUiButton } from '../button';
 import DialogResponsive from '../dialogResponsive';
 import { IconArrowRight, SelectIconSync } from './icon';
-
-const handleSendMess = async () => {
-  navigator.serviceWorker.ready.then((registration) => {
-    if (registration.active) {
-      registration.active.postMessage({
-        type: 'SYNC_UP',
-        payload: { foo: 'bar' },
-      });
-    }
-  });
-};
 
 const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
   const userInfo = useAppSelector(selectUserInfo);
@@ -61,13 +53,20 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
         providerData: userInfo.id,
       };
 
-      const [user, app, progress] = await Promise.all([
+      const [user, app, progress, billing] = await Promise.all([
         updateLoginStatusAndCheckUserData({
           payload,
         }),
         db?.passingApp.get(-1),
         db?.userProgress.toArray(),
+        getProAfterLogin({
+          appId: appInfos.appId,
+          email: 'jay23ammonsiv@gmail.com',
+          // email: userInfo.email,
+        }),
       ]);
+      console.log('🚀 ~ handleSyncData ~ billing:', billing);
+
       if (app?.syncKey && user.sync_key !== app.syncKey && progress?.length) {
         await db?.passingApp.update(-1, {
           syncKey: user.sync_key,
@@ -79,24 +78,60 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
           syncKey: user.sync_key,
         });
       }
-      if ('serviceWorker' in navigator) {
-        try {
-          const registration = await navigator.serviceWorker.register('/sw.js');
-          if (app?.syncKey && user.sync_key === app.syncKey) {
-            registration?.active?.postMessage({
-              type: !user.has_user_data ? 'SYNC_UP' : 'SYNC_DOWN',
-              payload: {
-                syncKey: user.sync_key,
-                appId: appInfos.appId,
-                userId: userInfo.email,
-              },
-            });
+      // if ('serviceWorker' in navigator) {
+      //   try {
+      //     const registration = await navigator.serviceWorker.register('/sw.js');
+      //     registration?.active?.postMessage({
+      //       type: !user.has_user_data ? 'SYNC_UP' : 'SYNC_DOWN',
+      //       // type: 'SYNC_UP',
+      //       payload: {
+      //         syncKey: user.sync_key,
+      //         appId: appInfos.appId,
+      //         userId: userInfo.email,
+      //       },
+      //     });
+      //     // if (app?.syncKey && user.sync_key === app.syncKey) {
+      //     //   registration?.active?.postMessage({
+      //     //     type: !user.has_user_data ? 'SYNC_UP' : 'SYNC_DOWN',
+      //     //     payload: {
+      //     //       syncKey: user.sync_key,
+      //     //       appId: appInfos.appId,
+      //     //       userId: userInfo.email,
+      //     //     },
+      //     //   });
+      //     // }
+      //   } catch (err) {
+      //     console.error('Service Worker registration failed:', err);
+      //   }
+      // }
+      const handlePayment = (userDeviceLogins: any) => {
+        for (const userDeviceLogin of userDeviceLogins) {
+          if (!userDeviceLogin) {
+            continue;
           }
-        } catch (err) {
-          console.error('Service Worker registration failed:', err);
+          const payment = {
+            appId: userDeviceLogin.appId,
+            userId: userDeviceLogin.userId,
+            createdDate: new Date(userDeviceLogin.createdDate || '').getTime(),
+            // updateDate: new Date(details.status_update_time || '').getTime(),
+            emailAddress: userDeviceLogin.emailAddress,
+            amount: userDeviceLogin.amount,
+            orderId: userDeviceLogin.orderId || '',
+            paymentStatus: userDeviceLogin.inAppPurchared == 1 ? 1 : 0,
+            appShortName: appInfos.appShortName,
+            // payerName: details.subscriber?.name?.given_name || '',
+            // payerId: details.subscriber?.payer_id || '',
+            // planId: details.plan_id,
+            // planName: valueButton.type,
+            status: userDeviceLogin.status,
+            expiredDate: new Date(userDeviceLogin?.expiredDate).getTime(),
+          };
+          db?.paymentInfos.put(payment);
         }
-      }
-      // // server chưa có thông tin. up lên
+      };
+
+      handlePayment(billing.UserDeviceLogins);
+      // server chưa có thông tin. up lên
       if (!user.has_user_data || !app)
         return dispatch(
           syncUp({
@@ -127,8 +162,6 @@ const SyncData = ({ appInfos }: { appInfos: IAppInfo }) => {
       }, 1000);
     }
   }, [isFetched, userInfo, appInfos]);
-
-  const handleClose = () => setIsShowPopup(false);
 
   return (
     <DialogResponsive

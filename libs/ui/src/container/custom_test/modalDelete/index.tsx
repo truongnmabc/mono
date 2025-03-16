@@ -9,12 +9,7 @@ type IProps = {
 };
 const ModalDelete = ({ handleClose, openDelete, handleDelete }: IProps) => {
   return (
-    <Dialog
-      open={openDelete}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-    >
+    <Dialog open={openDelete} onClose={handleClose}>
       <div className="min-w-[400px] p-4">
         <div className="pb-4">
           Are you sure you want to delete this custom test?

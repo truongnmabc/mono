@@ -42,11 +42,7 @@ const ReviewAnswerResult: React.FC<IProps> = ({
     <Fragment>
       {title && <p className="text-2xl mt-6 font-semibold">{title}</p>}
       <div className="flex pb-2 justify-between items-center gap-4 w-full">
-        <AntTabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
+        <AntTabs value={value} onChange={handleChange}>
           <AntTab
             label={
               <LabelReviewAnswerResult

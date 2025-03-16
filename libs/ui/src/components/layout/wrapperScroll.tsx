@@ -5,7 +5,6 @@ import { SessionProvider } from 'next-auth/react';
 import React, { useRef, useState } from 'react';
 import ScrollToTopArrow from '../scrollTop';
 import TestMode from '../testMode';
-
 const WrapperScroll = ({ children }: { children: React.ReactNode }) => {
   const [isScrollRef, setIsShowRef] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +28,9 @@ const WrapperScroll = ({ children }: { children: React.ReactNode }) => {
       >
         <MathJaxContext>{children}</MathJaxContext>
         {isScrollRef && <ScrollToTopArrow scrollRef={scrollRef} />}
-        <TestMode isScrollRef={isScrollRef} />
+        {(isScrollRef || process.env['NODE_ENV'] === 'development') && (
+          <TestMode />
+        )}
       </div>
     </SessionProvider>
   );

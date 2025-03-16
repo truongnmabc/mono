@@ -47,9 +47,7 @@ export const syncUp = createAsyncThunk(
         userInfo.email || '',
         appInfo.appId
       );
-      console.log('🚀 ~ TestInfo:', TestInfo);
       const UserTestData = currentTestPlaying(tests, progress);
-      console.log('🚀 ~ UserTestData:', UserTestData);
 
       const listNotSync = progress?.filter((item) => !item.isSynced);
 

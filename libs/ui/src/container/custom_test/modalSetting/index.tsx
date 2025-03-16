@@ -321,7 +321,6 @@ const ModalSettingCustomTest = ({
               Customize Your Test
             </p>
             <button
-              aria-label="Close"
               onClick={handleRedirect}
               type="button"
               className="w-8 h-8 cursor-pointer rounded-full bg-white flex items-center justify-center"
@@ -413,7 +412,6 @@ const ModalSettingCustomTest = ({
             <div className="flex items-center gap-3">
               <p className="text-lg font-semibold">Subjects*</p>
               <button
-                aria-label="Select All Topics"
                 type="button"
                 className="underline cursor-pointer text-sm font-normal"
                 onClick={handleSelectAll}

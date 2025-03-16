@@ -12,14 +12,16 @@ async function reportMistakeApi({
   gameType,
   userId,
   deviceId,
+  screenshot,
 }: {
   appId: number;
   reasons: number[];
   questionId: number;
   otherReason?: string;
-  gameType: IGameType;
+  gameType?: IGameType;
   userId: number;
   deviceId?: string;
+  screenshot?: string;
 }) {
   try {
     const response = await axiosRequest({
@@ -28,7 +30,7 @@ async function reportMistakeApi({
       data: {
         appId: appId,
         questionId: questionId,
-        screenshot: '',
+        screenshot,
         reasons: otherReason && !reasons.length ? [7] : reasons,
         otherReason: otherReason,
         version: appVersion,

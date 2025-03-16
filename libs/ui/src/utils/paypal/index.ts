@@ -1,3 +1,4 @@
+import { MockPlantId } from '@ui/constants';
 import config_new_pro from './config_new_pro.json';
 // Types
 interface IOneWeek {
@@ -35,6 +36,8 @@ export const createPriceConfig = (
   initPrice: number | null
 ): IPriceConfig => ({
   ...plan,
+  planId:
+    process.env['NODE_ENV'] === 'development' ? MockPlantId[type] : plan.planId,
   type,
   trialDay,
   averagePrice,
@@ -44,12 +47,6 @@ export const createPriceConfig = (
   },
   initPrice,
 });
-
-const mockPlanIds = (prices: IPriceConfig[]) => {
-  prices[0].planId = 'P-5GE18939GM962423UMQVLK5Y';
-  prices[1].planId = 'P-2SH95524CM0826016MQVLLUI';
-  prices[2].planId = 'P-1VY99078S4786524AMQVLL4A';
-};
 
 export const isSubscriptionId = (str: string) => {
   const regex = /\b[\dA-Z-]{13}\b/gm;

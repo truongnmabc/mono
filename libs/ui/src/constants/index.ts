@@ -123,3 +123,9 @@ export const TestConstType: Record<IGameMode, number> = {
   review: 7,
   learn: 8,
 };
+
+export const MockPlantId: Record<string, string> = {
+  '1 week': 'P-5GE18939GM962423UMQVLK5Y',
+  '1 month': 'P-2SH95524CM0826016MQVLLUI',
+  '1 year': 'P-1VY99078S4786524AMQVLL4A',
+};

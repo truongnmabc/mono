@@ -37,12 +37,13 @@ const BillingPage = ({
     const handleGetData = async () => {
       if (userInfo.id) {
         const data = await db?.paymentInfos
-          .where('userId')
-          .equals(userInfo?.id)
+          // .where('userId')
+          // .equals(userInfo?.id)
           .toArray();
         console.log('🚀 ~ handleGetData ~ data:', data);
         if (data) {
           const listBill = convertData(data);
+          console.log('🚀 ~ handleGetData ~ listBill:', listBill);
           setListBill(listBill);
         }
       }
@@ -175,7 +176,7 @@ const convertData = (listTransaction: IPaymentInfos[]) => {
     return {
       date: _formatTime(tran.createdDate),
       period:
-        _formatTime(tran.updateDate) +
+        _formatTime(tran.updateDate || '') +
         ' to ' +
         _formatTime(tran.expiredDate || ''),
       plan: tran.planName,

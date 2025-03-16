@@ -141,11 +141,7 @@ const PopupSubscription = () => {
   }, [paymentInfo]);
 
   return (
-    <Dialog
-      open={option.showPopup}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-    >
+    <Dialog open={option.showPopup}>
       <div className="main-popup-subscription">
         <p className="title">{option.message}</p>
         <div className="btn">

@@ -16,9 +16,11 @@ import {
 import { selectUserInfo } from '@ui/redux/features/user.reselect';
 import userActionsThunk from '@ui/redux/repository/user/actions';
 import { useAppDispatch, useAppSelector } from '@ui/redux/store';
+import { IGameType } from '@ui/services/constant';
 import { reportMistakeApi } from '@ui/services/report';
 import { domToPng } from 'modern-screenshot';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const listReport = [
   { label: 'Incorrect Answer', value: 0 },
@@ -36,6 +38,7 @@ const ReportMistake = ({ onClose }: { onClose: () => void }) => {
   const dispatch = useAppDispatch();
   const currentGame = useAppSelector(selectCurrentGame);
   const idTopic = useAppSelector(selectCurrentTopicId);
+  const type = useSearchParams().get('type');
   const appInfos = useAppSelector(selectAppInfo);
   const userInfos = useAppSelector(selectUserInfo);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,13 +61,21 @@ const ReportMistake = ({ onClose }: { onClose: () => void }) => {
         setIsLoading(true);
         e.preventDefault();
 
+        const pageScrollElement = document.querySelector('#pageScroll');
+
+        const screenshot = pageScrollElement
+          ? await domToPng(pageScrollElement, {})
+          : '';
         await reportMistakeApi({
           appId: Number(appInfos.appId),
           questionId: currentGame.id,
           reasons: selectedValues,
           otherReason: otherReason,
-          gameType: 'allQuestions',
+          gameType:
+            (type === 'learn' ? 'study' : (type as IGameType)) ||
+            'allQuestions',
           userId: Number(userInfos.id || -1),
+          screenshot,
         });
         dispatch(
           userActionsThunk({
@@ -91,27 +102,7 @@ const ReportMistake = ({ onClose }: { onClose: () => void }) => {
       userInfos,
     ]
   );
-  const contentRef = useRef(null);
-  const handleScreen = async () => {
-    if (!contentRef.current) return;
-    try {
-      domToPng(contentRef.current).then((dataUrl) => {
-        const link = document.createElement('a');
-        link.download = 'screenshot.png';
-        link.href = dataUrl;
-        link.click();
-      });
-      // dataURL là ảnh base64
 
-      // Tùy ý: tải file, hoặc gửi dataURL lên server
-      // const link = document.createElement('a');
-      // link.download = 'screenshot.png';
-      // link.href = dataURL;
-      // link.click();
-    } catch (error) {
-      console.error('Lỗi chụp màn hình:', error);
-    }
-  };
   return (
     <form
       className="h-full py-4 px-6 bg-theme-white sm:bg-white sm:w-[600px] rounded-md flex flex-col gap-4"

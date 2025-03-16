@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mono/service-woker": ["libs/service-woker/src/index.ts"],
+      "@mono/ss": ["libs/ss/src/index.ts"],
+      "@mono/sw": ["lins/sw/src/index.ts"],
       "@single/*": ["./apps/single/src/*"],
       "@ui/*": ["libs/ui/src/*"],
       "@ui/components/*": ["libs/ui/src/components/*"],

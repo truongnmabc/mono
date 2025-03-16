@@ -78,7 +78,6 @@ const ModalConfirm = () => {
     <Dialog
       open={open}
       TransitionComponent={Transition}
-      aria-describedby="alert-dialog-slide-description"
       sx={{
         '& .MuiPaper-root': {
           borderRadius: '12px',

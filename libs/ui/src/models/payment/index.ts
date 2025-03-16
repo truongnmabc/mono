@@ -3,17 +3,17 @@ export interface IPaymentInfos {
   amount: number | string;
   orderId: string; // orderId của gói đang active
   createdDate: number;
-  updateDate: number;
+  updateDate?: number;
   emailAddress: string;
   userId: string;
-  paymentStatus: number;
+  paymentStatus?: number;
   appId: number;
-  appShortName: string;
-  payerName: string;
-  payerId: string;
-  status: string;
-  planId: string;
-  planName: string;
+  appShortName?: string;
+  payerName?: string;
+  payerId?: string;
+  status?: string;
+  planId?: string;
+  planName?: string;
   expiredDate?: number | string; // trường này được lấy theo next_billing_time của paypal nhé (nếu cancel thì sẽ k có trường đó thì cần check)
 
   // *NOTE: chua ro can nhung truong gi
